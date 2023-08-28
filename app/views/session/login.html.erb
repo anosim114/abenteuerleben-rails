@@ -1,0 +1,24 @@
+<h1>Login</h1>
+
+<%= form_tag do |form| %>
+  <p>admin: <%= @current_user.level == 0x111 %></p>
+
+  <% if @error %>
+    <p style="color: red;">Login failed, please try again!</p>
+  <% end %>
+
+  <div>
+    <%= label_tag 'user_name', 'Username', style: "display: block" %>
+    <%= text_field 'user', 'name', tabindex: 1 %>
+  </div>
+
+  <div>
+    <%= label_tag 'user_password', 'Password', style: "display: block" %>
+    <%= password_field 'user', 'password', tabindex: 1 %>
+  </div>
+
+  <div>
+    <%= submit_tag 'Anmelden', tabindex: 1 %>
+  </div>
+<% end %>
+
