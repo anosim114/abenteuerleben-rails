@@ -7,10 +7,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "common", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <% if notice %>
+      <p style="padding: .4rem; color: green; text-align: center; border-bottom: 1px solid #aaa;"><%= notice %></p>
+    <% end %>
+    
+    <main class="container">
+      <%= yield %>
+    </main>
+
+    <footer>
+      <div class="grid">
+        <a href="/datenschutz" class="centered">Datenschutz</a>
+        <a href="/impressum" class="centered">Impressum</a>
+        <!-- login/logout -->
+        <% if @current_user.is_admin %>
+          <a href="/logout" class="centered" style="color: red">Logout</a>
+        <% else %>
+          <a href="/login" class="centered">Login</a>
+        <% end %>
+      </div>
+    </footer>
   </body>
 </html>

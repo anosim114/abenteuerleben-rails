@@ -7,11 +7,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
-    resources :messages, only: [:new, :create]
+  resources :messages, only: [:new, :create]
 
   scope '/admin' do
-    resources :messages, except: [:new, :create]
+    resources :messages, except: [:index, :new, :create]
+    get '/messages', to: 'messages#index', as: "messages_index"
   end
+
 
   # get '/downloads'
   # get '/spenden'

@@ -1,5 +1,63 @@
-<h1>Abenteuer Leben e.V.</h1>
-<p>Welcome!</p>
+<hgroup class="centered">
+  <h1>Abenteuer Leben e.V.</h1>
+  <p>Welcome!</p>
+</hgroup>
 
-<h2>Contact</h2>
-<%= render 'messages/form', message: @message %>
+<ul>
+  <li>
+    <a href="#wer-wir-sind">Wer wir sind</a>
+  </li>
+  <li>
+    <a href="#was-wir-machen">Was wir machen</a>
+  </li>
+  <li>
+    <a href="#termine">Termine</a>
+  </li>
+  <li>
+    <a href="#kontakt">Kontakt</a>
+  </li>
+  <li>
+    <a href="/mitarbeiteranmeldung">Mitarbeiteranmeldung</a>
+  </li>
+  <li>
+    <a href="/kinderanmeldung">Kinderanmeldung</a>
+  </li>
+  <li>
+    <a href="/downloads">Downloads</a>
+  </li>
+  <li>
+    <a href="/spenden">Spenden / Unterstützen</a>
+  </li>
+</ul>
+
+<article id="wer-wir-sind">
+  <h2 class="centered">Wer wir sind</h2>
+  <p>
+    Wir sind eine Gruppe motivierter Christen, die biblische Werte und Prinzipien vertreten und diese gemeinsam mit der heranwachsenden Generation ausleben möchten.
+    <br>
+    Ein Team ehrenamtlicher Mitarbeiter macht es sich zur Aufgabe, zwei Wochen Ferienzeit zu einem interessanten und außergewöhnlichen Erlebnis zu gestalten!
+  </p>
+</article>
+
+<article id="was-wir-machen">
+  <h2 class="centered">Was wir machen</h2>
+  <p>
+    Unsere Camps bieten eine gute Möglichkeit, eine Woche lang zusammen zu sein, gute Gemeinschaft zu erleben, miteinander in der Bibel zu forschen, zu beten, Jesus Christus persönlich zu begegnen, persönliche Gespräche zu führen und neue Freunde kennenzulernen.
+    <br>
+    Auf den Sommercamps sollen junge Menschen die Möglichkeit haben, christlichen Glauben zu leben, zu vertiefen, bzw. diesen ganz neu kennenzulernen.
+  </p>
+</article>
+  
+<div id="was-wir-machen">
+  <h2>Termine</h2>
+  <div>
+    @Termine@
+  </div>
+</div>
+
+<br><br> <!-- todo: remove -->
+<div id="kontakt">
+  <h2>Kontakt</h2>
+  <%= render 'messages/form', message: @message %>
+</div>
+

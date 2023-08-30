@@ -1,7 +1,10 @@
+<%= link_to '< Startseite', root_path %>
 <h1>Login</h1>
 
 <%= form_tag do |form| %>
-  <p>admin: <%= @current_user.level == 0x111 %></p>
+  <% if @current_user.is_admin %>
+    <p>You are already loggin in!</p>
+  <% end %>
 
   <% if @error %>
     <p style="color: red;">Login failed, please try again!</p>
