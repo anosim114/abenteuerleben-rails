@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
       p 'user exists and will be used'
       session[:user_id] = @current_user.id
     else
-      p 'registering new user'
       @current_user = User.new
       @current_user.level = 0x000
     end
