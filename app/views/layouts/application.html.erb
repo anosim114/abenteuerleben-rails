@@ -6,9 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "common", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -21,16 +20,20 @@
       <%= yield %>
     </main>
 
-    <footer>
+    <footer style="border-top: 1px solid #aaa;">
       <div class="grid">
+        <%= link_to 'Startseite', root_path, class: 'centered' %>
         <a href="/datenschutz" class="centered">Datenschutz</a>
         <a href="/impressum" class="centered">Impressum</a>
         <!-- login/logout -->
-        <% if @current_user.is_admin %>
-          <a href="/logout" class="centered" style="color: red">Logout</a>
-        <% else %>
-          <a href="/login" class="centered">Login</a>
-        <% end %>
+        <div style="display: flex; flex-direction: column;">
+          <% if @current_user.is_admin %>
+            <%= link_to 'Admin Dashboard', admin_dashboard_path, class: 'centered' %>
+            <%= link_to 'Logout', logout_path, style: 'color:red;', class: 'centered' %>
+          <% else %>
+            <%= link_to 'Login', login_path, class: 'centered' %>
+          <% end %>
+        </div>
       </div>
     </footer>
   </body>

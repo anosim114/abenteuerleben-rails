@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  resources :pages
+  get 'admin/dashboard'
   get '/login', to: 'session#login'
   post '/login', to: 'session#auth'
   get '/logout', to: 'session#logout'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "home#index"
+  get "/downloads", to: 'home#downloads'
+  get '/spenden', to: 'home#spenden'
 
   resources :messages, only: [:new, :create]
 
@@ -14,9 +17,6 @@ Rails.application.routes.draw do
     get '/messages', to: 'messages#index', as: "messages_index"
   end
 
-
-  # get '/downloads'
-  # get '/spenden'
   # get '/login'
   # get '/logout'
   # get '/impressum'
@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   #   resource :helpers
   #   resource :participants
   # end
+
+  root "home#index"
 end
