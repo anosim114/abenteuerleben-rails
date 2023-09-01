@@ -1,0 +1,8 @@
+<%= render @page %>
+
+<% if @current_user.is_admin %>
+  <div>
+    <%= link_to "Edit this page", edit_page_path(@page) %> |
+    <%= link_to "Back to pages", pages_path %>
+  </div>
+<% end %>

@@ -1,0 +1,48 @@
+<%= form_with(model: page) do |form| %>
+  <% if page.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+        <% page.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="<%= @page.id ? 'display: none' : '' %>">
+    <%= form.label :url, style: "display: block" %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div style="display: none;">
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content, id: 'content-input' %>
+  </div>
+
+  <br>
+  <div id="content-editor"></div>
+
+  <%= stylesheet_link_tag 'https://uicdn.toast.com/editor/latest/toastui-editor.min.css' %>
+  <script type="module">
+    import Editor from "@toast-ui/editor"
+
+    const editor = new Editor({
+      el: document.querySelector('#content-editor'),
+      initialEditType: 'wysiwyg',
+      height: "68vh"
+    })
+
+    editor.setHTML(`<%= raw page.content %>`)
+
+    document.querySelector('#submit-page').onclick = e => {
+      document.querySelector('#content-input').value =  editor.getHTML()
+    }
+  </script>
+  <br>
+
+  <div>
+    <%= form.submit id: 'submit-page' %>
+  </div>
+<% end %>

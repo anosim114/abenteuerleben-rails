@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pages
+  get 'admin/dashboard'
   get '/login', to: 'session#login'
   post '/login', to: 'session#auth'
   get '/logout', to: 'session#logout'

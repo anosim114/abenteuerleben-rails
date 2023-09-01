@@ -2,11 +2,15 @@ class ApplicationController < ActionController::Base
   before_action :set_user
   
   def admin_only
-    access_denied unless @current_user.level & 0x111
+    redirect_to root_path unless @current_user.level >= 0x111
   end
   
   def moderator_only
-    access_denied unless @current_user.level & 0x011
+    redirect_to root_path unless @current_user.level >= 0x011
+  end  
+  
+  def logged_in
+    redirect_to root_path unless @current_user.level >= 0x001
   end  
 
   def set_user

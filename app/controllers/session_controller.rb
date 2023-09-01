@@ -5,7 +5,7 @@ class SessionController < ApplicationController
 
   def auth
     if @current_user.id
-      redirect_to root_path
+      redirect_to admin_dashboard_path
     else
       @error = true
       render :login, status: 401
