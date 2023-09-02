@@ -12,7 +12,10 @@
   <% end %>
 
   <div style="<%= @page.id ? 'display: none' : '' %>">
-    <%= form.label :url, style: "display: block" %>
+    <%= form.label :url do %>
+      URL
+      <sup>*URL immer kleinschreiben (Falsch: 'Impressum', Richtig: 'impressum')</sup>
+    <% end %>
     <%= form.text_field :url %>
   </div>
 
@@ -24,7 +27,7 @@
   <br>
   <div id="content-editor"></div>
 
-  <%= stylesheet_link_tag 'https://uicdn.toast.com/editor/latest/toastui-editor.min.css' %>
+  <%= stylesheet_link_tag "toastui-editor.css" %>
   <script type="module">
     import Editor from "@toast-ui/editor"
 
@@ -43,6 +46,6 @@
   <br>
 
   <div>
-    <%= form.submit id: 'submit-page' %>
+    <%= form.submit id: 'submit-page', class: 'clear' %>
   </div>
 <% end %>
