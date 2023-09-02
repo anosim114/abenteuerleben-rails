@@ -4,3 +4,57 @@
 <br>
 <%= link_to 'pages', pages_path %>
 
+<hr>
+
+<hgroup>
+<h1>Developer space</h1>
+<p>Showcase of various design elements</p1>
+<hgroup>
+
+<br>
+
+<h2>Typography</h2>
+
+<div>
+  <% 1.upto(6).each do |i| %>
+  <h<%= i %>>h<%= i %> - Text</h<%= i %>>
+  <% end %>
+<div>
+
+
+<h2>Color</h2>
+
+<div style="display: flex; gap: 3rem;">
+  <% ["gray", "blue", "red"].each do |color| %>
+  <div>
+    <h3><%= color %></h3>
+    <div style="display:flex;">
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-100);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-200);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-300);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-400);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-500);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-600);"></div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<br>
+<br>
+<h2>Design elements</h2>
+
+<br>
+<h3>hgroup</h3>
+<br>
+<hgroup>
+  <h1>A larger header</h1>
+  <h5>With a smaller explaining title</h5>
+</hgroup>
+
+<h3>articles</h3>
+<article>
+  <h4>these small things</h4>
+  <p>which are card like and have a nice background shadow effekt</p>
+</article>
+
