@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @events = Event.where(["start >= ? OR end NOT NULL AND end > ?", Date.today, Date.today]).order('start ASC')
+    @events = Event.where(["start_date >= ? OR end_date NOT NULL AND end_date > ?", Date.today, Date.today]).order('start_date ASC')
     @message = Message.new
   end
 end

@@ -15,10 +15,10 @@ class EventsTest < ApplicationSystemTestCase
     click_on "New event"
 
     fill_in "Description", with: @event.description
-    fill_in "Start", with: @event.start
+    fill_in "Start", with: @event.start_date
     fill_in "Link", with: @event.link
     fill_in "Title", with: @event.title
-    fill_in "End", with: @event.end
+    fill_in "End", with: @event.end_date
     click_on "Create Event"
 
     assert_text "Event was successfully created"
@@ -30,10 +30,10 @@ class EventsTest < ApplicationSystemTestCase
     click_on "Edit this event", match: :first
 
     fill_in "Description", with: @event.description
-    fill_in "Start", with: @event.start
+    fill_in "Start", with: @event.start_date
     fill_in "Link", with: @event.link
     fill_in "Title", with: @event.title
-    fill_in "End", with: @event.end
+    fill_in "End", with: @event.end_date
     click_on "Update Event"
 
     assert_text "Event was successfully updated"
