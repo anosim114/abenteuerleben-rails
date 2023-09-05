@@ -1,8 +1,10 @@
 <h1>Admin#dashboard</h1>
 
-<%= link_to 'messages', messages_index_path %>
+<%= link_to 'messages', messages_path %>
 <br>
 <%= link_to 'pages', pages_path %>
+<br>
+<%= link_to 'events', events_path %>
 
 <hr>
 
@@ -22,9 +24,9 @@
 <div>
 
 
-<h2>Color</h2>
+<h2>Colors</h2>
 
-<div style="display: flex; gap: 3rem;">
+<div style="display: flex; gap: 1rem; flex-direction: column;">
   <% ["gray", "blue", "red"].each do |color| %>
   <div>
     <h3><%= color %></h3>

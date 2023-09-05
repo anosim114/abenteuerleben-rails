@@ -50,7 +50,7 @@ class MessagesController < ApplicationController
     @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to messages_index_path, notice: "Message was successfully destroyed." }
+      format.html { redirect_to messages_path, notice: "Message was successfully destroyed." }
     end
   end
 

@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to '< Admin Dashboard', admin_dashboard_path %>
 
 <h1>Pages</h1>
 
@@ -10,4 +10,4 @@
   <% end %>
 </div>
 
-<%= link_to "New page", new_page_path %>
+<%= link_to "New page", new_page_path, style: 'border: 1px solid var(--primary); padding: .2rem .7rem; border-radius: var(--border-radius);'  %>

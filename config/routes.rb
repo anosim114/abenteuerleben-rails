@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   resources :pages
   get 'admin/dashboard'
   get '/login', to: 'session#login'
@@ -10,11 +11,9 @@ Rails.application.routes.draw do
   get "/downloads", to: 'home#downloads'
   get '/spenden', to: 'home#spenden'
 
-  resources :messages, only: [:new, :create]
-
+  resources :messages
   scope '/admin' do
-    resources :messages, except: [:index, :new, :create]
-    get '/messages', to: 'messages#index', as: "messages_index"
+    
   end
 
   # get '/login'

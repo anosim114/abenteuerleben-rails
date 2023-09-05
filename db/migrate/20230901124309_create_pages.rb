@@ -19,5 +19,15 @@ class CreatePages < ActiveRecord::Migration[7.0]
     donations.content = '<h1>Spenden</h1>'
     donations.save
 
+    downloads = Page.new
+    downloads.url = 'datenschutz'
+    downloads.content = '<h1>Datenschutz</h1>'
+    downloads.save
+
+    donations = Page.new
+    donations.url = 'impressum'
+    donations.content = '<h1>Impressum</h1>'
+    donations.save
+
   end
 end

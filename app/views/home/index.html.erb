@@ -48,10 +48,14 @@
   </p>
 </article>
   
-<div id="was-wir-machen">
+<div id="termine">
   <h2>Termine</h2>
-  <div>
-    @Termine@
+  <div style="display: flex; flex-direction: column; align-items: start;">
+    <%= 'Nothing to show' if @events.length == 0 %>
+    
+    <% @events.each do |event| %>
+      <%= render 'events/event', event: event %>
+    <% end %>
   </div>
 </div>
 

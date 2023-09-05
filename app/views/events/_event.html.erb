@@ -1,0 +1,36 @@
+<div style="display: flex; align-items: center; gap: 1rem;">
+  <div style="display: block; width: 1rem; height: 1rem; background-color: var(--primary); border-radius: var(--border-radius);"></div>
+  <article id="<%= dom_id event %>" style="padding: 2rem; margin: 0.4rem 0;">
+    <p>
+      <strong>Title:</strong>
+      <%= event.title %>
+    </p>
+
+    <% if !event.description.empty? %>
+      <p>
+        <strong>Description:</strong>
+        <%= event.description %>
+      </p>
+    <% end %>
+
+    <p>
+      <strong>Start:</strong>
+      <%= event.start %>
+    </p>
+
+    <% if event.end %>
+      <p>
+        <strong>End:</strong>
+        <%= event.end %>
+      </p>
+    <% end %>
+
+    <% if !event.link.empty? %>
+      <p>
+        <strong>Link:</strong>
+        <%= link_to event.link, event.link, target: :blank %>
+      </p>
+    <% end %>
+
+  </article>
+</div>
