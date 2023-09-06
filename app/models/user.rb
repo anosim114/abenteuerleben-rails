@@ -1,5 +1,5 @@
 class User < ApplicationRecord
   def is_admin
-    return self.level == 0x111
+    return self.level == 0b111
   end
 end

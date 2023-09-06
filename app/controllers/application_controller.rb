@@ -2,15 +2,15 @@ class ApplicationController < ActionController::Base
   before_action :set_user
   
   def admin_only
-    redirect_to root_path unless @current_user.level >= 0x111
+    redirect_to root_path unless @current_user.level >= 0b111
   end
   
   def moderator_only
-    redirect_to root_path unless @current_user.level >= 0x011
+    redirect_to root_path unless @current_user.level >= 0b011
   end  
   
   def logged_in
-    redirect_to root_path unless @current_user.level >= 0x001
+    redirect_to root_path unless @current_user.level >= 0b001
   end  
 
   def set_user
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
       session[:user_id] = @current_user.id
     else
       @current_user = User.new
-      @current_user.level = 0x000
+      @current_user.level = 0b000
     end
   end
 end
