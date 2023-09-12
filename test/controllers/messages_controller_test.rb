@@ -3,6 +3,8 @@ require "test_helper"
 class MessagesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @message = messages(:one)
+    @current_user = User.new
+    @current_user.level = 0b111
   end
 
   test "should get index" do
