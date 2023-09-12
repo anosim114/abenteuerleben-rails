@@ -3,13 +3,13 @@
 one:
   title: MyString
   description: MyText
-  start: 2023-09-05
-  end: 2023-09-05
+  start_date: 2023-09-05
+  end_date: 2023-09-05
   link: MyString
 
 two:
   title: MyString
   description: MyText
-  start: 2023-09-05
-  end: 2023-09-05
+  start_date: 2023-09-05
+  end_date: 2023-09-05
   link: MyString
