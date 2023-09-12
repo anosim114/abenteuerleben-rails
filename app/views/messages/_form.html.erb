@@ -22,7 +22,7 @@
   </div>
 
   <div>
-    <%= form.label :message, style: "display: block" %>
+    <%= form.label "Nachricht", style: "display: block" %>
     <%= form.text_area :message, rows: 5, required: true %>
   </div>
 
@@ -33,9 +33,7 @@
   </div>
   <% end %>
 
-  <div class="grid">
-    <%= form.submit %>
-    <div class="mobile--hide"></div>
-    <div class="mobile--hide"></div>
+  <div>
+    <%= form.submit "Absenden" %>
   </div>
 <% end %>

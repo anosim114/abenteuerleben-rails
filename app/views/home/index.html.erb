@@ -5,70 +5,102 @@
   <h2>Sommercamps für Kinder und Teens</h2>
 </hgroup>
 
-<nav class="nav">
-  <ul>
-    <li>
-      <a href="#wer-wir-sind">Wer wir sind</a>
-    </li>
-    <li>
-      <a href="#was-wir-machen">Was wir machen</a>
-    </li>
-    <li>
-      <a href="#termine">Termine</a>
-    </li>
-    <li>
-      <a href="#kontakt">Kontakt</a>
-    </li>
-    <li>
-      <a href="/mitarbeiteranmeldung">Mitarbeiteranmeldung</a>
-    </li>
-    <li>
-      <a href="/kinderanmeldung">Kinderanmeldung</a>
-    </li>
-    <li>
-      <a href="/pages/downloads">Downloads</a>
-    </li>
-    <li>
-      <a href="/pages/spenden">Spenden / Unterstützen</a>
-    </li>
-  </ul>
-</nav>
-
-<div class="about">
-  <article id="wer-wir-sind">
-    <h2 class="centered">Wer wir sind</h2>
-    <p>
-      Wir sind eine Gruppe motivierter Christen, die biblische Werte und Prinzipien vertreten und diese gemeinsam mit der heranwachsenden Generation ausleben möchten.
-      <br>
-      Ein Team ehrenamtlicher Mitarbeiter macht es sich zur Aufgabe, zwei Wochen Ferienzeit zu einem interessanten und außergewöhnlichen Erlebnis zu gestalten!
-    </p>
-  </article>
-
-  <article id="was-wir-machen">
-    <h2 class="centered">Was wir machen</h2>
-    <p>
-      Unsere Camps bieten eine gute Möglichkeit, eine Woche lang zusammen zu sein, gute Gemeinschaft zu erleben, miteinander in der Bibel zu forschen, zu beten, Jesus Christus persönlich zu begegnen, persönliche Gespräche zu führen und neue Freunde kennenzulernen.
-      <br>
-      Auf den Sommercamps sollen junge Menschen die Möglichkeit haben, christlichen Glauben zu leben, zu vertiefen, bzw. diesen ganz neu kennenzulernen.
-    </p>
-  </article>
+<div class="nav">
+  <div class="background-mask"></div>
+  <nav class="container">
+    <ul>
+      <li>
+        <a href="/mitarbeiteranmeldung"><i class="fa-solid fa-angle-right"></i>Mitarbeiteranmeldung</a>
+      </li>
+      <li>
+        <a href="/kinderanmeldung"><i class="fa-solid fa-angle-right"></i>Kinderanmeldung</a>
+      </li>
+      <li>
+        <a href="#wer-wir-sind"><i class="fa-solid fa-angle-right"></i>Wer wir sind</a>
+      </li>
+      <li>
+        <a href="#was-wir-machen"><i class="fa-solid fa-angle-right"></i>Was wir machen</a>
+      </li>
+      <li>
+        <a href="#termine"><i class="fa-solid fa-angle-right"></i>Termine</a>
+      </li>
+      <li>
+        <a href="#kontakt"><i class="fa-solid fa-angle-right"></i>Kontakt</a>
+      </li>
+      <li>
+        <a href="/pages/downloads"><i class="fa-solid fa-angle-right"></i>Downloads</a>
+      </li>
+      <li>
+        <a href="/pages/spenden"><i class="fa-solid fa-angle-right"></i>Spenden / Unterstützen</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 
-<div id="termine" style="margin-top: var(--spacing-xl);">
-  <h2 class="centered">Termine</h2>
-  <div style="display: flex; flex-direction: column; align-items: start;">
-    <%= 'Nothing to show' if @events.length == 0 %>
-    
-    <% @events.each do |event| %>
-      <%= render 'events/event', event: event %>
-    <% end %>
+<div class="about">
+  <div class="background-mask"></div>
+  <div class="container">
+    <article id="wer-wir-sind">
+      <div class="ico">
+        <i class="fa-solid fa-people-line"></i>
+      </div>
+      <h2>
+        Wer wir sind
+      </h2>
+      <p>
+        Wir sind eine Gruppe motivierter Christen, die biblische Werte und Prinzipien vertreten und diese gemeinsam mit der heranwachsenden Generation ausleben möchten.
+        <br>
+        Ein Team ehrenamtlicher Mitarbeiter macht es sich zur Aufgabe, zwei Wochen Ferienzeit zu einem interessanten und außergewöhnlichen Erlebnis zu gestalten!
+      </p>
+    </article>
+
+    <article id="was-wir-machen">
+      <div class="ico">
+        <i class="fa-solid fa-briefcase"></i>
+      </div>
+      <h2 class="centered">Was wir machen</h2>
+      <p>
+        Unsere Camps bieten eine gute Möglichkeit, eine Woche lang zusammen zu sein, gute Gemeinschaft zu erleben, miteinander in der Bibel zu forschen, zu beten, Jesus Christus persönlich zu begegnen, persönliche Gespräche zu führen und neue Freunde kennenzulernen.
+        <br>
+        Auf den Sommercamps sollen junge Menschen die Möglichkeit haben, christlichen Glauben zu leben, zu vertiefen, bzw. diesen ganz neu kennenzulernen.
+      </p>
+    </article>
   </div>
 </div>
 
-<hr style="margin: var(--spacing-xl) 0;">
+<div class="container">
+  <div id="termine" style="margin-top: var(--spacing-xl);">
+    <div class="ico centered">
+      <% if @events.length == 0 %>
+        <i class="fa-regular fa-calendar"></i>
+      <% else %>
+        <i class="fa-solid fa-calendar-day"></i>
+      <% end %>
+    </div>
+    <h2 class="centered">Termine</h2>
+    <div style="display: flex; flex-direction: column; align-items: start;">
+    
+      <% if @events.length == 0 %>
+      <div class="termine--empty">
+        <span>
+          Derzeit stehen keine Termine an
+        </span>
+      </div>
+      <% end %>
+    
+      <% @events.each do |event| %>
+        <%= render 'events/event', event: event %>
+      <% end %>
+    </div>
+  </div>
 
-<div id="kontakt" style="margin: 0 var(--spacing-sm);">
-  <h2 class="centered">Kontakt</h2>
-  <%= render 'messages/form', message: @message %>
+  <hr style="margin: var(--spacing-xl) 0;">
+
+  <div id="kontakt" style="margin: 0 var(--spacing-sm);">
+    <div class="ico centered">
+      <i class="fa-solid fa-envelope"></i>
+    </div>
+    <h2 class="centered">Kontakt</h2>
+    <%= render 'messages/form', message: @message %>
+  </div>
 </div>
-
