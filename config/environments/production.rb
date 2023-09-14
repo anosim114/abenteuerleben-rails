@@ -91,6 +91,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.hosts << "nitarou.abenteuerleben-ev.de"
   config.hosts << "v3.abenteuerleben-ev.de"
   config.hosts << "coral-app-jyypy.ondigitalocean.app"
 end
