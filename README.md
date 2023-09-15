@@ -8,6 +8,14 @@
   * Linked ids (ex. index page 'kontakt')
   * Text content
 
+## Development
+
+### Needed tools:
+- Text editor (vim, helix, vscode, intellij one)
+- Act (for running pipeline locally)
+- Git (for source control)
+- Ruby (for development)
+- A browser (also for development)
 
 ## Deployment
 
@@ -22,3 +30,9 @@ Currently:
 - pull main locally
 - merge main to dokku/main
 - push dokkku/main to remote
+
+## Cookbook (Answer to questions and ready to use solutions in a whole package)
+
+### Error 16, can't use bundle in Github actions
+- Run `bundle lock --add-platform x86_64-linux`
+  * [See here](https://ryuichirosuzuki.com/posts/rails-github-action-exit-with-code-16/)
