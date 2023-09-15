@@ -43,6 +43,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -60,7 +61,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: test
+    needs: lint
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Cloning repo
