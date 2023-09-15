@@ -1,17 +1,17 @@
 class ApplicationController < ActionController::Base
   before_action :set_user
-  
+
   def admin_only
-    redirect_to root_path unless @current_user.level >= 0b111
+    redirect_to root_path unless @current_user.is_admin
   end
-  
+
   def moderator_only
-    redirect_to root_path unless @current_user.level >= 0b011
-  end  
-  
+    redirect_to root_path unless @current_user.is_admin
+  end
+
   def logged_in
-    redirect_to root_path unless @current_user.level >= 0b001
-  end  
+    redirect_to root_path unless @current_user.is_admin
+  end
 
   def set_user
     # find user in session
@@ -32,4 +32,3 @@ class ApplicationController < ActionController::Base
     end
   end
 end
-
