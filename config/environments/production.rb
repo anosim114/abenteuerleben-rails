@@ -85,14 +85,11 @@ Rails.application.configure do
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
-    # config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
   config.hosts << "abenteuerleben-ev.de"
-  config.hosts << "v3.abenteuerleben-ev.de"
-  config.hosts << "nitarou.abenteuerleben-ev.de"
-  config.hosts << "coral-app-jyypy.ondigitalocean.app"
 end
