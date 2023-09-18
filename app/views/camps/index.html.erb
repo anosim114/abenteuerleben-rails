@@ -1,0 +1,12 @@
+<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+
+<h1>Camps</h1>
+
+<div id="camps">
+  <% @camps.each do |camp| %>
+    <%= render camp %>
+    <p>
+      <%= link_to "Show this camp", camp %>
+    </p>
+  <% end %>
+</div>

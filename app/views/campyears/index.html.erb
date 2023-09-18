@@ -1,0 +1,14 @@
+<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+
+<h1>Campyears</h1>
+
+<div id="campyears">
+  <% @campyears.each do |campyear| %>
+    <%= render campyear %>
+    <p>
+      <%= link_to "Show this campyear", campyear %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New campyear", new_campyear_path %>

@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_140317) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_15_193800) do
+  create_table "camps", force: :cascade do |t|
+    t.integer "campyear_id", null: false
+    t.date "date_start"
+    t.date "date_end"
+    t.integer "participants_year_start"
+    t.integer "participants_year_end"
+    t.integer "max_participant_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campyear_id"], name: "index_camps_on_campyear_id"
+  end
+
+  create_table "campyears", force: :cascade do |t|
+    t.integer "year"
+    t.date "participants_register_start"
+    t.date "participants_register_end"
+    t.date "helper_register_start"
+    t.date "helper_register_end"
+    t.string "accentcolor_primary"
+    t.string "accentcolor_secondary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
@@ -46,4 +70,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_140317) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "camps", "campyears"
 end

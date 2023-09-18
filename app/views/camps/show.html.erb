@@ -1,0 +1,8 @@
+<%= render @camp %>
+
+<div>
+  <%= link_to "Edit this camp", edit_camp_path(@camp) %> |
+  <%= link_to "Back to campyear", @camp.campyear %>
+
+  <%= button_to "Destroy this camp", @camp, method: :delete %>
+</div>

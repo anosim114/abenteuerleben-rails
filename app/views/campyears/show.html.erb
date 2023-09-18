@@ -1,0 +1,23 @@
+<%= render @campyear %>
+
+<div>
+  <% @camps.each do |camp| %>
+    <br />
+    <br />
+    <%# todo: link with a button to create new camp for this campyear %>
+    <%= link_to("Camp: " + camp.participants_year_start.to_s + " - " + camp.participants_year_end.to_s,  camp_path(camp)) %>
+    <%= render camp %>
+  <% end %>
+</div>
+
+<div>
+  <br>
+  <%= link_to "New camp", new_camp_path(campyear: @campyear.id) %>
+  <br>
+  <br>
+
+  <%= link_to "Edit this campyear", edit_campyear_path(@campyear) %> |
+  <%= link_to "Back to campyears", campyears_path %>
+
+  <%= button_to "Destroy this campyear", @campyear, method: :delete %>
+</div>

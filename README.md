@@ -19,17 +19,8 @@
 
 ## Deployment
 
-### Digital Ocean Rails App
-Just push the changes to origin/main via a pull request and the app will pick up the changes
-automatically and rebuild + deploy the updated application
-
-### Dokku Droplet
-TDB
-Currently:
-- merge changes via pull request to main
-- pull main locally
-- merge main to dokku/main
-- push dokkku/main to remote
+### Github Actions
+Github actions automatically deploys all changes to master to the dokku aleben environment
 
 ## Cookbook (Answer to questions and ready to use solutions in a whole package)
 
