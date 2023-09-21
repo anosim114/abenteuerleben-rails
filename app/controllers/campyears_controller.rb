@@ -24,23 +24,19 @@ class CampyearsController < ApplicationController
   def create
     @campyear = Campyear.new(campyear_params)
 
-    respond_to do |format|
-      if @campyear.save
-        format.html { redirect_to campyear_url(@campyear), notice: "Campyear was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @campyear.save
+      redirect_to campyear_url(@campyear), notice: "Campyear was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /campyears/1 or /campyears/1.json
   def update
-    respond_to do |format|
-      if @campyear.update(campyear_params)
-        format.html { redirect_to campyear_url(@campyear), notice: "Campyear was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @campyear.update(campyear_params)
+      redirect_to campyear_url(@campyear), notice: "Campyear was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -48,9 +44,7 @@ class CampyearsController < ApplicationController
   def destroy
     @campyear.destroy
 
-    respond_to do |format|
-      format.html { redirect_to campyears_url, notice: "Campyear was successfully destroyed." }
-    end
+    redirect_to campyears_url, notice: "Campyear was successfully destroyed."
   end
 
   private

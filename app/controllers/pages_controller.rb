@@ -27,25 +27,19 @@ class PagesController < ApplicationController
     @page = Page.new(page_params)
     p 'create new page'
 
-    respond_to do |format|
-      if @page.save
-        p 'page saved'
-        p @page.to_json
-        format.html { redirect_to page_url(@page.url), notice: "Page was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @page.save
+      redirect_to page_url(@page.url), notice: "Page was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /pages/1 or /pages/1.json
   def update
-    respond_to do |format|
-      if @page.update(page_params)
-        format.html { redirect_to page_url(@page.url), notice: "Page was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @page.update(page_params)
+      redirect_to page_url(@page.url), notice: "Page was successfully updated."
+    else
+       render :edit, status: :unprocessable_entity
     end
   end
 
@@ -53,9 +47,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
 
-    respond_to do |format|
-      format.html { redirect_to pages_url, notice: "Page was successfully destroyed." }
-    end
+    redirect_to pages_url, notice: "Page was successfully destroyed."
   end
 
   private

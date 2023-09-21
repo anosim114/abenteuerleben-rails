@@ -15,8 +15,13 @@ class CampsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should redirect campyears" do
+  test "should redirect if no campyear param given" do
     get new_camp_url
+    assert_response :redirect
+  end
+
+  test "should redirect if campyear param is invalid" do
+    get new_camp_url, params: {campyear: 123}
     assert_response :redirect
   end
 

@@ -24,24 +24,19 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
 
-    respond_to do |format|
-      if @message.save
-        # format.html { redirect_to message_url(@message) }
-        format.html { redirect_to(root_path, notice: "Message was successfully created.") }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @message.save
+      redirect_to(root_path, notice: "Message was successfully created.")
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /messages/1 or /messages/1.json
   def update
-    respond_to do |format|
-      if @message.update(message_params)
-        format.html { redirect_to message_url(@message), notice: "Message was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @message.update(message_params)
+      redirect_to message_url(@message), notice: "Message was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -49,9 +44,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
 
-    respond_to do |format|
-      format.html { redirect_to messages_path, notice: "Message was successfully destroyed." }
-    end
+    redirect_to messages_path, notice: "Message was successfully destroyed."
   end
 
   private

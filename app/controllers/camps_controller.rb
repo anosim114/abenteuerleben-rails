@@ -12,7 +12,7 @@ class CampsController < ApplicationController
 
   # GET /camps/new
   def new
-    if params[:campyear] == nil
+    if params[:campyear] == nil or Campyear.where(id: params[:campyear]).empty?
       redirect_to campyears_path
       return
     end
@@ -29,23 +29,19 @@ class CampsController < ApplicationController
   def create
     @camp = Camp.new(camp_params)
 
-    respond_to do |format|
-      if @camp.save
-        format.html { redirect_to camp_url(@camp), notice: "Camp was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @camp.save
+      redirect_to camp_url(@camp), notice: "Camp was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /camps/1 or /camps/1.json
   def update
-    respond_to do |format|
-      if @camp.update(camp_params)
-        format.html { redirect_to camp_url(@camp), notice: "Camp was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @camp.update(camp_params)
+      redirect_to camp_url(@camp), notice: "Camp was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -53,9 +49,7 @@ class CampsController < ApplicationController
   def destroy
     @camp.destroy
 
-    respond_to do |format|
-      format.html { redirect_to camps_url, notice: "Camp was successfully destroyed." }
-    end
+      redirect_to camps_url, notice: "Camp was successfully destroyed."
   end
 
   private
