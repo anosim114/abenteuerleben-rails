@@ -24,7 +24,7 @@ class CampsControllerTest < ActionDispatch::IntegrationTest
     get new_camp_url, params: {campyear: 123}
     assert_response :redirect
   end
-
+  
   test "should create camp" do
     assert_difference("Camp.count") do
       post camps_url, params: { camp: { campyear_id: @camp.campyear_id, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
