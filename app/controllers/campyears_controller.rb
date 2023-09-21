@@ -25,7 +25,7 @@ class CampyearsController < ApplicationController
     @campyear = Campyear.new(campyear_params)
 
     if @campyear.save
-      redirect_to campyear_url(@campyear), notice: "Campyear was successfully created."
+      redirect_to campyear_url(@campyear), notice: "Campjahr erfolgreich erstellt."
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class CampyearsController < ApplicationController
   # PATCH/PUT /campyears/1 or /campyears/1.json
   def update
     if @campyear.update(campyear_params)
-      redirect_to campyear_url(@campyear), notice: "Campyear was successfully updated."
+      redirect_to campyear_url(@campyear), notice: "Campjahr erfolgreich geändert."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class CampyearsController < ApplicationController
   def destroy
     @campyear.destroy
 
-    redirect_to campyears_url, notice: "Campyear was successfully destroyed."
+    redirect_to campyears_url, notice: "Campjahr erfolgreich gelöscht."
   end
 
   private

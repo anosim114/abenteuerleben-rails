@@ -30,7 +30,7 @@ class CampsController < ApplicationController
     @camp = Camp.new(camp_params)
 
     if @camp.save
-      redirect_to camp_url(@camp), notice: "Camp was successfully created."
+      redirect_to camp_url(@camp), notice: "Camp erfolgreich erstellt."
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +39,7 @@ class CampsController < ApplicationController
   # PATCH/PUT /camps/1 or /camps/1.json
   def update
     if @camp.update(camp_params)
-      redirect_to camp_url(@camp), notice: "Camp was successfully updated."
+      redirect_to camp_url(@camp), notice: "Camp erfolgreich geändert."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -49,7 +49,7 @@ class CampsController < ApplicationController
   def destroy
     @camp.destroy
 
-      redirect_to camps_url, notice: "Camp was successfully destroyed."
+      redirect_to camps_url, notice: "Camp erfolgreich gelöscht."
   end
 
   private

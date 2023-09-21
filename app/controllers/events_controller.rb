@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to event_url(@event), notice: "Event was successfully created."
+      redirect_to event_url(@event), notice: "Termin erfolgreich erstellt."
       render :show, status: :created, location: @event
     else
       render :new, status: :unprocessable_entity
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1 or /events/1.json
   def update
     if @event.update(event_params)
-      redirect_to event_url(@event), notice: "Event was successfully updated."
+      redirect_to event_url(@event), notice: "Termin erfolgreich geändert."
       render :show, status: :ok, location: @event
     else
       render :edit, status: :unprocessable_entity
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
 
-     redirect_to events_url, notice: "Event was successfully destroyed."
+     redirect_to events_url, notice: "Termin erfolgreich gelöscht."
      head :no_content
   end
 

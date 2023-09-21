@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      redirect_to(root_path, notice: "Message was successfully created.")
+      redirect_to(root_path, notice: "Nachricht erfolgreich abgeschickt.")
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1 or /messages/1.json
   def update
     if @message.update(message_params)
-      redirect_to message_url(@message), notice: "Message was successfully updated."
+      redirect_to message_url(@message), notice: "Nachricht erfolgreich geändert."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
 
-    redirect_to messages_path, notice: "Message was successfully destroyed."
+    redirect_to messages_path, notice: "Nachricht erfolgreich gelöscht."
   end
 
   private
