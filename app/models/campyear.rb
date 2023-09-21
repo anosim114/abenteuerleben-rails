@@ -1,0 +1,2 @@
+class Campyear < ApplicationRecord
+end

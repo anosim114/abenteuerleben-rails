@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 1
+  participants_register_start: 2023-09-15
+  participants_register_end: 2023-09-15
+  helper_register_start: 2023-09-15
+  helper_register_end: 2023-09-15
+  accentcolor_primary: MyString
+  accentcolor_secondary: MyString
+
+two:
+  year: 1
+  participants_register_start: 2023-09-15
+  participants_register_end: 2023-09-15
+  helper_register_start: 2023-09-15
+  helper_register_end: 2023-09-15
+  accentcolor_primary: MyString
+  accentcolor_secondary: MyString
+
+three:
+  year: 1
+  participants_register_start: 2023-09-15
+  participants_register_end: 2023-09-15
+  helper_register_start: 2023-09-15
+  helper_register_end: 2023-09-15
+  accentcolor_primary: MyString
+  accentcolor_secondary: MyString
