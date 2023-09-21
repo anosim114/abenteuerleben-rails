@@ -17,10 +17,8 @@ Rails.application.routes.draw do
 
   resources :messages
 
-  # namespace :admin do
-  #   resource :helpers
-  #   resource :participants
-  # end
+  # resource :helpers
+  # resource :participants
 
   root "home#index"
 end

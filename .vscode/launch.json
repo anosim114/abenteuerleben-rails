@@ -20,6 +20,15 @@
       "args": ["${file}:${lineNumber}"],
       "askParameters": false
     },
+    {
+      "name": "Rake - test all",
+      "type": "rdbg",
+      "request": "launch",
+      "command": "rake",
+      "script": "test",
+      "args": [],
+      "askParameters": false
+    },
     // Attach the debugger to an active process (for example, Rails server)
     {
       "type": "rdbg",

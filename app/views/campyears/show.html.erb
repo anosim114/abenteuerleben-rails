@@ -12,12 +12,12 @@
 
 <div>
   <br>
-  <%= link_to "New camp", new_camp_path(campyear: @campyear.id) %>
+  <%= link_to "Erstellen eines Campjahrs", new_camp_path(campyear: @campyear.id) %>
   <br>
   <br>
 
-  <%= link_to "Edit this campyear", edit_campyear_path(@campyear) %> |
-  <%= link_to "Back to campyears", campyears_path %>
+  <%= link_to "Ändern des Campjahrs", edit_campyear_path(@campyear) %> |
+  <%= link_to "Zurück zu allen Campjahren", campyears_path %> |
 
-  <%= button_to "Destroy this campyear", @campyear, method: :delete %>
+  <%= button_to "Löschen des Campjahrs", @campyear, method: :delete, class: 'danger', form: { data: { 'turbo_confirm': 'Sicher, dass das Campjahr gelöscht werden soll?' } } %>
 </div>
