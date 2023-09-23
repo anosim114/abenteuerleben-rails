@@ -1,5 +1,6 @@
 class CampyearsController < ApplicationController
   before_action :set_campyear, only: %i[ show edit update destroy ]
+  before_action :admin_only
 
   # GET /campyears or /campyears.json
   def index

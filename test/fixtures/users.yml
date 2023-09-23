@@ -1,13 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  password_hash: MyString
-  level: 1
-  email: MyString
+admin:
+  name: admin
+  password_hash: admin
+  level: 0b111
+  email: admin@admin.com
 
-two:
-  name: MyString
-  password_hash: MyString
-  level: 1
-  email: MyString

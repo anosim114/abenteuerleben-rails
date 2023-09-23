@@ -1,4 +1,4 @@
-<%= form_with(model: camp) do |form| %>
+<%= form_with(model: camp, url: url) do |form| %>
   <% if camp.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
