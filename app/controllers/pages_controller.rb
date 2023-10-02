@@ -39,7 +39,7 @@ class PagesController < ApplicationController
     if @page.update(page_params)
       redirect_to page_url(@page.url), notice: "Seite erfolgreich geändert."
     else
-       render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

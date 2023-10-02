@@ -1,3 +1,9 @@
+@use "./elements/a";
+@use "./elements/button";
+@use "./elements/footer";
+@use "./elements/h";
+@use "./elements/hgroup";
+
 :root {
   /* colors */
   --black: #101010;
@@ -15,16 +21,16 @@
   --blue-300: hsl(224 40% 60%);
   --blue-400: hsl(224 37% 63%);
   --blue-500: hsl(224 32% 67%);
-  --blue-600: hsl(224 30% 71%);  
-  --blue-opacity: hsl(224 40% 90% / 0.4);  
+  --blue-600: hsl(224 30% 71%);
+  --blue-opacity: hsl(224 40% 90% / 0.4);
   --red-100: hsl(0 80% 55%);
   --red-200: hsl(0 77% 63%);
   --red-300: hsl(0 70% 68%);
   --red-400: hsl(0 67% 71%);
   --red-500: hsl(0 62% 76%);
-  --red-600: hsl(0 60% 81%);  
-  --red-opacity: hsl(224 40% 90% / 0.4);  
-  
+  --red-600: hsl(0 60% 81%);
+  --red-opacity: hsl(224 40% 90% / 0.4);
+
   --primary: var(--blue-100);
   --primary-hover: var(--blue-300);
   --primary-focus: var(--blue-opacity);
@@ -33,9 +39,10 @@
   --danger: var(--red-100);
   --danger-hover: var(--red-300);
   --danger-focus: var(--red-opacity);
-  
+
   /* font */
-  --font-family: system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --base-font-size: 18px;
   --mobile-font-size: 16px;
 
@@ -44,13 +51,16 @@
   --spacing-xl: 4rem;
   --spacing-lg: 2rem;
   --spacing-md: 1rem;
-  --spacing: .75rem;
-  --spacing-sm: .5rem;
-  --spacing-xs: .25rem;
+  --spacing: 0.75rem;
+  --spacing-sm: 0.5rem;
+  --spacing-xs: 0.25rem;
 
   /* various */
-  --border-radius: .25rem;
-  --card-box-shadow:  0.0145rem 0.029rem 0.174rem rgba(27, 40, 50, 0.01698),0.0335rem 0.067rem 0.402rem rgba(27, 40, 50, 0.024),0.0625rem 0.125rem 0.75rem rgba(27, 40, 50, 0.03),0.1125rem 0.225rem 1.35rem rgba(27, 40, 50, 0.036),0.2085rem 0.417rem 2.502rem rgba(27, 40, 50, 0.04302),0.5rem 1rem 6rem rgba(27, 40, 50, 0.06),0 0 0 0.0625rem rgba(27, 40, 50, 0.015);
+  --border-radius: 0.25rem;
+  --card-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(27, 40, 50, 0.01698),
+    0.0335rem 0.067rem 0.402rem rgba(27, 40, 50, 0.024), 0.0625rem 0.125rem 0.75rem rgba(27, 40, 50, 0.03),
+    0.1125rem 0.225rem 1.35rem rgba(27, 40, 50, 0.036), 0.2085rem 0.417rem 2.502rem rgba(27, 40, 50, 0.04302),
+    0.5rem 1rem 6rem rgba(27, 40, 50, 0.06), 0 0 0 0.0625rem rgba(27, 40, 50, 0.015);
 
   /* breakpoints */
   --breakpoint-sm: 576px;
@@ -59,12 +69,17 @@
   --breakpoint-xl: 1200px;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: var(--font-family);
-  transition: color 100ms, background-color 100ms, box-shadow 100ms;
+  transition:
+    color 100ms,
+    background-color 100ms,
+    box-shadow 100ms;
 }
 
 /* container */
@@ -72,30 +87,29 @@
   margin-right: auto;
   margin-left: auto;
   padding: 3rem 1rem;
-  
-  @media(min-width: 576px) {
+
+  @media (min-width: 576px) {
     width: 100%;
   }
-  
-  @media(min-width: 768px) {
+
+  @media (min-width: 768px) {
     width: 720px;
   }
-  
-  @media(min-width: 992px) {
+
+  @media (min-width: 992px) {
     width: 960px;
   }
-  
-  @media(min-width: 1200px) {
+
+  @media (min-width: 1200px) {
     width: 1140px;
   }
 }
-
 
 /* typography */
 html {
   font-size: var(--base-font-size);
 
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     font-size: var(--mobile-font-size);
   }
 }
@@ -105,61 +119,6 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: var(--font-size);
-  font-weight: bold;
-  color: var(--color);
-}
-
-h1 {
-  --font-size: 2rem;
-  --typography-spacing-vertical: 3rem;
-  --color: var(--gray-100);
-}
-
-h2 {
-  --font-size: 1.75rem;
-  --typography-spacing-vertical: 2.625rem;
-  --color: var(--gray-200);
-}
-
-h3 {
-  --font-size: 1.5rem;
-  --typography-spacing-vertical: 2.25rem;
-  --color: var(--gray-300);
-}
-
-h4 {
-  --font-size: 1.5rem;
-  --typography-spacing-vertical: 2.25rem;
-  --color: var(--gray-400);
-}
-
-h5 {
-  --font-size: 1.125rem;
-  --typography-spacing-vertical: 1.6875rem;
-  --color: var(--gray-500);
-}
-
-h6 {
-  --font-size: 1rem;
-  --typography-spacing-vertical: 1.25rem; 
-  --color: var(--gray-600);
-}
-
-hgroup {
-  margin-bottom: var(--spacing-lg);
-  
-  h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0;
-  }
-
-  & > :last-child {
-    font-weight: 400;
-    color: var(--gray-300);
-    font-size: var(--base-font-size);
-  }
-}
 
 /* header */
 .header {
@@ -167,19 +126,19 @@ hgroup {
   flex-direction: column;
   align-items: center;
   margin: 2rem 0;
-  
+
   > a {
     margin: 0;
     border-radius: 100rem;
     overflow: hidden;
     width: 12rem;
     height: 12rem;
-    
+
     @media (max-width: 768px) {
       width: 7rem;
       height: 7rem;
     }
-    
+
     > img {
       width: 100%;
       height: 100%;
@@ -187,14 +146,14 @@ hgroup {
   }
 }
 
-
 /* tags */
 
 ul {
   list-style-type: none;
 }
 
-p, a {
+p,
+a {
   line-height: 1.5rem;
   padding: 0;
   margin: 2px 0;
@@ -208,29 +167,6 @@ p, a {
 p {
   display: block;
   color: var(--gray-100);
-}
-
-a {
-  text-decoration: none;
-  color: var(--primary);
-  
-  &:hover {
-    color: var(--primary-hover);
-  }
-
-  &:focus {
-    background-color: var(--primary-focus);
-  }
-  
-  &.danger {
-    &:hover {
-      color: var(--danger-hover);
-    }
-
-    &:focus {
-      background-color: var(--danger-focus);
-    }
-  }
 }
 
 hr {
@@ -269,37 +205,6 @@ textarea {
     padding: var(--spacing-md);
   }
 }
-
-button,
-input[type="submit"] {
-  font-size: 0.9rem;
-  border: none;
-  border-radius: var(--border-radius);
-  color: var(--white);
-  background-color: var(--primary);
-  box-shadow: 0px 4px 0px -1px var(--primary-hover);
-  padding: var(--spacing) var(--spacing-lg);
-  display: inline-block;
-
-  &:hover {
-    background-color: var(--primary-hover);
-    cursor: pointer;
-    box-shadow: 0px 0px 0px 0px var(--primary-focus);
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-}
-
-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: var(--spacing-xl) 0;
-  margin: 5rem 0;
-}
-
 
 /* util classes */
 .centered {

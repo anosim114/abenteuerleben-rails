@@ -1,0 +1,31 @@
+a {
+  display: inline-block;
+  line-height: 1.5rem;
+  margin: 2px 0;
+  padding: 0;
+  text-decoration: none;
+
+  .--bordered {
+    border: 1px solid var(--primary);
+    padding: 0.2rem 0.7rem;
+    border-radius: var(--border-radius);
+  }
+
+  &:hover {
+    color: var(--primary-hover);
+  }
+
+  &:focus {
+    background-color: var(--primary-focus);
+  }
+
+  &.danger {
+    &:hover {
+      color: var(--danger-hover);
+    }
+
+    &:focus {
+      background-color: var(--danger-focus);
+    }
+  }
+}

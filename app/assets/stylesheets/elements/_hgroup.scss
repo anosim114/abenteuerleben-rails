@@ -1,0 +1,18 @@
+hgroup {
+  margin-bottom: var(--spacing-lg);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0;
+  }
+
+  & > :last-child {
+    font-weight: 400;
+    color: var(--gray-300);
+    font-size: var(--base-font-size);
+  }
+}

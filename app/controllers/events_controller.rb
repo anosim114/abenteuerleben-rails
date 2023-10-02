@@ -26,10 +26,8 @@ class EventsController < ApplicationController
 
     if @event.save
       redirect_to event_url(@event), notice: "Termin erfolgreich erstellt."
-      render :show, status: :created, location: @event
     else
       render :new, status: :unprocessable_entity
-      render json: @event.errors, status: :unprocessable_entity
     end
   end
 
@@ -37,10 +35,8 @@ class EventsController < ApplicationController
   def update
     if @event.update(event_params)
       redirect_to event_url(@event), notice: "Termin erfolgreich geändert."
-      render :show, status: :ok, location: @event
     else
       render :edit, status: :unprocessable_entity
-      render json: @event.errors, status: :unprocessable_entity
     end
   end
 

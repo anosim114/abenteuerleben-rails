@@ -3,4 +3,7 @@ class AdminController < ApplicationController
 
   def dashboard
   end
+
+  def dev
+  end
 end
