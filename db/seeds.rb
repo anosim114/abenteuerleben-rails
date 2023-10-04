@@ -32,8 +32,23 @@ Camp.create!([{
   max_participant_count: 80
 }])
 
+Team.create!([
+  {
+    name: 'Handwerker',
+    description: 'Handwerker bauen dies und das',
+    enabled: true
+  },
+  {
+    name: 'Sportler',
+    description: 'Sportler bewegen sich viel',
+    enabled: false
+  }
+])
+
 p "Created #{User.count} users"
 
 p "Created #{Campyear.count} campyears"
 
 p "Created #{Camp.count} camps"
+
+p "Created #{Team.count} teams"

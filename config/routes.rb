@@ -2,12 +2,10 @@ Rails.application.routes.draw do
   resources :campyears do
     resources :camps, except: [:index]
   end
-
   resources :camps, only: [:index]
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :teams
 
-  resources :events
-  resources :pages
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get 'admin/dashboard'
   get 'admin/dev'
@@ -19,6 +17,8 @@ Rails.application.routes.draw do
   get "downloads", to: 'home#downloads'
   get 'spenden', to: 'home#spenden'
 
+  resources :pages
+  resources :events
   resources :messages
 
   # resource :helpers

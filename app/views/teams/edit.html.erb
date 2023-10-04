@@ -1,0 +1,11 @@
+<h1>Team ändern</h1>
+
+<%= render "form", team: @team do %>
+  <%= link_to "Anzeigen Team", @team %> |
+<% end%>
+
+<br>
+
+<div>
+  <%= link_to "Zurück zu allen Teams", teams_path %>
+</div>

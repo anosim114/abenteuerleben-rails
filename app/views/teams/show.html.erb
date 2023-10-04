@@ -1,0 +1,8 @@
+<%= render @team %>
+
+<div>
+  <%= link_to "Ändern", edit_team_path(@team), class: '--bordered' %>
+  <%= button_to "Löschen", @team, method: :delete, class: 'danger', form: { data: { 'turbo_confirm': 'Sicher, dass das Team gelöscht werden soll?' } } %>
+  <br>
+  <%= link_to "Zurück zu allen Teams", teams_path, class: '--bordered' %>
+</div>
