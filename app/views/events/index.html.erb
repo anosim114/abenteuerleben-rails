@@ -4,11 +4,10 @@
 
 <div id="events">
   <% @events.each do |event| %>
-    <%= render event %>
-    <p>
-      <%= link_to "Show this event", event %>
-    </p>
+    <%= render event do %>
+      <%= link_to "Anzeigen dieses Termins", event %>
+    <% end %>
   <% end %>
 </div>
 
-<%= link_to "New event", new_event_path, style: 'border: 1px solid var(--primary); padding: .2rem .7rem; border-radius: var(--border-radius);'  %>
+<%= link_to "Neuer Termin", new_event_path, style: 'border: 1px solid var(--primary); padding: .2rem .7rem; border-radius: var(--border-radius);'  %>

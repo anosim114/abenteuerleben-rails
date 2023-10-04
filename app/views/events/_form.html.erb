@@ -11,32 +11,34 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title.to_s + " *", style: "display: block" %>
+  <sup>* = erforderlich</sup>
+
+  <div class="input">
+    <%= form.label :title, "Titel" + " *", style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="input">
+    <%= form.label :description, "Beschreibung", style: "display: block" %>
+    <%= form.text_area :description, rows: "5" %>
   </div>
 
-  <div>
-    <%= form.label :start_date.to_s + " *", style: "display: block" %>
+  <div class="input">
+    <%= form.label :start_date, "Startdatum" + " *", style: "display: block" %>
     <%= form.date_field :start_date %>
   </div>
 
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
+  <div class="input">
+    <%= form.label :end_date, "Enddatum", style: "display: block" %>
     <%= form.date_field :end_date %>
   </div>
 
-  <div>
+  <div class="input">
     <%= form.label :link, style: "display: block" %>
     <%= form.text_field :link %>
   </div>
 
-  <div>
+  <div class="submit">
     <%= form.submit %>
   </div>
 <% end %>

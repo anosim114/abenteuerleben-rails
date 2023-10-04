@@ -40,11 +40,11 @@
     }
   }
 
-  a > svg {
+  a>svg {
     margin-right: var(--spacing-sm);
   }
 
-  a:hover > svg {
+  a:hover>svg {
     margin-right: var(--spacing-xs);
     transition: 150ms;
   }
@@ -94,7 +94,7 @@
   height: 32px;
   width: 100%;
 
-  > svg {
+  >svg {
     color: var(--gray-200);
     height: 100%;
     width: 100%;

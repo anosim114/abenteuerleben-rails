@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div style="<%= @page.id ? 'display: none' : '' %>">
+  <div class="input" style="<%= @page.id ? 'display: none' : '' %>">
     <%= form.label :url do %>
       URL
       <sup>*URL immer kleinschreiben (Falsch: 'Impressum', Richtig: 'impressum')</sup>
@@ -19,7 +19,7 @@
     <%= form.text_field :url %>
   </div>
 
-  <div style="display: none;">
+  <div class="input" style="display: none;">
     <%= form.label :content, style: "display: block" %>
     <%= form.text_area :content, id: 'content-input' %>
   </div>
@@ -45,7 +45,7 @@
   </script>
   <br>
 
-  <div>
+  <div class="submit">
     <%= form.submit id: 'submit-page', class: 'clear' %>
   </div>
 <% end %>

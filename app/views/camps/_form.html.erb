@@ -11,36 +11,36 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="input">
     <%= form.hidden_field :campyear_id %>
   </div>
 
-  <div>
+  <div class="input">
     <%= form.label :date_start, style: "display: block" %>
     <%= form.date_field :date_start %>
   </div>
 
-  <div>
+  <div class="input">
     <%= form.label :date_end, style: "display: block" %>
     <%= form.date_field :date_end %>
   </div>
 
-  <div>
+  <div class="input">
     <%= form.label :participants_year_start, style: "display: block" %>
     <%= form.number_field :participants_year_start %>
   </div>
 
-  <div>
+  <div class="input">
     <%= form.label :participants_year_end, style: "display: block" %>
     <%= form.number_field :participants_year_end %>
   </div>
 
-  <div>
+  <div class="input">
     <%= form.label :max_participant_count, style: "display: block" %>
     <%= form.number_field :max_participant_count %>
   </div>
 
-  <div>
+  <div class="submit">
     <%= form.submit %>
   </div>
 <% end %>
