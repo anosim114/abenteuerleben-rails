@@ -185,37 +185,6 @@ hr {
   margin: 1rem 0;
 }
 
-label {
-  display: block;
-  color: var(--gray-100);
-  margin-bottom: var(--spacing-sm);
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-  border-radius: var(--border-radius);
-  border: 1px solid var(--gray-600);
-  display: block;
-  width: 100%;
-  font-size: 1rem;
-  margin-bottom: var(--spacing-sm);
-  padding: var(--spacing-sm);
-  font-family: sans-serif;
-}
-
-@media (max-width: 768px) {
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  textarea {
-    margin-bottom: var(--spacing-md);
-    padding: var(--spacing-md);
-  }
-}
-
-
 /* util classes */
 
 .centered {
@@ -225,50 +194,5 @@ textarea {
 @media (max-width: 768px) {
   .mobile--hide {
     display: none;
-  }
-}
-
-article {
-  margin: var(--spacing-lg) 0;
-  padding: var(--spacing-xl) var(--spacing-lg);
-  border-radius: var(--border-radius);
-  background: var(--white-pure);
-  box-shadow: var(--card-box-shadow);
-}
-
-
-/* form controls */
-
-form {
-  .submit {
-    margin-top: var(--spacing-lg);
-  }
-  .input {
-    margin-top: var(--spacing-md);
-
-    label {
-      margin: 0;
-      padding: 0;
-    }
-
-    input:not([type='checkbox']),
-    textarea {
-      margin-top: var(--spacing-sm);
-      min-height: 2rem;
-      width: 100%;
-    }
-
-    input[type='checkbox'] {
-      margin-top: var(--spacing-sm);
-      height: 1rem;
-      width: 1rem;
-    }
-
-    @media(max-width: 768px) {
-      input:not([type='submit']):not([type='checkbox']),
-      textarea {
-        width: 100%;
-      }
-    }
   }
 }

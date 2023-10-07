@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  camp_id: 1
+  helper_id: 1
+  team_one_id: 1
+  team_two_id: 1
+  team_one_special: MyString
+  team_two_special: MyString
+
+two:
+  camp_id: 1
+  helper_id: 1
+  team_one_id: 1
+  team_two_id: 1
+  team_one_special: MyString
+  team_two_special: MyString

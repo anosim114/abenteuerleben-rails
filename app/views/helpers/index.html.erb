@@ -1,0 +1,13 @@
+<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+
+<h1>Mitarbeiter</h1>
+
+<div id="helpers">
+  <% @helpers.each do |helper| %>
+    <%= link_to helper.forename + ', ' + helper.surname, helper %>
+    <br>
+  <% end %>
+</div>
+
+<br>
+<%= link_to "Manuell Mitarbeiter hinzufügen", new_helper_path, class: '--bordered' %>

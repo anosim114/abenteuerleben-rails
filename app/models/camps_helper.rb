@@ -1,0 +1,2 @@
+class CampsHelper < ApplicationRecord
+end

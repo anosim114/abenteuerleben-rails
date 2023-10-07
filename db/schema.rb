@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_04_145255) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_05_112759) do
   create_table "camps", force: :cascade do |t|
     t.integer "campyear_id", null: false
     t.date "date_start"
@@ -45,6 +45,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_145255) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "helpers", force: :cascade do |t|
+    t.string "surname", null: false
+    t.string "forename", null: false
+    t.date "birthday", null: false
+    t.string "telephone", null: false
+    t.string "email", null: false
+    t.string "streethouse", null: false
+    t.string "postcity", null: false
+    t.text "story", null: false
+    t.string "duty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -61,9 +75,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_145255) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "registrations", force: :cascade do |t|
+    t.integer "helper_id", null: false
+    t.integer "camp_id", null: false
+    t.string "wish_first", null: false
+    t.string "wish_second", null: false
+    t.boolean "participate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_registrations_on_camp_id"
+    t.index ["helper_id"], name: "index_registrations_on_helper_id"
+  end
+
   create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", null: false
+    t.string "description", null: false
     t.boolean "enabled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,4 +105,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_145255) do
   end
 
   add_foreign_key "camps", "campyears"
+  add_foreign_key "registrations", "camps"
+  add_foreign_key "registrations", "helpers"
 end

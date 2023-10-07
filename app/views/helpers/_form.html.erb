@@ -1,0 +1,81 @@
+<%= form_with(model: helper) do |form| %>
+  <% if helper.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(helper.errors.count, "error") %> prohibited this assistant from being saved:</h2>
+
+      <ul>
+        <% helper.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset class="input">
+    <legend>Persöhnliche Daten</legend>
+
+    <div class="input">
+      <%= form.label :surname, "Nachname", style: "display: block" %>
+      <%= form.text_field :surname, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :forename, "Vorname", style: "display: block" %>
+      <%= form.text_field :forename, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :birthday, 'Geburtstag', style: "display: block" %>
+      <%= select_year nil, start_year: 1970, end_year: 2020, prefix: 'helper', required: true %>
+      <%= select_month nil, prefix: 'helper', required: true %>
+      <%= select_day nil, prefix: 'helper', required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :telephone, "Telefonnummer", style: "display: block" %>
+      <%= form.telephone_field :telephone, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :email, "E-Mail", style: "display: block" %>
+      <%= form.email_field :email, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :streethouse, "Straße und Hausnummer", style: "display: block" %>
+      <%= form.text_field :streethouse, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :postcity, "Postleitzahl und Stadt", style: "display: block" %>
+      <%= form.text_field :postcity, required: true %>
+    </div>
+  </fieldset>
+
+  <fieldset class="input">
+    <legend>??? Name</legend>
+
+    <div class="input">
+      <%= form.label :story, "Wie hast du zu Gott gefunden?", style: "display: block" %>
+      <%= form.text_area :story, required: true, rows: 7 %>
+    </div>
+
+    <div class="input">
+      <%= form.label :duty, "Hast du ein Dienst in der Gemeinde? Wenn ja welche(n)?", style: "display: block" %>
+      <%= form.text_field :duty %>
+    </div>
+  </fieldset>
+
+  <div class="input">
+    <% helper.registrations.each do |registration| %>
+      <%= form.fields_for :'registration[]', registration do |fields| %>
+        <%= render "registrations/form", registration: registration, form: fields %>
+      <% end %>
+    <% end %>
+
+  </div>
+
+  <div class="submit">
+    <%= form.submit "Anmelden" %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  helper: one
+  camp: one
+  wish_first: MyString
+  wish_second: MyString
+
+two:
+  helper: two
+  camp: two
+  wish_first: MyString
+  wish_second: MyString

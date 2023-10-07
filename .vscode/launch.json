@@ -34,6 +34,14 @@
       "type": "rdbg",
       "name": "Attach with rdbg",
       "request": "attach"
+    },
+    {
+      "name": "Rails server",
+      "type": "rdbg",
+      "request": "launch",
+      "command": "rails",
+      "script": "server",
+      "askParameters": false
     }
   ]
 }

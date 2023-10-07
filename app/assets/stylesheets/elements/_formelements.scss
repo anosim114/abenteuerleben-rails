@@ -1,0 +1,31 @@
+select,
+input[type="checkbox"],
+input[type="tel"],
+input[type="date"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--gray-600);
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  font-family: sans-serif;
+}
+
+@media (max-width: 768px) {
+  select,
+  input[type="checkbox"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+}

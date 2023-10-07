@@ -1,0 +1,36 @@
+form {
+  .submit {
+    margin-top: var(--spacing-lg);
+  }
+
+  .input {
+    margin-top: var(--spacing-md);
+
+    label {
+      margin: 0;
+      padding: 0;
+    }
+
+    select,
+    input:not([type='checkbox']):not([type='submit']),
+    textarea {
+      margin-top: var(--spacing-sm);
+      min-height: 2rem;
+      width: 100%;
+    }
+
+    input[type='checkbox'] {
+      margin-top: var(--spacing-sm);
+      height: 1rem;
+      width: 1rem;
+    }
+
+    @media(max-width: 768px) {
+      select,
+      input:not([type='submit']):not([type='checkbox']),
+      textarea {
+        width: 100%;
+      }
+    }
+  }
+}
