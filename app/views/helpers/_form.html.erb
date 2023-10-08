@@ -26,9 +26,7 @@
 
     <div class="input">
       <%= form.label :birthday, 'Geburtstag', style: "display: block" %>
-      <%= select_year nil, start_year: 1970, end_year: 2020, prefix: 'helper', required: true %>
-      <%= select_month nil, prefix: 'helper', required: true %>
-      <%= select_day nil, prefix: 'helper', required: true %>
+      <%= form.date_select :birthday, required: true %>
     </div>
 
     <div class="input">
@@ -67,12 +65,29 @@
   </fieldset>
 
   <div class="input">
-    <% helper.registrations.each do |registration| %>
-      <%= form.fields_for :'registration[]', registration do |fields| %>
-        <%= render "registrations/form", registration: registration, form: fields %>
-      <% end %>
-    <% end %>
+    <%= form.fields_for :registrations do |fields| %>
+      <fieldset class="input">
+        <legend>
+          Camp <%= fields.object.camp.participants_year_start %> - <%= fields.object.camp.participants_year_end %>
+        </legend>
+        <%= fields.hidden_field :id %>
+        <%= fields.hidden_field :camp_id %>
+        <div class="input">
+          <%= fields.label :participate, "An diesem Camp teilnehmen" %>
+          <%= fields.check_box :participate %>
+        </div>
 
+        <p>
+          <%= fields.label :wish_first, "Erstwunsch:" %>
+          <%= fields.select :wish_first, options: @available_teams %>
+        </p>
+
+        <p>
+        <%= fields.label :wish_second, "Zweitwunsch:" %>
+        <%= fields.select :wish_second, options: @available_teams %>
+        </p>
+      </fieldset>
+    <% end %>
   </div>
 
   <div class="submit">

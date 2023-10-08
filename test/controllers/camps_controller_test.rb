@@ -13,19 +13,19 @@ class CampsControllerTest < ActionDispatch::IntegrationTest
     get '/logout'
 
     # execute
-    get camps_url(@campyear)
+    get campyear_camps_url(@camp.campyear)
 
     # check
     assert_redirected_to root_url
   end
 
   test "should get index" do
-    get camps_url
+    get campyear_camps_url(@camp.campyear)
     assert_response :success
   end
 
   test "should get new" do
-    get new_campyear_camp_url(@campyear)
+    get new_campyear_camp_url(@camp.campyear)
     assert_response :success
   end
 
@@ -36,30 +36,30 @@ class CampsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create camp" do
     assert_difference("Camp.count") do
-      post campyear_camps_url(@campyear), params: { camp: { campyear_id: @camp.campyear_id, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
+      post campyear_camps_url(@campyear), params: { camp: { campyear_id: @campyear.id, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
     end
 
-    assert_redirected_to campyear_camp_url(Camp.last.campyear, Camp.last)
+    assert_redirected_to camp_url(Camp.last)
   end
 
   test "should show camp" do
-    get campyear_camp_url(@campyear, @camp)
+    get camp_url(@camp)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_campyear_camp_url(@campyear, @camp)
+    get edit_camp_url(@camp)
     assert_response :success
   end
 
   test "should update camp" do
-    patch campyear_camp_url(@campyear, @camp), params: { camp: { campyear_id: @camp.campyear_id, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
-    assert_redirected_to campyear_camp_url(@campyear, @camp)
+    patch camp_url(@camp), params: { camp: { campyear_id: @camp.campyear_id, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
+    assert_redirected_to camp_url(@camp)
   end
 
   test "should destroy camp" do
     assert_difference("Camp.count", -1) do
-      delete campyear_camp_url(@campyear, @camp)
+      delete camp_url(@camp)
     end
 
     assert_redirected_to campyear_url(@campyear)

@@ -1,2 +1,0 @@
-class CampsHelper < ApplicationRecord
-end

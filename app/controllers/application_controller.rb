@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user
+    logger.debug 'finding out if the user is logged in'
     # find user in session
     if @current_user.nil? && session[:user_id]
       @current_user = User.find_by_id session[:user_id]
@@ -25,8 +26,10 @@ class ApplicationController < ActionController::Base
     end
 
     if @current_user
+      logger.debug('user was logged in')
       session[:user_id] = @current_user.id
     else
+      logger.debug('user is anonymous')
       @current_user = User.new
       @current_user.level = 0b000
     end

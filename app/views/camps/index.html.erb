@@ -6,7 +6,7 @@
   <% @camps.each do |camp| %>
     <%= render camp %>
     <p>
-      <%= link_to "Anzeigen vom Camp", campyear_camp_path(camp.campyear, camp) %>
+      <%= link_to "Anzeigen vom Camp", camp_path(camp) %>
     </p>
   <% end %>
 </div>

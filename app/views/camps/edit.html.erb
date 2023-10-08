@@ -1,9 +1,9 @@
 <h1>Editing camp</h1>
 
-<%= render "form", camp: @camp, url: edit_campyear_camp_path(@campyear, @camp) %>
+<%= render "form", camp: @camp, url: edit_camp_path(@camp) %>
 
 <br>
 
 <div>
-  <%= link_to "Zurück zum Camp", campyear_camp_path(@campyear, @camp) %> |
+  <%= link_to "Zurück zum Camp", camp_path(@camp) %> |
 </div>

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :campyears do
-    resources :camps, except: [:index]
+    resources :camps, shallow: true
   end
-  resources :camps, only: [:index]
+
   resources :teams
 
   resources :helpers

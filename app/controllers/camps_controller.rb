@@ -1,7 +1,7 @@
 class CampsController < ApplicationController
-  before_action :set_campyear, except: %i[ index ]
-  before_action :set_camp, only: %i[ show edit update destroy ]
   before_action :admin_only
+  before_action :set_camp, except: %i[ index new create ]
+  before_action :set_campyear, only: %i[ index new create ]
 
   # GET /camps or /camps.json
   def index
@@ -10,6 +10,7 @@ class CampsController < ApplicationController
 
   # GET /camps/1 or /camps/1.json
   def show
+    logger.debug 'show me this one camp please'
   end
 
   # GET /camps/new
@@ -27,7 +28,7 @@ class CampsController < ApplicationController
     @camp = Camp.new(camp_params)
 
     if @camp.save
-      redirect_to campyear_camp_url(@campyear, @camp), notice: "Camp erfolgreich erstellt."
+      redirect_to camp_path(@camp), notice: "Camp erfolgreich erstellt."
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +37,7 @@ class CampsController < ApplicationController
   # PATCH/PUT /camps/1 or /camps/1.json
   def update
     if @camp.update(camp_params)
-      redirect_to campyear_camp_url(@campyear, @camp), notice: "Camp erfolgreich geändert."
+      redirect_to camp_path(@camp), notice: "Camp erfolgreich geändert."
     else
       render :edit, status: :unprocessable_entity
     end

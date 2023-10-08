@@ -22,30 +22,26 @@ campyear = Campyear.create!([{
   helper_register_start: '2024-04-01',
   helper_register_end: '2024-04-10',
   accentcolor_primary: '#ff0000',
-  accentcolor_secondary: '#fee000'
+  accentcolor_secondary: '#fee000',
+  camps: [
+    Camp.new(
+      date_start: '2024-08-01',
+      date_end: '2024-08-05',
+      participants_year_start: 2000,
+      participants_year_end: 2004,
+      max_participant_count: 60
+    ),
+    Camp.new(
+      date_start: '2024-08-07',
+      date_end: '2024-08-12',
+      participants_year_start: 2005,
+      participants_year_end: 2008,
+      max_participant_count: 80
+    )
+  ]
 }])
 
 p "Created #{Campyear.count} campyears"
-
-camps = Camp.create!([
-  {
-    campyear: campyear[0],
-    date_start: '2024-08-01',
-    date_end: '2024-08-05',
-    participants_year_start: 2000,
-    participants_year_end: 2004,
-    max_participant_count: 60
-  },
-  {
-    campyear: campyear[0],
-    date_start: '2024-08-07',
-    date_end: '2024-08-12',
-    participants_year_start: 2005,
-    participants_year_end: 2008,
-    max_participant_count: 80
-  }
-])
-
 p "Created #{Camp.count} camps"
 
 Team.create!([
@@ -84,16 +80,16 @@ helpers = Helper.create!([{
   postcity: '32825 Megacity',
 
   story: 'this and that',
-  duty: 'programmer'
+  duty: 'programmer',
+
+  registrations: [
+   Registration.new(
+      camp: Camp.first,
+      wish_first: 'Sportler',
+      wish_second: 'Sonstige'
+    )
+  ]
 }])
 
 p "Created #{Helper.count} helpers"
-
-Registration.create!([
-  {
-    helper: helpers[0],
-    camp: camps[0],
-    wish_first: 'Sportler',
-    wish_second: 'Sonstige'
-  }
-])
+p "Created #{Registration.count} registrations"

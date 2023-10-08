@@ -3,11 +3,13 @@
 one:
   helper: one
   camp: one
-  wish_first: MyString
-  wish_second: MyString
+  wish_first: Handwerker
+  wish_second: Sonstige
+  participate: true
 
 two:
-  helper: two
-  camp: two
-  wish_first: MyString
-  wish_second: MyString
+  helper: one
+  camp: one
+  wish_first: Dont
+  wish_second: wanna
+  participate: false
