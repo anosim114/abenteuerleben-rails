@@ -1,0 +1,96 @@
+<%= form_with(model: helper) do |form| %>
+  <% if helper.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(helper.errors.count, "error") %> prohibited this assistant from being saved:</h2>
+
+      <ul>
+        <% helper.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset class="input">
+    <legend>Persöhnliche Daten</legend>
+
+    <div class="input">
+      <%= form.label :surname, "Nachname", style: "display: block" %>
+      <%= form.text_field :surname, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :forename, "Vorname", style: "display: block" %>
+      <%= form.text_field :forename, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :birthday, 'Geburtstag', style: "display: block" %>
+      <%= form.date_select :birthday, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :telephone, "Telefonnummer", style: "display: block" %>
+      <%= form.telephone_field :telephone, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :email, "E-Mail", style: "display: block" %>
+      <%= form.email_field :email, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :streethouse, "Straße und Hausnummer", style: "display: block" %>
+      <%= form.text_field :streethouse, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :postcity, "Postleitzahl und Stadt", style: "display: block" %>
+      <%= form.text_field :postcity, required: true %>
+    </div>
+  </fieldset>
+
+  <fieldset class="input">
+    <legend>??? Name</legend>
+
+    <div class="input">
+      <%= form.label :story, "Wie hast du zu Gott gefunden?", style: "display: block" %>
+      <%= form.text_area :story, required: true, rows: 7 %>
+    </div>
+
+    <div class="input">
+      <%= form.label :duty, "Hast du ein Dienst in der Gemeinde? Wenn ja welche(n)?", style: "display: block" %>
+      <%= form.text_field :duty %>
+    </div>
+  </fieldset>
+
+  <div class="input">
+    <%= form.fields_for :registrations do |fields| %>
+      <fieldset class="input">
+        <legend>
+          Camp <%= fields.object.camp.participants_year_start %> - <%= fields.object.camp.participants_year_end %>
+        </legend>
+        <%= fields.hidden_field :id %>
+        <%= fields.hidden_field :camp_id %>
+        <div class="input">
+          <%= fields.label :participate, "An diesem Camp teilnehmen" %>
+          <%= fields.check_box :participate %>
+        </div>
+
+        <p>
+          <%= fields.label :wish_first, "Erstwunsch:" %>
+          <%= fields.select :wish_first, options: @available_teams %>
+        </p>
+
+        <p>
+        <%= fields.label :wish_second, "Zweitwunsch:" %>
+        <%= fields.select :wish_second, options: @available_teams %>
+        </p>
+      </fieldset>
+    <% end %>
+  </div>
+
+  <div class="submit">
+    <%= form.submit "Anmelden" %>
+  </div>
+<% end %>

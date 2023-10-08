@@ -1,5 +1,7 @@
 class CampsController < ApplicationController
-  before_action :set_camp, only: %i[ show edit update destroy ]
+  before_action :admin_only
+  before_action :set_camp, except: %i[ index new create ]
+  before_action :set_campyear, only: %i[ index new create ]
 
   # GET /camps or /camps.json
   def index
@@ -8,17 +10,13 @@ class CampsController < ApplicationController
 
   # GET /camps/1 or /camps/1.json
   def show
+    logger.debug 'show me this one camp please'
   end
 
   # GET /camps/new
   def new
-    if params[:campyear] == nil or Campyear.where(id: params[:campyear]).empty?
-      redirect_to campyears_path
-      return
-    end
-
     @camp = Camp.new
-    @camp.campyear = Campyear.find params[:campyear]
+    @camp.campyear = @campyear
   end
 
   # GET /camps/1/edit
@@ -30,7 +28,7 @@ class CampsController < ApplicationController
     @camp = Camp.new(camp_params)
 
     if @camp.save
-      redirect_to camp_url(@camp), notice: "Camp erfolgreich erstellt."
+      redirect_to camp_path(@camp), notice: "Camp erfolgreich erstellt."
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,7 +37,7 @@ class CampsController < ApplicationController
   # PATCH/PUT /camps/1 or /camps/1.json
   def update
     if @camp.update(camp_params)
-      redirect_to camp_url(@camp), notice: "Camp erfolgreich geändert."
+      redirect_to camp_path(@camp), notice: "Camp erfolgreich geändert."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -47,15 +45,26 @@ class CampsController < ApplicationController
 
   # DELETE /camps/1 or /camps/1.json
   def destroy
+    campyear_id = @camp.campyear_id
     @camp.destroy
 
-      redirect_to camps_url, notice: "Camp erfolgreich gelöscht."
+    redirect_to campyear_path(campyear_id), notice: "Camp erfolgreich gelöscht."
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_camp
       @camp = Camp.find(params[:id])
+    end
+
+    def set_campyear
+      doesExist = Campyear.exists?(params[:campyear_id])
+      unless doesExist
+        redirect_to campyears_path
+        return
+      end
+
+      @campyear = Campyear.find(params[:campyear_id])
     end
 
     # Only allow a list of trusted parameters through.

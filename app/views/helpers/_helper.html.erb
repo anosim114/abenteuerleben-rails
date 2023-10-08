@@ -1,0 +1,57 @@
+<div id="<%= dom_id helper %>">
+  <h2>Mitarbeiter infos</h2>
+  <p>
+    <strong>Nachname:</strong>
+    <%= helper.surname %>
+  </p>
+
+  <p>
+    <strong>Vorname:</strong>
+    <%= helper.forename %>
+  </p>
+
+  <p>
+    <strong>Geburtstag:</strong>
+    <%= helper.birthday %>
+  </p>
+
+  <p>
+    <strong>Telefonnummer:</strong>
+    <%= helper.telephone %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= helper.email %>
+  </p>
+
+  <p>
+    <strong>Straße und Hausnummer:</strong>
+    <%= helper.streethouse %>
+  </p>
+
+  <p>
+    <strong>PLZ Ort:</strong>
+    <%= helper.postcity %>
+  </p>
+
+  <p>
+    <strong>Deine Geschichte:</strong>
+    <%= helper.story %>
+  </p>
+
+  <p>
+    <strong>Dienst:</strong>
+    <%= helper.duty %>
+  </p>
+
+  <br>
+  <h2>Camp anmeldungen</h2>
+
+  <div>
+    <% helper.registrations.each do |registration| %>
+      <%= render 'registrations/registration', registration: registration %>
+    <% end %>
+  </div>
+
+</div>

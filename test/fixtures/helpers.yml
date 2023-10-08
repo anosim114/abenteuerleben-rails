@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  surname: Max 
+  forename: Musterman
+  birthday: 1999-01-01
+  telephone: 01234567
+  email: max@musterman.de
+  streethouse: Industriestr. 15
+  postcity: 32825 Blomberg
+  story: Es war so...
+  duty: 
+
+two:
+  surname: John
+  forename: Doe
+  birthday: 2002-03-14
+  telephone: +44 214523 12312
+  email: johndoe@gmail.com
+  streethouse: Westminsterstreet 1
+  postcity: 54132 Somewheengland
+  story: Once on a rainy day it rained...
+  duty: Storyteller

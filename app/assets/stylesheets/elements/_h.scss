@@ -1,0 +1,46 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: var(--font-size);
+  font-weight: bold;
+  color: var(--color);
+}
+
+h1 {
+  --font-size: 2rem;
+  --typography-spacing-vertical: 3rem;
+  --color: var(--gray-100);
+}
+
+h2 {
+  --font-size: 1.75rem;
+  --typography-spacing-vertical: 2.625rem;
+  --color: var(--gray-200);
+}
+
+h3 {
+  --font-size: 1.5rem;
+  --typography-spacing-vertical: 2.25rem;
+  --color: var(--gray-300);
+}
+
+h4 {
+  --font-size: 1.5rem;
+  --typography-spacing-vertical: 2.25rem;
+  --color: var(--gray-400);
+}
+
+h5 {
+  --font-size: 1.125rem;
+  --typography-spacing-vertical: 1.6875rem;
+  --color: var(--gray-500);
+}
+
+h6 {
+  --font-size: 1rem;
+  --typography-spacing-vertical: 1.25rem;
+  --color: var(--gray-600);
+}

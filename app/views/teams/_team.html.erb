@@ -1,0 +1,23 @@
+<div id="<%= dom_id team %>" class="team">
+  <p>
+    <strong><%= team.name %></strong>
+    
+  </p>
+
+  <p>
+    <%= team.description %>
+  </p>
+
+  <% if team.enabled %>
+    <p class="success">
+      Aktiv
+    </p>
+  <% else %>
+    <p class="danger">
+      Inaktiv
+    </p>
+  <% end %>
+
+  <%= yield %>
+
+</div>

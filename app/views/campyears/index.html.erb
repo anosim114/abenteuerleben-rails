@@ -2,14 +2,13 @@
 
 <h1>Campjahre</h1>
 
+<%= link_to 'Neues Campjahr', new_campyear_path, class: '--bordered' %>
+
 <div id="campyears">
   <% @campyears.each do |campyear| %>
     <%= render campyear %>
     <p>
-      <%= link_to "Anzeigen des Campjahrs", campyear %>
+      <%= link_to "Anzeigen Campjahr", campyear %>
     </p>
   <% end %>
 </div>
-
-<br>
-<%= link_to "Erstellen eines neuen Campjahrs", new_campyear_path %>

@@ -14,3 +14,82 @@ User.create!([{
 }])
 
 p "Created #{User.count} users"
+
+campyear = Campyear.create!([{
+  year: 2019,
+  participants_register_start: '2024-07-10',
+  participants_register_end: '2024-08-10',
+  helper_register_start: '2024-04-01',
+  helper_register_end: '2024-04-10',
+  accentcolor_primary: '#ff0000',
+  accentcolor_secondary: '#fee000',
+  camps: [
+    Camp.new(
+      date_start: '2024-08-01',
+      date_end: '2024-08-05',
+      participants_year_start: 2000,
+      participants_year_end: 2004,
+      max_participant_count: 60
+    ),
+    Camp.new(
+      date_start: '2024-08-07',
+      date_end: '2024-08-12',
+      participants_year_start: 2005,
+      participants_year_end: 2008,
+      max_participant_count: 80
+    )
+  ]
+}])
+
+p "Created #{Campyear.count} campyears"
+p "Created #{Camp.count} camps"
+
+Team.create!([
+  {
+    name: 'Handwerker',
+    description: 'Handwerker bauen dies und das',
+    enabled: true,
+  },
+  {
+    name: 'Sportler',
+    description: 'Sportler bewegen sich viel',
+    enabled: true,
+  },
+  {
+    name: 'Sonstige',
+    description: 'Sonstige machen alles',
+    enabled: true,
+  },
+  {
+    name: 'Nachtwächter',
+    description: 'Bewachen die Nacht',
+    enabled: false,
+  }
+])
+
+p "Created #{Team.count} teams"
+
+helpers = Helper.create!([{
+  surname: 'musterman',
+  forename: 'max',
+  birthday: '2000-01-01',
+  telephone: '01234',
+  email: 'my@mail.com',
+
+  streethouse: 'Industrystreet 14a',
+  postcity: '32825 Megacity',
+
+  story: 'this and that',
+  duty: 'programmer',
+
+  registrations: [
+   Registration.new(
+      camp: Camp.first,
+      wish_first: 'Sportler',
+      wish_second: 'Sonstige'
+    )
+  ]
+}])
+
+p "Created #{Helper.count} helpers"
+p "Created #{Registration.count} registrations"

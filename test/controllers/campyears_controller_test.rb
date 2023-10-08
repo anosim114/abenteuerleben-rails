@@ -3,6 +3,8 @@ require "test_helper"
 class CampyearsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @campyear = campyears(:one)
+
+    post '/login', params: { 'user[name]': 'admin', 'user[password]': 'admin' }
   end
 
   test "should get index" do

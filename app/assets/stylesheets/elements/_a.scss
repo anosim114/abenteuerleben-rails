@@ -1,0 +1,46 @@
+@import '../mixins/*';
+
+a {
+  display: inline-block;
+  line-height: 1.5rem;
+  margin: 2px 0;
+  padding: 0;
+  text-decoration: none;
+  color: var(--primary);
+
+  &.--bordered {
+    @include bordered;
+  }
+
+  &:hover {
+    color: var(--primary-hover);
+  }
+
+  &:focus {
+    background-color: var(--primary-focus);
+  }
+
+  &.danger {
+    color: var(--danger);
+
+    &:hover {
+      color: var(--danger-hover);
+    }
+
+    &:focus {
+      background-color: var(--danger-focus);
+    }
+  }
+
+  &.success {
+    color: var(--success);
+
+    &:hover {
+      color: var(--success-hover);
+    }
+
+    &:focus {
+      background-color: var(--success-focus);
+    }
+  }
+}

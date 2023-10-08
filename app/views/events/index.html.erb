@@ -2,13 +2,12 @@
 
 <h1>Events</h1>
 
+<%= link_to "Neuer Termin", new_event_path, class: "--bordered" %>
+
 <div id="events">
   <% @events.each do |event| %>
-    <%= render event %>
-    <p>
-      <%= link_to "Show this event", event %>
-    </p>
+    <%= render event do %>
+      <%= link_to "Anzeigen Termin", event %>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New event", new_event_path, style: 'border: 1px solid var(--primary); padding: .2rem .7rem; border-radius: var(--border-radius);'  %>

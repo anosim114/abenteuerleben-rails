@@ -1,5 +1,5 @@
 /*
  *= require_self
  *= require common
- *= require pages
+ *= require_tree ./components
  */

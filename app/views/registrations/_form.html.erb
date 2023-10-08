@@ -1,0 +1,30 @@
+<fieldset id="<%= dom_id registration %>" class="input">
+  <legend>Camp <%= registration.camp.participants_year_start %> - <%= registration.camp.participants_year_end %></legend>
+
+  <% if registration.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
+
+      <ul>
+        <% registration.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input">
+    <%= form.label :participate, "An diesem Camp teilnehmen" %>
+    <%= form.check_box :participate, checked: registration.participate %>
+  </div>
+
+  <p>
+    <%= form.label :wish_first, "Erstwunsch:" %>
+    <%= form.select :wish_first, options: @available_teams %>
+  </p>
+
+  <p>
+    <%= form.label :wish_second, "Zweitwunsch:" %>
+    <%= form.select :wish_second, options: @available_teams %>
+  </p>
+</fieldset>

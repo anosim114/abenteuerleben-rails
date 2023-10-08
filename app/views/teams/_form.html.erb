@@ -1,0 +1,32 @@
+<%= form_with(model: team) do |form| %>
+  <% if team.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+        <% team.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input">
+    <%= form.label :name, "Titel", style: "display: block" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="input">
+    <%= form.label :description, "Beschreibung", style: "display: block" %>
+    <%= form.text_field :description, required: true %>
+  </div>
+
+  <div class="input">
+    <%= form.label :enabled, "Aktiv", style: "display: block" %>
+    <%= form.check_box :enabled %>
+  </div>
+
+  <div class="submit">
+    <%= form.submit "Speichern" %>
+  </div>
+<% end %>

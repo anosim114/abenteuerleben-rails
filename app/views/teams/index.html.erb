@@ -1,0 +1,12 @@
+<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+
+<h1>Teams</h1>
+
+<%= link_to "Neues Team", new_team_path, class: '--bordered' %>
+
+<div id="teams">
+  <% @teams.each do |team| %>
+    <%= link_to team.name, team, class: (team.enabled ? "success" : "danger" )  %>
+    <br>
+  <% end %>
+</div>
