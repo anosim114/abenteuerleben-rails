@@ -1,7 +1,7 @@
 <h1>Admin#dashboard</h1>
 
 <h2>Allgemein</h2>
-<%= link_to 'Nachrichten', messages_path %>
+<%= link_to "Nachrichten (#{@unread_messages})", messages_path %>
 <br>
 <%= link_to 'Seiten', pages_path %>
 <br>
@@ -13,4 +13,4 @@
 <h2>Camp zusammenhängend</h2>
 <%= link_to 'Campjahr', campyears_path %>
 <br>
-<%= link_to 'Mitarbeiter', helpers_path %>
+<%= link_to "Mitarbeiter (#{@helper_count})", helpers_path %>

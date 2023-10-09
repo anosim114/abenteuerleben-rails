@@ -3,8 +3,10 @@
 <h1>Messages</h1>
 
 <div id="messages">
-  <% @messages.each do |message| %>
-    <%= link_to "#{message.name}: #{message.message[0..70]...}", message, class: ((!message.read) ? 'danger' : '') %>
-    <br>
-  <% end %>
+  <div class="message-preview">
+    <% @messages.each do |message| %>
+      <%= link_to "#{message.name}: #{message.desc_short}", message, class: class_names('message-preview__unread': !message.read) %>
+      <br>
+    <% end %>
+  </div>
 </div>
