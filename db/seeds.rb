@@ -6,6 +6,20 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Event.create!([
+  {
+    title: "testtermin",
+    description: "this is the description of the testtermin",
+    start_date: "2023-12-31",
+    link: ''
+  },
+  {
+    title: "testtermin 2 with a longer title than it should actually be",
+    description: "this is the description of the testtermin which is actuall als on the a little bit longer side",
+    start_date: "2023-12-31"
+  }
+])
+
 User.create!([{
   name: 'admin',
   password_hash: 'admin',
@@ -15,7 +29,7 @@ User.create!([{
 
 p "Created #{User.count} users"
 
-campyear = Campyear.create!([{
+Campyear.create!([{
   year: 2019,
   participants_register_start: '2024-07-10',
   participants_register_end: '2024-08-10',
@@ -69,7 +83,7 @@ Team.create!([
 
 p "Created #{Team.count} teams"
 
-helpers = Helper.create!([{
+Helper.create!([{
   surname: 'musterman',
   forename: 'max',
   birthday: '2000-01-01',

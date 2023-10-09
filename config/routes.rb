@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :teams
 
   resources :helpers
+  get '/mitarbeiteranmeldung', to: 'helpers#new'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
   resources :events
   resources :messages
 
-  # resource :helpers
   # resource :participants
 
   root "home#index"
