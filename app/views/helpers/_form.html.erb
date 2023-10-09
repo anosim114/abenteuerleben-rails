@@ -26,7 +26,7 @@
 
     <div class="input">
       <%= form.label :birthday, 'Geburtstag', style: "display: block" %>
-      <%= form.date_select :birthday, required: true %>
+      <%= form.date_select :birthday, start_year: 1970, end_year: DateTime.now.year - 14, required: true %>
     </div>
 
     <div class="input">
