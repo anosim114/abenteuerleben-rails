@@ -10,7 +10,6 @@ class CampsController < ApplicationController
 
   # GET /camps/1 or /camps/1.json
   def show
-    logger.debug 'show me this one camp please'
   end
 
   # GET /camps/new

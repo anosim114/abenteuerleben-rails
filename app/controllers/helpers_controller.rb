@@ -4,7 +4,6 @@ class HelpersController < ApplicationController
   before_action :set_available_teams, only: %i[ new create edit update ]
   before_action :set_helper, only: %i[ show edit update destroy ]
 
-  # GET /helpers or /helpers.json
   def index
     @helpers = Helper.all.order(:surname)
   end
@@ -36,14 +35,7 @@ class HelpersController < ApplicationController
 
     if @helper.save
       # remove registrations which are not to participate
-      @helper.registrations.each do |r|
-        if r.participate
-          next
-        end
-
-        r.destroy
-      end
-
+      @helper.registrations.each { |r| if not r.participate then r.destroy end }
       redirect_to root_path, notice: "Erfolgreich als Mitarbeiter angemeldet."
     else
       render :new, status: :unprocessable_entity
