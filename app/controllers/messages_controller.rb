@@ -4,11 +4,13 @@ class MessagesController < ApplicationController
 
   # GET /messages or /messages.json
   def index
-    @messages = Message.all
+    @messages = Message.all.order(id: :desc)
   end
 
   # GET /messages/1 or /messages/1.json
   def show
+    @message.read = true
+    @message.save
   end
 
   # GET /messages/new
