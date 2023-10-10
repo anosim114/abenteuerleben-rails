@@ -32,14 +32,16 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
 
           story: @helper.story,
           duty: @helper.duty,
-          registration: [
+          registrations_attributes: [
             {
-              participate: 1,
+              camp_id: camps(:one).id,
+              participate: registrations(:one).participate,
               wish_first: registrations(:one).wish_first,
               wish_second: registrations(:one).wish_second
             },
             {
-              participate: 0,
+              camp_id: camps(:two).id,
+              participate: registrations(:two).participate,
               wish_first: registrations(:two).wish_first,
               wish_second: registrations(:two).wish_second
             }
@@ -74,19 +76,7 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
           postcity: @helper.postcity,
 
           story: @helper.story,
-          duty: @helper.duty,
-          registration: [
-            {
-              participate: 1,
-              wish_first: registrations(:one).wish_first,
-              wish_second: registrations(:one).wish_second
-            },
-            {
-              participate: 0,
-              wish_first: registrations(:two).wish_first,
-              wish_second: registrations(:two).wish_second
-            }
-          ]
+          duty: @helper.duty
         }
  }
     assert_redirected_to helper_url(@helper)
