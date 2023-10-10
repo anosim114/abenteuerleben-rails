@@ -15,7 +15,7 @@
   <% end %>
 
   <fieldset class="input">
-    <legend>Persöhnliche Daten</legend>
+    <legend>Persönliche Daten</legend>
 
     <div class="input">
       <%= form.label :surname, "Nachname", style: "display: block" %>
@@ -54,7 +54,12 @@
   </fieldset>
 
   <fieldset class="input">
-    <legend>??? Name</legend>
+    <legend>Teamkatalog</legend>
+    <%= render 'teams/catalogue', teams: Team.where(enabled: true), selected_team: Team.first! %>
+  </fieldset>
+
+  <fieldset class="input">
+    <legend>(titel noch nicht entschieden)</legend>
 
     <div class="input">
       <%= form.label :story, "Wie hast du zu Gott gefunden?", style: "display: block" %>
@@ -62,7 +67,7 @@
     </div>
 
     <div class="input">
-      <%= form.label :duty, "Hast du ein Dienst in der Gemeinde? Wenn ja welche(n)?", style: "display: block" %>
+      <%= form.label :duty, "Hast du ein Dienst in der Gemeinde/Jugend? Wenn ja welche(n)?", style: "display: block" %>
       <%= form.text_field :duty %>
     </div>
   </fieldset>
