@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   resources :teams
+  get '/teams/catalogue/:id', to: 'teams#catalogue', as: 'teams_catalogue'
 
   resources :helpers
   get '/mitarbeiteranmeldung', to: 'helpers#new'

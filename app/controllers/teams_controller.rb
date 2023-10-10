@@ -48,6 +48,13 @@ class TeamsController < ApplicationController
     redirect_to teams_url, notice: "Team erfolgreich gelöscht."
   end
 
+  def catalogue
+    team_params = params.permit(:id)
+
+    @selected_team = Team.find(team_params[:id])
+    @teams = Team.where(enabled: true)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team

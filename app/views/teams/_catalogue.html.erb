@@ -1,0 +1,21 @@
+<%= turbo_frame_tag 'team-catalogue' do %>
+  <div class="team-catalogue">
+    <sup>(Team Name klicken zum ausklappen der Teambeschreibung)</sup>
+
+    <div>
+      <% teams.each do |team| %>
+        <div class="<%= class_names('team-catalogue__item': true, 'team-catalogue__item--selected': team.name == selected_team.name) %>">
+
+          <%= link_to teams_catalogue_path(team), class: 'team-catalogue__item-label' do %>
+            <i class="fa-solid <%= team.name == selected_team.name ? 'fa-chevron-up' : 'fa-chevron-down' %>"></i>
+            <%= team.name %>
+          <% end %>
+
+          <p class="team-catalogue__item-description"><%= team.description %></p>
+
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>
