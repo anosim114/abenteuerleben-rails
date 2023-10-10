@@ -65,20 +65,20 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
 
   test "should update helper" do
     patch helper_url(@helper), params: {
-        helper: {
-          surname: @helper.surname,
-          forename: @helper.forename,
-          telephone: @helper.telephone,
-          email: @helper.email,
-          birthday: '2023-01-12',
+      helper: {
+        surname: @helper.surname,
+        forename: @helper.forename,
+        telephone: @helper.telephone,
+        email: @helper.email,
+        birthday: '2023-01-12',
 
-          streethouse: @helper.streethouse,
-          postcity: @helper.postcity,
+        streethouse: @helper.streethouse,
+        postcity: @helper.postcity,
 
-          story: @helper.story,
-          duty: @helper.duty
-        }
- }
+        story: @helper.story,
+        duty: @helper.duty
+      }
+    }
     assert_redirected_to helper_url(@helper)
   end
 
