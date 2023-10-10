@@ -1,11 +1,14 @@
 <%= form_with(model: helper) do |form| %>
   <% if helper.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(helper.errors.count, "error") %> prohibited this assistant from being saved:</h2>
+      <h2>
+        <%= pluralize(helper.errors.count, "Error hat", plural: "Errors haben") %>
+        das Anmelden verhindert:
+      </h2>
 
       <ul>
         <% helper.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li><%= error.message %></li>
         <% end %>
       </ul>
     </div>

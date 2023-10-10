@@ -33,9 +33,11 @@ class HelpersController < ApplicationController
     # save helper
     @helper = Helper.new(helper_params)
 
-    if @helper.save
+    if @helper.valid?
       # remove registrations which are not to participate
-      @helper.registrations.each { |r| if not r.participate then r.destroy end }
+      @helper.registrations = @helper.registrations.filter { |r| r.participate }
+
+      @helper.save
       redirect_to root_path, notice: "Erfolgreich als Mitarbeiter angemeldet."
     else
       render :new, status: :unprocessable_entity
@@ -66,7 +68,7 @@ class HelpersController < ApplicationController
 
     def set_available_teams
       @available_teams = Team.where(enabled: true).order(:name).map{ |team| team.name }
-      @available_teams << "Anderes"
+      @available_teams << Registration::team_free_value
     end
 
     def set_active_camps
