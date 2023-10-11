@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: %i[ show edit update destroy ]
-  before_action :admin_only
+  before_action :admin_only, except: %i[ catalogue ]
 
   # GET /teams or /teams.json
   def index
@@ -49,10 +49,11 @@ class TeamsController < ApplicationController
   end
 
   def catalogue
+    logger.debug 'going to render the team catalogue'
     team_params = params.permit(:id)
 
     @selected_team = Team.find(team_params[:id])
-    @teams = Team.where(enabled: true)
+    @teams = Team.where(enabled: true).order(:name)
   end
 
   private

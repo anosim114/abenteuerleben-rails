@@ -55,7 +55,7 @@
 
   <fieldset class="input">
     <legend>Teamkatalog</legend>
-    <%= render 'teams/catalogue', teams: Team.where(enabled: true), selected_team: Team.first! %>
+    <%= render 'teams/catalogue', teams: @teams, selected_team: @teams.first %>
   </fieldset>
 
   <fieldset class="input">
