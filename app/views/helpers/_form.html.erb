@@ -54,11 +54,6 @@
   </fieldset>
 
   <fieldset class="input">
-    <legend>Teamkatalog</legend>
-    <%= render 'teams/catalogue', teams: @teams, selected_team: @teams.first %>
-  </fieldset>
-
-  <fieldset class="input">
     <legend>(titel noch nicht entschieden)</legend>
 
     <div class="input">
@@ -72,28 +67,35 @@
     </div>
   </fieldset>
 
+  <fieldset class="input">
+    <legend>Teamkatalog</legend>
+    <%= render 'teams/catalogue', teams: @teams, selected_team: @teams.first %>
+  </fieldset>
+
   <div class="input">
     <%= form.fields_for :registrations do |fields| %>
-      <fieldset class="input">
+      <fieldset class="input" data-controller="helperregistration" data-helperregistration-target="root">
         <legend>
           Camp <%= fields.object.camp.participants_year_start %> - <%= fields.object.camp.participants_year_end %>
         </legend>
         <%= fields.hidden_field :id %>
         <%= fields.hidden_field :camp_id %>
-        <div class="input">
+        <div class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
+          <%= fields.check_box :participate, data: {'helperregistration-target': 'checkbox', action: 'click->helperregistration#toggleRegistration'} %>
           <%= fields.label :participate, "An diesem Camp teilnehmen" %>
-          <%= fields.check_box :participate %>
         </div>
+        <br>
+        <div class="helper-registration__inputs helper-registration__inputs--disabled">
+          <p>
+            <%= fields.label :wish_first, "Erstwunsch:" %>
+            <%= fields.select :wish_first, options: @available_teams %>
+          </p>
 
-        <p>
-          <%= fields.label :wish_first, "Erstwunsch:" %>
-          <%= fields.select :wish_first, options: @available_teams %>
-        </p>
-
-        <p>
-        <%= fields.label :wish_second, "Zweitwunsch:" %>
-        <%= fields.select :wish_second, options: @available_teams %>
-        </p>
+          <p>
+          <%= fields.label :wish_second, "Zweitwunsch:" %>
+          <%= fields.select :wish_second, options: @available_teams %>
+          </p>
+        </div>
       </fieldset>
     <% end %>
   </div>

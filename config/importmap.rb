@@ -2,6 +2,8 @@
 
 pin "application", preload: true
 pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
+pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin "@toast-ui/editor", to: "https://ga.jspm.io/npm:@toast-ui/editor@3.2.2/dist/esm/index.js"
 pin "orderedmap", to: "https://ga.jspm.io/npm:orderedmap@2.1.1/dist/index.js"
 pin "prosemirror-commands", to: "https://ga.jspm.io/npm:prosemirror-commands@1.5.2/dist/index.js"
@@ -14,3 +16,4 @@ pin "prosemirror-transform", to: "https://ga.jspm.io/npm:prosemirror-transform@1
 pin "prosemirror-view", to: "https://ga.jspm.io/npm:prosemirror-view@1.31.7/dist/index.js"
 pin "rope-sequence", to: "https://ga.jspm.io/npm:rope-sequence@1.3.4/dist/index.js"
 pin "w3c-keyname", to: "https://ga.jspm.io/npm:w3c-keyname@2.2.8/index.js"
+pin_all_from "app/javascript/controllers", under: "controllers"
