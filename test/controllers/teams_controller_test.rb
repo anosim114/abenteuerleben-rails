@@ -54,4 +54,12 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to teams_url
   end
+
+  test "should get team catalogue" do
+    get '/logout'
+
+    get teams_catalogue_url(@team)
+
+    assert :success
+  end
 end
