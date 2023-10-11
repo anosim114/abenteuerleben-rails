@@ -67,7 +67,8 @@ class HelpersController < ApplicationController
     end
 
     def set_available_teams
-      @available_teams = Team.where(enabled: true).order(:name).map{ |team| team.name }
+      @teams = Team.where(enabled: true).order(:name)
+      @available_teams = @teams.map{ |team| team.name }
       @available_teams << Registration::team_free_value
     end
 
