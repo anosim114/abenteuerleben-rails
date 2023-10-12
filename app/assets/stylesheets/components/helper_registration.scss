@@ -7,4 +7,8 @@
       opacity: 0.3;
     }
   }
+
+  &__wish-box--disabled {
+    display: none !important;
+  }
 }

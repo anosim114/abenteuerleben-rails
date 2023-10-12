@@ -4,7 +4,7 @@
 
 <div id="helpers">
   <% @helpers.each do |helper| %>
-    <%= link_to helper.forename + ', ' + helper.surname, helper %>
+    <%= link_to helper.surname + ', ' + helper.forename, helper %>
     <br>
   <% end %>
 </div>
