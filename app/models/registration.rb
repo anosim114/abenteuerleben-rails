@@ -5,6 +5,6 @@ class Registration < ApplicationRecord
   attr_accessor :wish_first_box, :wish_second_box
 
   def self.team_free_value
-    "_Andere/Sonstiges"
+    "Andere/Sonstiges"
   end
 end
