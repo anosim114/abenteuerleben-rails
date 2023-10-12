@@ -86,20 +86,40 @@
         <%= fields.hidden_field :id %>
         <%= fields.hidden_field :camp_id %>
         <div class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
-          <%= fields.check_box :participate, data: {'helperregistration-target': 'checkbox', action: 'click->helperregistration#toggleRegistration'} %>
+          <%= fields.check_box :participate, data: { 'helperregistration-target': 'checkbox', action: 'click->helperregistration#toggleRegistration' } %>
           <%= fields.label :participate, "An diesem Camp teilnehmen" %>
         </div>
         <br>
         <div class="helper-registration__inputs helper-registration__inputs--disabled">
-          <p>
+          <div>
             <%= fields.label :wish_first, "Erstwunsch:" %>
-            <%= fields.select :wish_first, options: @available_teams %>
-          </p>
+            <%= fields.select :wish_first, @available_teams, {}, {
+              'data-helperregistration-target': 'wishFirst',
+              'data-action': 'helperregistration#toggleWishFirstBox'
+            } %>
+            <%= fields.text_field :wish_first,
+              value: fields.object.wish_first_box,
+              class: class_names('helper-registration__wish-box--disabled': fields.object.wish_first != Registration::team_free_value),
+              disabled: fields.object.wish_first != Registration::team_free_value,
+              data: { 'helperregistration-target': 'wishFirstBox' },
+              placeholder: "Wunsch bitte hier eingeben"
+            %>
+          </div>
 
-          <p>
-          <%= fields.label :wish_second, "Zweitwunsch:" %>
-          <%= fields.select :wish_second, options: @available_teams %>
-          </p>
+          <div>
+            <%= fields.label :wish_second, "Zweitwunsch:" %>
+            <%= fields.select :wish_second, @available_teams, {}, {
+              'data-helperregistration-target': 'wishSecond',
+              'data-action': 'helperregistration#toggleWishSecondBox'
+            } %>
+            <%= fields.text_field :wish_second,
+              value: fields.object.wish_second_box,
+              class: class_names('helper-registration__wish-box--disabled': fields.object.wish_second != Registration::team_free_value),
+              disabled: fields.object.wish_second != Registration::team_free_value,
+              data: { 'helperregistration-target': 'wishSecondBox' },
+              placeholder: "Wunsch bitte hier eingeben"
+            %>
+          </div>
         </div>
       </fieldset>
     <% end %>

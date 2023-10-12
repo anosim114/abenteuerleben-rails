@@ -40,6 +40,18 @@ class HelpersController < ApplicationController
       @helper.save
       redirect_to root_path, notice: "Erfolgreich als Mitarbeiter angemeldet."
     else
+      @helper.registrations.each do |r|
+        unless @available_teams.include? r.wish_first
+          r.wish_first_box = r.wish_first
+          r.wish_first = Registration::team_free_value
+        end
+
+        unless @available_teams.include? r.wish_second
+          r.wish_second_box = r.wish_second
+          r.wish_second = Registration::team_free_value
+        end
+      end
+
       render :new, status: :unprocessable_entity
     end
   end
@@ -69,7 +81,6 @@ class HelpersController < ApplicationController
     def set_available_teams
       @teams = Team.where(enabled: true).order(:name)
       @available_teams = @teams.map{ |team| team.name }
-      @available_teams << Registration::team_free_value
     end
 
     def set_active_camps
@@ -83,7 +94,7 @@ class HelpersController < ApplicationController
         :streethouse, :postcity,
         :story, :duty,
         :important_information, :liability_exclusion,
-        registrations_attributes: [ :camp_id, :wish_first, :wish_second, :participate ]
+        registrations_attributes: [ :id, :camp_id, :wish_first, :wish_second, :participate ]
       )
     end
 

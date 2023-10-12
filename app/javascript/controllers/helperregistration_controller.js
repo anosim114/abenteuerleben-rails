@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-    static targets = ["checkbox"]
+    static targets = ["checkbox", "wishFirst", "wishSecond", "wishFirstBox", "wishSecondBox"]
 
     enable() {
         this.element.querySelector('.helper-registration__inputs')
@@ -16,6 +16,28 @@ export default class extends Controller {
     toggleRegistration() {
         if (this.checkboxTarget.checked)  this.enable()
         else this.disable()
+    }
+
+    toggleWishFirstBox() {
+        if (this.wishFirstTarget.value === "_Andere/Sonstiges") {
+            this.wishFirstBoxTarget.classList.remove('helper-registration__wish-box--disabled')
+            this.wishFirstBoxTarget.disabled = false
+        } else {
+            this.wishFirstBoxTarget.classList.add('helper-registration__wish-box--disabled')
+            this.wishFirstBoxTarget.disabled = true
+            this.wishFirstBoxTarget.value = ''
+        }
+    }
+
+    toggleWishSecondBox() {
+        if (this.wishSecondTarget.value === "_Andere/Sonstiges") {
+            this.wishSecondBoxTarget.classList.remove('helper-registration__wish-box--disabled')
+            this.wishSecondBoxTarget.disabled = false
+        } else {
+            this.wishSecondBoxTarget.classList.add('helper-registration__wish-box--disabled')
+            this.wishSecondBoxTarget.disabled = true
+            this.wishSecondBoxTarget.value = ''
+        }
     }
 
     connect() {
