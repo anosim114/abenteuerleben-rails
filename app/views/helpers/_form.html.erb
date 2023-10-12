@@ -78,6 +78,11 @@
         <legend>
           Camp <%= fields.object.camp.participants_year_start %> - <%= fields.object.camp.participants_year_end %>
         </legend>
+
+        <p>
+          Datum: <%= l fields.object.camp.date_start %> - <%= l fields.object.camp.date_end %>
+        </p>
+
         <%= fields.hidden_field :id %>
         <%= fields.hidden_field :camp_id %>
         <div class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
@@ -100,6 +105,17 @@
     <% end %>
   </div>
 
+  <br><br>
+  <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion, label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden", form: form do %>
+    <%= raw Page.where(url: 'mitarbeiter_haftungsausschluss').first.content %>
+  <% end %>
+
+  <br>
+  <%= render "formelements/dialog-checkbox", form_name: :important_information, label_text: "Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden", form: form do %>
+    <%= raw Page.where(url: 'mitarbeiter_wichtige-infos').first.content %>
+  <% end %>
+
+  <br>
   <div class="submit">
     <%= form.submit "Anmelden" %>
   </div>

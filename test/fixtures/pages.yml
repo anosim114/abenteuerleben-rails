@@ -7,3 +7,11 @@ one:
 two:
   url: MyString
   content: MyText
+
+three:
+  url: mitarbeiter_haftungsausschluss
+  content: ''
+
+four:
+  url: mitarbeiter_wichtige-infos
+  content: ''

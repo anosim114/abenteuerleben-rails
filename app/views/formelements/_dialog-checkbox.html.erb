@@ -1,0 +1,19 @@
+<div class="input" data-controller="dialog-checkbox">
+  <div class="input dialog-checkbox__formelement">
+    <%= form.check_box form_name, data: {'dialog-checkbox-target': 'checkbox', action: "input->dialog-checkbox#toggleCheckbox:prevent"}, required: true %>
+    <%= form.label form_name, label_text, data: {action: "click->dialog-checkbox#toggleCheckbox:prevent"} %>
+  </div>
+
+  <div>
+    <dialog data-dialog-checkbox-target="dialog" class="dialog-checkbox__dialog">
+      <div>
+        <div class="dialog-checkbox__dialog-content">
+          <%= yield %>
+        </div>
+
+        <button role="button" data-action="dialog-checkbox#close:prevent" class="dialog-checkbox__dialog-close-btn">Als gelesen markieren</button>
+      </div>
+    </dialog>
+    <button class="btn--bordered" type="button" data-action="dialog-checkbox#open">Anzeigen</button>
+  </div>
+</div>

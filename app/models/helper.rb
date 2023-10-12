@@ -14,6 +14,8 @@ class Helper < ApplicationRecord
   validate :has_at_least_one_participate
   validate :camps_are_not_the_same
 
+  attr_accessor :liability_exclusion, :important_information
+
   def camps_are_not_the_same
     self.registrations.each do |r|
       if r.wish_first == Registration::team_free_value or r.wish_second == Registration::team_free_value

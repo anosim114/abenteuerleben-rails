@@ -100,7 +100,8 @@ Helper.create!([{
    Registration.new(
       camp: Camp.first,
       wish_first: 'Sportler',
-      wish_second: 'Sonstige'
+      wish_second: 'Sonstige',
+      participate: true
     )
   ]
 }])
