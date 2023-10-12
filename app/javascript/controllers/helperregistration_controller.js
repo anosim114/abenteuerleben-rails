@@ -19,7 +19,7 @@ export default class extends Controller {
     }
 
     toggleWishFirstBox() {
-        if (this.wishFirstTarget.value === "Andere/Sonstiges") {
+        if (this.wishFirstTarget.value === "Sonstiges") {
             this.wishFirstBoxTarget.classList.remove('helper-registration__wish-box--disabled')
             this.wishFirstBoxTarget.disabled = false
         } else {
@@ -30,7 +30,7 @@ export default class extends Controller {
     }
 
     toggleWishSecondBox() {
-        if (this.wishSecondTarget.value === "Andere/Sonstiges") {
+        if (this.wishSecondTarget.value === "Sonstiges") {
             this.wishSecondBoxTarget.classList.remove('helper-registration__wish-box--disabled')
             this.wishSecondBoxTarget.disabled = false
         } else {
