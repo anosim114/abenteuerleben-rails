@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_05_112759) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_12_113851) do
   create_table "camps", force: :cascade do |t|
     t.integer "campyear_id", null: false
     t.date "date_start"

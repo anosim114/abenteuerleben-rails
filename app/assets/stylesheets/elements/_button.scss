@@ -4,13 +4,11 @@ button,
 input[type="submit"] {
   @include bordered;
 
-  background-color: var(--primary);
   color: var(--white);
   display: inline-block;
-  font-size: 0.9rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  background-color: var(--blue-100);
+  background-color: var(--primary);
 
   &:hover {
     cursor: pointer;
@@ -27,6 +25,16 @@ input[type="submit"] {
 
     &:hover {
       color: var(--danger-hover);
+    }
+  }
+
+  &.btn--bordered {
+    border-color: var(--blue-300);
+    background-color: var(--white);
+    color: var(--black);
+
+    &:hover {
+      border-color: var(--blue-500);
     }
   }
 }

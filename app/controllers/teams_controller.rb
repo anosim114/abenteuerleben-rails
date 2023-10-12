@@ -49,7 +49,6 @@ class TeamsController < ApplicationController
   end
 
   def catalogue
-    logger.debug 'going to render the team catalogue'
     team_params = params.permit(:id)
 
     @selected_team = Team.find(team_params[:id])

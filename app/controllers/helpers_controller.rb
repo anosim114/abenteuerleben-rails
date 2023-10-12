@@ -79,14 +79,20 @@ class HelpersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def helper_params
       params.require(:helper).permit(
-        :surname, :forename, :birthday, :telephone, :email, :streethouse, :postcity, :story, :duty,
+        :surname, :forename, :birthday, :telephone, :email,
+        :streethouse, :postcity,
+        :story, :duty,
+        :important_information, :liability_exclusion,
         registrations_attributes: [ :camp_id, :wish_first, :wish_second, :participate ]
       )
     end
 
     def helper_params_update
       params.require(:helper).permit(
-        :surname, :forename, :birthday, :telephone, :email, :streethouse, :postcity, :story, :duty
+        :surname, :forename, :birthday, :telephone, :email,
+        :streethouse, :postcity,
+        :story, :duty,
+        :important_information, :liability_exclusion,
       )
     end
 
