@@ -107,7 +107,8 @@
               class: class_names('helper-registration__wish-box--disabled': fields.object.wish_first != Registration::team_free_value),
               disabled: fields.object.wish_first != Registration::team_free_value,
               data: { 'helperregistration-target': 'wishFirstBox' },
-              placeholder: "Wunsch bitte hier eingeben"
+              placeholder: "Wunsch bitte hier eingeben",
+              required: true
             %>
           </div>
 
@@ -122,7 +123,8 @@
               class: class_names('helper-registration__wish-box--disabled': fields.object.wish_second != Registration::team_free_value),
               disabled: fields.object.wish_second != Registration::team_free_value,
               data: { 'helperregistration-target': 'wishSecondBox' },
-              placeholder: "Wunsch bitte hier eingeben"
+              placeholder: "Wunsch bitte hier eingeben",
+              required: true
             %>
           </div>
         </div>

@@ -54,6 +54,72 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
+  test "should not create helper if special wish is missing or empty" do
+    assert_difference("Helper.count", 0) do
+      post helpers_url, params: {
+        helper: {
+          surname: @helper.surname,
+          forename: @helper.forename,
+          birthday: @helper.birthday,
+          birthplace: @helper.birthplace,
+          telephone: @helper.telephone,
+          email: @helper.email,
+
+          streethouse: @helper.streethouse,
+          postcity: @helper.postcity,
+
+          story: @helper.story,
+          duty: @helper.duty,
+          registrations_attributes: [
+            {
+              camp_id: camps(:one).id,
+              participate: true,
+              wish_first: 'sportler',
+              wish_second: ''
+            },
+            {
+              camp_id: camps(:two).id,
+              participate: registrations(:two).participate,
+              wish_first: registrations(:two).wish_first,
+              wish_second: registrations(:two).wish_second
+            }
+          ]
+        }
+      }
+
+      post helpers_url, params: {
+        helper: {
+          surname: @helper.surname,
+          forename: @helper.forename,
+          birthday: @helper.birthday,
+          birthplace: @helper.birthplace,
+          telephone: @helper.telephone,
+          email: @helper.email,
+
+          streethouse: @helper.streethouse,
+          postcity: @helper.postcity,
+
+          story: @helper.story,
+          duty: @helper.duty,
+          registrations_attributes: [
+            {
+              camp_id: camps(:one).id,
+              participate: true,
+              wish_first: '',
+              wish_second: 'handwerker'
+            },
+            {
+              camp_id: camps(:two).id,
+              participate: registrations(:two).participate,
+              wish_first: registrations(:two).wish_first,
+              wish_second: registrations(:two).wish_second
+            }
+          ]
+        }
+      }
+    end
+  end
+
   test "should show helper" do
     get helper_url(@helper)
     assert_response :success
