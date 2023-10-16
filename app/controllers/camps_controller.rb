@@ -68,6 +68,6 @@ class CampsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def camp_params
-      params.require(:camp).permit(:campyear_id, :date_start, :date_end, :participants_year_start, :participants_year_end, :max_participant_count)
+      params.require(:camp).permit(:campyear_id, :name, :date_start, :date_end, :participants_year_start, :participants_year_end, :max_participant_count)
     end
 end

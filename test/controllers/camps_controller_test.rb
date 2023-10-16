@@ -36,7 +36,7 @@ class CampsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create camp" do
     assert_difference("Camp.count") do
-      post campyear_camps_url(@campyear), params: { camp: { campyear_id: @campyear.id, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
+      post campyear_camps_url(@campyear), params: { camp: { campyear_id: @campyear.id, name: @camp.name, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
     end
 
     assert_redirected_to camp_url(Camp.last)
@@ -53,7 +53,7 @@ class CampsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update camp" do
-    patch camp_url(@camp), params: { camp: { campyear_id: @camp.campyear_id, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
+    patch camp_url(@camp), params: { camp: { campyear_id: @camp.campyear_id, name: @camp.name, date_end: @camp.date_end, date_start: @camp.date_start, max_participant_count: @camp.max_participant_count, participants_year_end: @camp.participants_year_end, participants_year_start: @camp.participants_year_start } }
     assert_redirected_to camp_url(@camp)
   end
 

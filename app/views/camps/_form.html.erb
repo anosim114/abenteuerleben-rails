@@ -16,28 +16,33 @@
   </div>
 
   <div class="input">
-    <%= form.label :date_start, style: "display: block" %>
-    <%= form.date_field :date_start %>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
   </div>
 
   <div class="input">
-    <%= form.label :date_end, style: "display: block" %>
-    <%= form.date_field :date_end %>
+    <%= form.label :date_start %>
+    <%= form.date_field :date_start, required: true %>
   </div>
 
   <div class="input">
-    <%= form.label :participants_year_start, style: "display: block" %>
-    <%= form.number_field :participants_year_start %>
+    <%= form.label :date_end %>
+    <%= form.date_field :date_end, required: true %>
   </div>
 
   <div class="input">
-    <%= form.label :participants_year_end, style: "display: block" %>
-    <%= form.number_field :participants_year_end %>
+    <%= form.label :participants_year_start %>
+    <%= form.number_field :participants_year_start, required: true %>
   </div>
 
   <div class="input">
-    <%= form.label :max_participant_count, style: "display: block" %>
-    <%= form.number_field :max_participant_count %>
+    <%= form.label :participants_year_end %>
+    <%= form.number_field :participants_year_end, required: true %>
+  </div>
+
+  <div class="input">
+    <%= form.label :max_participant_count %>
+    <%= form.number_field :max_participant_count, required: true %>
   </div>
 
   <div class="submit">

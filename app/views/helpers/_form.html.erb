@@ -80,10 +80,11 @@
   <div class="input">
     <%= form.fields_for :registrations do |fields| %>
       <fieldset class="input" data-controller="helperregistration" data-helperregistration-target="root">
-        <legend>
-          Camp <%= fields.object.camp.participants_year_start %> - <%= fields.object.camp.participants_year_end %>
-        </legend>
+        <legend>Camp <%= fields.object.camp.name %></legend>
 
+        <p>
+          Jahrgänge: <%= fields.object.camp.participants_year_start %> - <%= fields.object.camp.participants_year_end %>
+        </p>
         <p>
           Datum: <%= l fields.object.camp.date_start %> - <%= l fields.object.camp.date_end %>
         </p>
