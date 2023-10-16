@@ -5,7 +5,12 @@
 <div id="messages">
   <div class="message-preview">
     <% @messages.each do |message| %>
-      <%= link_to "#{message.name}: #{message.desc_short}", message, class: class_names('message-preview__unread': !message.read) %>
+      <%= link_to message, class: class_names('message-preview__unread': !message.read) do %>
+        <span>
+          <%= "(#{l message.created_at})" %>
+        </span>
+        <%= "#{message.name}: #{message.desc_short}" %>
+      <% end %>
       <br>
     <% end %>
   </div>
