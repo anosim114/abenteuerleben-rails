@@ -17,6 +17,13 @@
   <fieldset class="input">
     <legend>Persönliche Daten</legend>
 
+    <% unless helper.photo.attached? %>
+      <div>
+        <%= form.label :photo, "Ein Foto von dir:" %>
+        <%= form.file_field :photo, required: true %>
+      </div>
+    <% end %>
+
     <div class="input">
       <%= form.label :surname, "Nachname" %>
       <%= form.text_field :surname, required: true %>
@@ -104,12 +111,12 @@
               'data-action': 'helperregistration#toggleWishFirstBox'
             } %>
             <%= fields.text_field :wish_first,
-              value: fields.object.wish_first_box,
-              class: class_names('helper-registration__wish-box--disabled': fields.object.wish_first != Registration::team_free_value),
-              disabled: fields.object.wish_first != Registration::team_free_value,
-              data: { 'helperregistration-target': 'wishFirstBox' },
-              placeholder: "Wunsch bitte hier eingeben",
-              required: true
+                                  value: fields.object.wish_first_box,
+                                  class: class_names('helper-registration__wish-box--disabled': fields.object.wish_first != Registration::team_free_value),
+                                  disabled: fields.object.wish_first != Registration::team_free_value,
+                                  data: { 'helperregistration-target': 'wishFirstBox' },
+                                  placeholder: "Wunsch bitte hier eingeben",
+                                  required: true
             %>
           </div>
 
@@ -120,12 +127,12 @@
               'data-action': 'helperregistration#toggleWishSecondBox'
             } %>
             <%= fields.text_field :wish_second,
-              value: fields.object.wish_second_box,
-              class: class_names('helper-registration__wish-box--disabled': fields.object.wish_second != Registration::team_free_value),
-              disabled: fields.object.wish_second != Registration::team_free_value,
-              data: { 'helperregistration-target': 'wishSecondBox' },
-              placeholder: "Wunsch bitte hier eingeben",
-              required: true
+                                  value: fields.object.wish_second_box,
+                                  class: class_names('helper-registration__wish-box--disabled': fields.object.wish_second != Registration::team_free_value),
+                                  disabled: fields.object.wish_second != Registration::team_free_value,
+                                  data: { 'helperregistration-target': 'wishSecondBox' },
+                                  placeholder: "Wunsch bitte hier eingeben",
+                                  required: true
             %>
           </div>
         </div>

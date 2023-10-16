@@ -1,5 +1,10 @@
 class Helper < ApplicationRecord
   has_many :registrations, dependent: :destroy
+  has_one_attached :photo do |photo|
+    photo.variant :thumb, resize_to_limit: [256, 256]
+    photo.variant :icon, resize_to_limit: [24, 24]
+  end
+
   accepts_nested_attributes_for :registrations, allow_destroy: true, reject_if: :all_blank
 
   validates :surname, presence: true

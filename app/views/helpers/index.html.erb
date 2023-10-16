@@ -1,11 +1,34 @@
 <%= link_to '< Admin Dashboard', admin_dashboard_path %>
 
+<style>
+  .helper-text-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .helper-text-link__image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: var(--spacing-sm);
+    width: 28px;
+    height: 28px;
+  }
+</style>
+
 <h1>Mitarbeiter</h1>
 
 <div id="helpers">
   <% @helpers.each do |helper| %>
-    <%= link_to helper.surname + ', ' + helper.forename, helper %>
-    <br>
+    <%= link_to helper, class: 'helper-text-link' do %>
+
+      <div class="helper-text-link__image-wrapper">
+        <%= image_tag helper.photo.variant :icon if helper.photo.attached? %>
+      </div>
+
+      <%= helper.surname + ', ' + helper.forename %>
+    <% end %>
   <% end %>
 </div>
 

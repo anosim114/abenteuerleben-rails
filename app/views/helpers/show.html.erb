@@ -1,3 +1,7 @@
+<% if @helper.photo.attached? %>
+  <%= image_tag @helper.photo.variant(:thumb) %>
+<% end %>
+
 <%= render @helper %>
 
 <div>
