@@ -39,6 +39,7 @@ Campyear.create!([{
   accentcolor_secondary: '#fee000',
   camps: [
     Camp.new(
+      name: '1',
       date_start: '2024-08-01',
       date_end: '2024-08-05',
       participants_year_start: 2000,
@@ -46,6 +47,7 @@ Campyear.create!([{
       max_participant_count: 60
     ),
     Camp.new(
+      name: '2',
       date_start: '2024-08-07',
       date_end: '2024-08-12',
       participants_year_start: 2005,

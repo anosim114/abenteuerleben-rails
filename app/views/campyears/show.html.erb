@@ -5,7 +5,7 @@
     <br />
     <br />
     <%# todo: link with a button to create new camp for this campyear %>
-    <%= link_to("Camp: " + camp.participants_year_start.to_s + " - " + camp.participants_year_end.to_s,  camp_path(camp)) %>
+    <%= link_to("Camp: " + camp.name,  camp_path(camp)) %>
     <%= render camp %>
   <% end %>
 </div>
