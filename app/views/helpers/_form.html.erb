@@ -17,6 +17,11 @@
   <fieldset class="input">
     <legend>Persönliche Daten</legend>
 
+    <div>
+      <%= form.label :photo, "Ein Foto von dir:" %>
+      <%= form.file_field :photo, required: true %>
+    </div>
+
     <div class="input">
       <%= form.label :surname, "Nachname" %>
       <%= form.text_field :surname, required: true %>

@@ -90,6 +90,7 @@ class HelpersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def helper_params
       params.require(:helper).permit(
+        :photo,
         :surname, :forename, :birthday, :birthplace, :telephone, :email,
         :streethouse, :postcity,
         :story, :duty,
