@@ -24,6 +24,7 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
           surname: @helper.surname,
           forename: @helper.forename,
           birthday: @helper.birthday,
+          birthplace: @helper.birthplace,
           telephone: @helper.telephone,
           email: @helper.email,
 
@@ -70,7 +71,8 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
         forename: @helper.forename,
         telephone: @helper.telephone,
         email: @helper.email,
-        birthday: '2023-01-12',
+        birthday: @helper.birthday,
+        birthplace: @helper.birthplace,
 
         streethouse: @helper.streethouse,
         postcity: @helper.postcity,

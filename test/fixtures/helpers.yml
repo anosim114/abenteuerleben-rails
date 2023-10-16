@@ -4,6 +4,7 @@ one:
   surname: Max 
   forename: Musterman
   birthday: 1999-01-01
+  birthplace: Maxstadt
   telephone: 01234567
   email: max@musterman.de
   streethouse: Industriestr. 15
@@ -15,6 +16,7 @@ two:
   surname: John
   forename: Doe
   birthday: 2002-03-14
+  birthplace: Doenau
   telephone: +44 214523 12312
   email: johndoe@gmail.com
   streethouse: Westminsterstreet 1

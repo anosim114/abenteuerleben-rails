@@ -5,6 +5,7 @@ class Helper < ApplicationRecord
   validates :surname, presence: true
   validates :forename, presence: true
   validates :birthday, presence: true
+  validates :birthplace, presence: true
   validates :telephone, presence: true
   validates :email, presence: true
   validates :streethouse, presence: true

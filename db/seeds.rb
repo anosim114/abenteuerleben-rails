@@ -87,6 +87,7 @@ Helper.create!([{
   surname: 'musterman',
   forename: 'max',
   birthday: '2000-01-01',
+  birthplace: 'maxstadt',
   telephone: '01234',
   email: 'my@mail.com',
 

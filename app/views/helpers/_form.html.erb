@@ -18,37 +18,42 @@
     <legend>Persönliche Daten</legend>
 
     <div class="input">
-      <%= form.label :surname, "Nachname", style: "display: block" %>
+      <%= form.label :surname, "Nachname" %>
       <%= form.text_field :surname, required: true %>
     </div>
 
     <div class="input">
-      <%= form.label :forename, "Vorname", style: "display: block" %>
+      <%= form.label :forename, "Vorname" %>
       <%= form.text_field :forename, required: true %>
     </div>
 
     <div class="input">
-      <%= form.label :birthday, 'Geburtstag', style: "display: block" %>
+      <%= form.label :birthday, 'Geburtstag' %>
       <%= form.date_select :birthday, start_year: 1970, end_year: DateTime.now.year - 14, required: true %>
     </div>
 
     <div class="input">
-      <%= form.label :telephone, "Telefonnummer", style: "display: block" %>
+      <%= form.label :birthplace, 'Geburtsort' %>
+      <%= form.text_field :birthplace, required: true %>
+    </div>
+
+    <div class="input">
+      <%= form.label :telephone, "Telefonnummer" %>
       <%= form.telephone_field :telephone, required: true %>
     </div>
 
     <div class="input">
-      <%= form.label :email, "E-Mail", style: "display: block" %>
+      <%= form.label :email, "E-Mail" %>
       <%= form.email_field :email, required: true %>
     </div>
 
     <div class="input">
-      <%= form.label :streethouse, "Straße und Hausnummer", style: "display: block" %>
+      <%= form.label :streethouse, "Straße und Hausnummer" %>
       <%= form.text_field :streethouse, required: true %>
     </div>
 
     <div class="input">
-      <%= form.label :postcity, "Postleitzahl und Stadt", style: "display: block" %>
+      <%= form.label :postcity, "Postleitzahl und Stadt" %>
       <%= form.text_field :postcity, required: true %>
     </div>
   </fieldset>
@@ -57,12 +62,12 @@
     <legend>(titel noch nicht entschieden)</legend>
 
     <div class="input">
-      <%= form.label :story, "Wie hast du zu Gott gefunden?", style: "display: block" %>
+      <%= form.label :story, "Wie hast du zu Gott gefunden?" %>
       <%= form.text_area :story, required: true, rows: 7 %>
     </div>
 
     <div class="input">
-      <%= form.label :duty, "Hast du ein Dienst in der Gemeinde/Jugend? Wenn ja welche(n)?", style: "display: block" %>
+      <%= form.label :duty, "Hast du ein Dienst in der Gemeinde/Jugend? Wenn ja welche(n)?" %>
       <%= form.text_field :duty %>
     </div>
   </fieldset>
