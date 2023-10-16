@@ -72,7 +72,7 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
         telephone: @helper.telephone,
         email: @helper.email,
         birthday: @helper.birthday,
-        birthday: @helper.birthplace,
+        birthplace: @helper.birthplace,
 
         streethouse: @helper.streethouse,
         postcity: @helper.postcity,
