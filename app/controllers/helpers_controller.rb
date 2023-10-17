@@ -38,6 +38,7 @@ class HelpersController < ApplicationController
       @helper.registrations = @helper.registrations.filter { |r| r.participate }
 
       @helper.save
+      HelperMailer.with(helper: @helper).registered_mail.deliver_later
       redirect_to root_path, notice: "Erfolgreich als Mitarbeiter angemeldet."
     else
       @helper.registrations.each do |r|
