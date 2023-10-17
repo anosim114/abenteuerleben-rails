@@ -1,0 +1,36 @@
+Deine Anmeldung als Mitarbeiter war erfolgreich.
+================
+
+Deine Anmeldedaten nochmal zum nachlesen.
+
+Name: <%= @helper.forename %> <%= @helper.surname %>
+Geboren: <%= l @helper.birthday %>, <%= @helper.birthplace %>
+Wohnort: <%= @helper.streethouse %>, <%= @helper.postcity %>
+Telefonnummer: <%= @helper.telephone %>
+Email: <%= @helper.email %>
+Dein Dienst: <%= @helper.duty %>
+Deine Geschichte:
+<%= @helper.story %>
+
+----------------
+
+Du hast dich für <%= pluralize(@helper.registrations.count, "Camp", "Camps") %> angemeldet.
+
+<% @helper.registrations.each do |registration| %>
+Anmeldung Camp <%= registration.camp.name %>
+Datum des Camps: <%= registration.camp.date_start %> - <%= registration.camp.date_end %>
+Jahrgang des Camps: <%= registration.camp.participants_year_start %> - <%= registration.camp.participants_year_end %>
+Team Erstwunsch: <%= registration.wish_first %>
+Team Zweitwunsch: <%= registration.wish_second %>
+<% end %>
+
+Bitte  nicht vergessen den Haftungsausschluss und die Wichtigen Informationen zu lesen,
+darin ist z.B. beschrieben an wen und wie viel du für die Teilnahme überweisen musst.
+
+Falls die Daten so nicht (oder nicht mehr) Stimmen,
+kannst du uns das gerne über unser Kontaktformular mitteilen.
+Den Link dahin findes du hier oder einfach auf der Startseite ganz runterscrollen:
+https://abenteuerleben-ev.de/#kontakt
+
+Vielen Dank und Gottes Segen
+- Das Abenteuerleben Team

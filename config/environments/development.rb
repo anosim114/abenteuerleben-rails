@@ -37,7 +37,21 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  if ENV['email-enabled'] == 'true'
+    puts "=> Enable action_mailer"
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :user_name => ENV['email-un'],
+      :password => ENV['email-pw'],
+      :address => 'sandbox.smtp.mailtrap.io',
+      :host => 'sandbox.smtp.mailtrap.io',
+      :port => '2525',
+      :authentication => :cram_md5
+    }
+  else
+    puts "=> Disable action_mailer"
+  end
 
   config.action_mailer.perform_caching = false
 
