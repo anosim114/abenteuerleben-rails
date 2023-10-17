@@ -17,10 +17,10 @@
   <fieldset class="input">
     <legend>Persönliche Daten</legend>
 
-    <% unless helper.photo.attached? %>
+    <% if edit_photo || !helper.photo.attached? %>
       <div>
         <%= form.label :photo, "Ein Foto von dir:" %>
-        <%= form.file_field :photo, required: true %>
+        <%= form.file_field :photo, required: true, data: {'turbo-permanent': true} %>
       </div>
     <% end %>
 
