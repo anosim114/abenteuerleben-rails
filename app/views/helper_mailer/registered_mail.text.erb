@@ -18,7 +18,7 @@ Du hast dich für <%= pluralize(@helper.registrations.count, "Camp", "Camps") %>
 
 <% @helper.registrations.each do |registration| %>
 Anmeldung Camp <%= registration.camp.name %>
-Datum des Camps: <%= registration.camp.date_start %> - <%= registration.camp.date_end %>
+Datum des Camps: <%= l registration.camp.date_start %> - <%= l registration.camp.date_end %>
 Jahrgang des Camps: <%= registration.camp.participants_year_start %> - <%= registration.camp.participants_year_end %>
 Team Erstwunsch: <%= registration.wish_first %>
 Team Zweitwunsch: <%= registration.wish_second %>
