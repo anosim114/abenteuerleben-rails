@@ -20,7 +20,8 @@
     <% if defined? edit_photo || !helper.photo.attached? %>
       <div>
         <%= form.label :photo, "Ein Foto von dir:" %>
-        <%= form.file_field :photo, required: true, data: {'turbo-permanent': true} %>
+        <%= form.file_field :photo, accept: 'image/png,image/jpeg,image/webp',
+          required: true, data: {'turbo-permanent': true} %>
       </div>
     <% end %>
 
@@ -152,6 +153,6 @@
 
   <br>
   <div class="submit">
-    <%= form.submit "Anmelden" %>
+    <%= form.submit "Verbindlich und Zahlungspflichtig Anmelden" %>
   </div>
 <% end %>

@@ -33,4 +33,12 @@
 </div>
 
 <br>
-<%= link_to "Manuell Mitarbeiter hinzufügen", new_helper_path, class: '--bordered' %>
+<%= link_to new_helper_path, class: '--bordered' do %>
+  <i class="fa-solid fa-user-plus" style="margin-right: var(--spacing-sm);"></i>
+  Manuell Mitarbeiter hinzufügen
+<% end %>
+<br>
+<%= link_to excel_helpers_path(format: "xlsx"), class: '--bordered' do %>
+  <i class="fa-solid fa-file-excel" style="margin-right: var(--spacing-sm); color: green;"></i>
+  Mitarbeiterlist als Excel herunterladen
+<% end %>

@@ -73,6 +73,15 @@ class HelpersController < ApplicationController
     redirect_to helpers_url, notice: "Mitarbeiter erfolgreich gelöscht."
   end
 
+  def excelify
+    active_campyear = helpers.get_active_campyear
+    @helpers = Helper.select('*').joins(registrations: [{ camp: :campyear}]).where('campyears.id' => active_campyear.id)
+
+    respond_to do |format|
+      format.xlsx
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_helper
@@ -85,7 +94,7 @@ class HelpersController < ApplicationController
     end
 
     def set_active_camps
-      @camps = Campyear.last.camps
+      @camps = helpers.get_active_campyear.camps
     end
 
     # Only allow a list of trusted parameters through.

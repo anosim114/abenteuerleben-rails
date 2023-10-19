@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/teams/catalogue/:id', to: 'teams#catalogue', as: 'teams_catalogue'
 
   resources :helpers
+  get '/excel/helpers', to: 'helpers#excelify'
   get '/mitarbeiteranmeldung', to: 'helpers#new'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
