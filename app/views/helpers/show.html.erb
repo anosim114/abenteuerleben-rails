@@ -5,7 +5,7 @@
 <%= render @helper %>
 
 <div>
-  <%= link_to "Bearbeite Mitarbeiter", edit_helper_path(@helper), class: '--bordered' %>
+  <%#= link_to "Bearbeite Mitarbeiter", edit_helper_path(@helper), class: '--bordered' %>
   <%= button_to "Mitarbeiter löschen", @helper, method: :delete, class: 'danger' %>
   <br>
   <%= link_to "Zurück zu allen Mitarbeitern", helpers_path %>
