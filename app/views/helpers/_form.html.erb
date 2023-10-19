@@ -15,11 +15,14 @@
   <% end %>
 
   <fieldset class="input">
-    <legend>Persönliche Daten</legend>
+    <legend>
+      <i class="fa-solid fa-user" style="margin-right: var(--spacing-sm);"></i>
+      Persönliche Daten
+    </legend>
 
     <% if defined? edit_photo || !helper.photo.attached? %>
       <div>
-        <%= form.label :photo, "Ein Foto von dir:" %>
+        <%= form.label :photo, "Ein Foto von dir" %>
         <%= form.file_field :photo, accept: 'image/png,image/jpeg,image/webp',
           required: true, data: {'turbo-permanent': true} %>
       </div>
@@ -67,7 +70,10 @@
   </fieldset>
 
   <fieldset class="input">
-    <legend>Geistliches Wachstum</legend>
+    <legend>
+      <i class="fa-solid fa-cross" style="margin-right: var(--spacing-sm);"></i>
+      Geistliches Wachstum
+    </legend>
 
     <div class="input">
       <%= form.label :story, "Wie hast du zu Gott gefunden?" %>
@@ -81,14 +87,20 @@
   </fieldset>
 
   <fieldset class="input">
-    <legend>Teamkatalog</legend>
+    <legend>
+      <i class="fa-solid fa-book" style="margin-right: var(--spacing-sm);"></i>
+      Teamkatalog
+    </legend>
     <%= render 'teams/catalogue', teams: @teams, selected_team: @teams.first %>
   </fieldset>
 
   <div class="input">
     <%= form.fields_for :registrations do |fields| %>
       <fieldset class="input" data-controller="helperregistration" data-helperregistration-target="root">
-        <legend>Camp <%= fields.object.camp.name %></legend>
+        <legend>
+          <i class="fa-solid fa-campground" style="margin-right: var(--spacing-sm);"></i>
+          Camp <%= fields.object.camp.name %>
+        </legend>
 
         <p>
           Jahrgänge: <%= fields.object.camp.participants_year_start %> - <%= fields.object.camp.participants_year_end %>
@@ -153,6 +165,6 @@
 
   <br>
   <div class="submit">
-    <%= form.submit "Verbindlich und Zahlungspflichtig Anmelden" %>
+    <%= form.submit "Verbindlich und zahlungspflichtig anmelden" %>
   </div>
 <% end %>

@@ -1,3 +1,5 @@
 fieldset {
     padding: var(--spacing);
+    border: 1px solid var(--primary);
+    border-radius: var(--border-radius);
 }
