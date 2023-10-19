@@ -30,7 +30,7 @@ class Helper < ApplicationRecord
         next
       end
 
-      self.errors.add :duplicate_team, "Camp #{r.camp.participants_year_start}-#{r.camp.participants_year_end}: Teamwunsch eins und zwei dürfen nicht das gleiche Team sein"
+      self.errors.add :duplicate_team, "Camp #{r.camp.name}: Teamwunsch eins und zwei dürfen nicht das gleiche Team sein"
     end
   end
 
