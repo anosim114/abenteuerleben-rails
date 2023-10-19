@@ -72,8 +72,8 @@ Team.create!([
     enabled: true,
   },
   {
-    name: 'Sonstige',
-    description: 'Sonstige machen alles',
+    name: 'Sonstiges',
+    description: 'Sonstiges machen alles',
     enabled: true,
   },
   {
