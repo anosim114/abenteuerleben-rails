@@ -1,0 +1,26 @@
+<div id="<%= dom_id download %>">
+  <p>
+    <strong>Name:</strong>
+    <%= download.name %>
+  </p>
+
+  <p>
+    <strong>Interne Beschreibung:</strong>
+    <%= download.description %>
+  </p>
+
+  <p>
+    <strong>Im Downloadbereich anzeigen:</strong>
+    <%= download.download_area %>
+  </p>
+
+  <p>
+    <strong>Datei:</strong>
+    <% if download.file.attached? %>
+      <%= link_to download.file.filename, rails_blob_path(download.file, disposition: 'attachment') %>
+    <% else %>
+      <%= 'Keine Datei angegeben' %>
+    <% end %>
+  </p>
+
+</div>

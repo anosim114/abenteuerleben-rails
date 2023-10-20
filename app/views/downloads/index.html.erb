@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Downloads</h1>
+
+<%= raw @download_page_before.content %>
+
+<br>
+
+<div id="downloads">
+  <% @downloads.each do |download| %>
+    <p>
+      <%= link_to download.file.filename, rails_blob_path(download.file, disposition: 'attachment') if download.file.attached? %>
+    </p>
+  <% end %>
+</div>
+
+<br>
+
+<%= raw @download_page_after.content %>

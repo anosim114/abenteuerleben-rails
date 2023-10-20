@@ -196,3 +196,7 @@ hr {
     display: none;
   }
 }
+
+.field_with_errors {
+  color: var(--red-100);
+}

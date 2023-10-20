@@ -1,0 +1,16 @@
+<%= link_to '< Admin Dashboard', admin_dashboard_path %>
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Downloads</h1>
+
+<div id="downloads">
+  <% @downloads.each do |download| %>
+    <%= render download %>
+    <p>
+      <%= link_to "Download Anzeigen", download %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Neuer Download", new_download_path, class: '--bordered' %>
