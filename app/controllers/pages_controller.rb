@@ -10,7 +10,6 @@ class PagesController < ApplicationController
   # GET /pages/1 or /pages/1.json
   def show
     @page = Page.find_by url: params[:id]
-    p params[:id]
   end
 
   # GET /pages/new
@@ -25,7 +24,6 @@ class PagesController < ApplicationController
   # POST /pages or /pages.json
   def create
     @page = Page.new(page_params)
-    p 'create new page'
 
     if @page.save
       redirect_to page_url(@page.url), notice: "Seite erfolgreich erstellt."

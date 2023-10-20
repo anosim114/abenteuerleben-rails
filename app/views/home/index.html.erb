@@ -10,9 +10,7 @@
   <nav class="container">
     <ul>
       <li>
-        <%= link_to new_helper_path do %>
-          <i class="fa-solid fa-angle-right"></i>Mitarbeiteranmeldung
-        <% end %>
+        <%= link_to new_helper_path do %><i class="fa-solid fa-angle-right"></i>Mitarbeiteranmeldung<% end %>
       </li>
       <li>
         <a href="/kinderanmeldung"><i class="fa-solid fa-angle-right"></i>Kinderanmeldung</a>
@@ -30,7 +28,7 @@
         <a href="#kontakt"><i class="fa-solid fa-angle-right"></i>Kontakt</a>
       </li>
       <li>
-        <a href="/pages/downloads"><i class="fa-solid fa-angle-right"></i>Downloads</a>
+        <%= link_to downloads_path do %><i class="fa-solid fa-angle-right"></i>Downloads<% end %>
       </li>
       <li>
         <a href="/pages/spenden"><i class="fa-solid fa-angle-right"></i>Spenden / Unterstützen</a>
