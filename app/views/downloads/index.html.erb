@@ -8,9 +8,13 @@
 
 <div id="downloads">
   <% @downloads.each do |download| %>
-    <p>
-      <%= link_to download.file.filename, rails_blob_path(download.file, disposition: 'attachment') if download.file.attached? %>
-    </p>
+    <% if download.file.attached? %>
+
+      <%= link_to rails_blob_path(download.file, disposition: 'attachment'), class: 'download-link' do %>
+        <i class="fa-solid fa-angle-right download-link__icon"></i><%= download.file.filename %>
+      <% end %>
+
+    <% end %>
   <% end %>
 </div>
 

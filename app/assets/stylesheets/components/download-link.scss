@@ -1,0 +1,16 @@
+.download-link {
+  padding: var(--spacing-xs) 0;
+  display: block;
+
+  &__icon {
+    display: inline-block;
+    transition: 150ms;
+    margin-right: var(--spacing-sm);
+  }
+
+  &:hover {
+    .download-link__icon {
+      margin-right: var(--spacing-xs);
+    }
+  }
+}
