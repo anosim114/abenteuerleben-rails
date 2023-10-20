@@ -15,3 +15,11 @@ three:
 four:
   url: mitarbeiter_wichtige-infos
   content: ''
+
+five:
+  url: download_before
+  content: ''
+
+six:
+  url: download_after
+  content: ''

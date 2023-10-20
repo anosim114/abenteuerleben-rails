@@ -70,7 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_094829) do
     t.boolean "download_area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_downloads_on_name", unique: true
   end
 
   create_table "events", force: :cascade do |t|

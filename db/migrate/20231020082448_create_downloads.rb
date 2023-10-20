@@ -1,7 +1,7 @@
 class CreateDownloads < ActiveRecord::Migration[7.0]
   def change
     create_table :downloads do |t|
-      t.string :name, null: false, index: { unique: true }
+      t.string :name, null: false
       t.string :description
       t.boolean :download_area
 

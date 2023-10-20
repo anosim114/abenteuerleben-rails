@@ -9,10 +9,6 @@ class DownloadsController < ApplicationController
     @downloads = Download.where(download_area: true)
   end
 
-  def download
-    redirect_to url_for(@download.file)
-  end
-
   def admin
     @downloads = Download.all
   end
@@ -54,7 +50,7 @@ class DownloadsController < ApplicationController
   def destroy
     @download.destroy
 
-    format.html { redirect_to downloads_admin_url, notice: "Download was successfully destroyed." }
+    redirect_to downloads_admin_url, notice: "Download was successfully destroyed."
   end
 
   private

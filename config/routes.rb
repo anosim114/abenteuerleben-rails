@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get 'logout', to: 'session#logout'
 
   get 'downloads/admin', to: 'downloads#admin'
-  get 'downloads/:id/download', to: 'downloads#download'
   resources :downloads
 
   resources :pages

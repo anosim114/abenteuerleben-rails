@@ -2,7 +2,7 @@
   <% if download.errors.any? %>
     <div style="color: var(--red-100)">
       <h2>
-        <%= pluralize(helper.errors.count, "Error hat", plural: "Errors haben") %>
+        <%= pluralize(download.errors.count, "Error hat", plural: "Errors haben") %>
         das Anlegen von dem Download verhindert:
       </h2>
     </div>
@@ -29,7 +29,7 @@
   <div class="input">
     <%= form.label :file, 'Datei', style: "display: block" %>
     <%= render 'formelements/errormsg', record: download, field: :file %>
-    <%= form.hidden_field :file, value: download.file.signed_id %>
+    <%= form.hidden_field :file, value: download.file.signed_id if download.file.attached? %>
     <%= form.file_field :file %>
   </div>
 
