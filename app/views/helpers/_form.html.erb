@@ -153,6 +153,11 @@
     <% end %>
   </div>
 
+  <div class="input">
+    <%= form.label :preferredCamp, "Bevorzugtes Camp, im Falle, dass mehr als ein Camp ausgewählt wurde:" %>
+    <%= form.text_field :preferredCamp %>
+  </div>
+
   <br><br>
   <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion, label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden", form: form do %>
     <%= raw Page.where(url: 'mitarbeiter_haftungsausschluss').first.content %>
