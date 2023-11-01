@@ -81,7 +81,7 @@
     </div>
 
     <div class="input">
-      <%= form.label :duty, "Hast du ein Dienst in der Gemeinde/Jugend? Wenn ja welche(n)?" %>
+      <%= form.label :duty, "Hast du einen Dienst in der Gemeinde/Jugend? Wenn ja welche(n)?" %>
       <%= form.text_field :duty %>
     </div>
   </fieldset>
@@ -151,6 +151,11 @@
         </div>
       </fieldset>
     <% end %>
+  </div>
+
+  <div class="input">
+    <%= form.label :preferredCamp, "Bevorzugtes Camp, im Falle, dass mehr als ein Camp ausgewählt wurde:" %>
+    <%= form.text_field :preferredCamp %>
   </div>
 
   <br><br>

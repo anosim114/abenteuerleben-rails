@@ -21,14 +21,7 @@
 
 <div id="helpers">
   <% @helpers.each do |helper| %>
-    <%= link_to helper, class: 'helper-text-link' do %>
-
-      <div class="helper-text-link__image-wrapper">
-        <%= image_tag helper.photo.variant :icon if helper.photo.attached? %>
-      </div>
-
-      <%= helper.surname + ', ' + helper.forename %>
-    <% end %>
+    <%= render 'helpers/table-link', helper: helper %>
   <% end %>
 </div>
 

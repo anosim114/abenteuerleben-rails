@@ -18,6 +18,7 @@ class Helper < ApplicationRecord
   validates :story, presence: true
 
   validate :has_at_least_one_participate
+  validate :has_prefered_camp
   validate :camps_are_not_the_same
 
   attr_accessor :liability_exclusion, :important_information
@@ -38,5 +39,16 @@ class Helper < ApplicationRecord
     has_participations = self.registrations.any? { |reg| reg.participate }
 
     self.errors.add :participation, 'Mindestend ein Camp muss ausgewählt werden' unless has_participations
+  end
+
+  def has_prefered_camp
+    registration_count = self.registrations.reduce(0) do |sum, r|
+      sum += r.participate ? 1 : 0
+    end
+    return if registration_count < 2
+
+    if self.preferredCamp.blank?
+      self.errors.add :preferredCamp, "Bitte ein bevorzugtes Camp bei mehr als eine Campanmeldung angeben"
+    end
   end
 end

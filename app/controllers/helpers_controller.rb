@@ -105,6 +105,7 @@ class HelpersController < ApplicationController
         :streethouse, :postcity,
         :story, :duty,
         :important_information, :liability_exclusion,
+        :preferredCamp,
         registrations_attributes: [ :id, :camp_id, :wish_first, :wish_second, :participate ]
       )
     end

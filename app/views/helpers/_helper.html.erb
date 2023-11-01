@@ -53,9 +53,18 @@
   <br>
   <h2>Camp anmeldungen</h2>
 
+  <% unless helper.registrations.count < 2 %>
+    <p>
+      <strong>Bevorzugtes Camp:</strong>
+      <%= helper.preferredCamp %>
+    </p>
+    <br>
+  <% end %>
+
   <div>
     <% helper.registrations.each do |registration| %>
       <%= render 'registrations/registration', registration: registration %>
+      <br>
     <% end %>
   </div>
 

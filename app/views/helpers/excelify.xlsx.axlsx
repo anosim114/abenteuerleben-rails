@@ -1,10 +1,10 @@
 wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Buttons") do |sheet|
-  sheet.add_row %w[team angemeldet_am nachname vorname geburtstag geburtsort telephone email strasse_hnr plz_ort geschichte dienst erstwunsch zweitwunsch]
+  sheet.add_row %w[team angemeldet_am nachname vorname geburtstag geburtsort telephone email strasse_hnr plz_ort geschichte dienst erstwunsch zweitwunsch bevorzugtesCamp]
 
   @helpers.each do |helper|
     sheet.add_row [helper.name, helper.created_at, helper.surname, helper.forename, helper.birthday, helper.birthplace, helper.telephone, helper.email, helper.streethouse,
-    helper.postcity, helper.story, helper.duty, helper.wish_first, helper.wish_second]
+    helper.postcity, helper.story, helper.duty, helper.wish_first, helper.wish_second, helper.preferredCamp]
   end
 end
