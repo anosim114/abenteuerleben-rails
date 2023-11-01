@@ -45,7 +45,6 @@ class Helper < ApplicationRecord
     registration_count = self.registrations.reduce(0) do |sum, r|
       sum += r.participate ? 1 : 0
     end
-    puts "@@@@@@@@ #{registration_count}"
     return if registration_count < 2
 
     if self.preferredCamp.blank?
