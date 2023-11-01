@@ -1,6 +1,6 @@
 <%= link_to helper, class: "helper-table-link" do %>
   <div class="helper-table-link__image">
-    <%= image_tag helper.photo.variant(:thumb) %>
+    <%= image_tag helper.photo.variant(:thumb) if helper.photo.attached? %>
   </div>
 
   <div class="helper-table-link__body">
