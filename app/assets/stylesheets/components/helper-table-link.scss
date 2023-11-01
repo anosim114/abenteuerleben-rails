@@ -1,0 +1,45 @@
+.helper-table-link {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-sm);
+  color: var(--black);
+  border-radius: var(--border-radius);
+
+  &:not(:last-child) {
+    margin-bottom: var(--spacing);
+  }
+
+  &:hover {
+    background-color: var(--primary-focus);
+  }
+
+  &__image {
+    height: 3rem;
+    width: 3rem;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  &__helper-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  &__description {
+    font-size: .8rem;
+  }
+
+  &__team {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+
+    &-name {
+      padding-right: var(--spacing-xs);
+    }
+  }
+}

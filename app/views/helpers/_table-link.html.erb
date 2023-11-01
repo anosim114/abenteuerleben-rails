@@ -1,0 +1,23 @@
+<%= link_to helper, class: "helper-table-link" do %>
+  <div class="helper-table-link__image">
+    <%= image_tag helper.photo.variant(:thumb) %>
+  </div>
+
+  <div class="helper-table-link__body">
+    <div class="helper-table-link__title">
+      <span class="helper-table-link__helper-name">Arnold Siemens</span>
+      |
+      <span>0170 4849459</span>
+    </div>
+
+    <div class="helper-table-link__description">
+      <% helper.registrations.each do |registration| %>
+        <div class="helper-table-link__team">
+          <span class="helper-table-link__team-name"><%= registration.camp.name %>:</span>
+          <span><%= registration.wish_first %></span>
+          <span><%= registration.wish_second %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
