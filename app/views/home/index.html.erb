@@ -9,12 +9,16 @@
   <div class="background-mask"></div>
   <nav class="container">
     <ul>
-      <li>
-        <%= link_to new_helper_path do %><i class="fa-solid fa-angle-right"></i>Mitarbeiteranmeldung<% end %>
-      </li>
-      <li>
-        <a href="/kinderanmeldung"><i class="fa-solid fa-angle-right"></i>Kinderanmeldung</a>
-      </li>
+      <% if @helpers_open %>
+        <li>
+          <%= link_to new_helper_path do %><i class="fa-solid fa-angle-right"></i>Mitarbeiteranmeldung<% end %>
+        </li>
+      <% end %>
+      <% if @participants_open %>
+        <li>
+          <a href="/kinderanmeldung"><i class="fa-solid fa-angle-right"></i>Kinderanmeldung</a>
+        </li>
+      <% end %>
       <li>
         <a href="#wer-wir-sind"><i class="fa-solid fa-angle-right"></i>Wer wir sind</a>
       </li>
