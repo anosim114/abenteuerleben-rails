@@ -1,8 +1,11 @@
-name: "Deploying"
+name: "Deploy"
 
 on:
-  push:
-    branches: [ 'master' ]
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
      environment:
@@ -11,18 +14,17 @@ on:
       required: true
 
 jobs:
-  deploy-staging:
-    runs-on: ubuntu-latest
-    needs: test
-    if: ${{ github.event == 'push' || github.event == 'workflow_dispatch' && inputs.environment == 'production' }} 
+  deploy-print:
+    runs-on: alpine-latest
     steps:
-      - name: Print something 
-        run: echo 'hi :)'
+      - name: print hello world
+        run: echo 'hello world!'
+      - name: print environment to deploy to
+        run echo ${{ inputs.environment }}
 
-  deploy-production:
+  deploy:
     runs-on: ubuntu-latest
-    needs: test
-    if: ${{ github.event == 'push' || github.event == 'workflow_dispatch' && inputs.environment == 'production' }} 
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Cloning repo
         uses: actions/checkout@v3
