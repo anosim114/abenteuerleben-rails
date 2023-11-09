@@ -6,6 +6,7 @@
 # run tests and linters.
 name: "Feature Branch Push"
 on:
+  workflow_dispatch:
   push:
     branches-ignore:
       - master
