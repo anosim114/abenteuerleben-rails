@@ -3,8 +3,8 @@ name: Merge to Master
 on:
   workflow_dispatch:
   push:
-    branch:
-      - master
+    branches:
+      - 'master'
 
 jobs:
   test:
