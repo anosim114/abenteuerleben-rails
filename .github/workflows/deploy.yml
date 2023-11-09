@@ -1,0 +1,37 @@
+name: "Deploy"
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+     environment:
+      description: "environment to run against"
+      type: string
+      required: true
+
+jobs:
+  deploy-print:
+    runs-on: alpine-latest
+    steps:
+      - name: print hello world
+        run: echo 'hello world!'
+      - name: print environment to deploy to
+        run: ${{ inputs.environment }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Cloning repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Push to dokku
+        uses: dokku/github-action@master
+        with:
+          git_remote_url: 'ssh://dokku@abenteuerleben-ev.de:22/aleben'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
