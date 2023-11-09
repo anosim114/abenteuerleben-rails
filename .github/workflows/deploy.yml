@@ -20,7 +20,6 @@ jobs:
       - name: print hello world
         run: echo 'hello world!'
       - name: print environment to deploy to
-        run echo ${{ inputs.environment }}
 
   deploy:
     runs-on: ubuntu-latest
