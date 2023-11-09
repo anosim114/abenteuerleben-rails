@@ -1,0 +1,23 @@
+name: Merge to Master 
+
+on:
+  workflow_dispatch:
+  push:
+    branch:
+      - master
+
+jobs:
+  test:
+    uses: anosim114/abenteuerleben-rails/.github/workflows/test.yml@master
+
+  deploy-staging:
+    uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
+    needs: test
+    with:
+      application: bleben
+
+  deploy-production:
+    uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
+    needs: deploy-staging
+    with:
+      application: aleben
