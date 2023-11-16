@@ -18,3 +18,4 @@ pin "prosemirror-view", to: "https://ga.jspm.io/npm:prosemirror-view@1.31.7/dist
 pin "rope-sequence", to: "https://ga.jspm.io/npm:rope-sequence@1.3.4/dist/index.js"
 pin "w3c-keyname", to: "https://ga.jspm.io/npm:w3c-keyname@2.2.8/index.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
+pin_all_from "app/javascript/utils", under: "utils"
