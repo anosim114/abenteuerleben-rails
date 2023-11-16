@@ -4,3 +4,4 @@ import "/fontawesome/js/solid.js"
 import "/fontawesome/js/regular.js"
 import "/fontawesome/js/fontawesome.js"
 import 'controllers/index'
+import './utils/image_utils'

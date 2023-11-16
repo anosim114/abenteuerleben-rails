@@ -24,7 +24,7 @@
       <div>
         <%= form.label :photo, "Ein Foto von dir" %>
         <%= form.file_field :photo, accept: 'image/png,image/jpeg,image/webp',
-          required: true, data: {'turbo-permanent': true} %>
+          required: true, data: {'turbo-permanent': true}, onchange: 'squashImageFile(this)' %>
       </div>
     <% end %>
 
