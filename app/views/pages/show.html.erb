@@ -1,6 +1,6 @@
 <%= render @page %>
 
-<% if @current_user.has_change_rights %>
+<% if @current_user.has_read_rights %>
   <div>
     <%= link_to "Edit this page", edit_page_path(@page) %> |
     <%= link_to "Back to pages", pages_path %>
