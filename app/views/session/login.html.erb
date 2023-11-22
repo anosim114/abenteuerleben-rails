@@ -2,7 +2,7 @@
 <h1>Login</h1>
 
 <%= form_tag do |form| %>
-  <% if @current_user.is_admin %>
+  <% if @current_user.has_read_rights %>
     <p>You are already loggin in!</p>
   <% end %>
 

@@ -39,7 +39,7 @@
       
       <!-- login/logout -->
       <div style="display: flex; flex-direction: column;">
-        <% if @current_user.is_admin %>
+        <% if @current_user.has_read_rights %>
           <%= link_to 'Admin Dashboard', admin_dashboard_path, class: 'centered' %>
           <%= link_to 'Logout', logout_path, class: 'danger centered' %>
         <% else %>

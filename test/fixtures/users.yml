@@ -6,3 +6,8 @@ admin:
   level: 0b111
   email: admin@admin.com
 
+moderator:
+  name: moderator
+  password_hash: moderator
+  level: 0b001
+  email: mod@rator.com

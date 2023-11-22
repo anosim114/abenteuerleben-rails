@@ -32,3 +32,5 @@
 
 # Database
 /db/*.sqlite3
+/db/dev.*
+/db/test.*

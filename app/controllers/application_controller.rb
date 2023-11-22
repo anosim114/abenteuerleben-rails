@@ -2,15 +2,15 @@ class ApplicationController < ActionController::Base
   before_action :set_user
 
   def admin_only
-    redirect_to root_path unless @current_user.is_admin
+    redirect_to root_path unless @current_user.has_read_rights
   end
 
   def moderator_only
-    redirect_to root_path unless @current_user.is_admin
+    redirect_to root_path unless @current_user.has_change_rights
   end
 
   def logged_in
-    redirect_to root_path unless @current_user.is_admin
+    redirect_to root_path unless @current_user.has_read_rights
   end
 
   def set_user

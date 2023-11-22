@@ -25,6 +25,11 @@ User.create!([{
   password_hash: 'admin',
   email: '',
   level: 0b111,
+}, {
+  name: 'moderator',
+  password_hash: 'moderator',
+  email: '',
+  level: 0b001,
 }])
 
 p "Created #{User.count} users"
