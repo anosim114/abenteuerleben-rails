@@ -1,9 +1,8 @@
 window.squashImageFile = (element) => {
-    
-    if (imageSmallEnough(element)) {
-        return
-    }
-    
+ 
+    // if (imageSmallEnough(element)) {
+    //     return
+    // }
     resizeImage(element)
 }
 
@@ -44,7 +43,7 @@ function resizeImage(element) {
             
             ctx.drawImage(img, 0, 0, width, height)
 
-            putCanvasToInput(canvas, element, oldName)
+            putCanvasToInput(canvas, element, 's.' + oldName)
         }
     
         // 3

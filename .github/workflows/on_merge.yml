@@ -17,9 +17,9 @@ jobs:
       application: bleben
     secrets: inherit
 
-  deploy-production:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
-    needs: deploy-staging
-    with:
-      application: aleben
-    secrets: inherit
+  # deploy-production:
+  #   uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
+  #   needs: deploy-staging
+  #   with:
+  #     application: aleben
+  #   secrets: inherit
