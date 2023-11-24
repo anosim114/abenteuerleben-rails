@@ -11,12 +11,12 @@
     <ul>
       <% if @helpers_open %>
         <li>
-          <%= link_to new_helper_path do %><i class="fa-solid fa-angle-right"></i>Mitarbeiteranmeldung<% end %>
+          <%= link_to new_helper_path, style: 'font-weight: bold; color: #967159' do %><i class="fa-solid fa-angle-right"></i>Mitarbeiteranmeldung<% end %>
         </li>
       <% end %>
       <% if @participants_open %>
         <li>
-          <a href="/kinderanmeldung"><i class="fa-solid fa-angle-right"></i>Kinderanmeldung</a>
+          <a href="/kinderanmeldung", style="font-weight: bold; color: #967159"><i class="fa-solid fa-angle-right"></i>Kinderanmeldung</a>
         </li>
       <% end %>
       <li>

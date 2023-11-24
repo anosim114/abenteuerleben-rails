@@ -12,7 +12,7 @@ textarea {
   display: block;
   width: 100%;
   font-size: 1rem;
-  margin-bottom: var(--spacing-sm);
+  // margin-bottom: var(--spacing-sm);
   padding: var(--spacing-sm);
   font-family: sans-serif;
 }
@@ -27,7 +27,7 @@ textarea {
   input[type="email"],
   input[type="password"],
   textarea {
-    margin-bottom: var(--spacing-md);
+    // margin-bottom: var(--spacing-md);
     padding: var(--spacing-md);
   }
 }

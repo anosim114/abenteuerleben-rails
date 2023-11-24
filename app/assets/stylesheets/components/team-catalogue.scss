@@ -1,7 +1,7 @@
 .team-catalogue {
   &__item {
     border: 1px solid var(--black);
-    border-color: var(--gray-400);
+    border-color: var(--blue-500);
 
     &:first-child {
       border-top-left-radius: var(--border-radius);
@@ -21,11 +21,11 @@
       margin: 0;
       display: block;
       cursor: pointer;
-      background-color: var(--gray-500);
+      background-color: var(--blue-500);
       color: var(--white);
 
       &:hover {
-        background-color: var(--gray-600);
+        background-color: var(--blue-400);
         color: var(--white);
       }
     }
