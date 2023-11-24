@@ -1,12 +1,9 @@
 window.squashImageFile = (element) => {
-    console.debug('squashing file, or not')
     
     if (imageSmallEnough(element)) {
-        console.debug('no squash needed')
         return
     }
     
-    console.debug('going to squash')
     resizeImage(element)
 }
 

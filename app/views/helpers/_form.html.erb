@@ -1,16 +1,24 @@
-<%= form_with(model: helper) do |form| %>
+<style>
+  .container {
+    background: linear-gradient(45deg, var(--transparent), var(--transparent), color-mix(in srgb, var(--primary) 5%, transparent), var(--transparent), var(--transparent)) no-repeat border-box,
+                linear-gradient(-45deg, var(--transparent), var(--transparent), color-mix(in srgb, var(--primary) 5%, transparent), var(--transparent), var(--transparent)) no-repeat border-box;
+  }
+</style>
+
+<%= form_with(model: helper, class: 'helper-form') do |form| %>
   <% if helper.errors.any? %>
-    <div style="color: red">
-      <h2>
-        <%= pluralize(helper.errors.count, "Error hat", plural: "Errors haben") %>
-        das Anmelden verhindert:
+    <div>
+      <h2 style="color: var(--danger)">
+        <%= pluralize(helper.errors.count, "Error hat", plural: "Error haben") %> das Anmelden verhindert
       </h2>
 
+<!--
       <ul>
         <% helper.errors.each do |error| %>
           <li><%= error.message %></li>
         <% end %>
       </ul>
+-->
     </div>
   <% end %>
 
@@ -28,45 +36,21 @@
       </div>
     <% end %>
 
-    <div class="input">
-      <%= form.label :surname, "Nachname" %>
-      <%= form.text_field :surname, required: true %>
-    </div>
+    <%= render 'formelements/input', form: form, record: helper, field_name: :surname, label: 'Nachname' %>
+    
+    <%= render 'formelements/input', form: form, record: helper, field_name: :forename, label: 'Vorname' %>
+    
+    <%= render 'formelements/input', form: form, record: helper, field_name: :birthday, label: 'Geburtstag', input_type: :date %>
 
-    <div class="input">
-      <%= form.label :forename, "Vorname" %>
-      <%= form.text_field :forename, required: true %>
-    </div>
+    <%= render 'formelements/input', form: form, record: helper, field_name: :birthplace, label: 'Geburtsort' %>
 
-    <div class="input">
-      <%= form.label :birthday, 'Geburtstag' %>
-      <%= form.date_select :birthday, start_year: 1970, end_year: DateTime.now.year - 14, required: true %>
-    </div>
+    <%= render 'formelements/input', form: form, record: helper, field_name: :telephone, label: 'Telefonnummer', input_type: :telephone %>
 
-    <div class="input">
-      <%= form.label :birthplace, 'Geburtsort' %>
-      <%= form.text_field :birthplace, required: true %>
-    </div>
+    <%= render 'formelements/input', form: form, record: helper, field_name: :email, label: 'Email', input_type: :email %>
 
-    <div class="input">
-      <%= form.label :telephone, "Telefonnummer" %>
-      <%= form.telephone_field :telephone, required: true %>
-    </div>
+    <%= render 'formelements/input', form: form, record: helper, field_name: :streethouse, label: 'Straße und Hausnummer' %>
 
-    <div class="input">
-      <%= form.label :email, "E-Mail" %>
-      <%= form.email_field :email, required: true %>
-    </div>
-
-    <div class="input">
-      <%= form.label :streethouse, "Straße und Hausnummer" %>
-      <%= form.text_field :streethouse, required: true %>
-    </div>
-
-    <div class="input">
-      <%= form.label :postcity, "Postleitzahl und Stadt" %>
-      <%= form.text_field :postcity, required: true %>
-    </div>
+    <%= render 'formelements/input', form: form, record: helper, field_name: :postcity, label: 'Postleitzahl und Stadt' %>
   </fieldset>
 
   <fieldset class="input">
@@ -75,15 +59,9 @@
       Geistliches Wachstum
     </legend>
 
-    <div class="input">
-      <%= form.label :story, "Wie hast du zu Gott gefunden?" %>
-      <%= form.text_area :story, required: true, rows: 7 %>
-    </div>
+    <%= render 'formelements/input', form: form, record: helper, field_name: :story, label: 'Wie hast du zu Gott gefunden?', input_type: :textarea %>
 
-    <div class="input">
-      <%= form.label :duty, "Hast du einen Dienst in der Gemeinde/Jugend? Wenn ja welche(n)?" %>
-      <%= form.text_field :duty %>
-    </div>
+    <%= render 'formelements/input', form: form, record: helper, field_name: :duty, label: 'Hast du einen Dienst in der Gemeinde/Jugend? Wenn ja welche(n)?' %>
   </fieldset>
 
   <fieldset class="input">
@@ -93,7 +71,13 @@
     </legend>
     <%= render 'teams/catalogue', teams: @teams, selected_team: @teams.first %>
   </fieldset>
-
+  
+  <% if helper.errors.key? :participation %>
+    <br>
+    <br>
+    <%= render 'formelements/errormsg', record: helper, field: :participation %>
+  <% end %>
+  
   <div class="input">
     <%= form.fields_for :registrations do |fields| %>
       <fieldset class="input" data-controller="helperregistration" data-helperregistration-target="root">
@@ -101,6 +85,8 @@
           <i class="fa-solid fa-campground" style="margin-right: var(--spacing-sm);"></i>
           Camp <%= fields.object.camp.name %>
         </legend>
+
+        <%= render 'formelements/errormsg', record: fields.object, field: :duplicate_team %>
 
         <p>
           Jahrgänge: <%= fields.object.camp.participants_year_start %> - <%= fields.object.camp.participants_year_end %>
@@ -153,10 +139,18 @@
     <% end %>
   </div>
 
+    <%= render 'formelements/input',
+               form: form,
+               record: helper,
+               field_name: :preferredCamp,
+               label: 'Falls sich zu viele Mitarbeiter anmelden und du deshalb nur auf ein Camp mitmachen kannst, welches würdest du bevorzugen?' %>
+              
+<!--
   <div class="input">
     <%= form.label :preferredCamp, "Falls sich zu viele Mitarbeiter anmelden und du deshalb nur auf ein Camp mitmachen kannst, welches würdest du bevorzugen?" %>
-    <%= form.text_field :preferredCamp, class: class_names('input--errored': helper.errors.key?(:preferredCamp)) %>
+    <%= form.text_field :preferredCamp %>
   </div>
+-->
 
   <br><br>
   <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion, label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden", form: form do %>

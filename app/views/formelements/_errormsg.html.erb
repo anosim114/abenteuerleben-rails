@@ -2,7 +2,7 @@
   <div style="color: var(--red-100)">
     <ul>
       <% record.errors[field].each do |error| %>
-        <li><%= error %></li>
+        <li><i class="fa-solid fa-circle-exclamation" style="color: var(--danger)"></i> <%= error %></li>
       <% end %>
     </ul>
     </p>

@@ -1,0 +1,52 @@
+<style>
+.form-input {
+  margin: 1rem 0;
+}
+
+.form-input__label {
+  display: block;
+}
+
+.form-input__date-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  gap: var(--spacing-sm);
+}
+
+.form-input__text-area {
+  resize: none;
+}
+
+.form-input .field_with_errors > .form-input__text-field,
+.form-input .field_with_errors > .form-input__date-field,
+.form-input .field_with_errors > .form-input__text-area {
+  border-color: var(--danger);
+}
+</style>
+
+<%# arguments(input_type, form, record, field_name, label) %>
+<div class="form-input">
+  <%# label %>
+  <%= form.label field_name, label,  class: class_names('form-input__label') %>
+  
+  <%# input element %>
+  <% if not defined? input_type %>
+    <%= form.text_field field_name, class: class_names('form-input__text-field') %>
+  <% else %>
+    <% case input_type %>
+    <% when :telephone %>
+      <%= form.telephone_field field_name, class: class_names('form-input__text-field') %>
+    <% when :email %>
+      <%= form.email_field field_name, class: class_names('form-input__text-field') %>
+    <% when :date %>
+      <div class="form-input__date-wrapper">
+      <%= form.date_select field_name, start_year: 1970, end_year: DateTime.now.year - 6, default: Date.new(DateTime.now.year - 18,01,01), class: class_names('form-input__date-field') %>
+      </div>
+    <% when :textarea %>
+      <%= form.text_area field_name, rows: 7, class: 'form-input__text-area' %>
+    <% end %>
+  <% end %>
+
+  <%# errormsg %>
+  <%= render 'formelements/errormsg', record: record, field: field_name %>
+</div>
