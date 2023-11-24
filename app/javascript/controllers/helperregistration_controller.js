@@ -16,6 +16,24 @@ export default class extends Controller {
     toggleRegistration() {
         if (this.checkboxTarget.checked)  this.enable()
         else this.disable()
+
+        this.activatePreferredCampInputBox()
+    }
+
+    activatePreferredCampInputBox() {
+        const checkedTeamsLength = Array.from(document.querySelectorAll('.helper-registration__checkbox'))
+                                        .filter(checkbox => checkbox.checked)
+                                        .length
+
+        const preferredCampElement = document.querySelector('#helper_preferredCamp')
+        
+        if (checkedTeamsLength > 1) {
+            preferredCampElement.disabled = false
+            preferredCampElement.parentElement.classList.remove('d-none')
+        } else {
+            preferredCampElement.disabled = true
+            preferredCampElement.parentElement.classList.add('d-none')
+        }
     }
 
     toggleWishFirstBox() {
@@ -42,5 +60,7 @@ export default class extends Controller {
 
     connect() {
         if (this.checkboxTarget.checked) this.enable()
+        
+        this.activatePreferredCampInputBox()
     }
 }

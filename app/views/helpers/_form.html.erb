@@ -112,7 +112,7 @@
         <%= fields.hidden_field :id %>
         <%= fields.hidden_field :camp_id %>
         <div class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
-          <%= fields.check_box :participate, data: { 'helperregistration-target': 'checkbox', action: 'click->helperregistration#toggleRegistration' } %>
+          <%= fields.check_box :participate, class: 'helper-registration__checkbox', data: { 'helperregistration-target': 'checkbox', action: 'click->helperregistration#toggleRegistration' } %>
           <%= fields.label :participate, "An diesem Camp teilnehmen" %>
         </div>
         <br>
@@ -154,8 +154,8 @@
   </div>
 
   <div class="input">
-    <%= form.label :preferredCamp, "Bevorzugtes Camp, im Falle, dass mehr als ein Camp ausgewählt wurde:" %>
-    <%= form.text_field :preferredCamp %>
+    <%= form.label :preferredCamp, "Falls sich zu viele Mitarbeiter anmelden und du deshalb nur auf ein Camp mitmachen kannst, welches würdest du bevorzugen?" %>
+    <%= form.text_field :preferredCamp, class: class_names('input--errored': helper.errors.key?(:preferredCamp)) %>
   </div>
 
   <br><br>
