@@ -5,7 +5,15 @@ class HelpersController < ApplicationController
   before_action :set_helper, only: %i[ show edit update destroy ]
 
   def index
-    @helpers = Helper.all.order(:surname)
+    @year = params[:year].to_i != 0 ? params[:year].to_i : helpers.get_active_campyear.year
+    
+    @helpers = Helper
+      .joins(registrations: {camp: :campyear})
+      .where('campyears.year': @year)
+      .order(:surname)
+      .distinct
+
+    @campyears = Campyear.all.order(year: :desc).map { |cy| cy.year }
   end
 
   # GET /helpers/1 or /helpers/1.json
