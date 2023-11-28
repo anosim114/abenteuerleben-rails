@@ -19,11 +19,26 @@
 
 <h1>Mitarbeiter</h1>
 
-<div id="helpers">
-  <% @helpers.each do |helper| %>
-    <%= render 'helpers/table-link', helper: helper %>
+<turbo-frame id="helpers-list">
+  <%= form_with url: helpers_path, method: :get do |form| %>
+    <label for="year">Campjahr</label>
+    <select name="year" onchange="this.parentNode.requestSubmit()">
+      <% @campyears.each do |campyear| %>
+        <option <%= 'selected' if @year == campyear %> value="<%= campyear %>">
+          <%= campyear %>
+        </option>
+      <% end %>
+    </select>
   <% end %>
-</div>
+  <br>
+  <br>
+
+  <div id="helpers">
+    <% @helpers.each do |helper| %>
+      <%= render 'helpers/table-link', helper: helper %>
+    <% end %>
+  </div>
+</turbo-frame>
 
 <br>
 <%= link_to new_helper_path, class: '--bordered' do %>
