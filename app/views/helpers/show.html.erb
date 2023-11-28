@@ -24,7 +24,7 @@
 
   <% if @helper.photo.attached? %>
     <div class="helper-info__photo-wrapper">
-      <%= image_tag @helper.photo.variant(:thumb), class: 'helper-info__photo' %>
+      <%= image_tag @helper.photo, class: 'helper-info__photo' %>
     </div>
   <% end %>
 

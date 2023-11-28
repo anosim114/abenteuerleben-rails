@@ -1,13 +1,13 @@
 window.squashImageFile = (element) => {
  
-    // if (imageSmallEnough(element)) {
-    //     return
-    // }
+    if (imageSmallEnough(element)) {
+        return
+    }
     resizeImage(element)
 }
 
 function imageSmallEnough(element) {
-    const MAX_SIZE = 3
+    const MAX_SIZE = 2
 
     if (element.files.length === 0) {
         return true
@@ -55,8 +55,8 @@ function resizeImage(element) {
 }
 
 function getMaxWidthHeight(oldWidth, oldHeight) {
-    const MAX_WIDTH = 2000
-    const MAX_HEIGHT = 2000
+    const MAX_WIDTH = 1500
+    const MAX_HEIGHT = 1500
 
     let width = oldWidth
     let height = oldHeight
