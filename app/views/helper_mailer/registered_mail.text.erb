@@ -1,4 +1,29 @@
-Deine Anmeldung als Mitarbeiter war erfolgreich.
+Hallo <%= @helper.surname %>,
+ 
+du hast dich erfolgreich für <%= @helper.registrations.count > 1 ? "die Camps" : "das Camp" %> <%= (@helper.registrations.map {|r| r.camp.name}).join(' & ') %> 2024 angemeldet.
+Vielen Dank für dein Interesse.
+Deine Anmeldung ist eingegangen.
+Wir werden diese prüfen und uns bei dir nach Anmeldeschluss melden.
+
+ 
+Bitte beachte folgendes:
+- __Lösche diese E-Mail nicht, da sie als Nachweis für deine Anmeldung gilt!!!__
+- Überweis (ab dem 01.01.2024 nicht früher) noch den Mitarbeiterbeitrag i.H.v. 60 € auf das folgende Konto:
+  Abenteuer Leben e.V.
+  DE56 4765 0130 0000 1374 55
+  Verwendungszweck:
+  Mitarbeiterbeitrag Camp 2024 für … (bitte Name ergänzen)
+   *Wenn du an zwei Camps teilnehmen möchtest, dann musst du den Mitarbeiterbetrag nicht zweimal bezahlen!
+- Info:
+  Für das Mitarbeiterwochenende können noch zusätzliche Kosten entstehen
+- Mit deiner Anmeldung erklärst du dich bereit, dass du dem Haftungsausschluss (verlinken) zustimmst. Solltest du diesen nicht zustimmen, so sende bitte innerhalb von 48 Stunden eine Mail mit deinem Widerruf an die Kontaktadresse des Vereins. Eine Teilnahme müssten wir in diesem Fall verwehren.
+ 
+Nach Anmeldeschluss werden wir uns einmal mit allen Mitarbeitern zu einer ersten Infoveranstaltung treffen. Weitere Details hierzu erhältst du zu gegebener Zeit.
+ 
+Für weitere Fragen zu deiner Anmeldung steht dir das Camp-Komitee gerne zur Verfügung.
+ 
+Sei gesegnet!
+
 ================
 
 Deine Anmeldedaten nochmal zum nachlesen.
@@ -23,17 +48,5 @@ Datum des Camps: <%= l registration.camp.date_start %> - <%= l registration.camp
 Jahrgang des Camps: <%= registration.camp.participants_year_start %> - <%= registration.camp.participants_year_end %>
 Team Erstwunsch: <%= registration.wish_first %>
 Team Zweitwunsch: <%= registration.wish_second %>
+
 <% end %>
-
-Bitte  nicht vergessen den Haftungsausschluss und die Wichtigen Informationen zu lesen,
-darin ist z.B. beschrieben an wen und wie viel du für die Teilnahme überweisen musst.
-Die PDF zum Downloaden findest du in unserem Downloadbereich:
-https://abenteuerleben-ev.de/downloads
-
-Falls die Daten so nicht (oder nicht mehr) Stimmen,
-kannst du uns das gerne über unser Kontaktformular mitteilen.
-Den Link dahin findes du hier oder einfach auf der Startseite ganz runterscrollen:
-https://abenteuerleben-ev.de/#kontakt
-
-Vielen Dank und Gottes Segen
-- Das Abenteuerleben Team
