@@ -16,7 +16,7 @@ class Helper < ApplicationRecord
   validates :streethouse, presence: true
   validates :postcity, presence: true
   validates :story, presence: true
-  validates :photo, presence: { message: 'Bitte ein Foto auswählen' }, on: create
+  validates :photo, presence: { message: 'Bitte ein Foto auswählen' }, on: :create
 
   validate :has_at_least_one_participate
   validate :has_prefered_camp
