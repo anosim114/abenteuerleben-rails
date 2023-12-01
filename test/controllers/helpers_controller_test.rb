@@ -21,6 +21,7 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Helper.count") do
       post helpers_url, params: {
         helper: {
+          photo: Rack::Test::UploadedFile.new('test/fixtures/files/avatar.png', 'image/png'),
           surname: @helper.surname,
           forename: @helper.forename,
           birthday: @helper.birthday,
