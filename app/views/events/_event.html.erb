@@ -3,7 +3,7 @@
 
   <article id="<%= dom_id event %>" style="padding: 2rem; margin: 0.4rem 0; max-width: calc(100% - 2rem);">
     <div style="color: var(--gray-300);">
-      <i class="fa-solid fa-calendar-days"></i>
+      <%= forticon 'calendar-days', height: 16 %>
       <% unless event.end_date %>
         <span><%= l event.start_date %></span>
       <% else %>
