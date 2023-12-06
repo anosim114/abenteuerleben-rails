@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/excel/helpers', to: 'helpers#excelify'
   get '/mitarbeiteranmeldung', to: 'helpers#new'
 
+  get '/kinderanmeldung', to: 'child_registrations#index', as: 'child_registration'
+  get '/kinderanmeldung/basis-daten', to: 'child_registrations#new_name', as: 'child_registration_new_name'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get 'admin/dashboard'
