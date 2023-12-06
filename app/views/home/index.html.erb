@@ -11,31 +11,33 @@
     <ul>
       <% if @helpers_open %>
         <li>
-          <%= link_to new_helper_path, style: 'font-weight: bold; color: #967159' do %><i class="fa-solid fa-angle-right"></i>Mitarbeiteranmeldung<% end %>
+          <%= link_to new_helper_path, style: 'font-weight: bold; color: #967159; fill: #967159;' do %>
+            <%= forticon 'angle-right', height: 18 %></i>Mitarbeiteranmeldung
+          <% end %>
         </li>
       <% end %>
       <% if @participants_open %>
         <li>
-          <a href="/kinderanmeldung", style="font-weight: bold; color: #967159"><i class="fa-solid fa-angle-right"></i>Kinderanmeldung</a>
+          <a href="/kinderanmeldung", style="font-weight: bold; color: #967159"><%= forticon 'angle-right', height: 18 %></i>Kinderanmeldung</a>
         </li>
       <% end %>
       <li>
-        <a href="#wer-wir-sind"><i class="fa-solid fa-angle-right"></i>Wer wir sind</a>
+        <a href="#wer-wir-sind"><%= forticon 'angle-right', height: 18 %>Wer wir sind</a>
       </li>
       <li>
-        <a href="#was-wir-machen"><i class="fa-solid fa-angle-right"></i>Was wir machen</a>
+        <a href="#was-wir-machen"><%= forticon 'angle-right', height: 18 %>Was wir machen</a>
       </li>
       <li>
-        <a href="#termine"><i class="fa-solid fa-angle-right"></i>Termine</a>
+        <a href="#termine"><%= forticon 'angle-right', height: 18 %>Termine</a>
       </li>
       <li>
-        <a href="#kontakt"><i class="fa-solid fa-angle-right"></i>Kontakt</a>
+        <a href="#kontakt"><%= forticon 'angle-right', height: 18 %>Kontakt</a>
       </li>
       <li>
-        <%= link_to downloads_path do %><i class="fa-solid fa-angle-right"></i>Downloads<% end %>
+        <%= link_to downloads_path do %><%= forticon 'angle-right', height: 18 %>Downloads<% end %>
       </li>
       <li>
-        <a href="/pages/spenden"><i class="fa-solid fa-angle-right"></i>Spenden / Unterstützen</a>
+        <a href="/pages/spenden"><%= forticon 'angle-right', height: 18 %>Spenden / Unterstützen</a>
       </li>
     </ul>
   </nav>
@@ -46,7 +48,7 @@
   <div class="container">
     <article id="wer-wir-sind">
       <div class="ico">
-        <i class="fa-solid fa-people-line"></i>
+        <%= forticon 'people-line', height: 32, style: 'fill: var(--gray-200)' %>
       </div>
       <h2>
         Wer wir sind
@@ -60,7 +62,7 @@
 
     <article id="was-wir-machen">
       <div class="ico">
-        <i class="fa-solid fa-briefcase"></i>
+        <%= forticon :briefcase, height: 32, style: 'fill: var(--gray-200)' %>
       </div>
       <h2 class="centered">Was wir machen</h2>
       <p>
@@ -76,14 +78,14 @@
   <div id="termine" style="margin-top: var(--spacing-xl);">
     <div class="ico centered">
       <% if @events.length == 0 %>
-        <i class="fa-regular fa-calendar"></i>
+        <%= forticon 'calendar', height: 32, style: 'fill: var(--gray-200)' %>
       <% else %>
-        <i class="fa-solid fa-calendar-day"></i>
+        <%= forticon 'calendar-day', height: 32, style: 'fill: var(--gray-200)' %>
       <% end %>
     </div>
     <h2 class="centered">Termine</h2>
     <div style="display: flex; flex-direction: column; align-items: start;">
-    
+
       <% if @events.length == 0 %>
       <div class="termine--empty">
         <span>
@@ -91,7 +93,7 @@
         </span>
       </div>
       <% end %>
-    
+
       <% @events.each do |event| %>
         <%= render 'events/event', event: event %>
       <% end %>
@@ -102,7 +104,7 @@
 
   <div id="kontakt" style="margin: 0 var(--spacing-sm);">
     <div class="ico centered">
-      <i class="fa-solid fa-envelope"></i>
+        <%= forticon 'envelope', height: 32, style: 'fill: var(--gray-200)' %>
     </div>
     <h2 class="centered">Kontakt</h2>
     <%= render 'messages/form', message: @message %>

@@ -7,6 +7,7 @@ a {
   padding: 0;
   text-decoration: none;
   color: var(--primary);
+  fill: var(--primary);
 
   &.--bordered {
     @include bordered;
@@ -14,6 +15,7 @@ a {
 
   &:hover {
     color: var(--primary-hover);
+    fill: var(--primary-hover);
   }
 
   &:focus {
@@ -22,9 +24,11 @@ a {
 
   &.danger {
     color: var(--danger);
+    fill: var(--danger);
 
     &:hover {
       color: var(--danger-hover);
+      fill: var(--danger-hover);
     }
 
     &:focus {
@@ -34,9 +38,11 @@ a {
 
   &.success {
     color: var(--success);
+    fill: var(--success);
 
     &:hover {
       color: var(--success-hover);
+      fill: var(--success-hover);
     }
 
     &:focus {

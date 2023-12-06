@@ -40,11 +40,12 @@
 
 <br>
 <%= link_to new_helper_path, class: '--bordered' do %>
-  <i class="fa-solid fa-user-plus" style="margin-right: var(--spacing-sm);"></i>
+  <%= forticon 'user-plus', height: 18, style: "margin-right: var(--spacing-sm)" %>
   Manuell Mitarbeiter hinzufügen
 <% end %>
 <br>
 <%= link_to excel_helpers_path(format: "xlsx"), class: '--bordered' do %>
-  <i class="fa-solid fa-file-excel" style="margin-right: var(--spacing-sm); color: green;"></i>
+  <%= forticon 'file-excel', height: 18, style: "margin-right: var(--spacing-sm); color: green" %>
   Mitarbeiterliste als Excel herunterladen
 <% end %>
+

@@ -11,7 +11,7 @@
     <% if download.file.attached? %>
 
       <%= link_to rails_blob_path(download.file, disposition: 'attachment'), class: 'download-link' do %>
-        <i class="fa-solid fa-angle-right download-link__icon"></i><%= download.file.filename %>
+        <%= forticon 'angle-right', height: 18, class: 'download-link__icon' %><%= download.file.filename %>
       <% end %>
 
     <% end %>

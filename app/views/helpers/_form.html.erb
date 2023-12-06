@@ -24,7 +24,7 @@
 
   <fieldset class="input">
     <legend>
-      <i class="fa-solid fa-user" style="margin-right: var(--spacing-sm);"></i>
+      <%= forticon :user, height: 18, style: 'margin-right: var(--spacing-sm)' %>
       Persönliche Daten
     </legend>
 
@@ -37,9 +37,9 @@
     <% end %>
 
     <%= render 'formelements/input', form: form, record: helper, field_name: :surname, label: 'Nachname' %>
-    
+
     <%= render 'formelements/input', form: form, record: helper, field_name: :forename, label: 'Vorname' %>
-    
+
     <%= render 'formelements/input', form: form, record: helper, field_name: :birthday, label: 'Geburtstag', input_type: :date %>
 
     <%= render 'formelements/input', form: form, record: helper, field_name: :birthplace, label: 'Geburtsort' %>
@@ -55,7 +55,7 @@
 
   <fieldset class="input">
     <legend>
-      <i class="fa-solid fa-cross" style="margin-right: var(--spacing-sm);"></i>
+      <%= forticon :cross, height: 18, style: 'margin-right: var(--spacing-sm)' %>
       Geistliches Wachstum
     </legend>
 
@@ -66,23 +66,23 @@
 
   <fieldset class="input">
     <legend>
-      <i class="fa-solid fa-book" style="margin-right: var(--spacing-sm);"></i>
+      <%= forticon :book, height: 18, style: 'margin-right: var(--spacing-sm)' %>
       Teamkatalog
     </legend>
     <%= render 'teams/catalogue', teams: @teams, selected_team: @teams.first %>
   </fieldset>
-  
+
   <% if helper.errors.key? :participation %>
     <br>
     <br>
     <%= render 'formelements/errormsg', record: helper, field: :participation %>
   <% end %>
-  
+
   <div class="input">
     <%= form.fields_for :registrations do |fields| %>
       <fieldset class="input" data-controller="helperregistration" data-helperregistration-target="root">
         <legend>
-          <i class="fa-solid fa-campground" style="margin-right: var(--spacing-sm);"></i>
+          <%= forticon :campground, height: 18, style: 'margin-right: var(--spacing-sm)' %>
           Camp <%= fields.object.camp.name %>
         </legend>
 
@@ -144,7 +144,7 @@
                record: helper,
                field_name: :preferredCamp,
                label: 'Falls sich zu viele Mitarbeiter anmelden und du deshalb nur auf ein Camp mitmachen kannst, welches würdest du bevorzugen?' %>
-              
+
 <!--
   <div class="input">
     <%= form.label :preferredCamp, "Falls sich zu viele Mitarbeiter anmelden und du deshalb nur auf ein Camp mitmachen kannst, welches würdest du bevorzugen?" %>

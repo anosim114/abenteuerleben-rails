@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module RubyRailsPostgres
   class Application < Rails::Application
+    require 'forticons'
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -22,3 +24,4 @@ module RubyRailsPostgres
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+

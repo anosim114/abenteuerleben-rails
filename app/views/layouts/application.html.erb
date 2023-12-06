@@ -15,13 +15,12 @@
     <% if notice %>
       <p style="padding: .4rem; color: green; text-align: center; border-bottom: 1px solid #aaa;"><%= notice %></p>
     <% end %>
-    
     <header class="header">
       <%= link_to root_path do %>
         <%= image_tag 'logo.png', srcset: {'logo-sm.png': '640w', 'logo-md.png': '1024w'}, sizes: '100vw',   alt: 'logo', id: 'logo', data: {turbo_permanent: true} %>
       <% end %>
     </header>
-    
+
     <main class="<%= 'container' if controller_name != 'home' %> <%= 'page' if controller_name == 'pages' %>">
       <%= yield %>
     </main>
@@ -31,12 +30,12 @@
         <%= link_to 'Startseite', root_path, class: 'centered' %>
         <%= link_to 'Downloads', downloads_path, class: 'centered' %>
       </div>
-      
+
       <div style="display: flex; flex-direction: column;">
         <%= link_to "Datenschutz", page_path("datenschutz"), class: 'centered' %>
         <%= link_to "Impressum", page_path("impressum"), class: 'centered' %>
       </div>
-      
+
       <!-- login/logout -->
       <div style="display: flex; flex-direction: column;">
         <% if @current_user.has_read_rights %>

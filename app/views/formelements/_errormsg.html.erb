@@ -2,9 +2,13 @@
   <div style="color: var(--red-100)">
     <ul>
       <% record.errors[field].each do |error| %>
-        <li><i class="fa-solid fa-circle-exclamation" style="color: var(--danger)"></i> <%= error %></li>
+        <li>
+          <%= forticon 'circle-exclamation', height: 18, style: 'color: var(--danger)' %>
+          <%= error %>
+        </li>
       <% end %>
     </ul>
     </p>
   </div>
 <% end %>
+

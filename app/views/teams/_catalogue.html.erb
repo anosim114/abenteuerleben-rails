@@ -7,7 +7,11 @@
         <div class="<%= class_names('team-catalogue__item': true, 'team-catalogue__item--selected': team.name == selected_team.name) %>">
 
           <%= link_to teams_catalogue_path(team), class: 'team-catalogue__item-label' do %>
-            <i class="fa-solid <%= team.name == selected_team.name ? 'fa-chevron-up' : 'fa-chevron-down' %>"></i>
+            <% if team.name == selected_team.name %>
+              <%= forticon 'chevron-up', width: 16 %>
+            <% else %>
+              <%= forticon 'chevron-down', width: 16  %>
+            <% end %>
             <%= team.name %>
           <% end %>
 
