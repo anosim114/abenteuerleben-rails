@@ -6,6 +6,32 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Campyear.create!([{
+  year: 1,
+  participants_register_start: '2023-01-01',
+  participants_register_end: '2024-01-01',
+  helper_register_start: '2023-01-01',
+  helper_register_end: '2024-01-01'
+}])
+
+Camp.create!([{
+  name: 1,
+  campyear: Campyear.first!,
+  date_start: '2024-01-01',
+  date_end: '2024-02-01',
+  participants_year_start: 1,
+  participants_year_end: 16,
+  max_participant_count: 80
+}, {
+  name: 2,
+  campyear: Campyear.first!,
+  date_start: '2024-02-01',
+  date_end: '2024-03-01',
+  participants_year_start: 16,
+  participants_year_end: 32,
+  max_participant_count: 50
+}])
+
 Event.create!([
   {
     title: "testtermin",
@@ -90,7 +116,7 @@ Team.create!([
 
 p "Created #{Team.count} teams"
 
-Helper.create!([{
+h = Helper.new({
   surname: 'musterman',
   forename: 'max',
   birthday: '2000-01-01',
@@ -112,7 +138,9 @@ Helper.create!([{
       participate: true
     )
   ]
-}])
+})
+h.photo.attach(io: Tempfile.new('dis is an image.png'), filename: 'img.png')
+h.save
 
 Parent.create!([
   surname: 'Pushkin',
