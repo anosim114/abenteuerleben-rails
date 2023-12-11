@@ -1,2 +1,7 @@
+require: rubocop-rails
+
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Lint/ErbNewArguments:
   Enabled: false

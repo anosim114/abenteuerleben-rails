@@ -11,9 +11,7 @@ Rails.application.routes.draw do
   get '/mitarbeiteranmeldung', to: 'helpers#new'
 
   get '/kinderanmeldung', to: 'child_registrations#index', as: 'child_registration'
-  get '/kinderanmeldung/basis-daten', to: 'child_registrations#new_name', as: 'child_registration_new_name'
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :child_registration, only: %i[new create]
 
   get 'admin/dashboard'
   get 'admin/dev'
@@ -31,5 +29,5 @@ Rails.application.routes.draw do
 
   # resource :participants
 
-  root "home#index"
+  root 'home#index'
 end

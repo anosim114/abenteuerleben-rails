@@ -19,5 +19,11 @@
   <%= link_to "Ändern des Campjahrs", edit_campyear_path(@campyear) %> |
   <%= link_to "Zurück zu allen Campjahren", campyears_path %> |
 
-  <%= button_to "Löschen des Campjahrs", @campyear, method: :delete, class: 'danger', form: { data: { 'turbo_confirm': 'Sicher, dass das Campjahr gelöscht werden soll?' } } %>
+  <% if @current_user.has_delete_rights %>
+    <%= button_to "Löschen des Campjahrs",
+      @campyear,
+      method: :delete,
+      class: 'danger',
+      form: { data: { 'turbo_confirm': 'Sicher, dass das Campjahr gelöscht werden soll?' } } %>
+  <% end %>
 </div>

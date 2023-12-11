@@ -1,56 +1,41 @@
 class ChildRegistrationsController < ApplicationController
-  before_action :admin_only, except: %i[ new create ]
-  before_action :set_parent, only: %i[ new_parent_base_info new ]
+  before_action :set_parent, except: %i[index create acknowledge]
 
   def index
     # show camp info and the registration button
   end
 
-  def new_name
-    # add the parent name
-  end
-
-  def new_address
-    # add the parent address
-  end
-
-  def new_contact
-    # add the parent contact info
-  end
-
-  def new_member
-    # ask whether the parent in in the local church
-  end
-
-  def new_optional_church
-    # ask what church the parent is in, if not the local
-  end
-
-  def new_child_count
-    # ask how many children should be registered
-  end
-
-  def new_child_name
-    # as child n_th name
-  end
-
-  def new_child_camp
-    # ask what camp the child should participate in
-  end
-
-  def new_child_notes
-    # as for child notes (medical, general notes)
-  end
-
-  def acknowlege
-    # show an overview before the final registering
+  def new
+    @parent = Parent.new
   end
 
   def create
-    # create with all given information
+    return erb :new_name unless @parent.valid? :parent_name
+
+    return erb :new_name unless @parent.valid? :parent_address
+
+    return erb :new_name unless @parent.valid? :parent_contact
+
+    return erb :new_name unless @parent.valid? :parent_member
+
+    return erb :new_name unless @parent.valid? :church
+
+    erb :new_name unless @parent.valid? :child_count
+
+    # start validating children
+  end
+
+  def acknowledge
+    if @parent.valid?
+      @parent.save
+      redirect root_path, notice: 'somethingish'
+    else
+      erb :acknowledge, notice: 'somehow an error, probably'
+    end
   end
 
   private
+
   def set_active_campyear
     @campeyar = helper.get_active_campyear
   end
@@ -63,8 +48,8 @@ class ChildRegistrationsController < ApplicationController
     params.require(:parent).permit(
       :surname, :forename, :telephone, :email,
       :street, :house, :post, :city,
-      :member, :church
-      child_attributes: [:id, :camp_id, :surname, :forename, :birthday, :medical_condition, :notes])
+      :member, :church,
+      child_attributes: %i[id camp_id surname forename birthday medical_condition notes]
+    )
   end
 end
-

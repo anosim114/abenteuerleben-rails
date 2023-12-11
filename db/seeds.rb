@@ -6,32 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Campyear.create!([{
-  year: 1,
-  participants_register_start: '2023-01-01',
-  participants_register_end: '2024-01-01',
-  helper_register_start: '2023-01-01',
-  helper_register_end: '2024-01-01'
-}])
-
-Camp.create!([{
-  name: 1,
-  campyear: Campyear.first!,
-  date_start: '2024-01-01',
-  date_end: '2024-02-01',
-  participants_year_start: 1,
-  participants_year_end: 16,
-  max_participant_count: 80
-}, {
-  name: 2,
-  campyear: Campyear.first!,
-  date_start: '2024-02-01',
-  date_end: '2024-03-01',
-  participants_year_start: 16,
-  participants_year_end: 32,
-  max_participant_count: 50
-}])
-
 Event.create!([
   {
     title: "testtermin",
@@ -45,6 +19,14 @@ Event.create!([
     start_date: "2023-12-31"
   }
 ])
+
+Page.create!([{
+  url: 'mitarbeiter_haftungsausschluss',
+  content: ''
+}, {
+  url: 'mitarbeiter_wichtige-infos',
+  content: ''
+}])
 
 User.create!([{
   name: 'admin',
@@ -61,10 +43,10 @@ User.create!([{
 p "Created #{User.count} users"
 
 Campyear.create!([{
-  year: 2019,
-  participants_register_start: '2024-07-10',
+  year: 2024,
+  participants_register_start: '2023-07-10',
   participants_register_end: '2024-08-10',
-  helper_register_start: '2024-04-01',
+  helper_register_start: '2023-04-01',
   helper_register_end: '2024-04-10',
   accentcolor_primary: '#ff0000',
   accentcolor_secondary: '#fee000',
@@ -100,6 +82,11 @@ Team.create!([
   {
     name: 'Sportler',
     description: 'Sportler bewegen sich viel',
+    enabled: true,
+  },
+  {
+    name: 'Sauerkraut',
+    description: 'Sauerkraut macht sauer, du musst aufpassen, dass das nicht passiert',
     enabled: true,
   },
   {
@@ -142,7 +129,7 @@ h = Helper.new({
 h.photo.attach(io: Tempfile.new('dis is an image.png'), filename: 'img.png')
 h.save
 
-Parent.create!([
+Parent.create!([{
   surname: 'Pushkin',
   forename: 'Mama',
   telephone: '01234 56789',
@@ -153,7 +140,7 @@ Parent.create!([
   city: 'gorad',
   member: false,
   church: 'moskow'
-],[
+},{
   surname: 'GOrbatschov',
   forename: 'Papa',
   telephone: '05432 6254',
@@ -163,7 +150,7 @@ Parent.create!([
   post: '10000',
   city: 'moskow',
   member: true
-])
+}])
 
 p "Created #{Parent.count} parents"
 p "Created #{Helper.count} helpers"

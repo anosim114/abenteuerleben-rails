@@ -1,6 +1,11 @@
 <turbo-frame id="child-registration">
-  <label>
-    <p>Der name</p>
-    <input></input>
-  </label>
+  <%= @parent.to_json %>
+  <%= form_with model: @parent, url: child_registration_new_address_path do |form| %>
+    <label>
+      <p>Der name</p>
+      <input></input>
+    </label>
+    <%= form.submit 'next' %>
+  <% end %>
 </turbo-frame>
+
