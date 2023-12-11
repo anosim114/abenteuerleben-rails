@@ -1,0 +1,64 @@
+
+<turbo-frame id="child-registration">
+  <%= form_with model: @parent, url: child_registrations_path do |form| %>
+    <%= form.hidden_field :surname %>
+    <%= form.hidden_field :forename %>
+    <%= form.hidden_field :member %>
+    <%= form.hidden_field :telephone %>
+    <%= form.hidden_field :housephone %>
+    <%= form.hidden_field :email %>
+    <%= form.hidden_field :street %>
+    <%= form.hidden_field :house %>
+    <%= form.hidden_field :post %>
+    <%= form.hidden_field :city %>
+    <%= form.hidden_field :church %>
+
+    <p><%= @stage %></p>
+
+    <%# base %>
+    <% if !(defined? @stage) || @stage == 'base' %>
+      <%= form.text_field :surname, placeholder: 'Nachname' %>
+      <%= form.text_field :forename, placeholder: 'Vorname' %>
+
+      <label style="display: flex; flex-direction: row; align-items: start;">
+        <%= form.check_box :member %>
+        <span>
+          Mitglied der FECG Blomber
+        </span>
+      </label>
+
+      <%= form.submit 'continue' %>
+    <% end %>
+
+    <% if @stage == 'address' %>
+      <%= form.text_field :street %>
+      <%= form.text_field :house %>
+      <%= form.text_field :post %>
+      <%= form.text_field :city %>
+      <%= form.submit 'continue' %>
+    <% end %>
+
+    <% if @stage == 'contact' %>
+      <%= form.text_field :telephone %>
+      <%= form.text_field :housephone %>
+      <%= form.text_field :email %>
+      <%= form.submit 'continue' %>
+    <% end %>
+
+    <% if @stage == 'optional' %>
+      <%= form.text_field :church %>
+      <%= form.submit 'continue' %>
+    <% end %>
+
+    <% if @stage == 'child_count' %>
+      <%= form.number_field :child_count %>
+      <%= form.submit 'continue' %>
+    <% end %>
+
+    <% if @stage == 'children' %>
+      <% @parent.children.each do |c| %>
+        assemble the form for them here...
+      <% end %>
+    <% end %>
+  <% end %>
+</turbo-frame>

@@ -1,5 +1,5 @@
 class ChildRegistrationsController < ApplicationController
-  before_action :set_parent, except: %i[index create acknowledge]
+  before_action :set_parent, only: %i[create acknowledge]
 
   def index
     # show camp info and the registration button
@@ -10,19 +10,14 @@ class ChildRegistrationsController < ApplicationController
   end
 
   def create
-    return erb :new_name unless @parent.valid? :parent_name
+    @stage = 'base'
 
-    return erb :new_name unless @parent.valid? :parent_address
+    @stage = 'address' if @parent.valid? :base
+    @stage = 'contact' if @parent.valid? :address
+    @stage = 'optional' if @parent.valid? :contact
+    @stage = 'child_count' if @parent.valid? :optional
 
-    return erb :new_name unless @parent.valid? :parent_contact
-
-    return erb :new_name unless @parent.valid? :parent_member
-
-    return erb :new_name unless @parent.valid? :church
-
-    erb :new_name unless @parent.valid? :child_count
-
-    # start validating children
+    render :new
   end
 
   def acknowledge
@@ -30,7 +25,8 @@ class ChildRegistrationsController < ApplicationController
       @parent.save
       redirect root_path, notice: 'somethingish'
     else
-      erb :acknowledge, notice: 'somehow an error, probably'
+      # with buttons to be able to edit the input
+      erb :ack, notice: 'somehow an error, probably'
     end
   end
 
@@ -46,10 +42,11 @@ class ChildRegistrationsController < ApplicationController
 
   def parent_params
     params.require(:parent).permit(
-      :surname, :forename, :telephone, :email,
+      :surname, :forename, :telephone, :housephone, :email,
       :street, :house, :post, :city,
       :member, :church,
-      child_attributes: %i[id camp_id surname forename birthday medical_condition notes]
     )
+    # for later
+    # child_attributes: %i[id camp_id surname forename birthday medical_condition notes]
   end
 end

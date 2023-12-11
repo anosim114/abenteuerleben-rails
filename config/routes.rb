@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/mitarbeiteranmeldung', to: 'helpers#new'
 
   get '/kinderanmeldung', to: 'child_registrations#index', as: 'child_registration'
-  resources :child_registration, only: %i[new create]
+  resources :child_registrations, only: %i[new create]
 
   get 'admin/dashboard'
   get 'admin/dev'
