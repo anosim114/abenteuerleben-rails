@@ -7,15 +7,11 @@ class ChildRegistrationsController < ApplicationController
 
   def new
     @parent = Parent.new
+    @stage = 'base'
   end
 
   def create
-    @stage = 'base'
-
-    @stage = 'address' if @parent.valid? :base
-    @stage = 'contact' if @parent.valid? :address
-    @stage = 'optional' if @parent.valid? :contact
-    @stage = 'child_count' if @parent.valid? :optional
+    @stage = next_stage params[:stage]
 
     render :new
   end
@@ -48,5 +44,27 @@ class ChildRegistrationsController < ApplicationController
     )
     # for later
     # child_attributes: %i[id camp_id surname forename birthday medical_condition notes]
+  end
+
+  def next_stage(prev_stage)
+    @stage = prev_stage
+    case prev_stage
+
+    when 'base'
+      base_valid = @parent.valid? :base
+      @stage = 'optional' if base_valid
+      @stage = 'address' if base_valid && @parent.valid?(:optional)
+      @parent.valid? :base # reset errors
+    when 'optional'
+      @stage = 'address' if @parent.valid? :optional
+    when 'address'
+      @stage = 'contact' if @parent.valid? :address
+    when 'contact'
+      @stage = 'child_count' if @parent.valid? :contact
+    when 'child_count'
+      @stage = 'childish' if @parent.valid? :child_count
+    end
+
+    @stage
   end
 end

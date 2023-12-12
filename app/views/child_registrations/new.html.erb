@@ -1,53 +1,64 @@
 
 <turbo-frame id="child-registration">
   <%= form_with model: @parent, url: child_registrations_path do |form| %>
-    <%= form.hidden_field :surname %>
-    <%= form.hidden_field :forename %>
-    <%= form.hidden_field :member %>
-    <%= form.hidden_field :telephone %>
-    <%= form.hidden_field :housephone %>
-    <%= form.hidden_field :email %>
-    <%= form.hidden_field :street %>
-    <%= form.hidden_field :house %>
-    <%= form.hidden_field :post %>
-    <%= form.hidden_field :city %>
-    <%= form.hidden_field :church %>
+    <input type="hidden" value="<%= @stage %>" name="stage"></input>
 
-    <p><%= @stage %></p>
+    <% if @stage == 'base' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :surname, label: 'Nachname' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :forename, label: 'Vorname' %>
 
-    <%# base %>
-    <% if !(defined? @stage) || @stage == 'base' %>
-      <%= form.text_field :surname, placeholder: 'Nachname' %>
-      <%= form.text_field :forename, placeholder: 'Vorname' %>
-
-      <label style="display: flex; flex-direction: row; align-items: start;">
-        <%= form.check_box :member %>
-        <span>
-          Mitglied der FECG Blomber
-        </span>
+      <label class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
+        <%= form.check_box :member, style: 'display inline-block' %>
+        <span style="">Mitglied der FECG Blomberg</span>
       </label>
 
-      <%= form.submit 'continue' %>
-    <% end %>
-
-    <% if @stage == 'address' %>
-      <%= form.text_field :street %>
-      <%= form.text_field :house %>
-      <%= form.text_field :post %>
-      <%= form.text_field :city %>
-      <%= form.submit 'continue' %>
-    <% end %>
-
-    <% if @stage == 'contact' %>
-      <%= form.text_field :telephone %>
-      <%= form.text_field :housephone %>
-      <%= form.text_field :email %>
-      <%= form.submit 'continue' %>
+      <div class="submit">
+        <%= form.submit "Weiter" %>
+      </div>
+    <% else %>
+      <%= form.hidden_field :surname %>
+      <%= form.hidden_field :forename %>
+      <%= form.hidden_field :member %>
     <% end %>
 
     <% if @stage == 'optional' %>
-      <%= form.text_field :church %>
-      <%= form.submit 'continue' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :church, label: 'Deine angehörige Kirche' %>
+
+      <div class="submit">
+        <%= form.submit "Weiter" %>
+      </div>
+    <% else %>
+      <%= form.hidden_field :church %>
+    <% end %>
+
+    <% if @stage == 'address' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :street, label: 'Straße' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :house, label: 'Hausnummer' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :post, label: 'Postleitzahl' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :city, label: 'Stadt' %>
+
+      <div class="submit">
+        <%= form.submit "Weiter" %>
+      </div>
+    <% else %>
+      <%= form.hidden_field :street %>
+      <%= form.hidden_field :house %>
+      <%= form.hidden_field :post %>
+      <%= form.hidden_field :city %>
+    <% end %>
+
+    <% if @stage == 'contact' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :telephone, label: 'Telefonnummer' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :housephone, label: 'Telefonnummer 2' %>
+      <%= render 'formelements/input', form: form, record: @parent, input_type: :email, field_name: :email, label: 'Email' %>
+
+      <div class="submit">
+        <%= form.submit "Weiter" %>
+      </div>
+    <% else %>
+      <%= form.hidden_field :telephone %>
+      <%= form.hidden_field :housephone %>
+      <%= form.hidden_field :email %>
     <% end %>
 
     <% if @stage == 'child_count' %>

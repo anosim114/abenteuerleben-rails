@@ -15,5 +15,12 @@ class Parent < ApplicationRecord
   validates :email, presence: true, on: :contact
 
   # optional
-  validates :church, presence: true, on: :optional # based on if member or not
+  validate :validate_church, on: :optional # based on if member or not
+
+  def validate_church
+    return if member || church.present?
+
+    errors.add :church, 'Trage bitte deine zugehörige Kirche ein'
+  end
 end
+
