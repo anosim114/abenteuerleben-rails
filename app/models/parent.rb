@@ -13,9 +13,12 @@ class Parent < ApplicationRecord
   validates :telephone, presence: true, on: :contact
   validates :housephone, presence: true, on: :contact
   validates :email, presence: true, on: :contact
+  validates :child_count, presence: true, on: :child_count
 
   # optional
   validate :validate_church, on: :optional # based on if member or not
+
+  attr_accessor :child_count
 
   def validate_church
     return if member || church.present?

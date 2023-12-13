@@ -11,6 +11,15 @@ class ChildRegistrationsController < ApplicationController
   end
 
   def create
+    if params[:back]
+      @stage = params[:last_stage]
+
+      @stage = 'base' if @stage == 'optional' && @parent.member
+      logger.debug @stage
+
+      return render :new
+    end
+
     @stage = next_stage params[:stage]
 
     render :new
@@ -41,6 +50,7 @@ class ChildRegistrationsController < ApplicationController
       :surname, :forename, :telephone, :housephone, :email,
       :street, :house, :post, :city,
       :member, :church,
+      :child_count
     )
     # for later
     # child_attributes: %i[id camp_id surname forename birthday medical_condition notes]

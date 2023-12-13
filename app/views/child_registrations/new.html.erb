@@ -24,7 +24,10 @@
     <% if @stage == 'optional' %>
       <%= render 'formelements/input', form: form, record: @parent, field_name: :church, label: 'Deine angehörige Kirche' %>
 
+
       <div class="submit">
+        <input type="hidden" name="last_stage" value="base">
+        <%= form.submit "Zurück", name: 'back', style: 'background-color: var(--gray-500);' %>
         <%= form.submit "Weiter" %>
       </div>
     <% else %>
@@ -37,7 +40,11 @@
       <%= render 'formelements/input', form: form, record: @parent, field_name: :post, label: 'Postleitzahl' %>
       <%= render 'formelements/input', form: form, record: @parent, field_name: :city, label: 'Stadt' %>
 
+
       <div class="submit">
+        <input type="hidden" name="last_stage" value="optional">
+        <!-- todo: does not work correctly going back to base and here again if church is manually set -->
+        <%= form.submit "Zurück", name: 'back' %>
         <%= form.submit "Weiter" %>
       </div>
     <% else %>
@@ -53,6 +60,8 @@
       <%= render 'formelements/input', form: form, record: @parent, input_type: :email, field_name: :email, label: 'Email' %>
 
       <div class="submit">
+        <input type="hidden" name="last_stage" value="address">
+        <%= form.submit "Zurück", name: 'back' %>
         <%= form.submit "Weiter" %>
       </div>
     <% else %>
@@ -62,14 +71,17 @@
     <% end %>
 
     <% if @stage == 'child_count' %>
-      <%= form.number_field :child_count %>
-      <%= form.submit 'continue' %>
+      <%= render 'formelements/input', form: form, record: @parent, field_name: :child_count, label: 'Wie viele Kinder sollen angemeldet werden?' %>
+
+      <div class="submit">
+        <input type="hidden" name="last_stage" value="contact">
+        <%= form.submit "Zurück", name: 'back' %>
+        <%= form.submit "Weiter" %>
+      </div>
     <% end %>
 
-    <% if @stage == 'children' %>
-      <% @parent.children.each do |c| %>
-        assemble the form for them here...
-      <% end %>
+    <% if @stage == 'childish' %>
+      ... weiteres folgt
     <% end %>
   <% end %>
 </turbo-frame>
