@@ -1,4 +1,5 @@
 
+<!-- TODO: reverse order back and forword in mobile -->
 <turbo-frame id="child-registration">
   <%= form_with model: @parent, url: child_registrations_path do |form| %>
     <input type="hidden" value="<%= @stage %>" name="stage"></input>
@@ -76,12 +77,53 @@
       <div class="submit">
         <input type="hidden" name="last_stage" value="contact">
         <%= form.submit "Zurück", name: 'back' %>
-        <%= form.submit "Weiter" %>
+        <%= form.submit "Zur Anmeldebestätigung" %>
       </div>
     <% end %>
 
     <% if @stage == 'childish' %>
-      ... weiteres folgt
+      <table>
+        <tr>
+          <th>Nachname</th>
+          <td><%= @parent.surname %>
+        </tr>
+        <tr>
+          <th>Vorname</th>
+          <td><%= @parent.forename %>
+        </tr>
+        <tr>
+          <th>Street</th>
+          <td><%= @parent.street %>
+        </tr>
+        <tr>
+          <th>Haus</th>
+          <td><%= @parent.house %>
+        </tr>
+        <tr>
+          <th>PLZ</th>
+          <td><%= @parent.post %>
+        </tr>
+        <tr>
+          <th>Stadt</th>
+          <td><%= @parent.city %>
+        </tr>
+        <tr>
+          <th>Telefonnummer</th>
+          <td><%= @parent.telephone %>
+        </tr>
+        <tr>
+          <th>Haustelefon</th>
+          <td><%= @parent.housephone %>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= @parent.email %>
+        </tr>
+        <tr>
+          <th>num children</th>
+          <td><%= @parent.child_count %>
+        </tr>
+      </table>
     <% end %>
   <% end %>
 </turbo-frame>

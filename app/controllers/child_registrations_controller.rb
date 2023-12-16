@@ -11,23 +11,26 @@ class ChildRegistrationsController < ApplicationController
   end
 
   def create
+    stage = 'base'
     if params[:back]
-      @stage = params[:last_stage]
-
-      @stage = 'base' if @stage == 'optional' && @parent.member
-      logger.debug @stage
-
-      return render :new
+      previous = params[:last_stage]
+      previous = 'base' if previous == 'optional' && @parent.member
+      stage = previous
+    else
+      # if direction is forward, get next stage
+      stage = next_stage params[:stage]
     end
 
-    @stage = next_stage params[:stage]
-
+    @stage = stage
     render :new
   end
 
   def acknowledge
     if @parent.valid?
       @parent.save
+
+      # TODO: reset church if member is true
+
       redirect root_path, notice: 'somethingish'
     else
       # with buttons to be able to edit the input
@@ -59,12 +62,9 @@ class ChildRegistrationsController < ApplicationController
   def next_stage(prev_stage)
     @stage = prev_stage
     case prev_stage
-
     when 'base'
-      base_valid = @parent.valid? :base
-      @stage = 'optional' if base_valid
-      @stage = 'address' if base_valid && @parent.valid?(:optional)
-      @parent.valid? :base # reset errors
+      @stage = 'optional' if @parent.valid? :base
+      @stage = 'address' if @parent.member
     when 'optional'
       @stage = 'address' if @parent.valid? :optional
     when 'address'
