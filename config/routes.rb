@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   get 'login', to: 'session#login'
   post 'login', to: 'session#auth'
   get 'logout', to: 'session#logout'
-
   get 'downloads/admin', to: 'downloads#admin'
   resources :downloads
 

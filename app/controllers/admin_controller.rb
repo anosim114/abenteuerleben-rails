@@ -1,3 +1,5 @@
+# The controller for the admins
+# it hosts the page which exposes all the admin-only pages
 class AdminController < ApplicationController
   before_action :admin_only
 
@@ -6,6 +8,5 @@ class AdminController < ApplicationController
     @helper_count = Helper.all.count
   end
 
-  def dev
-  end
+  def dev; end
 end

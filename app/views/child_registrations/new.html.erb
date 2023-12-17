@@ -1,6 +1,13 @@
 
 <!-- TODO: reverse order back and forword in mobile -->
 <turbo-frame id="child-registration">
+  <style>
+    .child-registration_page-actions {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  </style>
+
   <%= form_with model: @parent, url: child_registrations_path do |form| %>
     <input type="hidden" value="<%= @stage %>" name="stage"></input>
 
@@ -13,7 +20,7 @@
         <span style="">Mitglied der FECG Blomberg</span>
       </label>
 
-      <div class="submit">
+      <div class="submit child-registration_page-actions">
         <%= form.submit "Weiter" %>
       </div>
     <% else %>
@@ -26,9 +33,9 @@
       <%= render 'formelements/input', form: form, record: @parent, field_name: :church, label: 'Deine angehörige Kirche' %>
 
 
-      <div class="submit">
+      <div class="submit child-registration_page-actions">
         <input type="hidden" name="last_stage" value="base">
-        <%= form.submit "Zurück", name: 'back', style: 'background-color: var(--gray-500);' %>
+        <%= form.submit "Zurück", name: 'back', class: 'button button-passive' %>
         <%= form.submit "Weiter" %>
       </div>
     <% else %>
@@ -42,10 +49,9 @@
       <%= render 'formelements/input', form: form, record: @parent, field_name: :city, label: 'Stadt' %>
 
 
-      <div class="submit">
+      <div class="submit child-registration_page-actions">
         <input type="hidden" name="last_stage" value="optional">
-        <!-- todo: does not work correctly going back to base and here again if church is manually set -->
-        <%= form.submit "Zurück", name: 'back' %>
+        <%= form.submit "Zurück", name: 'back', class: 'button button-passive' %>
         <%= form.submit "Weiter" %>
       </div>
     <% else %>
@@ -60,9 +66,9 @@
       <%= render 'formelements/input', form: form, record: @parent, field_name: :housephone, label: 'Telefonnummer 2' %>
       <%= render 'formelements/input', form: form, record: @parent, input_type: :email, field_name: :email, label: 'Email' %>
 
-      <div class="submit">
+      <div class="submit child-registration_page-actions">
         <input type="hidden" name="last_stage" value="address">
-        <%= form.submit "Zurück", name: 'back' %>
+        <%= form.submit "Zurück", name: 'back', class: 'button button-passive' %>
         <%= form.submit "Weiter" %>
       </div>
     <% else %>
@@ -74,14 +80,16 @@
     <% if @stage == 'child_count' %>
       <%= render 'formelements/input', form: form, record: @parent, field_name: :child_count, label: 'Wie viele Kinder sollen angemeldet werden?' %>
 
-      <div class="submit">
+      <div class="submit child-registration_page-actions">
         <input type="hidden" name="last_stage" value="contact">
-        <%= form.submit "Zurück", name: 'back' %>
+        <%= form.submit "Zurück", name: 'back', class: 'button button-passive' %>
         <%= form.submit "Zur Anmeldebestätigung" %>
       </div>
+    <% else %>
+        <%= form.hidden_field :child_count %>
     <% end %>
 
-    <% if @stage == 'childish' %>
+    <% if @stage == 'ack' %>
       <table>
         <tr>
           <th>Nachname</th>
@@ -124,6 +132,12 @@
           <td><%= @parent.child_count %>
         </tr>
       </table>
+
+      <div class="submit">
+        <input type="hidden" name="last_stage" value="child_count">
+        <%= form.submit "Zurück", name: 'back', class: 'button button-passive' %>
+        <%= form.submit "Verbindlich anmelden", 'data-turbo': false %>
+      </div>
     <% end %>
   <% end %>
 </turbo-frame>

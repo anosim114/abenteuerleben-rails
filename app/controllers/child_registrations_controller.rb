@@ -1,47 +1,43 @@
 class ChildRegistrationsController < ApplicationController
-  before_action :set_parent, only: %i[create acknowledge]
+  before_action :set_parent, only: %i[create]
+  before_action :set_active_campyear, only: %i[index create]
 
-  def index
-    # show camp info and the registration button
-  end
-
+  p
   def new
     @parent = Parent.new
     @stage = 'base'
   end
 
   def create
-    stage = 'base'
+    stage = ''
     if params[:back]
       previous = params[:last_stage]
       previous = 'base' if previous == 'optional' && @parent.member
       stage = previous
     else
+      logger.info "the last stage was: #{params[:stage]}"
       # if direction is forward, get next stage
       stage = next_stage params[:stage]
+      logger.info "controller:create says it's #{stage}"
     end
 
     @stage = stage
-    render :new
-  end
 
-  def acknowledge
-    if @parent.valid?
+    if @stage == 'create' && !params[:back] && @parent.valid?
       @parent.save
 
-      # TODO: reset church if member is true
+      @parent.church = '' if @parent.member
 
-      redirect root_path, notice: 'somethingish'
+      redirect_to root_path, notice: 'Erfolgreich angemeldet. Du wirst in kürze eine Email erhalten.'
     else
-      # with buttons to be able to edit the input
-      erb :ack, notice: 'somehow an error, probably'
+      render :new
     end
   end
 
   private
 
   def set_active_campyear
-    @campeyar = helper.get_active_campyear
+    @campyear = helpers.get_active_campyear
   end
 
   def set_parent
@@ -70,9 +66,12 @@ class ChildRegistrationsController < ApplicationController
     when 'address'
       @stage = 'contact' if @parent.valid? :address
     when 'contact'
+      logger.info 'go to child_count now'
       @stage = 'child_count' if @parent.valid? :contact
     when 'child_count'
-      @stage = 'childish' if @parent.valid? :child_count
+      @stage = 'ack' if @parent.valid? :child_count
+    when 'ack'
+      @stage = 'create' if @parent.valid? :create
     end
 
     @stage
