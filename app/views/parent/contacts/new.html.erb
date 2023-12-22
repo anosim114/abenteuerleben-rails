@@ -1,0 +1,18 @@
+<%= form_with model: @parent_contact do |form| %>
+    <fieldset class="input">
+      <legend>
+        <%= forticon 'address-book', height: 18, style: 'margin-right: var(--spacing-sm)' %>
+      </legend>
+
+      <%= render 'formelements/input', form: form, record: @parent_contact, field_name: :telephone, label: 'Telefonnummer', required: true %>
+      <%= render 'formelements/input', form: form, record: @parent_contact, field_name: :housephone, label: 'Telefonnummer 2' %>
+      <%= render 'formelements/input', form: form, record: @parent_contact, input_type: :email, field_name: :email, label: 'Email', required: true %>
+
+
+      <%# if @parent.member %>
+        <%#= render 'formelements/input', form: form, record: @parent_contact, field_name: :church, label: 'Deine anghörige Gemeinde', required: true %>
+      <%# end %>
+    </fieldset>
+
+    <%= form.submit 'Weiter' %>
+<% end %>

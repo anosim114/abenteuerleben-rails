@@ -129,29 +129,5 @@ h = Helper.new({
 h.photo.attach(io: Tempfile.new('dis is an image.png'), filename: 'img.png')
 h.save
 
-Parent.create!([{
-  surname: 'Pushkin',
-  forename: 'Mama',
-  telephone: '01234 56789',
-  email: 'mama_pushkin@register.now',
-  street: 'ulitzastr.',
-  house: '111',
-  post: '12345',
-  city: 'gorad',
-  member: false,
-  church: 'moskow'
-},{
-  surname: 'GOrbatschov',
-  forename: 'Papa',
-  telephone: '05432 6254',
-  email: 'papa_papawich@mail.ussr',
-  street: 'kremlstr.',
-  house: '1',
-  post: '10000',
-  city: 'moskow',
-  member: true
-}])
-
-p "Created #{Parent.count} parents"
 p "Created #{Helper.count} helpers"
 p "Created #{Registration.count} registrations"

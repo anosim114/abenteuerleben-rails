@@ -1,0 +1,80 @@
+<style>
+    table {
+        text-align: left;
+    }
+
+    th {
+        padding-right: var(--spacing-md);
+    }
+
+    tr:nth-child(odd) {
+        background-color: var(--blue-opacity);
+    }
+</style>
+
+<%= form_with model: @parent do |form| %>
+    <%= form.hidden_field :forename %>
+    <%= form.hidden_field :surname %>
+    <%= form.hidden_field :member %>
+    <%= form.hidden_field :church %>
+    <%= form.hidden_field :street %>
+    <%= form.hidden_field :house %>
+    <%= form.hidden_field :post %>
+    <%= form.hidden_field :city %>
+    <%= form.hidden_field :telephone %>
+    <%= form.hidden_field :housephone %>
+    <%= form.hidden_field :email %>
+
+    <table>
+        <tr>
+            <th>Nachname</th>
+            <td><%= @parent.surname %></td>
+        </tr>
+        <tr>
+            <th>Vorname</th>
+            <td><%= @parent.forename %></td>
+        </tr>
+        <tr>
+            <th>Gemeinde</th>
+            <td><%= @parent.member ? 'FECG Blomberg' : @parent.church %></td>
+        </tr>
+        <tr>
+            <th>Strasse</th>
+            <td><%= @parent.street %></td>
+        </tr>
+        <tr>
+            <th>HNr</th>
+            <td><%= @parent.house %></td>
+        </tr>
+        <tr>
+            <th>PLZ</th>
+            <td><%= @parent.post %></td>
+        </tr>
+        <tr>
+            <th>Stadt</th>
+            <td><%= @parent.city %></td>
+        </tr>
+        <tr>
+            <th>Telefon</th>
+            <td><%= @parent.telephone %></td>
+        </tr>
+        <tr>
+            <th>Haustelephone</th>
+            <td><%= @parent.housephone %></td>
+        </tr>
+        <tr>
+            <th>E-Mail</th>
+            <td><%= @parent.email %></td>
+        </tr>
+    </table>
+
+    <br>
+    <p>
+        Ihr werdet von uns eine bestätigungsemail erhalten mit weiteren infos
+    </p>
+
+    <%# TODO: insert haftungsausschuss und wichtige infos %>
+  </fieldset>
+
+  <%= form.submit 'Verbindlich und kostenpflichtig anmelden' %>
+<% end %>

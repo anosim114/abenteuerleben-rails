@@ -1,0 +1,17 @@
+<%= form_with model: @parent_name do |form| %>
+  <fieldset class="input">
+    <legend>
+      <%= forticon :user, height: 18, style: 'margin-right: var(--spacing-sm)' %>
+    </legend>
+
+    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :surname, label: 'Nachname', required: true %>
+    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :forename, label: 'Vorname', required: true %>
+
+    <label class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
+      <%= form.check_box :member, style: 'display inline-block' %>
+      <span style="">Mitglied der FECG Blomberg</span>
+    </label>
+  </fieldset>
+
+  <%= form.submit 'Weiter' %>
+<% end %>

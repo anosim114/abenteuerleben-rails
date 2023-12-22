@@ -45,7 +45,7 @@ class Helper < ApplicationRecord
 
   def prefered_camp
     registration_count = registrations.reduce(0) do |sum, r|
-      sum += + r.participate ? 1 : 0
+      sum += r.participate ? 1 : 0
     end
     return if registration_count < 2
 

@@ -1,0 +1,18 @@
+<%# arguments(form, field_name, record, options, label) %>
+<div class="form-input">
+  <%# label %>
+  <%= form.label field_name,  class: class_names('form-input__label') do %>
+    <%= label %>
+    <% if defined? required %>
+      <div class="form-input__required">
+        <%= forticon :asterisk, height: 8 %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%# input element %>
+  <%= form.select field_name, options, class: class_names('form-input__select') %>
+
+  <%# errormsg %>
+  <%= render 'formelements/errormsg', record: record, field: field_name %>
+</div>

@@ -2,14 +2,19 @@
 .child-registration-info__table {
   width: 100%;
   text-align: left;
+
+  tr > * {
+    border-radius: var(--border-radius);
+    padding: 0.2rem;
+  }
 }
 
 .child-registration-info__tr:nth-child(even) {
-  background-color: #e0e0e0;
+  background-color: var(--blue-opacity);
 }
 
 .child-registration-info_camp-header {
-  text-align: center;
+  padding-top: 0.5rem;
   padding-bottom: 1rem;
   margin: 0;
 }
@@ -19,7 +24,18 @@
 }
 
 .child-registartion-info_register-btn {
-  margin-top: 3rem; } </style> <div> <h1>Kinderanmeldung</h1> <h2>Campinfos</h2> <div> <% @campyear.camps.each do |c| %> <div class="child-registration-info"> <h3 class="child-registration-info_camp-header"> Camp <%= c.name %> </h3> <table class="child-registration-info__table"> <tr class="child-registration-info__tr">
+  margin-top: 3rem;
+}
+</style>
+
+<div>
+  <h1>Kinderanmeldung</h1>
+  <div>
+    <% @campyear.camps.each do |c| %>
+      <div class="child-registration-info">
+      <h3 class="child-registration-info_camp-header"><%= forticon :campground, height: 20 %> Camp <%= c.name %> </h3>
+        <table class="child-registration-info__table">
+          <tr class="child-registration-info__tr">
             <th>Startdatum</th>
             <td><%= c.date_start.strftime '%d.%m.%Y' %></td>
           </tr>
@@ -36,11 +52,17 @@
 
           <tr class="child-registration-info__tr">
             <th>Jahrgang bis</th>
-            <td><%= c.participants_year_end %></td> </tr>
+            <td><%= c.participants_year_end %></td>
+          </tr>
+
+          <tr class="child-registration-info__tr">
+            <th>Offene Plätze</th>
+            <td><%= '20 (platzhalter)' %></td>
+          </tr>
         </table>
       </div>
     <% end %>
   </div>
 
-  <%= link_to 'Zur Anmeldung', new_child_registration_path, class: "button child-registartion-info_register-btn" %>
+  <%= link_to 'Zur Anmeldung', new_parent_name_path, class: "button child-registartion-info_register-btn" %>
 </div>

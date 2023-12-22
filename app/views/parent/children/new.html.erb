@@ -1,0 +1,16 @@
+<%= form_with model: @parent_children do |form| %>
+    <fieldset class="input">
+      <legend>
+        <%= forticon 'address-book', height: 18, style: 'margin-right: var(--spacing-sm)' %>
+      </legend>
+
+      <%= render 'formelements/input', form: form, record: @parent_children, field_name: :count, input_type: :number, label: 'Wie viele Kinder sollen angemeldet werden?', required: true %>
+
+
+      <%# if @parent.member %>
+        <%#= render 'formelements/input', form: form, record: @parent_contact, field_name: :church, label: 'Deine anghörige Gemeinde', required: true %>
+      <%# end %>
+    </fieldset>
+
+    <%= form.submit 'Weiter' %>
+<% end %>

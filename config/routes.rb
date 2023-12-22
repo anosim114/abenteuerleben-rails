@@ -6,12 +6,30 @@ Rails.application.routes.draw do
   resources :teams
   get '/teams/catalogue/:id', to: 'teams#catalogue', as: 'teams_catalogue'
 
+  ############################
+  # helper registration related
+  ############################
   resources :helpers
   get '/excel/helpers', to: 'helpers#excelify'
   get '/mitarbeiteranmeldung', to: 'helpers#new'
+  # --------------------------
 
-  get '/kinderanmeldung', to: 'child_registrations#index', as: 'child_registration'
-  resources :child_registrations, only: %i[new create]
+
+  ############################
+  # child registration related
+  ############################
+  get '/kinderanmeldung', to: 'parent/parents#index'
+  namespace :parent, only: %i[index new create] do
+    resources :names, only: %i[new create]
+    resources :locations, only: %i[new create]
+    resources :contacts, only: %i[new create]
+    resources :optionals, only: %i[new create]
+    resources :children, only: %i[new create]
+    resources :parents, only: %i[index new create]
+  end
+
+  resources :children
+  # --------------------------
 
   get 'admin/dashboard'
   get 'admin/dev'
@@ -25,8 +43,6 @@ Rails.application.routes.draw do
   resources :pages
   resources :events
   resources :messages
-
-  # resource :participants
 
   root 'home#index'
 end
