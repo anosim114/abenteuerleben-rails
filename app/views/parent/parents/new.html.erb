@@ -11,20 +11,11 @@
         background-color: var(--blue-opacity);
     }
 </style>
+<h1>Kinderanmeldung</h1>
+<h2>Bestätigung</h2>
 
 <%= form_with model: @parent do |form| %>
-    <%= form.hidden_field :forename %>
-    <%= form.hidden_field :surname %>
-    <%= form.hidden_field :member %>
-    <%= form.hidden_field :church %>
-    <%= form.hidden_field :street %>
-    <%= form.hidden_field :house %>
-    <%= form.hidden_field :post %>
-    <%= form.hidden_field :city %>
-    <%= form.hidden_field :telephone %>
-    <%= form.hidden_field :housephone %>
-    <%= form.hidden_field :email %>
-
+  <h3><%= forticon :user, height: 20 %> Elterninfos</h3>
     <table>
         <tr>
             <th>Nachname</th>
@@ -67,6 +58,33 @@
             <td><%= @parent.email %></td>
         </tr>
     </table>
+
+    <h3><%= forticon :children, height: 20 %> Kinderinfos</h3>
+    <% @parent.children.each do |child| %>
+      <h4 style="color: var(--black);"><%= forticon :child, height: 16 %> <%= child.surname %>, <%= child.forename %></h4>
+      <table>
+        <tr>
+            <th>Camp</th>
+            <td>Camp <%= child.camp.name %></td>
+        </tr>
+        <tr>
+            <th>Geburtsdatum</th>
+            <td><%= l child.birthday %></td>
+        </tr>
+        <tr>
+            <th>Geschlecht</th>
+            <td><%= child.sex %></td>
+        </tr>
+        <tr>
+            <th>Medikamente / ....</th>
+            <td><%= child.medicals %></td>
+        </tr>
+        <tr>
+            <th>Sonstige Bemerkungen</th>
+            <td><%= child.notes %></td>
+        </tr>
+      </table>
+    <% end %>
 
     <br>
     <p>

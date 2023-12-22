@@ -1,6 +1,5 @@
 class ChildrenController < ApplicationController
   before_action :set_active_campyear, only: %i[new create edit update]
-  before_action :set_dummp_parent, only: %i[new create]
   before_action :set_camps, only: %i[new create]
 
   def index
@@ -16,12 +15,10 @@ class ChildrenController < ApplicationController
   def create
     @child = Child.new child_params
 
-    # TODO: do this properly
-    # @child.parent = @dummp_parent
-    @child.camp = @campyear.camps[0]
-
     if @child.valid? :form
-      session[:child] = @child
+      session[:children] = [] if session[:children].nil?
+
+      session[:children] << @child
 
       redirect_to new_parent_parent_path
     else
@@ -39,20 +36,6 @@ class ChildrenController < ApplicationController
   end
 
   private
-
-  def set_dummp_parent
-    @dummy_parent =  Parent::Parent.new({
-      surname: "a",
-      forename: "b",
-      telephone: "a",
-      email: "aa@me.com",
-      street: "a",
-      house: "a",
-      post: "a",
-      city: "a",
-      member: true
-    })
-  end
 
   def set_active_campyear
     @campyear = helpers.get_active_campyear
@@ -75,7 +58,8 @@ class ChildrenController < ApplicationController
       :birthday,
       :sex,
       :medicals,
-      :notes
+      :notes,
+      :camp_id
     )
   end
 end

@@ -1,10 +1,10 @@
-<%= form_with model: @parent_children do |form| %>
+<%= form_with model: @parent_child_stat do |form| %>
     <fieldset class="input">
       <legend>
         <%= forticon 'address-book', height: 18, style: 'margin-right: var(--spacing-sm)' %>
       </legend>
 
-      <%= render 'formelements/input', form: form, record: @parent_children, field_name: :count, input_type: :number, label: 'Wie viele Kinder sollen angemeldet werden?', required: true %>
+      <%= render 'formelements/input', form: form, record: @parent_child_stat, field_name: :count, input_type: :number, label: 'Wie viele Kinder sollen angemeldet werden?', required: true %>
 
 
       <%# if @parent.member %>

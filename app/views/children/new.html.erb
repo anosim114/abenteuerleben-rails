@@ -37,7 +37,7 @@
 
     <%# Medical %>
     <%= render 'formelements/input', form: form, record: @child,
-                field_name: :medical, input_type: :textarea,
+                field_name: :medicals, input_type: :textarea,
                 label: 'Medikamente / Risiko' %>
 
     <%# Notes %>
@@ -45,7 +45,6 @@
                 field_name: :notes, input_type: :textarea,
                 label: 'Generelle Bemerkungen' %>
 
-    <%= form.hidden_field :camp_id %>
   </fieldset>
 
   <%= form.submit 'Weiter' %>

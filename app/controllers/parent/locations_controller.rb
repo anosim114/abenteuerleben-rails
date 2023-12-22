@@ -15,7 +15,7 @@ module Parent
                     city: @parent_location.city
                 }
 
-                redirect_to new_parent_child_path
+                redirect_to new_parent_child_stat_path
             else
                 render :new, status: :unprocessable_entity
             end

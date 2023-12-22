@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :locations, only: %i[new create]
     resources :contacts, only: %i[new create]
     resources :optionals, only: %i[new create]
-    resources :children, only: %i[new create]
+    resources :child_stats, only: %i[new create]
     resources :parents, only: %i[index new create]
   end
 

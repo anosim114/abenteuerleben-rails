@@ -1,16 +1,17 @@
 module Parent
-    class ChildrenController < ApplicationController
+    class ChildStatsController < ApplicationController
         def new
-            # TODO: more like: 'ChildStat' instead of 'Child'
-            @parent_children = Child.new
+            previous_params = session[:parent_child_stat] if !session[:parent_child_stat].nil?
+            @parent_child_stat = ChildStat.new previous_params
         end
 
         def create
-            @parent_children = Child.new parent_child_params
+            @parent_child_stat = ChildStat.new parent_child_stat_params
+            logger.debug @parent_child_stat
 
-            if @parent_children.valid?
-                session[:parent_children] = {
-                    count: @parent_children.count
+            if @parent_child_stat.valid?
+                session[:parent_child_stat] = {
+                    count: @parent_child_stat.count
                 }
 
                 redirect_to new_child_path
@@ -21,8 +22,8 @@ module Parent
 
         private
 
-        def parent_child_params
-            params.require(:parent_child).permit(
+        def parent_child_stat_params
+            params.require(:parent_child_stat).permit(
                 :count
             )
         end

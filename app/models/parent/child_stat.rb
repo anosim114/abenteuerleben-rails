@@ -1,5 +1,5 @@
 module Parent
-    class Child
+    class ChildStat
         include ActiveModel::Model
 
         attr_accessor :count
