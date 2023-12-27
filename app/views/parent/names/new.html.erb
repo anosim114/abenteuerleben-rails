@@ -1,11 +1,16 @@
+<h1>Kinderanmeldung</h1>
+<h2>Name Elternteil</h2>
+
+<%= render 'children/child_registration_step', steps: 5, current_step: 0 %>
+
 <%= form_with model: @parent_name do |form| %>
   <fieldset class="input">
     <legend>
       <%= forticon :user, height: 18, style: 'margin-right: var(--spacing-sm)' %>
     </legend>
 
-    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :surname, label: 'Nachname', required: true %>
-    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :forename, label: 'Vorname', required: true %>
+    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :surname, label: 'Nachname des Elternteils', required: true %>
+    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :forename, label: 'Vorname des Elternteils', required: true %>
 
     <label class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
       <%= form.check_box :member, style: 'display inline-block' %>

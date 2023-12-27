@@ -1,3 +1,8 @@
+<h1>Kinderanmeldung</h1>
+<h2>Anzahl anzumeldender Kinder</h2>
+
+<%= render 'children/child_registration_step', steps: 5, current_step: 4 %>
+
 <%= form_with model: @parent_child_stat do |form| %>
     <fieldset class="input">
       <legend>

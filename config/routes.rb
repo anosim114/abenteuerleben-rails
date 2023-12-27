@@ -1,4 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
+
+Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   resources :campyears do
     resources :camps, shallow: true
   end
@@ -13,7 +15,6 @@ Rails.application.routes.draw do
   get '/excel/helpers', to: 'helpers#excelify'
   get '/mitarbeiteranmeldung', to: 'helpers#new'
   # --------------------------
-
 
   ############################
   # child registration related

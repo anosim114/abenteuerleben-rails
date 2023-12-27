@@ -1,4 +1,7 @@
-<h1>Children#new</h1>
+<h1>Kinderanmeldung</h1>
+<h2>Kinderinformationen</h2>
+
+<%= render 'children/child_registration_step', steps: 5, current_step: 5 %>
 
 <%= form_with model: @child do |form| %>
   <%# Camp %>
@@ -33,7 +36,6 @@
     <legend>
       <%= forticon :clipboard, height: 18, style: 'margin-right: var(--spacing-sm)' %>
     </legend>
-
 
     <%# Medical %>
     <%= render 'formelements/input', form: form, record: @child,

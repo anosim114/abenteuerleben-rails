@@ -318,7 +318,6 @@ DEPENDENCIES
   pg (~> 1.5, >= 1.5.4)
   puma (~> 6.4)
   rails (~> 7.1)
-  rubocop
   rubocop-rails
   sassc-rails
   selenium-webdriver

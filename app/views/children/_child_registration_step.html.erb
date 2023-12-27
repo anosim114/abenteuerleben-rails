@@ -1,0 +1,49 @@
+<%# arguments(steps: Number, current_step: Number) %>
+
+<style>
+.cr-statusbar_wrapper {
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cr-statusbar_indicator {
+    position: relative;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    border: 1px solid var(--blue-100);
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.cr-statusbar_indicator:not(:last-child)::after {
+    content: '';
+    width: 1rem;
+    display: block;
+    height: 4px;
+    position: absolute;
+    top: 5px;
+    left: calc(16px + 0.5rem);
+    background-color: var(--blue-600);
+}
+
+.cr-statusbar_done {
+    background-color: var(--blue-300);
+}
+
+.cr-statusbar_current {
+    background-color: var(--green-300);
+    border: 1px solid var(--green-100);
+}
+</style>
+
+<div class="cr-statusbar_wrapper">
+    <div class="cr-statusbar">
+        <% 0.upto(steps).each do |step| %>
+        <div class="<%= class_names("cr-statusbar_indicator", 'cr-statusbar_current': (current_step == step), 'cr-statusbar_done': (current_step > step))%>"
+            title="parent name"></div>
+        <% end %>
+    </div>
+</div>
