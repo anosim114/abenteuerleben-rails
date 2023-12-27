@@ -6,7 +6,7 @@ module Parent
       reset_session
     end
 
-    def new # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+    def new # rubocop:disable Metrics/AbcSize
       if session[:parent_name].nil?
         (redirect_to new_parent_name_path
          return)
@@ -28,7 +28,7 @@ module Parent
       @parent.children = child_params
     end
 
-    def create # rubocop:disable Metrics/MethodLength
+    def create
       @parent = Parent.new parent_params
 
       if @parent.valid?

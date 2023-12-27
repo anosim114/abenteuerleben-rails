@@ -32,13 +32,15 @@
 
 <%# arguments(input_type, form, record, field_name, label, required) %>
 <div class="form-input">
-  <%# label %>
-  <%= form.label field_name,  class: class_names('form-input__label') do %>
-    <%= label %>
-    <% if defined? required %>
-      <div class="form-input__required">
-        <%= forticon :asterisk, height: 8 %>
-      </div>
+  <% unless (defined? input_type) && input_type == :checkbox %>
+    <%# label %>
+    <%= form.label field_name,  class: class_names('form-input__label') do %>
+      <%= label %>
+      <% if defined? required %>
+        <div class="form-input__required">
+          <%= forticon :asterisk, height: 8 %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 
@@ -59,6 +61,18 @@
       </div>
     <% when :textarea %>
       <%= form.text_area field_name, rows: 7, class: 'form-input__text-area' %>
+    <% when :checkbox %>
+      <label class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
+        <%= form.check_box field_name, style: 'display inline-block' %>
+        <span style="display: flex;">
+          <%= label %>
+          <% if defined? required %>
+            <div class="form-input__required">
+              <%= forticon :asterisk, height: 8 %>
+            </div>
+          <% end %>
+        </span>
+      </label>
     <% end %>
   <% end %>
 
