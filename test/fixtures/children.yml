@@ -17,5 +17,5 @@ two:
   sex: MyString
   medicals: MyString
   notes: MyString
-  parent: two
+  parent: one
   camp: two

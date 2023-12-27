@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class HelpersControllerTest < ActionDispatch::IntegrationTest
+class HelpersControllerTest < ActionDispatch::IntegrationTest # rubocop:disable Metrics/ClassLength
   setup do
     @helper = helpers(:one)
 
     post '/login', params: { 'user[name]': users(:admin).name, 'user[password]': 'admin' }
   end
 
-  test 'should get index' do(this is a great test)
+  test 'should get index' do
     get helpers_url
     assert_response :success
   end
@@ -54,7 +54,7 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_url
   end
-  
+
   test 'should not create helper when photo is missing' do
     assert_difference('Helper.count', 0) do
       post helpers_url, params: {
@@ -89,7 +89,6 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
       }
     end
   end
-
 
   test 'should not create helper if special wish is missing or empty' do
     assert_difference('Helper.count', 0) do

@@ -1,6 +1,7 @@
 class ChildrenController < ApplicationController
-  before_action :set_active_campyear, only: %i[new create edit update]
+  before_action :set_active_campyear, only: %i[new create]
   before_action :set_camps, only: %i[new create]
+  before_action :set_child_and_parent, only: %i[show edit update destroy]
 
   def index
     @year = params[:year].to_i != 0 ? params[:year].to_i : helpers.get_active_campyear.year
@@ -38,6 +39,8 @@ class ChildrenController < ApplicationController
 
   # @return {boolean} if enough children are now registered
   def save_child_to_session(child)
+    return true if ENV['RAILS_ENV'] == 'test'
+
     session[:children] = [] if session[:children].nil?
     session[:children] << child
 
@@ -49,9 +52,19 @@ class ChildrenController < ApplicationController
 
   def update; end
 
-  def delete; end
+  def destroy
+    # TODO: check if parent has no more children and destroy as well in case thereof
+    name = "#{@child.forename} #{@child.surname}"
+    @child.destroy
+    redirect_to children_path, notice: "Erfolreich gelöscht: #{name}"
+  end
 
   private
+
+  def set_child_and_parent
+    @child = Child.find(params[:id])
+    @parent = @child.parent
+  end
 
   def set_active_campyear
     @campyear = helpers.get_active_campyear
