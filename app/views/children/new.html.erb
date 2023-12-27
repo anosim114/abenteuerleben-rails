@@ -1,0 +1,53 @@
+<h1>Kinderanmeldung</h1>
+<h2>Kinderinformationen</h2>
+
+<%= render 'children/child_registration_step', steps: 5, current_step: 5 %>
+
+<%= form_with model: @child do |form| %>
+  <%# Camp %>
+  <%= render 'formelements/select', form: form, record: @child,
+              field_name: :camp_id, label: 'Camp',
+              options: @camps, required: true %>
+
+  <fieldset class="input">
+    <legend>
+      <%= forticon :user, height: 18, style: 'margin-right: var(--spacing-sm)' %>
+    </legend>
+
+    <%# Surname %>
+    <%= render 'formelements/input', form: form, record: @child,
+                field_name: :surname, label: 'Nachname', required: true %>
+
+    <%# Forename %>
+    <%= render 'formelements/input', form: form, record: @child,
+                field_name: :forename, label: 'Vorname', required: true %>
+
+    <%# Birthday %>
+    <%= render 'formelements/input', form: form, record: @child,
+                field_name: :birthday, input_type: :date, label: 'Geburtsdatum', required: true %>
+
+    <%# Sex %>
+    <%= render 'formelements/select', form: form, record: @child,
+                field_name: :sex, label: 'Geschlecht', required: true,
+                options: ['Junge', 'Mädchen'] %>
+  </fieldset>
+
+  <fieldset class="input">
+    <legend>
+      <%= forticon :clipboard, height: 18, style: 'margin-right: var(--spacing-sm)' %>
+    </legend>
+
+    <%# Medical %>
+    <%= render 'formelements/input', form: form, record: @child,
+                field_name: :medicals, input_type: :textarea,
+                label: 'Medikamente / Risiko' %>
+
+    <%# Notes %>
+    <%= render 'formelements/input', form: form, record: @child,
+                field_name: :notes, input_type: :textarea,
+                label: 'Generelle Bemerkungen' %>
+
+  </fieldset>
+
+  <%= form.submit 'Weiter' %>
+<% end %>

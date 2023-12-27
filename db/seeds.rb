@@ -20,6 +20,14 @@ Event.create!([
   }
 ])
 
+Page.create!([{
+  url: 'mitarbeiter_haftungsausschluss',
+  content: ''
+}, {
+  url: 'mitarbeiter_wichtige-infos',
+  content: ''
+}])
+
 User.create!([{
   name: 'admin',
   password_hash: 'admin',
@@ -35,10 +43,10 @@ User.create!([{
 p "Created #{User.count} users"
 
 Campyear.create!([{
-  year: 2019,
-  participants_register_start: '2024-07-10',
+  year: 2024,
+  participants_register_start: '2023-07-10',
   participants_register_end: '2024-08-10',
-  helper_register_start: '2024-04-01',
+  helper_register_start: '2023-04-01',
   helper_register_end: '2024-04-10',
   accentcolor_primary: '#ff0000',
   accentcolor_secondary: '#fee000',
@@ -77,6 +85,11 @@ Team.create!([
     enabled: true,
   },
   {
+    name: 'Sauerkraut',
+    description: 'Sauerkraut macht sauer, du musst aufpassen, dass das nicht passiert',
+    enabled: true,
+  },
+  {
     name: 'Sonstiges',
     description: 'Sonstiges machen alles',
     enabled: true,
@@ -90,7 +103,7 @@ Team.create!([
 
 p "Created #{Team.count} teams"
 
-Helper.create!([{
+h = Helper.new({
   surname: 'musterman',
   forename: 'max',
   birthday: '2000-01-01',
@@ -112,7 +125,9 @@ Helper.create!([{
       participate: true
     )
   ]
-}])
+})
+h.photo.attach(io: Tempfile.new('dis is an image.png'), filename: 'img.png')
+h.save
 
 p "Created #{Helper.count} helpers"
 p "Created #{Registration.count} registrations"

@@ -1,4 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
+
+Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   resources :campyears do
     resources :camps, shallow: true
   end
@@ -6,11 +8,29 @@ Rails.application.routes.draw do
   resources :teams
   get '/teams/catalogue/:id', to: 'teams#catalogue', as: 'teams_catalogue'
 
+  ############################
+  # helper registration related
+  ############################
   resources :helpers
   get '/excel/helpers', to: 'helpers#excelify'
   get '/mitarbeiteranmeldung', to: 'helpers#new'
+  # --------------------------
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  ############################
+  # child registration related
+  ############################
+  get '/kinderanmeldung', to: 'parent/parents#index'
+  namespace :parent, only: %i[index new create] do
+    resources :names, only: %i[new create]
+    resources :locations, only: %i[new create]
+    resources :contacts, only: %i[new create]
+    resources :optionals, only: %i[new create]
+    resources :child_stats, only: %i[new create]
+    resources :parents, only: %i[index new create]
+  end
+
+  resources :children
+  # --------------------------
 
   get 'admin/dashboard'
   get 'admin/dev'
@@ -18,7 +38,6 @@ Rails.application.routes.draw do
   get 'login', to: 'session#login'
   post 'login', to: 'session#auth'
   get 'logout', to: 'session#logout'
-
   get 'downloads/admin', to: 'downloads#admin'
   resources :downloads
 
@@ -26,7 +45,5 @@ Rails.application.routes.draw do
   resources :events
   resources :messages
 
-  # resource :participants
-
-  root "home#index"
+  root 'home#index'
 end

@@ -1,0 +1,19 @@
+<h1>Kinderanmeldung</h1>
+<h2>Wohnort</h2>
+
+<%= render 'children/child_registration_step', steps: 5, current_step: 2 %>
+
+<%= form_with model: @parent_location do |form| %>
+    <fieldset class="input">
+        <legend>
+        <%= forticon :house, height: 18, style: 'margin-right: var(--spacing-sm)' %>
+        </legend>
+
+        <%= render 'formelements/input', form: form, record: @parent_location, field_name: :street, label: 'Straße', required: true %>
+        <%= render 'formelements/input', form: form, record: @parent_location, field_name: :house, label: 'Hausnummer', required: true %>
+        <%= render 'formelements/input', form: form, record: @parent_location, field_name: :post, label: 'Postleitzahl', required: true %>
+        <%= render 'formelements/input', form: form, record: @parent_location, field_name: :city, label: 'Stadt', required: true %>
+    </fieldset>
+
+    <%= form.submit 'Weiter' %>
+<% end %>

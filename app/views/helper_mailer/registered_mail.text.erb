@@ -1,4 +1,4 @@
-Hallo <%= @helper.surname %>,
+Hallo <%= @helper.forename %>,
  
 du hast dich erfolgreich für <%= @helper.registrations.count > 1 ? "die Camps" : "das Camp" %> <%= (@helper.registrations.map {|r| r.camp.name}).join(' & ') %> 2024 angemeldet.
 Vielen Dank für dein Interesse.

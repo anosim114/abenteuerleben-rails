@@ -1,5 +1,4 @@
 class HelperMailer < ApplicationMailer
-
   def registered_mail
     @helper = params[:helper]
 

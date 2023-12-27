@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_01_111449) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_22_113148) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -64,6 +64,21 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_111449) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "children", force: :cascade do |t|
+    t.string "surname"
+    t.string "forename"
+    t.date "birthday"
+    t.string "sex"
+    t.string "medicals"
+    t.string "notes"
+    t.integer "parent_id", null: false
+    t.integer "camp_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camp_id"], name: "index_children_on_camp_id"
+    t.index ["parent_id"], name: "index_children_on_parent_id"
+  end
+
   create_table "downloads", force: :cascade do |t|
     t.string "name", null: false
     t.string "description"
@@ -114,6 +129,22 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_111449) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "parents", force: :cascade do |t|
+    t.string "surname"
+    t.string "forename"
+    t.string "telephone"
+    t.string "housephone"
+    t.string "email"
+    t.string "street"
+    t.string "house"
+    t.string "post"
+    t.string "city"
+    t.boolean "member"
+    t.string "church"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "registrations", force: :cascade do |t|
     t.integer "helper_id", null: false
     t.integer "camp_id", null: false
@@ -146,6 +177,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_01_111449) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "camps", "campyears"
+  add_foreign_key "children", "camps"
+  add_foreign_key "children", "parents"
   add_foreign_key "registrations", "camps"
   add_foreign_key "registrations", "helpers"
 end

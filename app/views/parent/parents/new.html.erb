@@ -1,0 +1,98 @@
+<style>
+    table {
+        text-align: left;
+    }
+
+    th {
+        padding-right: var(--spacing-md);
+    }
+
+    tr:nth-child(odd) {
+        background-color: var(--blue-opacity);
+    }
+</style>
+<h1>Kinderanmeldung</h1>
+<h2>Bestätigung</h2>
+
+<%= form_with model: @parent do |form| %>
+  <h3><%= forticon :user, height: 20 %> Elterninfos</h3>
+    <table>
+        <tr>
+            <th>Nachname</th>
+            <td><%= @parent.surname %></td>
+        </tr>
+        <tr>
+            <th>Vorname</th>
+            <td><%= @parent.forename %></td>
+        </tr>
+        <tr>
+            <th>Gemeinde</th>
+            <td><%= @parent.member ? 'FECG Blomberg' : @parent.church %></td>
+        </tr>
+        <tr>
+            <th>Strasse</th>
+            <td><%= @parent.street %></td>
+        </tr>
+        <tr>
+            <th>HNr</th>
+            <td><%= @parent.house %></td>
+        </tr>
+        <tr>
+            <th>PLZ</th>
+            <td><%= @parent.post %></td>
+        </tr>
+        <tr>
+            <th>Stadt</th>
+            <td><%= @parent.city %></td>
+        </tr>
+        <tr>
+            <th>Telefon</th>
+            <td><%= @parent.telephone %></td>
+        </tr>
+        <tr>
+            <th>Haustelephone</th>
+            <td><%= @parent.housephone %></td>
+        </tr>
+        <tr>
+            <th>E-Mail</th>
+            <td><%= @parent.email %></td>
+        </tr>
+    </table>
+
+    <h3><%= forticon :children, height: 20 %> Kinderinfos</h3>
+    <% @parent.children.each do |child| %>
+      <h4 style="color: var(--black);"><%= forticon :child, height: 16 %> <%= child.surname %>, <%= child.forename %></h4>
+      <table>
+        <tr>
+            <th>Camp</th>
+            <td>Camp <%= child.camp.name %></td>
+        </tr>
+        <tr>
+            <th>Geburtsdatum</th>
+            <td><%= l child.birthday %></td>
+        </tr>
+        <tr>
+            <th>Geschlecht</th>
+            <td><%= child.sex %></td>
+        </tr>
+        <tr>
+            <th>Medikamente / ....</th>
+            <td><%= child.medicals %></td>
+        </tr>
+        <tr>
+            <th>Sonstige Bemerkungen</th>
+            <td><%= child.notes %></td>
+        </tr>
+      </table>
+    <% end %>
+
+    <br>
+    <p>
+        Ihr werdet von uns eine bestätigungsemail erhalten mit weiteren infos
+    </p>
+
+    <%# TODO: insert haftungsausschuss und wichtige infos %>
+  </fieldset>
+
+  <%= form.submit 'Verbindlich und kostenpflichtig anmelden' %>
+<% end %>

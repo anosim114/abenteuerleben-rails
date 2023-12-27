@@ -4,7 +4,13 @@
 }
 
 .form-input__label {
-  display: block;
+  display: flex;
+}
+
+.form-input__required {
+  margin-top: 0.1rem;
+  margin-left: var(--spacing-sm);
+  display: flex;
 }
 
 .form-input__date-wrapper {
@@ -24,11 +30,20 @@
 }
 </style>
 
-<%# arguments(input_type, form, record, field_name, label) %>
+<%# arguments(input_type, form, record, field_name, label, required) %>
 <div class="form-input">
-  <%# label %>
-  <%= form.label field_name, label,  class: class_names('form-input__label') %>
-  
+  <% unless (defined? input_type) && input_type == :checkbox %>
+    <%# label %>
+    <%= form.label field_name,  class: class_names('form-input__label') do %>
+      <%= label %>
+      <% if defined? required %>
+        <div class="form-input__required">
+          <%= forticon :asterisk, height: 8 %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
   <%# input element %>
   <% if not defined? input_type %>
     <%= form.text_field field_name, class: class_names('form-input__text-field') %>
@@ -38,12 +53,26 @@
       <%= form.telephone_field field_name, class: class_names('form-input__text-field') %>
     <% when :email %>
       <%= form.email_field field_name, class: class_names('form-input__text-field') %>
+    <% when :number %>
+      <%= form.number_field field_name, class: class_names('form-input__text-field') %>
     <% when :date %>
       <div class="form-input__date-wrapper">
       <%= form.date_select field_name, start_year: 1970, end_year: DateTime.now.year - 6, default: Date.new(DateTime.now.year - 18,01,01), class: class_names('form-input__date-field') %>
       </div>
     <% when :textarea %>
       <%= form.text_area field_name, rows: 7, class: 'form-input__text-area' %>
+    <% when :checkbox %>
+      <label class="input" style="display: flex; gap: var(--spacing-sm); align-items: center;">
+        <%= form.check_box field_name, style: 'display inline-block' %>
+        <span style="display: flex;">
+          <%= label %>
+          <% if defined? required %>
+            <div class="form-input__required">
+              <%= forticon :asterisk, height: 8 %>
+            </div>
+          <% end %>
+        </span>
+      </label>
     <% end %>
   <% end %>
 

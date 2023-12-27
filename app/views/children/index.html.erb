@@ -1,0 +1,21 @@
+<h1>Children#index</h1>
+
+<%= form_with url: children_path, method: :get do |form| %>
+  <label for="year">Campjahr</label>
+  <select name="year" onchange="this.parentNode.requestSubmit()">
+    <% @campyears.each do |campyear| %>
+      <option <%= 'selected' if @year == campyear %> value="<%= campyear %>">
+        <%= campyear %>
+      </option>
+    <% end %>
+  </select>
+<% end %>
+<br>
+<br>
+
+<ul>
+    <% @children.each do |c| %>
+        <%= link_to (c.surname + ', ' + c.forename), child_path(c) %>
+        <li></li>
+    <% end %>
+</ul>

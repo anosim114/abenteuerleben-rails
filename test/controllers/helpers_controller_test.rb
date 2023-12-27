@@ -1,24 +1,24 @@
-require "test_helper"
+require 'test_helper'
 
-class HelpersControllerTest < ActionDispatch::IntegrationTest
+class HelpersControllerTest < ActionDispatch::IntegrationTest # rubocop:disable Metrics/ClassLength
   setup do
     @helper = helpers(:one)
 
     post '/login', params: { 'user[name]': users(:admin).name, 'user[password]': 'admin' }
   end
 
-  test "should get index" do
+  test 'should get index' do
     get helpers_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_helper_url
     assert_response :success
   end
 
-  test "should create helper" do
-    assert_difference("Helper.count") do
+  test 'should create helper' do
+    assert_difference('Helper.count') do
       post helpers_url, params: {
         helper: {
           photo: Rack::Test::UploadedFile.new('test/fixtures/files/avatar.png', 'image/png'),
@@ -54,9 +54,9 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to root_url
   end
-  
-  test "should not create helper when photo is missing" do
-    assert_difference("Helper.count", 0) do
+
+  test 'should not create helper when photo is missing' do
+    assert_difference('Helper.count', 0) do
       post helpers_url, params: {
         helper: {
           surname: @helper.surname,
@@ -90,9 +90,8 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-
-  test "should not create helper if special wish is missing or empty" do
-    assert_difference("Helper.count", 0) do
+  test 'should not create helper if special wish is missing or empty' do
+    assert_difference('Helper.count', 0) do
       post helpers_url, params: {
         helper: {
           surname: @helper.surname,
@@ -157,17 +156,17 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should show helper" do
+  test 'should show helper' do
     get helper_url(@helper)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_helper_url(@helper)
     assert_response :success
   end
 
-  test "should update helper" do
+  test 'should update helper' do
     patch helper_url(@helper), params: {
       helper: {
         surname: @helper.surname,
@@ -187,8 +186,8 @@ class HelpersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to helper_url(@helper)
   end
 
-  test "should destroy helper" do
-    assert_difference("Helper.count", -1) do
+  test 'should destroy helper' do
+    assert_difference('Helper.count', -1) do
       delete helper_url(@helper)
     end
 
