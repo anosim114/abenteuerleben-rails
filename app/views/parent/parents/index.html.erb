@@ -31,7 +31,7 @@
 <div>
   <h1>Kinderanmeldung</h1>
   <div>
-    <% @campyear.camps.each do |c| %>
+    <% @camps.each do |c| %>
       <div class="child-registration-info">
       <h3 class="child-registration-info_camp-header"><%= forticon :campground, height: 20 %> Camp <%= c.name %> </h3>
         <table class="child-registration-info__table">
@@ -56,8 +56,13 @@
           </tr>
 
           <tr class="child-registration-info__tr">
+            <th>Anmeldekosten</th>
+            <td><%= c.price %>€</td>
+          </tr>
+
+          <tr class="child-registration-info__tr">
             <th>Offene Plätze</th>
-            <td><%= '20 (platzhalter)' %></td>
+            <td><%= c.open_count %></td>
           </tr>
         </table>
       </div>

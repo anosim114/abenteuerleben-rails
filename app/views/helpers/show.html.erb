@@ -31,10 +31,4 @@
   <%= render @helper %>
 </div>
 
-<% if @current_user.has_delete_rights %>
-  <div>
-    <%#= link_to "Bearbeite Mitarbeiter", edit_helper_path(@helper), class: '--bordered' %>
-    <%= button_to "Mitarbeiter löschen", @helper, method: :delete, class: 'danger', form: { data: { 'turbo_confirm': 'Sicher, dass das der Mitarbeiter gelöscht werden soll?' } } %>
-  </div>
-<% end %>
-
+<%= render "formelements/delete_action", url: @helper %>

@@ -21,28 +21,33 @@
   </div>
 
   <div class="input">
-    <%= form.label :date_start %>
+    <%= form.label :date_start, "Startdatum" %>
     <%= form.date_field :date_start, required: true %>
   </div>
 
   <div class="input">
-    <%= form.label :date_end %>
+    <%= form.label :date_end, "Enddatum" %>
     <%= form.date_field :date_end, required: true %>
   </div>
 
   <div class="input">
-    <%= form.label :participants_year_start %>
+    <%= form.label :participants_year_start, "Teilnehmer jahr von" %>
     <%= form.number_field :participants_year_start, required: true %>
   </div>
 
   <div class="input">
-    <%= form.label :participants_year_end %>
+    <%= form.label :participants_year_end, "Teilnehmer jahr bis" %>
     <%= form.number_field :participants_year_end, required: true %>
   </div>
 
   <div class="input">
-    <%= form.label :max_participant_count %>
+    <%= form.label :max_participant_count, "Maximale Teilnehmerzahl" %>
     <%= form.number_field :max_participant_count, required: true %>
+  </div>
+
+  <div class="input">
+    <%= form.label :price, "Anmeldepreis" %>
+    <%= form.number_field :price, required: true, step: 10 %>
   </div>
 
   <div class="submit">

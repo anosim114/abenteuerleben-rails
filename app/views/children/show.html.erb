@@ -38,6 +38,4 @@
     </ul>
 <% end %>
 
-<% if @current_user.delete_rights %>
-    <%= button_to "Löschen", child_path(@child), method: :delete %>
-<% end %>
+<%= render "formelements/delete_action", url: @child %>

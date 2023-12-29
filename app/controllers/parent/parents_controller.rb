@@ -4,6 +4,8 @@ module Parent
 
     def index
       reset_session
+
+      @camps = @campyear.camps
     end
 
     def new # rubocop:disable Metrics/AbcSize

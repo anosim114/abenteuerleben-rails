@@ -3,5 +3,6 @@
 <div>
   <%= link_to "Ändern vom Camp", edit_camp_path(@camp) %> |
   <%= link_to "Zurück zum Campjahr", @camp.campyear %> |
-  <%= button_to "Lösche Camp", camp_path(@camp), method: :delete, class: 'danger', form: { data: { 'turbo_confirm': 'Sicher, dass das Campjahr gelöscht werden soll?' } } %>
+
+  <%= render "formelements/delete_action", url: @camp %>
 </div>

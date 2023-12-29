@@ -18,10 +18,10 @@ class User < ApplicationRecord
   end
 
   def has_delete_rights
-    delete_rights
+    delete_rights?
   end
 
-  def delete_rights
+  def delete_rights?
     level >= 0b100
   end
 
