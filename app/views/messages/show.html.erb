@@ -1,7 +1,7 @@
 <%= render @message %>
 
 <div>
-  <%= button_to "Nachricht löschen", @message, method: :delete, class: 'danger' %>
+  <%= render "formelements/delete_action", url: @message %>
   <br>
   <%= link_to "Zurück zu allen Nachrichten", messages_path %>
 </div>
