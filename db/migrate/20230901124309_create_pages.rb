@@ -1,5 +1,5 @@
 class CreatePages < ActiveRecord::Migration[7.0]
-  def change
+  def change # rubocop:disable Metrics/AbcSize
     create_table :pages do |t|
       t.string :url
       t.text :content
@@ -28,6 +28,5 @@ class CreatePages < ActiveRecord::Migration[7.0]
     donations.url = 'impressum'
     donations.content = '<h1>Impressum</h1>'
     donations.save
-
   end
 end

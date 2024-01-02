@@ -20,13 +20,24 @@ Event.create!([
                 }
               ])
 
-Page.create!([{
-               url: 'mitarbeiter_haftungsausschluss',
-               content: ''
-             }, {
-               url: 'mitarbeiter_wichtige-infos',
-               content: ''
-             }])
+Page.create!([
+               {
+                 url: 'mitarbeiter_haftungsausschluss',
+                 content: ''
+               },
+               {
+                 url: 'mitarbeiter_wichtige-infos',
+                 content: ''
+               },
+               {
+                 url: 'eltern_wichtige-informationen',
+                 content: ''
+               },
+               {
+                 url: 'eltern_haftungsausschluss',
+                 content: ''
+               }
+             ])
 
 User.create!([{
                name: 'admin',
