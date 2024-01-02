@@ -2,6 +2,7 @@ class ChildrenController < ApplicationController
   before_action :set_active_campyear, only: %i[new create]
   before_action :set_camps, only: %i[new create]
   before_action :set_child_and_parent, only: %i[show edit update destroy]
+  before_action :set_child_num, only: %i[new create]
 
   def index
     @year = params[:year].to_i != 0 ? params[:year].to_i : helpers.get_active_campyear.year
@@ -18,10 +19,10 @@ class ChildrenController < ApplicationController
   def show; end
 
   def new
-    @child = if params[:child].nil?
+    @child = if session[:children].nil?
                Child.new
              else
-               Child.new session[:children][params[:child].to_i]
+               Child.new session[:children][params[:child_num].to_i]
              end
   end
 
@@ -29,9 +30,12 @@ class ChildrenController < ApplicationController
     @child = Child.new child_params
 
     if @child.valid? :form
-      enough = save_child_to_session @child
+      save_child_to_session @child
 
-      redirect_to enough ? new_parent_parent_path : new_child_path
+      next_child_num = @child_num + 1
+      logger.debug 'Its enough' if enough?
+      redirect_route = enough? ? new_parent_parent_path : new_child_path(child_num: next_child_num)
+      redirect_to redirect_route
     else
       render :new, status: :unprocessable_entity
     end
@@ -39,13 +43,10 @@ class ChildrenController < ApplicationController
 
   # @return {boolean} if enough children are now registered
   def save_child_to_session(child)
-    return true if ENV['RAILS_ENV'] == 'test'
+    return if ENV['RAILS_ENV'] == 'test'
 
     session[:children] = [] if session[:children].nil?
-    session[:children] << child
-
-    stats = session[:parent_child_stat]
-    session[:children].length >= stats.count.to_i
+    session[:children][@child_num] = child
   end
 
   def edit; end
@@ -60,6 +61,22 @@ class ChildrenController < ApplicationController
   end
 
   private
+
+  def enough?
+    return false if session[:children].nil?
+
+    session_child_count = session[:children].length
+    session_child_stat_count = session[:parent_child_stat]['count'].to_i
+
+    logger.debug "#{session_child_count} >= #{session_child_stat_count.to_json}"
+    session_child_count >= session_child_stat_count
+  end
+
+  def set_child_num
+    param_str = params[:child_num]
+
+    @child_num = param_str.nil? ? 0 : param_str.to_i
+  end
 
   def set_child_and_parent
     @child = Child.find(params[:id])
