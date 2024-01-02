@@ -1,9 +1,9 @@
 module Parent
-    class ChildStat
-        include ActiveModel::Model
+  class ChildStat
+    include ActiveModel::Model
 
-        attr_accessor :count
+    attr_accessor :count
 
-        validates :count, presence: true
-    end
+    validates :count, presence: true
+  end
 end

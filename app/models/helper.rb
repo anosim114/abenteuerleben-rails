@@ -1,8 +1,8 @@
 class Helper < ApplicationRecord
   has_many :registrations, dependent: :destroy
   has_one_attached :photo do |photo|
-    photo.variant :thumb, resize_to_limit: [256, 256]
-    photo.variant :icon, resize_to_limit: [24, 24]
+    photo.variant :thumb, resize_to_limit: [256, 256], preprocessed: true
+    photo.variant :icon, resize_to_limit: [24, 24], preprocessed: true
   end
 
   accepts_nested_attributes_for :registrations, allow_destroy: true, reject_if: :all_blank
@@ -26,7 +26,7 @@ class Helper < ApplicationRecord
 
   def camps_are_not_the_same
     registrations.each do |r|
-      if r.wish_first == Registration::team_free_value or r.wish_second == Registration::team_free_value
+      if r.wish_first == Registration.team_free_value or r.wish_second == Registration.team_free_value
         next
       elsif r.wish_first != r.wish_second
         next
