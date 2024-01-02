@@ -1,8 +1,11 @@
 module Parent
   class NamesController < ApplicationController
     def new
-      @parent_name = Name.new
-      @parent_name.member = true
+      previous_params = session[:parent_name] unless session[:parent_name].nil?
+
+      @parent_name = Name.new previous_params
+
+      @parent_name.member = true if previous_params.nil?
     end
 
     def create

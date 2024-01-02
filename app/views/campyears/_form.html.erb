@@ -17,7 +17,12 @@
   </div>
 
   <div class="input">
-    <%= form.label :participants_register_start, "Teilnehmer Anmeldedatum start:", style: "display: block" %>
+    <%= form.label :members_only_start, "Teilnehmer Anmeldedatum start (Mitglieder):", style: "display: block" %>
+    <%= form.date_field :members_only_start %>
+  </div>
+
+  <div class="input">
+    <%= form.label :participants_register_start, "Teilnehmer Anmeldedatum start (Alle):", style: "display: block" %>
     <%= form.date_field :participants_register_start %>
   </div>
 

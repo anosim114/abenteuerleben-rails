@@ -57,6 +57,7 @@ Campyear.create!([{
                    year: 2024,
                    participants_register_start: '2023-07-10',
                    participants_register_end: '2024-08-10',
+                   members_only_start: '2024-01-01',
                    helper_register_start: '2023-04-01',
                    helper_register_end: '2024-04-10',
                    accentcolor_primary: '#ff0000',

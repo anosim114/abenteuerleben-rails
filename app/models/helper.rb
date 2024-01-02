@@ -26,7 +26,11 @@ class Helper < ApplicationRecord
 
   def camps_are_not_the_same
     registrations.each do |r|
+<<<<<<< HEAD
       if r.wish_first == Registration.team_free_value or r.wish_second == Registration.team_free_value
+=======
+      if r.wish_first == Registration.team_free_value || r.wish_second == Registration.team_free_value
+>>>>>>> 33ac401 (117 add haftungsausschluss and important information checkboxes on participant ack page (#130))
         next
       elsif r.wish_first != r.wish_second
         next
