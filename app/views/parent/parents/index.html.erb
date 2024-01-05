@@ -62,7 +62,7 @@
 
           <tr class="child-registration-info__tr">
             <th>Offene Plätze</th>
-            <td><%= c.open_count %></td>
+            <td><%= [c.open_count, 0].max %></td>
           </tr>
         </table>
       </div>
