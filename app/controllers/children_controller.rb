@@ -33,7 +33,6 @@ class ChildrenController < ApplicationController
       save_child_to_session @child
 
       next_child_num = @child_num + 1
-      logger.debug 'Its enough' if enough?
       redirect_route = enough? ? new_parent_parent_path : new_child_path(child_num: next_child_num)
       redirect_to redirect_route
     else
@@ -68,7 +67,6 @@ class ChildrenController < ApplicationController
     session_child_count = session[:children].length
     session_child_stat_count = session[:parent_child_stat]['count'].to_i
 
-    logger.debug "#{session_child_count} >= #{session_child_stat_count.to_json}"
     session_child_count >= session_child_stat_count
   end
 
@@ -88,7 +86,7 @@ class ChildrenController < ApplicationController
   end
 
   def set_camps
-    @camps = @campyear.camps.map do |c|
+    @camps = @campyear.open_camps.map do |c|
       [
         "Camp #{c.name} (#{c.participants_year_start} - #{c.participants_year_end})",
         c.id

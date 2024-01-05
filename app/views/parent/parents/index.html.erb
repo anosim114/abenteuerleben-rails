@@ -62,12 +62,14 @@
 
           <tr class="child-registration-info__tr">
             <th>Offene Plätze</th>
-            <td><%= c.open_count %></td>
+            <td><%= [c.open_count, 0].max %></td>
           </tr>
         </table>
       </div>
     <% end %>
   </div>
 
-  <%= link_to 'Zur Anmeldung', new_parent_name_path, class: "button child-registartion-info_register-btn" %>
+  <% if !@campyear.full? %>
+    <%= link_to 'Zur Anmeldung', new_parent_name_path, class: "button child-registartion-info_register-btn" %>
+  <% end %>
 </div>
