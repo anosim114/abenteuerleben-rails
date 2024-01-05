@@ -6,7 +6,7 @@
 <%= form_with model: @child do |form| %>
   <%# Camp %>
   <%= render 'formelements/select', form: form, record: @child,
-              field_name: :camp_id, label: 'Camp',
+              field_name: :camp_id, label: 'Camp (nur nicht volle Camps werden angezeigt)',
               options: @camps, required: true %>
 
   <fieldset class="input">

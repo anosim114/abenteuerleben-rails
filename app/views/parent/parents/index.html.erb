@@ -69,5 +69,7 @@
     <% end %>
   </div>
 
-  <%= link_to 'Zur Anmeldung', new_parent_name_path, class: "button child-registartion-info_register-btn" %>
+  <% if !@campyear.full? %>
+    <%= link_to 'Zur Anmeldung', new_parent_name_path, class: "button child-registartion-info_register-btn" %>
+  <% end %>
 </div>

@@ -14,4 +14,12 @@ class Camp < ApplicationRecord
   def open_count
     max_participant_count - children.length
   end
+
+  def full?
+    max_participant_count <= children.length
+  end
+
+  def not_full?
+    !full?
+  end
 end

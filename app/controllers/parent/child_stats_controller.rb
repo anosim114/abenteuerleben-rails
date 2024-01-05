@@ -12,7 +12,6 @@ module Parent
         session[:parent_child_stat] = {
           count: @parent_child_stat.count
         }
-        logger.debug session[:parent_child_stat]
 
         skip_children = !session[:children].nil? && session[:children].length >= @parent_child_stat.count.to_i
         redirect_to skip_children ? new_parent_parent_path : new_child_path(child_num: 0)
