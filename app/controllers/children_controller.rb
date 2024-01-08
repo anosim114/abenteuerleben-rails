@@ -102,6 +102,7 @@ class ChildrenController < ApplicationController
       :sex,
       :medicals,
       :notes,
+      :wishmate,
       :camp_id
     )
   end

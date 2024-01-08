@@ -8,7 +8,7 @@ module Parent
       @camps = @campyear.camps
     end
 
-    def new # rubocop:disable Metrics/AbcSize
+    def new
       if session[:parent_name].nil?
         (redirect_to new_parent_name_path
          return)
