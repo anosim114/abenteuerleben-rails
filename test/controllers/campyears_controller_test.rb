@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CampyearsControllerTest < ActionDispatch::IntegrationTest
+class CampyearsControllerTest < ActionDispatch::IntegrationTest # rubocop:disable Metrics/ClassLength
   setup do
     @campyear = campyears(:one)
 
@@ -15,6 +15,57 @@ class CampyearsControllerTest < ActionDispatch::IntegrationTest
   test 'should get new' do
     get new_campyear_url
     assert_response :success
+  end
+
+  test 'should not create campyear if member only date is missing' do
+    assert_difference('Campyear.count', 0) do
+      post campyears_url,
+           params: { campyear: {
+             accentcolor_primary: @campyear.accentcolor_primary,
+             accentcolor_secondary: @campyear.accentcolor_secondary,
+             helper_register_end: @campyear.helper_register_end,
+             helper_register_start: @campyear.helper_register_start,
+             participants_register_end: @campyear.participants_register_end,
+             participants_register_start: @campyear.participants_register_start,
+             year: @campyear.year
+           } }
+    end
+
+    assert :unprocessable_entity
+  end
+
+  test 'should not create campyear if participant start date is missing' do
+    assert_difference('Campyear.count', 0) do
+      post campyears_url,
+           params: { campyear: {
+             accentcolor_primary: @campyear.accentcolor_primary,
+             accentcolor_secondary: @campyear.accentcolor_secondary,
+             helper_register_end: @campyear.helper_register_end,
+             helper_register_start: @campyear.helper_register_start,
+             participants_register_end: @campyear.participants_register_end,
+             members_only_start: @campyear.members_only_start,
+             year: @campyear.year
+           } }
+    end
+
+    assert :unprocessable_entity
+  end
+
+  test 'should not create campyear if participant end date is missing' do
+    assert_difference('Campyear.count', 0) do
+      post campyears_url,
+           params: { campyear: {
+             accentcolor_primary: @campyear.accentcolor_primary,
+             accentcolor_secondary: @campyear.accentcolor_secondary,
+             helper_register_end: @campyear.helper_register_end,
+             helper_register_start: @campyear.helper_register_start,
+             participants_register_start: @campyear.participants_register_start,
+             members_only_start: @campyear.members_only_start,
+             year: @campyear.year
+           } }
+    end
+
+    assert :unprocessable_entity
   end
 
   test 'should create campyear' do

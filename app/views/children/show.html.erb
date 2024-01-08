@@ -1,3 +1,7 @@
+<div style="display: block; margin-bottom: 2rem;">
+  <%= link_to "< Zurück zu allen Kindern", children_path %>
+</div>
+
 <h1>Kinderinformationen</h1>
 <h2>
     <%= forticon :campground, height: 22, style: 'margin-right: 2px' %>
@@ -13,6 +17,9 @@
     <p><strong><%= "#{@child.surname}, #{@child.forename}" %></strong></p>
     <p><%= l @child.birthday %></p>
     <p><%= @child.sex %></p>
+    <p style="white-space: pre;"><%= @child.medicals %></p>
+    <p style="white-space: pre;"><%= @child.notes %></p>
+    <p><%= @child.wishmate %></p>
 </div>
 
 <h2>

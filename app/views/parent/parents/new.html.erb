@@ -1,11 +1,21 @@
 <style>
+    .registration-ack  {
+        width: 100%;
+    }
+
     table {
         text-align: left;
         border: 2px solid black;
+        width: 100%;
+    }
+    
+    td {
+        word-break: break-word;
     }
 
     th {
         padding-right: var(--spacing-md);
+        width: 14rem;
     }
 
     tr:nth-child(odd) {
@@ -15,11 +25,24 @@
     .child-information-table:not(:first-child) {
         margin-top: var(--spacing-lg);
     }
+
+    @media(max-width: 768px) {
+        table {
+            max-width: 100%;
+            overflow: hidden;
+
+        }
+
+        th {
+            width: 10rem;
+            word-break: break-word;
+        }
+    }
 </style>
 <h1>Kinderanmeldung</h1>
 <h2>Bestätigung</h2>
 
-<%= form_with model: @parent do |form| %>
+<%= form_with class: 'registration-ack', model: @parent do |form| %>
   <h3><%= forticon :user, height: 20 %> Elterninfos</h3>
     <table>
         <tr>
@@ -59,9 +82,10 @@
             <td><%= @parent.email %></td>
         </tr>
     </table>
+    <%= link_to 'Ändern', new_parent_name_path %> 
 
     <h3><%= forticon :children, height: 20 %> Kinderinfos</h3>
-    <% @parent.children.each do |child| %>
+    <% @parent.children.each_with_index do |child, index| %>
       <table class="child-information-table">
         <tr>
             <th>Name</th>
@@ -80,14 +104,19 @@
             <td><%= child.sex %></td>
         </tr>
         <tr>
-            <th>Medikamente / ....</th>
+            <th>Medikamente / Risiko</th>
             <td><%= child.medicals %></td>
         </tr>
         <tr>
             <th>Sonstige Bemerkungen</th>
             <td><%= child.notes %></td>
         </tr>
+        <tr>
+            <th>Wunschpartner</th>
+            <td><%= child.wishmate %></td>
+        </tr>
       </table>
+        <%= link_to 'Ändern', new_child_path(child_num: index) %> 
     <% end %>
   </fieldset>
 

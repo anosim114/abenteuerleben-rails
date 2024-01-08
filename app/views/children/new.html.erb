@@ -49,6 +49,20 @@
 
   </fieldset>
 
+  <fieldset class="input">
+    <legend>
+      <%= forticon :question, height: 18, style: 'margin-right: var(--spacing-sm)' %>
+    </legend>
+    <%# Wishmate %>
+    <%= render 'formelements/input', form: form, record: @child,
+                field_name: :wishmate, label: 'Wunschpartner' %>
+    <p>
+      Mit folgender Person möchte mein Kind nach Möglichkeit in eine Gruppe kommen.<br>
+      <strong>Wichtig:</strong> Es handelt sich um ein Wunsch, nicht immer kann darauf eingegangen werden!<br>
+      Bitte max. 1 Person eintragen.
+    </p>
+  </fieldset>
+
   <input type="hidden" name="child_num" value="<%= @child_num%>">
 
   <%= form.submit 'Weiter' %>
