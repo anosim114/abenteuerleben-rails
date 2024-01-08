@@ -70,6 +70,10 @@ class ChildrenControllerTest < ActionDispatch::IntegrationTest
     assert :redirect
   end
 
+  # test 'adding a wishmate saves it' do
+  #    todo
+  # end
+
   # test 'should get edit' do
   #   get children_edit_url(children[:one])
   #   assert_response :success
