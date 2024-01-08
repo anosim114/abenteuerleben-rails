@@ -26,7 +26,7 @@ class Helper < ApplicationRecord
 
   def camps_are_not_the_same
     registrations.each do |r|
-      if r.wish_first == Registration.team_free_value or r.wish_second == Registration.team_free_value
+      if r.wish_first == Registration.team_free_value || r.wish_second == Registration.team_free_value
         next
       elsif r.wish_first != r.wish_second
         next
