@@ -121,14 +121,38 @@
   </fieldset>
 
   <br>
-  <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion, label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden", form: form do %>
+  <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion,
+      label_text: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden",
+      form: form do %>
     <%= raw Page.where(url: 'eltern_haftungsausschluss').first.content %>
   <% end %>
 
   <br>
-  <%= render "formelements/dialog-checkbox", form_name: :important_information, label_text: "Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden", form: form do %>
+  <%= render "formelements/dialog-checkbox", form_name: :important_information,
+      label_text: "Ich habe den Wichtigen Informationen gelesen und bin damit einverstanden",
+      form: form do %>
     <%= raw Page.where(url: 'eltern_wichtige-informationen').first.content %>
   <% end %>
+
+  <br>
+  <%= render "formelements/dialog-checkbox", form_name: :important_information,
+      label_text: "Ich habe die geltenden Stornierungsregeln zur Kenntnis genommen",
+      form: form do %>
+    <%= raw Page.where(url: 'stornierungsregeln').first.content %>
+  <% end %>
+
+  <br>
+  <%= render 'formelements/input', form: form, record: @parent,
+      field_name: :data_protection, label: '', input_type: :checkbox_required,
+      required: true do %>
+    Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%> 
+  <% end %>
+
+  <br>
+  <%= render 'formelements/input', form: form, record: @parent,
+      field_name: :photo_rights, input_type: :checkbox_required, required: true,
+      label: 'Einwilligung zur Verwendung / Veröffentlichung von Foto- und Videomaterial' %>
+
   <br>
   <p>
     Ihr werdet von uns eine bestätigungsemail erhalten mit weiteren infos

@@ -1,0 +1,20 @@
+Hallo <%= @parent.forename %>,
+
+du hast erfolgreich <%= pluralize @parent.children.length, "Kind", "Kinder" %> angemeldet.
+
+<br>
+<br>
+Nochmal zum nachlesen:
+<br>
+<%= link_to "Datenschutz", page_url("datenschutz", host: 'abenteuerleben-ev.de'), class: 'centered' %>
+<br>
+<%= link_to "Stornierungsregeln", page_url("stornierungsregeln", host: 'abenteuerleben-ev.de'), class: 'centered' %>
+<br>
+<%= link_to "Haftungsausschluss", page_url("eltern_haftungsausschluss", host: 'abenteuerleben-ev.de'), class: 'centered' %>
+<br>
+<%= link_to "Wichtige Informationen", page_url("eltern_wichtige-informationen", host: 'abenteuerleben-ev.de'), class: 'centered' %>
+<br>
+<br>
+<br>
+
+- Dein Abenteuerleben Teencamp Team
