@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,6 +15,13 @@ module RubyRailsPostgres
 
     config.i18n.default_locale = :de
 
+    # Logger
+    config.logger = Logger.new(STDOUT)
+    config.log_level = :info
+    # config.logger.formatter = proc do |severity, time, _progname, msg|
+    #   "[#{time}]  (#{severity}) -- : #{msg}"
+    # end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -24,4 +31,3 @@ module RubyRailsPostgres
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-

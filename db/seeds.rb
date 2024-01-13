@@ -22,7 +22,19 @@ Event.create!([
 
 Page.create!([
                {
+                 url: 'datenschutz',
+                 content: ''
+               },
+               {
+                 url: 'impressum',
+                 content: ''
+               },
+               {
                  url: 'mitarbeiter_haftungsausschluss',
+                 content: ''
+               },
+               {
+                 url: 'stornierungsregeln',
                  content: ''
                },
                {
