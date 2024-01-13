@@ -16,8 +16,8 @@ module RubyRailsPostgres
     config.i18n.default_locale = :de
 
     # Logger
-    config.logger = Logger.new(STDOUT)
-    config.log_level = :info
+    # config.logger = Logger.new(STDOUT)
+    # config.log_level = :info
     # config.logger.formatter = proc do |severity, time, _progname, msg|
     #   "[#{time}]  (#{severity}) -- : #{msg}"
     # end
