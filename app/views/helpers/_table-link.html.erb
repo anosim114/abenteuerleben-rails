@@ -1,12 +1,12 @@
 <%= link_to helper, class: "helper-table-link" do %>
   <div class="helper-table-link__image">
-    <%= image_tag helper.photo.variant(:thumb) if helper.photo.attached? %>
+    <%= image_tag helper.photo.variant(:thumb), loading: 'lazy' if helper.photo.attached? %>
   </div>
 
   <div class="helper-table-link__body">
     <div class="helper-table-link__title">
       <span class="helper-table-link__helper-name"><%= helper.surname + ", " + helper.forename %></span>
-      |
+      <span>|</span>
       <span><%= helper.telephone %></span>
     </div>
 
