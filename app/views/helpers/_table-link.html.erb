@@ -1,6 +1,7 @@
 <%= link_to helper, class: "helper-table-link" do %>
   <div class="helper-table-link__image">
-    <%= image_tag rails_storage_proxy_path(helper.photo.variant(:thumb)), loading: 'lazy' if helper.photo.attached? %>
+    <%= image_tag rails_storage_proxy_path(helper.photo), loading: 'lazy' if helper.photo.attached? %>
+    <%# <%= image_tag rails_storage_proxy_path(helper.photo.variant(:small).processed.url), loading: 'lazy' if helper.photo.attached? %>
   </div>
 
   <div class="helper-table-link__body">
