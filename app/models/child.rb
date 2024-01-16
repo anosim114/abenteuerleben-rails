@@ -8,5 +8,9 @@ class Child < ApplicationRecord
   validates :sex, presence: true, on: %i[form create]
   validates :camp_id, presence: true, on: %i[form create]
 
-  validates :parent_id, presence: true, on: %i[create]
+  # validates :parent_id, presence: true, on: %i[create]
+
+  def invalid?
+    !valid?
+  end
 end

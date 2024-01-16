@@ -7,25 +7,21 @@ ruby '3.2.2'
 gem 'rails', '~> 7.1'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem 'sprockets-rails'
+gem 'sprockets-rails', '~> 3.4'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 6.4'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem 'importmap-rails'
+gem 'importmap-rails', '~> 2.0'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
-
-gem 'forticons'
-gem 'forticons_helper'
-
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
 
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem 'jbuilder'
+gem 'forticons'
+gem 'forticons_helper'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -46,12 +42,12 @@ gem 'image_processing', '~> 1.12'
 gem 'pg', '~> 1.5', '>= 1.5.4'
 
 # Used to export data to excel
-gem 'caxlsx'
-gem 'caxlsx_rails'
+gem 'caxlsx', '~> 4.0'
+gem 'caxlsx_rails', '~> 0.6'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  # gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   gem 'sqlite3'
 end
@@ -70,7 +66,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'webdrivers', '= 5.3.0'
+  # gem 'capybara'
+  # gem 'selenium-webdriver'
+  # gem 'webdrivers', '= 5.3.0'
 end

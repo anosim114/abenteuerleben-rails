@@ -30,19 +30,25 @@ module Parent
       @parent.children = child_params
     end
 
-    def create
+    def create # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
       @parent = Parent.new parent_params
+      @parent.children = child_params
 
-      if @parent.valid?
+      if @parent.valid? && @parent.children.each.filter(&:invalid?).empty?
         @parent.save
 
-        @parent.children = child_params
         @parent.children.each(&:save)
 
-        reset_session
         ChildRegistrationMailer.with(parent: @parent).registered_mail.deliver_later
+
+        reset_session
         redirect_to root_path, notice: 'Erfolgreich angemeldet, eine email mit mehr Infos ist auf dem weg zu dir'
       else
+        logger.error "#{@parent.to_json} was not valid because:"
+        logger.error @parent.errors.messages if @parent.errors.messages
+        @parent.children.each do |c|
+          logger.error c.errors.messages if c.errors.messages
+        end
         render :new, status: :unprocessable_entity
       end
     end
