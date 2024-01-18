@@ -29,7 +29,6 @@
     <%# Sex %>
 
     <div>
-      <%= @child.sex %>
       <span style="display: block;">Geschlecht *</span>
       <div class="<%= class_names('radio-group', 'radio-group--error': @child.errors['sex'].any?) %>"
            style="margin-top: var(--spacing-sm);">
