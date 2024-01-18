@@ -50,3 +50,21 @@
   <p>which are card like and have a nice background shadow effekt</p>
 </article>
 
+<turbo-frame id='radio-groups'>
+  <h3>Radio Groups</h3>
+  <form action="" method="get">
+    <div class="radio-group">
+      <label class="radio-group__button">
+        <input class="radio-group__input" type=radio name=rtest value=r1 checked onclick="this.closest('form').requestSubmit()">
+        <span class=radio-group__label>b1</span>
+      </label>
+
+
+      <label class="radio-group__button">
+        <input class="radio-group__input" type=radio name=rtest value=r2 onclick="this.closest('form').requestSubmit()">
+        <span class=radio-group__label>b2</span>
+      </label>
+    </div>
+  </form>
+</turbo-frame id='radio-groups'>
+

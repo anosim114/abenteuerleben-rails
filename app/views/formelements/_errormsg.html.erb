@@ -1,5 +1,5 @@
 <% if record.errors[field].any? %>
-  <div style="color: var(--red-100)">
+  <div style="margin-top: var(--spacing-xs); color: var(--red-100)">
     <ul>
       <% record.errors[field].each do |error| %>
         <li>
