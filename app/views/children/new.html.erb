@@ -27,9 +27,25 @@
                 field_name: :birthday, input_type: :date, label: 'Geburtsdatum', required: true %>
 
     <%# Sex %>
-    <%= render 'formelements/select', form: form, record: @child,
-                field_name: :sex, label: 'Geschlecht', required: true,
-                options: ['Junge', 'Mädchen'] %>
+
+    <div>
+      <span style="display: block;">Geschlecht *</span>
+      <div class="<%= class_names('radio-group', 'radio-group--error': @child.errors['sex'].any?) %>"
+           style="margin-top: var(--spacing-sm);">
+        <label class="radio-group__button">
+          <input class="radio-group__input" type=radio name="child[sex]"
+                 value="Junge" <%= 'checked' if @child.sex == 'Junge' %>>
+          <span class="radio-group__label radio-group__label--blue">Junge</span>
+        </label>
+
+        <label class="radio-group__button">
+          <input class="radio-group__input" type=radio  name="child[sex]"
+                 value="Mädchen" <%= 'checked' if @child.sex == 'Mädchen' %>>
+          <span class="radio-group__label radio-group__label--red">Mädchen</span>
+        </label>
+      </div>
+      <%= render 'formelements/errormsg', record: @child, field: 'sex' %>
+    </div>
   </fieldset>
 
   <fieldset class="input">
