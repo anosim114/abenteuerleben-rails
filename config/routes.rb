@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   get 'admin/dashboard'
   get 'admin/dev'
+  get 'admin/files/new', to: 'admin#file_upload'
+  post 'admin/files', to: 'admin#file_create'
 
   get 'login', to: 'session#login'
   post 'login', to: 'session#auth'

@@ -1,0 +1,29 @@
+<%= @f.file_name if @f.file_name.present? %>
+<img src="<%= "data:image/#{File.extname(@f.file)[1..]};base64,#{@file64}" if @file64.present? %>">
+
+<%= form_tag admin_files_path, multipart: true, id: '', data: {turbo: false} do %>
+  <table>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td>
+          <%= submit_tag t('.form.upload')%>
+        </td> 
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr>
+        <th>File</th>
+        <td><input type="file" name="file[file]"></td>
+      </tr>
+      <tr>
+        <th>Note</th>
+        <td><input type="text" name="file[note]" placeholder="note"></td>
+      </tr>
+      <tr>
+        <th>Author</th>
+        <td><input type="text" name="file[author]" placeholder="author"></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

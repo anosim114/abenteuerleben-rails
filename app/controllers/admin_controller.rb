@@ -13,4 +13,24 @@ class AdminController < ApplicationController
   end
 
   def dev; end
+
+  def file_upload
+    @f = File.new
+  end
+
+  def file_create
+    file_params = params.require(:file).permit(:file, :author, :note)
+
+    @f = File.new file_params
+    @f.file_name = AbenteuerLeben::StorageUtils.persist @f.file, prefix: 'admin/file'
+    @file64 = Base64.encode64 @f.file.read
+
+    render :file_upload
+  end
+
+  class File
+    include ActiveModel::Model
+
+    attr_accessor :file, :file_name, :note, :author
+  end
 end
