@@ -1,13 +1,86 @@
 <h1>Kinderanmeldung</h1>
+
 <h2>Kinderinformationen</h2>
 
 <%= render 'children/child_registration_step', steps: 5, current_step: 5 %>
 
 <%= form_with model: @child do |form| %>
   <%# Camp %>
-  <%= render 'formelements/select', form: form, record: @child,
-              field_name: :camp_id, label: 'Camp (nur nicht volle Camps werden angezeigt)',
-              options: @camps, required: true %>
+  <div>
+    <table class="camp-info-table camp-info-table--desktop">
+      <tr>
+        <th>Name</th>
+        <th>Jahrgänge</th>
+        <th>Datum von</th>
+        <th>Datum bis</th>
+      </tr>
+      <% @camps.each do |camp| %>
+        <tr>
+          <td>Camp <%= camp.name %></td>
+          <td><%= camp.participants_year_start %> - <%= camp.participants_year_end %></td>
+          <td><%= l camp.date_start %></td>
+          <td><%= l camp.date_end %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <table class="camp-info-table camp-info-table--mobile">
+      <tr>
+        <th>Name</th>
+        <% @camps.each do |camp| %>
+          <td>Camp <%= camp.name %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Jahr-<br>gänge</th>
+        <% @camps.each do |camp| %>
+          <td><%= camp.participants_year_start %> - <%= camp.participants_year_end %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Von</th>
+        <% @camps.each do |camp| %>
+          <td><%= l camp.date_start %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Bis</th>
+        <% @camps.each do |camp| %>
+          <td><%= l camp.date_end %></td>
+        <% end %>
+      </tr>
+    </table>
+    <br>
+    <br>
+
+    <span style="display: block;">Camp *</span>
+    <div class="<%= class_names('radio-group', 'radio-group--error': @child.errors['camp_id'].any?) %>"
+         style="margin-top: var(--spacing-sm);">
+
+      <% @camps.each do |camp| %>
+        <label class="radio-group__button">
+          <input class="radio-group__input"
+                 type=radio
+                 name="child[camp_id]"
+                 <%= camp.full? ? 'disabled' : '' %>
+                 value="<%= camp.id %>" <%= 'checked' if @child.camp_id == camp.id %>>
+
+          <span class="<%= class_names('radio-group__label', 'radio-group__label--disabled': camp.full?) %>">
+            Camp <%= camp.name %>
+            <br>
+            <% if camp.full? %>
+              (voll)
+            <% else  %>
+              <%= camp.participants_year_start %> - <%= camp.participants_year_end %>
+            <% end %>
+          </span>
+
+        </label>
+      <% end %>
+
+    </div>
+    <%= render 'formelements/errormsg', record: @child, field: 'camp' %>
+  </div>
 
   <fieldset class="input">
     <legend>
@@ -27,7 +100,6 @@
                 field_name: :birthday, input_type: :date, label: 'Geburtsdatum', required: true %>
 
     <%# Sex %>
-
     <div>
       <span style="display: block;">Geschlecht *</span>
       <div class="<%= class_names('radio-group', 'radio-group--error': @child.errors['sex'].any?) %>"

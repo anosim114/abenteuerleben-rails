@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Haftungsausschluss
+  description: fuer die mitarbeiter
+  download_area: true
+
+two:
+  name: some_random_image
+  description: missing
+  download_area: false
