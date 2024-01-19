@@ -1,0 +1,29 @@
+.camp-info-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  &--mobile {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+
+  &--desktop {
+    @media (max-width: 769px) {
+      display: none;
+    }
+  }
+
+  tr:not(:last-child) {
+    border-bottom: 1px solid black;
+  }
+
+  th, td {
+    padding: var(--spacing-sm);
+    text-align: left;
+
+    &:not(:last-child) {
+      border-right: 1px solid black;
+    }
+  }
+}

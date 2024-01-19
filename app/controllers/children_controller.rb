@@ -86,12 +86,7 @@ class ChildrenController < ApplicationController
   end
 
   def set_camps
-    @camps = @campyear.open_camps.map do |c|
-      [
-        "Camp #{c.name} (#{c.participants_year_start} - #{c.participants_year_end})",
-        c.id
-      ]
-    end
+    @camps = @campyear.camps
   end
 
   def child_params

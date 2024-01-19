@@ -34,7 +34,8 @@
         border-radius: var(--border-radius);
         cursor: pointer;
         padding: 4px 24px;
-        width: 7rem;
+        width: 10rem;
+        min-width: max-content;
         text-align: center;
 
         @media (max-width: 768px) {
@@ -43,12 +44,17 @@
         }
     }
 
-    &__label:hover {
+    &__label--disabled {
+        opacity: 0.5;
+    }
+
+    &__label:not(.radio-group__label--disabled):hover {
         background-color: var(--gray-600);
     }
 
     &__input:checked + &__label {
-        background-color: white;
+        background-color: var(--primary);
+        color: var(--white);
     }
 
     // red variant
