@@ -39,8 +39,8 @@
         }
     }
 </style>
-<h1>Kinderanmeldung</h1>
-<h2>Bestätigung</h2>
+<h1><%= t 'parent.form-title' %></h1>
+<h2><%= t '.title' %></h2>
 
 <%= form_with class: 'registration-ack', model: @parent do |form| %>
   <h3><%= forticon :user, height: 20 %> Elterninfos</h3>
@@ -145,7 +145,7 @@
   <%= render 'formelements/input', form: form, record: @parent,
       field_name: :data_protection, label: '', input_type: :checkbox_required,
       required: true do %>
-    Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%> 
+    Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%>
   <% end %>
 
   <br>
