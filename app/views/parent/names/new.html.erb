@@ -29,21 +29,11 @@
         <% end %>
       </div>
     <% end %>
-
-    <label for="member" class="formelement-checkbox">
-      <input
-        type="checkbox"
-        class="formelement-checkbox__checkbox"
-        name="parent[member]"
-        id="member"
-        checked="<%= @parent_name.member ? 'checked' : 'false' %>">
-
-      <div class="formelement-checkbox__visual-checkbox">
-        <%= forticon :check, height: 14, class: 'formelement-checkbox__checked-mark' %>
-      </div>
-
-      <span><%= t '.member' %></span>
-    </label>
+    <%= render 'formelements/checkbox', record: @parent_name,
+      model: 'parent_name',
+      field: 'member',
+      checked: @parent_name.member,
+      text: t('.member') %>
   </fieldset>
 
   <%= form.submit 'Weiter' %>
