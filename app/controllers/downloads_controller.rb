@@ -2,7 +2,6 @@ class DownloadsController < ApplicationController
   before_action :set_download, only: %i[ show edit update destroy download ]
   before_action :admin_only, except: %i[ index download ]
 
-  # GET /downloads or /downloads.json
   def index
     @download_page_before = Page.where(url: 'download_before').first!
     @download_page_after = Page.where(url: 'download_after').first!
@@ -13,20 +12,14 @@ class DownloadsController < ApplicationController
     @downloads = Download.all
   end
 
-  # GET /downloads/1 or /downloads/1.json
-  def show
-  end
+  def show; end
 
-  # GET /downloads/new
   def new
     @download = Download.new
   end
 
-  # GET /downloads/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /downloads or /downloads.json
   def create
     @download = Download.new(download_params)
 
@@ -37,7 +30,6 @@ class DownloadsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /downloads/1 or /downloads/1.json
   def update
     if @download.update(download_params)
       redirect_to download_url(@download), notice: "Download was successfully updated."
@@ -46,7 +38,6 @@ class DownloadsController < ApplicationController
     end
   end
 
-  # DELETE /downloads/1 or /downloads/1.json
   def destroy
     @download.destroy
 
@@ -54,13 +45,12 @@ class DownloadsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_download
-      @download = Download.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def download_params
-      params.require(:download).permit(:name, :description, :download_area, :file)
-    end
+  def set_download
+    @download = Download.find(params[:id])
+  end
+
+  def download_params
+    params.require(:download).permit(:name, :description, :download_area, :file)
+  end
 end

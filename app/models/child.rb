@@ -10,6 +10,13 @@ class Child < ApplicationRecord
 
   # validates :parent_id, presence: true, on: %i[create]
 
+  def self.from_year year
+    Child.joins(camp: :campyear)
+       .where('campyears.year': year)
+       .order(:surname)
+       .distinct
+  end
+
   def invalid?
     !valid?
   end
