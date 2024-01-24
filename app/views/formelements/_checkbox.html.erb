@@ -22,5 +22,10 @@ render 'formelements/checkbox', record: @parent_name,
 
     <span><%= text %></span>
   </label>
-  <%= render 'formelements/errormsg', record: record, field: field %>
+  <% unless record.errors[field].empty? %>
+    <span class="formelement__error">
+      <%= forticon 'circle-exclamation', height: 16 %>
+      <%= record.errors[field].first %>
+    </span>
+  <% end %>
 </div>

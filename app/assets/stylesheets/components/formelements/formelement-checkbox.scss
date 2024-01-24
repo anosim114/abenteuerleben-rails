@@ -37,8 +37,8 @@
   &:has(.formelement-checkbox__checkbox:checked) .formelement-checkbox__checked-mark {
     display: block;
   }
+}
 
-  &__visual-checkbox {
-
-  }
+.formelement:has(.formelement__error) .formelement-checkbox__visual-checkbox {
+  border-color: var(--danger);
 }
