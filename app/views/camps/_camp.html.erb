@@ -1,42 +1,36 @@
 <div id="<%= dom_id camp %>">
-  <p>
-    <strong>Name:</strong>
-    <%= camp.name %>
-  </p>
-
-  <p>
-    <strong>Campjahr:</strong>
-    <%= camp.campyear.year %>
-  </p>
-
-  <p>
-    <strong>Startdatum:</strong>
-    <%= camp.date_start %>
-  </p>
-
-  <p>
-    <strong>Enddatum:</strong>
-    <%= camp.date_end %>
-  </p>
-
-  <p>
-    <strong>Jahrgang von:</strong>
-    <%= camp.participants_year_start %>
-  </p>
-
-  <p>
-    <strong>Jahrgang bis:</strong>
-    <%= camp.participants_year_end %>
-  </p>
-
-  <p>
-    <strong>Teilnehmeranzahl:</strong>
-    <%= camp.max_participant_count %>
-  </p>
-  
-  <p>
-    <strong>Anmeldekosten:</strong>
-    <%= camp.price %>
-  </p>
-
+  <table style="text-align: left;">
+    <tr>
+      <th><%= Camp.human_attribute_name :name %></th>
+      <td><%= camp.name %></td>
+    </tr>
+    <tr>
+      <th><%= Campyear.human_attribute_name :year %></th>
+      <td><%= camp.campyear.year %></td>
+    </tr>
+    <tr>
+      <th><%= Camp.human_attribute_name :date_start %></th>
+      <td><%= l camp.date_start %></td>
+    </tr>
+    <tr>
+      <th><%= Camp.human_attribute_name :date_end %></th>
+      <td><%= l camp.date_end %></td>
+    </tr>
+    <tr>
+      <th><%= Camp.human_attribute_name :participants_year_start %></th>
+      <td><%= camp.participants_year_start %></td>
+    </tr>
+    <tr>
+      <th><%= Camp.human_attribute_name :participants_year_end %></th>
+      <td><%= camp.participants_year_end %></td>
+    </tr>
+    <tr>
+      <th><%= Camp.human_attribute_name :max_participant_count %></th>
+      <td><%= camp.max_participant_count %></td>
+    </tr>
+    <tr>
+      <th><%= Camp.human_attribute_name :price %></th>
+      <td><%= camp.price %></td>
+    </tr>
+  </table>
 </div>

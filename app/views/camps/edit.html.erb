@@ -1,9 +1,9 @@
-<h1>Editing camp</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render "form", camp: @camp, url: camp_path(@camp) %>
 
 <br>
 
 <div>
-  <%= link_to "Zurück zum Camp", camp_path(@camp) %> |
+  <%= link_to t('.back-to-campyear'), campyear_path(@camp.campyear) %> |
 </div>

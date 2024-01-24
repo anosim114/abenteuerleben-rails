@@ -1,41 +1,38 @@
 <div id="<%= dom_id campyear %>">
-  <p style="font-weight: bold; font-size: 1.5rem; line-height: 2rem; color: var(--black);">
+  <h2>
     <%= campyear.year %>
-  </p>
+  </h2>
 
-  <p>
-    <strong>Teilnehmer anmeldestart (Mitglieder):</strong>
-    <%= campyear.members_only_start %>
-  </p>
+  <table style="text-align: left;">
+    <tr>
+      <th><%= Campyear.human_attribute_name :helper_register_start %></th>
+      <td><%= l campyear.helper_register_start %></td>
+    </tr>
+    <tr>
+      <th><%= Campyear.human_attribute_name :helper_register_end %></th>
+      <td><%= l campyear.helper_register_end %></td>
+    </tr>
+    <tr>
+      <th><%= Campyear.human_attribute_name :members_only_start %></th>
+      <td><%= l campyear.members_only_start %></td>
+    </tr>
+    <tr>
+      <th><%= Campyear.human_attribute_name :participants_register_start %></th>
+      <td><%= l campyear.participants_register_start %></td>
+    </tr>
+    <tr>
+      <th><%= Campyear.human_attribute_name :participants_register_end %></th>
+      <td><%= l campyear.participants_register_end %></td>
+    </tr>
+  </table>
 
-  <p>
-    <strong>Teilnehmer anmeldestart (Alle):</strong>
-    <%= campyear.participants_register_start %>
-  </p>
+<!--  <p style="color: <%#= campyear.accentcolor_primary%>">-->
+<!--    <strong>Akzentfarbe Primär:</strong>-->
+    <%#= campyear.accentcolor_primary %>
+<!--  </p>-->
 
-  <p>
-    <strong>Teilnehmer anmeldeschluss:</strong>
-    <%= campyear.participants_register_end %>
-  </p>
-
-  <p>
-    <strong>Helfer anmeldestart:</strong>
-    <%= campyear.helper_register_start %>
-  </p>
-
-  <p>
-    <strong>Helfer anmeldeschluss:</strong>
-    <%= campyear.helper_register_end %>
-  </p>
-
-  <p style="color: <%= campyear.accentcolor_primary%>">
-    <strong>Akzentfarbe Primär:</strong>
-    <%= campyear.accentcolor_primary %>
-  </p>
-
-  <p style="color: <%= campyear.accentcolor_secondary%>">
-    <strong>Akzentfarbe Sekundär:</strong>
-    <%= campyear.accentcolor_secondary %>
-  </p>
-
+<!--  <p style="color: <%#= campyear.accentcolor_secondary%>">-->
+<!--    <strong>Akzentfarbe Sekundär:</strong>-->
+    <%#= campyear.accentcolor_secondary %>
+<!--  </p>-->
 </div>

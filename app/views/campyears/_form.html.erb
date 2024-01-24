@@ -12,42 +12,42 @@
   <% end %>
 
   <div class="input">
-    <%= form.label :year, "Jahr: ", style: "display: block" %>
+    <%= form.label :year, style: "display: block" %>
     <%= form.number_field :year %>
   </div>
 
   <div class="input">
-    <%= form.label :members_only_start, "Teilnehmer Anmeldedatum start (Mitglieder):", style: "display: block" %>
-    <%= form.date_field :members_only_start %>
-  </div>
-
-  <div class="input">
-    <%= form.label :participants_register_start, "Teilnehmer Anmeldedatum start (Alle):", style: "display: block" %>
-    <%= form.date_field :participants_register_start %>
-  </div>
-
-  <div class="input">
-    <%= form.label :participants_register_end, "Teilnehmer Anmeldedatum ende:", style: "display: block" %>
-    <%= form.date_field :participants_register_end %>
-  </div>
-
-  <div class="input">
-    <%= form.label :helper_register_start, "Helfer Anmeldedatum start:", style: "display: block" %>
+    <%= form.label :helper_register_start, style: "display: block" %>
     <%= form.date_field :helper_register_start %>
   </div>
 
   <div class="input">
-    <%= form.label :helper_register_end, "Helfer Anmeldedatum ende:", style: "display: block" %>
+    <%= form.label :helper_register_end, style: "display: block" %>
     <%= form.date_field :helper_register_end %>
   </div>
 
   <div class="input">
-    <%= form.label :accentcolor_primary, "Akzentfarbe primär:", style: "display: block" %>
+    <%= form.label :members_only_start, style: "display: block" %>
+    <%= form.date_field :members_only_start %>
+  </div>
+
+  <div class="input">
+    <%= form.label :participants_register_start, style: "display: block" %>
+    <%= form.date_field :participants_register_start %>
+  </div>
+
+  <div class="input">
+    <%= form.label :participants_register_end, style: "display: block" %>
+    <%= form.date_field :participants_register_end %>
+  </div>
+
+  <div class="input">
+    <%= form.label :accentcolor_primary, style: "display: block" %>
     <%= form.color_field :accentcolor_primary %>
   </div>
 
   <div class="input">
-    <%= form.label :accentcolor_secondary, "Akzentfarbe sekundär:", style: "display: block" %>
+    <%= form.label :accentcolor_secondary, style: "display: block" %>
     <%= form.color_field :accentcolor_secondary %>
   </div>
 
