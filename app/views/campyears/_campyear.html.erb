@@ -3,6 +3,14 @@
     <%= campyear.year %>
   </h2>
 
+  <style>
+    table {text-align: left; width: 100%; table-layout: fixed}
+    tr:nth-child(odd) {background-color: #f0f0f0;}
+    th {margin-right: .2rem; max-width: 68%;}
+    @media (max-width: 768px) { th {width: 68%;} }
+    td {margin-right: .2rem; max-width: 68%;}
+  </style>
+
   <table style="text-align: left;">
     <tr>
       <th><%= Campyear.human_attribute_name :helper_register_start %></th>
