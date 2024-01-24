@@ -15,6 +15,7 @@ jobs:
     needs: test
     with:
       application: bleben
+      overwrite: true
     secrets: inherit
 
   # deploy-production:
