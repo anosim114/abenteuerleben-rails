@@ -1,0 +1,31 @@
+<%#
+Example usage:
+
+render 'formelements/checkbox', record: @parent_name,
+    model: 'parent_name',
+    field: 'member',
+    checked: @parent_name.member,
+    text: t('.member')
+%>
+<div class="formelement">
+  <label for="<%= field %>" class="formelement-checkbox">
+    <input
+      type="checkbox"
+      class="formelement-checkbox__checkbox"
+      name="<%= model %>[<%= field %>]"
+      id="<%= field %>"
+      <%= checked ? 'checked' : '' %> />
+
+    <div class="formelement-checkbox__visual-checkbox">
+      <%= forticon :check, height: 14, class: 'formelement-checkbox__checked-mark' %>
+    </div>
+
+    <span><%= text %></span>
+  </label>
+  <% unless record.errors[field].empty? %>
+    <span class="formelement__error">
+      <%= forticon 'circle-exclamation', height: 16 %>
+      <%= record.errors[field].first %>
+    </span>
+  <% end %>
+</div>

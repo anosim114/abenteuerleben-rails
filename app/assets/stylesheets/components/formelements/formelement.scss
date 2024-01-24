@@ -1,0 +1,29 @@
+.formelement {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &:has(.formelement__error) .formelement__input {
+    border: 1px solid red;
+  }
+
+  &__label {
+    margin-bottom: 4px;
+  }
+
+  &__input {
+    margin: 0 !important;
+  }
+
+  &__error {
+    color: var(--danger);
+    font-size: 16px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+
+    & > svg {
+      min-width: 16px;
+    }
+  }
+}

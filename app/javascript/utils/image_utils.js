@@ -1,5 +1,4 @@
-window.squashImageFile = (element) => {
- 
+export const squashImageFile = (element) => {
     if (imageSmallEnough(element)) {
         return
     }

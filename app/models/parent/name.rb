@@ -11,8 +11,7 @@ module Parent
     validate :non_member_permit
 
     def non_member_permit
-      # TODO: check if other chruches are allowed to register
-      return if member == '1'
+      return if member
 
       participants_register_start = ApplicationController.helpers.active_campyear.participants_register_start
       return if Time.zone.today >= participants_register_start

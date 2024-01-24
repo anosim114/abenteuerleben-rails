@@ -1,0 +1,11 @@
+//@import "formelements/*";
+
+$input_types: '.formelement', '.formelement-checkbox';
+
+@each $input in $input_types {
+  @each $input2 in $input_types {
+    #{$input} + #{$input2} {
+      margin-top: 2rem;
+    }
+  }
+}

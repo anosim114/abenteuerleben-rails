@@ -223,3 +223,20 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       short: "%d. %b, %H:%M Uhr"
     pm: nachmittags
+
+  parent:
+    form-title: 'Kinderanmeldung'
+    names:
+      new:
+        title: 'Name Elternteil'
+        forename: 'Vorname des Elternteils *'
+        surname: 'Nachname des Elternteils *'
+        member: 'Mitglied der FECG Blomberg'
+    parents:
+      new:
+        privacy-notice: "Ich akzeptiere die "
+        liability-exclusion: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden"
+        title: "Bestätigung"
+  children:
+    child_registration_step:
+      stufe: "Schritt %{step} von %{steps}"

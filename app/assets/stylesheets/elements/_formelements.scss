@@ -1,5 +1,5 @@
 select,
-input[type="checkbox"],
+input[type="checkbox"]:not(.formelement-checkbox__checkbox),
 input[type="tel"],
 input[type="number"],
 input[type="date"],
@@ -19,7 +19,7 @@ textarea {
 
 @media (max-width: 768px) {
   select,
-  input[type="checkbox"],
+  input[type="checkbox"]:not(.formelement-checkbox__checkbox),
   input[type="tel"],
   input[type="number"],
   input[type="date"],

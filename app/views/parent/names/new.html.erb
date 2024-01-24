@@ -1,5 +1,5 @@
-<h1>Kinderanmeldung</h1>
-<h2>Name Elternteil</h2>
+<h1><%= t 'parent.form-title' %></h1>
+<h2><%= t '.title' %></h2>
 
 <%= render 'children/child_registration_step', steps: 5, current_step: 0 %>
 
@@ -9,11 +9,31 @@
       <%= forticon :user, height: 18, style: 'margin-right: var(--spacing-sm)' %>
     </legend>
 
-    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :surname, label: 'Nachname des Elternteils', required: true %>
-    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :forename, label: 'Vorname des Elternteils', required: true %>
+    <% [{field: :forename, label: t('.forename')}, {field: :surname, label: t('.surname')}].each do |input| %>
+      <div class="formelement">
+        <label for="<%= input[:field] %>" class="formelement__label"><%= input[:label] %></label>
 
-    <%= render 'formelements/input', form: form, record: @parent_name, field_name: :member,
-                label: 'Mitglied der FECG Blomberg', input_type: :checkbox, required: true %>
+        <input
+          id="<%= input[:field] %>"
+          type="text"
+          name="parent_name[<%= input[:field] %>]"
+          class="formelement__input"
+          value="<%= @parent_name.public_send input[:field] %>"
+          onchange="clearFormerror(this)">
+
+        <% unless @parent_name.errors[input[:field]].empty? %>
+          <span class="formelement__error">
+            <%= forticon 'circle-exclamation', height: 16 %>
+            <%= @parent_name.errors[input[:field]].first %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
+    <%= render 'formelements/checkbox', record: @parent_name,
+      model: 'parent_name',
+      field: 'member',
+      checked: @parent_name.member,
+      text: t('.member') %>
   </fieldset>
 
   <%= form.submit 'Weiter' %>
