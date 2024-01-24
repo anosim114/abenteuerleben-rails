@@ -13,9 +13,14 @@ on:
   workflow_dispatch:
     inputs:
      application:
-      description: "environment to run against"
+      description: "Environment to run against"
       required: true
       type: string
+    overwrite:
+      description: "Overwrite remote environment"
+      required: false
+      default: false
+      type: boolean
 
 jobs:
   deploy:
