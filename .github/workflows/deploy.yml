@@ -6,6 +6,10 @@ on:
       application:
         required: true
         type: string
+      overwrite:
+        required: false
+        default: false
+        type: boolean
   workflow_dispatch:
     inputs:
      application:
@@ -24,5 +28,6 @@ jobs:
       - name: Push to dokku
         uses: dokku/github-action@master
         with:
+          git_push_flags: ${{ inputs.overwrite == true && '--force' || ''}}
           git_remote_url: 'ssh://dokku@abenteuerleben-ev.de:22/${{ inputs.application }}'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
