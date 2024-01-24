@@ -21,5 +21,9 @@
     display: flex;
     gap: 4px;
     align-items: center;
+
+    & > svg {
+      min-width: 16px;
+    }
   }
 }
