@@ -1,23 +1,32 @@
+<div>
+  <%= render_breadcrumbs %>
+</div>
+
+<h1><%= t('.title') %></h1>
+
 <%= render @campyear %>
 
-<div>
+<div style="margin-top: 2rem;">
   <% @camps.each do |camp| %>
-    <br />
-    <br />
-    <%# todo: link with a button to create new camp for this campyear %>
-    <%= link_to("Camp: " + camp.name,  camp_path(camp)) %>
-    <%= render camp %>
+    <div style="margin: 1rem 0;">
+      <p><strong><%= "Camp: " + camp.name %></strong></p>
+      <%= render camp %>
+      <%= link_to t('.edit-camp'), edit_camp_path(camp), style: 'text-decoration: underline;' %>
+    </div>
   <% end %>
 </div>
 
 <div>
-  <br>
-  <%= link_to "Erstellen eines Camps", new_campyear_camp_path(@campyear) %>
-  <br>
-  <br>
-
-  <%= link_to "Ändern des Campjahrs", edit_campyear_path(@campyear) %> |
-  <%= link_to "Zurück zu allen Campjahren", campyears_path %> |
+  <%= link_to new_campyear_camp_path(@campyear), style: 'border: 1px solid var(--primary); padding: .4rem; border-radius: var(--border-radius);' do %>
+    <%= forticon :plus, height: 16 %>
+    <%= t('.create-camp') %>
+  <% end %>
+</div>
+<div>
+  <%= link_to edit_campyear_path(@campyear), style: 'border: 1px solid var(--primary); padding: .4rem; border-radius: var(--border-radius);' do %>
+    <%= forticon :pen, height: 16 %>
+    <%= t('.change-campyear') %>
+  <% end %>
 
   <%= render "formelements/delete_action", url: @campyear %>
 </div>

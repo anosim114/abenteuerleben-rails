@@ -1,0 +1,8 @@
+.two-row-table {
+  text-align: left; width: 100%; table-layout: fixed;
+
+  tr:nth-child(odd) {background-color: #f0f0f0;}
+  th {padding-right: var(--spacing); max-width: 68%;}
+  @media (max-width: 768px) { th {width: 68%;} }
+  td {margin-right: .2rem; max-width: 68%;}
+}

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
     # auth user by username and password
     if @current_user.nil? && params[:user].is_a?(ActionController::Parameters)
-      @current_user = User.find_by( name: params[:user][:name], password_hash: params[:user][:password] )
+      @current_user = User.find_by(name: params[:user][:name], password_hash: params[:user][:password])
     end
 
     if @current_user

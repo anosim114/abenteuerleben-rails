@@ -2,25 +2,24 @@ class CampyearsController < ApplicationController
   before_action :set_campyear, only: %i[show edit update destroy]
   before_action :admin_only
 
-  # GET /campyears or /campyears.json
+  add_breadcrumb helpers.t('admin.dashboard.title'), :admin_dashboard_path
+  add_breadcrumb 'Campjahre', :campyears_path
+
   def index
     @campyears = Campyear.all
   end
 
-  # GET /campyears/1 or /campyears/1.json
   def show
     @camps = Camp.where campyear: @campyear.id
+    add_breadcrumb @campyear.year, campyear_path(@campyear)
   end
 
-  # GET /campyears/new
   def new
     @campyear = Campyear.new
   end
 
-  # GET /campyears/1/edit
   def edit; end
 
-  # POST /campyears or /campyears.json
   def create
     @campyear = Campyear.new(campyear_params)
 
@@ -31,7 +30,6 @@ class CampyearsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /campyears/1 or /campyears/1.json
   def update
     if @campyear.update(campyear_params)
       redirect_to campyear_url(@campyear), notice: 'Campjahr erfolgreich geändert.'
@@ -40,7 +38,6 @@ class CampyearsController < ApplicationController
     end
   end
 
-  # DELETE /campyears/1 or /campyears/1.json
   def destroy
     @campyear.destroy
 
@@ -49,12 +46,10 @@ class CampyearsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_campyear
     @campyear = Campyear.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def campyear_params
     params.require(:campyear).permit(
       :year,

@@ -1,26 +1,27 @@
 class CampsController < ApplicationController
   before_action :admin_only
   before_action :set_camp, except: %i[index new create]
-  before_action :set_campyear, only: %i[index new create]
+  before_action :set_campyear, only: %i[index edit show new create]
 
-  # GET /camps or /camps.json
-  def index
-    @camps = Camp.all
-  end
+  add_breadcrumb helpers.t('admin.dashboard.title'), :admin_dashboard_path
+  add_breadcrumb 'Campjahre', :campyears_path
 
-  # GET /camps/1 or /camps/1.json
-  def show; end
+  # def index
+  #   @camps = Camp.all
+  # end
 
-  # GET /camps/new
+  # def show; end
+
   def new
     @camp = Camp.new
     @camp.campyear = @campyear
   end
 
-  # GET /camps/1/edit
-  def edit; end
+  def edit
+    add_breadcrumb @campyear.year, campyear_path(@campyear)
+    add_breadcrumb @camp.name, edit_camp_path(@camp)
+  end
 
-  # POST /camps or /camps.json
   def create
     @camp = Camp.new(camp_params)
 
@@ -31,7 +32,6 @@ class CampsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /camps/1 or /camps/1.json
   def update
     if @camp.update(camp_params)
       redirect_to camp_path(@camp), notice: 'Camp erfolgreich geändert.'
@@ -40,7 +40,6 @@ class CampsController < ApplicationController
     end
   end
 
-  # DELETE /camps/1 or /camps/1.json
   def destroy
     campyear_id = @camp.campyear_id
     @camp.destroy
@@ -49,6 +48,8 @@ class CampsController < ApplicationController
   end
 
   private
+  def add_campyear_breadcrumb
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_camp
@@ -56,6 +57,11 @@ class CampsController < ApplicationController
   end
 
   def set_campyear
+    unless @camp == nil || @camp.campyear == nil
+      @campyear = @camp.campyear
+      return
+    end
+
     does_exist = Campyear.exists?(params[:campyear_id])
     unless does_exist
       redirect_to campyears_path

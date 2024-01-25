@@ -1,5 +1,3 @@
-# The controller for the admins
-# it hosts the page which exposes all the admin-only pages
 class AdminController < ApplicationController
   before_action :admin_only
 

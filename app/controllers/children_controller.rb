@@ -4,16 +4,13 @@ class ChildrenController < ApplicationController
   before_action :set_child_and_parent, only: %i[show edit update destroy]
   before_action :set_child_num, only: %i[new create]
 
+  add_breadcrumb helpers.t('admin.dashboard.title'), :admin_dashboard_path
+  add_breadcrumb 'Kinder', :children_path
+
   def index
-    @year = params[:year].to_i != 0 ? params[:year].to_i : helpers.get_active_campyear.year
-
-    @children = Child
-                .joins(camp: :campyear)
-                .where('campyears.year': @year)
-                .order(:surname)
-                .distinct
-
+    @year = (params[:year] || helpers.get_active_campyear.year).to_i
     @campyears = Campyear.all.order(year: :desc).map(&:year)
+    @children = Child.from_year @year
   end
 
   def show; end
@@ -32,8 +29,11 @@ class ChildrenController < ApplicationController
     if @child.valid? :form
       save_child_to_session @child
 
-      next_child_num = @child_num + 1
-      redirect_route = enough? ? new_parent_parent_path : new_child_path(child_num: next_child_num)
+      redirect_route = if enough?
+                         new_parent_parent_path
+                       else
+                         new_child_path(child_num: @child_num + 1)
+                       end
       redirect_to redirect_route
     else
       render :new, status: :unprocessable_entity
@@ -55,7 +55,15 @@ class ChildrenController < ApplicationController
   def destroy
     # TODO: check if parent has no more children and destroy as well in case thereof
     name = "#{@child.forename} #{@child.surname}"
+    parent_id = @child.parent.id
+
     @child.destroy
+
+    parent = Parent::Parent.find parent_id
+    if parent.children.length == 0
+      parent.destroy
+    end
+
     redirect_to children_path, notice: "Erfolreich gelöscht: #{name}"
   end
 
@@ -71,9 +79,7 @@ class ChildrenController < ApplicationController
   end
 
   def set_child_num
-    param_str = params[:child_num]
-
-    @child_num = param_str.nil? ? 0 : param_str.to_i
+    @child_num = (params[:child_num] || 0).to_i
   end
 
   def set_child_and_parent

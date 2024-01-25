@@ -4,6 +4,9 @@ class HelpersController < ApplicationController # rubocop:disable Metrics/ClassL
   before_action :set_available_teams, only: %i[new create edit update]
   before_action :set_helper, only: %i[show edit update destroy]
 
+  add_breadcrumb helpers.t('admin.dashboard.title'), :admin_dashboard_path
+  add_breadcrumb 'Mitarbeiter', :helpers_path
+
   def index
     @year = params[:year].to_i != 0 ? params[:year].to_i : helpers.get_active_campyear.year
 
