@@ -270,3 +270,6 @@ de:
       title: "Campjahr"
       create-camp: "Neues Camp hinzufügen"
       change-campyear: "Campjahr editieren"
+  admin:
+    dashboard:
+      title: "Admin Übersicht"

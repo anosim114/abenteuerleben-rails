@@ -4,20 +4,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.3.0'
 
 gem 'rails', '~> 7.1'
-gem 'sprockets-rails'
-gem 'puma'
-gem 'importmap-rails'
-gem 'turbo-rails'
-gem 'stimulus-rails'
-gem 'forticons'
-gem 'forticons_helper'
-gem 'tzinfo-data'
 gem 'bootsnap', require: false
-gem 'sassc-rails'
-gem 'image_processing'
-gem 'pg'
+gem 'breadcrumbs_on_rails'
 gem 'caxlsx', '~> 4.0'
 gem 'caxlsx_rails', '~> 0.6'
+gem 'forticons'
+gem 'forticons_helper'
+gem 'image_processing'
+gem 'importmap-rails'
+gem 'pg'
+gem 'puma'
+gem 'sassc-rails'
+gem 'sprockets-rails'
+gem 'stimulus-rails'
+gem 'turbo-rails'
+gem 'tzinfo-data'
 
 # development
 gem "redis", group: [ :development ]

@@ -4,6 +4,9 @@ class ChildrenController < ApplicationController
   before_action :set_child_and_parent, only: %i[show edit update destroy]
   before_action :set_child_num, only: %i[new create]
 
+  add_breadcrumb helpers.t('admin.dashboard.title'), :admin_dashboard_path
+  add_breadcrumb 'Kinder', :children_path
+
   def index
     @year = (params[:year] || helpers.get_active_campyear.year).to_i
     @campyears = Campyear.all.order(year: :desc).map(&:year)

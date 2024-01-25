@@ -81,6 +81,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.17.1)
       msgpack (~> 1.2)
+    breadcrumbs_on_rails (4.1.0)
+      railties (>= 5.0)
     builder (3.2.4)
     caxlsx (4.0.0)
       htmlentities (~> 4.3, >= 4.3.4)
@@ -301,6 +303,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  breadcrumbs_on_rails
   caxlsx (~> 4.0)
   caxlsx_rails (~> 0.6)
   forticons

@@ -1,6 +1,7 @@
-<h1>Admin#dashboard</h1>
+<h1><%= t '.title' %></h1>
 
 <h2>Allgemein</h2>
+
 <%= link_to "Nachrichten (#{@unread_messages})", messages_path %>
 <br>
 <%= link_to 'Seiten', pages_path %>
