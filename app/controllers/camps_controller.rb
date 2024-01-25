@@ -6,11 +6,11 @@ class CampsController < ApplicationController
   add_breadcrumb helpers.t('admin.dashboard.title'), :admin_dashboard_path
   add_breadcrumb 'Campjahre', :campyears_path
 
-  def index
-    @camps = Camp.all
-  end
+  # def index
+  #   @camps = Camp.all
+  # end
 
-  def show; end
+  # def show; end
 
   def new
     @camp = Camp.new
@@ -57,7 +57,7 @@ class CampsController < ApplicationController
   end
 
   def set_campyear
-    if @camp.id
+    unless @camp == nil || @camp.campyear == nil
       @campyear = @camp.campyear
       return
     end

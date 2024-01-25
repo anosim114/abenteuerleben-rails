@@ -20,10 +20,10 @@ class CampsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
-  test 'should get index' do
-    get campyear_camps_url(@camp.campyear)
-    assert_response :success
-  end
+  # test 'should get index' do
+  #   get campyear_camps_url(@camp.campyear)
+  #   assert_response :success
+  # end
 
   test 'should get new' do
     get new_campyear_camp_url(@camp.campyear)
@@ -53,10 +53,10 @@ class CampsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to camp_url(Camp.last)
   end
 
-  test 'should show camp' do
-    get camp_url(@camp)
-    assert_response :success
-  end
+  # test 'should show camp' do
+  #   get camp_url(@camp)
+  #   assert_response :success
+  # end
 
   test 'should get edit' do
     get edit_camp_url(@camp)
