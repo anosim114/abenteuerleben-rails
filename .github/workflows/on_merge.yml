@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/test.yml@master
+    uses: anosim114/abenteuerleben-rails/.github/workflows/general_tests.yml@master
 
   deploy-staging:
     uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
