@@ -9,3 +9,13 @@ two:
   name: Hofnarr
   description: Lustig sind die lustigen
   enabled: false
+
+three:
+  name: Sportler
+  description: Athletisch belastbar
+  enabled: true
+
+four:
+  name: Küche
+  description: Kochkünstlerisch
+  enabled: true

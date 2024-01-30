@@ -28,3 +28,5 @@ gem "rubocop-rails-omakase", require: false, group: [ :development ]
 
 # development + test
 gem 'sqlite3', group: [ :development, :test ]
+gem 'capybara', group: [ :development, :test ]
+gem 'selenium-webdriver', group: [ :development, :test ]
