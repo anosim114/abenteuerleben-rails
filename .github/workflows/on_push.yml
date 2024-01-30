@@ -13,6 +13,6 @@ on:
 
 jobs:
   test:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/tests_general.yml@init-system-tests
+    uses: anosim114/abenteuerleben-rails/.github/workflows/tests_general.yml@master
   e2e:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/tests_system.yml@init-system-tests
+    uses: anosim114/abenteuerleben-rails/.github/workflows/tests_system.yml@master
