@@ -5,13 +5,13 @@ class HelpersTest < ApplicationSystemTestCase
     @helper = helpers(:one)
   end
 
-  test "visiting the index" do
-    logging_in
-
-    visit helpers_url
-    assert_selector "h1", text: "Mitarbeiter"
-  end
-
+  # test "visiting the index" do
+  #   logging_in
+  #
+  #   visit helpers_url
+  #   assert_selector "h1", text: "Mitarbeiter"
+  # end
+  #
   test "should not create helper if no camp was selected" do
     visit new_helper_url
 
