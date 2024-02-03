@@ -37,12 +37,13 @@ module Parent
       if @parent.valid? && @parent.children.each.filter(&:invalid?).empty?
         @parent.save
 
-        @parent.children.each(&:save)
-
-        ChildRegistrationMailer.with(parent: @parent).registered_mail.deliver_later
+        @parent.children.each do |child|
+          child.save
+          ChildRegistrationMailer.with(parent: @parent, child: child).registered_mail.deliver_later
+        end
 
         reset_session
-        redirect_to root_path, notice: 'Erfolgreich angemeldet, eine email mit mehr Infos ist auf dem weg zu dir'
+        redirect_to root_path, notice: 'Erfolgreich angemeldet, eine Email mit mehr Infos ist auf dem Weg zu dir'
       else
         logger.error "#{@parent.to_json} was not valid because:"
         logger.error @parent.errors.messages if @parent.errors.messages
