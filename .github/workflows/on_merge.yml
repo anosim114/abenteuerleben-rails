@@ -8,15 +8,12 @@ on:
 
 jobs:
   test:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/tests_general.yml@master
-  e2e:
-    uses: anosim114/abenteuerleben-rails/.github/workflows/tests_system.yml@master
+    uses: anosim114/abenteuerleben-rails/.github/workflows/tests.yml@master
 
   deploy-staging:
     uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
     needs:
       - test
-      - e2e
     with:
       application: bleben
       overwrite: true
