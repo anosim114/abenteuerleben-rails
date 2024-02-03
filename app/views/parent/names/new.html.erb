@@ -9,7 +9,7 @@
       <%= forticon :user, height: 18, style: 'margin-right: var(--spacing-sm)' %>
     </legend>
 
-    <% [{field: :forename, label: t('.forename')}, {field: :surname, label: t('.surname')}].each do |input| %>
+    <% [{field: :surname, label: t('.surname')}, {field: :forename, label: t('.forename')}].each do |input| %>
       <div class="formelement">
         <label for="<%= input[:field] %>" class="formelement__label"><%= input[:label] %></label>
 
