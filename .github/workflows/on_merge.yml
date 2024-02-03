@@ -1,4 +1,4 @@
-name: Merge to Master 
+name: Merge to Master
 
 on:
   workflow_dispatch:
@@ -14,15 +14,17 @@ jobs:
 
   deploy-staging:
     uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
-    needs: test
+    needs:
+      - test
+      - e2e
     with:
       application: bleben
       overwrite: true
     secrets: inherit
 
-  # deploy-production:
-  #   uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
-  #   needs: deploy-staging
-  #   with:
-  #     application: aleben
-  #   secrets: inherit
+  deploy-production:
+    uses: anosim114/abenteuerleben-rails/.github/workflows/deploy.yml@master
+    needs: deploy-staging
+    with:
+      application: aleben
+    secrets: inherit
