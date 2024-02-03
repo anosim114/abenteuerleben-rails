@@ -253,6 +253,8 @@ de:
         privacy-notice: "Ich akzeptiere die "
         liability-exclusion: "Ich habe den Haftungsausschluss gelesen und bin damit einverstanden"
         title: "Bestätigung"
+        info-verification-email: "Du wirst von uns eine Bestätigungsemail von uns erhalten mit weiteren Infos"
+        button-register: "Verbindlich und kostenpflichtig anmelden"
   children:
     child_registration_step:
       stufe: "Schritt %{step} von %{steps}"

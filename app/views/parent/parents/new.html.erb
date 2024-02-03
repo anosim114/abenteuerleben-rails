@@ -2,123 +2,21 @@
     .registration-ack  {
         width: 100%;
     }
-
-    table {
-        text-align: left;
-        border: 2px solid black;
-        width: 100%;
-    }
-    
-    td {
-        word-break: break-word;
-    }
-
-    th {
-        padding-right: var(--spacing-md);
-        width: 14rem;
-    }
-
-    tr:nth-child(odd) {
-        background-color: var(--blue-opacity);
-    }
-
-    .child-information-table:not(:first-child) {
-        margin-top: var(--spacing-lg);
-    }
-
-    @media(max-width: 768px) {
-        table {
-            max-width: 100%;
-            overflow: hidden;
-
-        }
-
-        th {
-            width: 10rem;
-            word-break: break-word;
-        }
-    }
 </style>
 <h1><%= t 'parent.form-title' %></h1>
 <h2><%= t '.title' %></h2>
 
 <%= form_with class: 'registration-ack', model: @parent do |form| %>
   <h3><%= forticon :user, height: 20 %> Elterninfos</h3>
-    <table>
-        <tr>
-            <th>Name</th>
-            <td><%= @parent.surname %>, <%= @parent.forename %></td>
-        </tr>
-        <tr>
-            <th>Gemeinde</th>
-            <td><%= @parent.member ? 'FECG Blomberg' : '/' %></td>
-        </tr>
-        <tr>
-            <th>Strasse</th>
-            <td><%= @parent.street %></td>
-        </tr>
-        <tr>
-            <th>HNr</th>
-            <td><%= @parent.house %></td>
-        </tr>
-        <tr>
-            <th>PLZ</th>
-            <td><%= @parent.post %></td>
-        </tr>
-        <tr>
-            <th>Stadt</th>
-            <td><%= @parent.city %></td>
-        </tr>
-        <tr>
-            <th>Telefon</th>
-            <td><%= @parent.telephone %></td>
-        </tr>
-        <tr>
-            <th>Telefon 2</th>
-            <td><%= @parent.housephone.blank? ? '/' : @parent.housephone %></td>
-        </tr>
-        <tr>
-            <th>E-Mail</th>
-            <td><%= @parent.email %></td>
-        </tr>
-    </table>
-    <%= link_to 'Ändern', new_parent_name_path %> 
+  <%= render 'parent/parent-info-table', parent: @parent %>
 
-    <h3><%= forticon :children, height: 20 %> Kinderinfos</h3>
-    <% @parent.children.each_with_index do |child, index| %>
-      <table class="child-information-table">
-        <tr>
-            <th>Name</th>
-            <td><%= child.surname %>, <%= child.forename %></td>
-        </tr>
-        <tr>
-            <th>Camp</th>
-            <td>Camp <%= child.camp.name %></td>
-        </tr>
-        <tr>
-            <th>Geburtsdatum</th>
-            <td><%= l child.birthday %></td>
-        </tr>
-        <tr>
-            <th>Geschlecht</th>
-            <td><%= child.sex %></td>
-        </tr>
-        <tr>
-            <th>Medikamente / Risiko</th>
-            <td><%= child.medicals %></td>
-        </tr>
-        <tr>
-            <th>Sonstige Bemerkungen</th>
-            <td><%= child.notes %></td>
-        </tr>
-        <tr>
-            <th>Wunschpartner</th>
-            <td><%= child.wishmate %></td>
-        </tr>
-      </table>
-        <%= link_to 'Ändern', new_child_path(child_num: index) %> 
-    <% end %>
-  </fieldset>
+  <%= link_to 'Ändern', new_parent_name_path %>
+
+  <h3><%= forticon :children, height: 20 %> Kinderinfos</h3>
+  <% @parent.children.each_with_index do |child, index| %>
+    <%= render 'children/child-info-table', child: child %>
+    <%= link_to 'Ändern', new_child_path(child_num: index) %>
+  <% end %>
 
   <br>
   <%= render "formelements/dialog-checkbox", form_name: :liability_exclusion,
@@ -145,7 +43,7 @@
   <%= render 'formelements/input', form: form, record: @parent,
       field_name: :data_protection, label: '', input_type: :checkbox_required,
       required: true do %>
-    Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%>
+    Ich akzeptiere die <%= link_to "Datenschutzbestimmungen", page_path("datenschutz"), style: 'display: contents; margin: 0; margin-left: .2rem; padding: 0; line-height: 1.2rem;'%>
   <% end %>
 
   <br>
@@ -154,9 +52,7 @@
       label: 'Einwilligung zur Verwendung / Veröffentlichung von Foto- und Videomaterial' %>
 
   <br>
-  <p>
-    Ihr werdet von uns eine bestätigungsemail erhalten mit weiteren infos
-  </p>
+  <p><%= t '.info-verification-email' %></p>
 
-  <%= form.submit 'Verbindlich und kostenpflichtig anmelden' %>
+  <%= form.submit t('.button-register') %>
 <% end %>

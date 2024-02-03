@@ -1,20 +1,52 @@
 Hallo <%= @parent.forename %>,
 
-du hast erfolgreich <%= pluralize @parent.children.length, "Kind", "Kinder" %> angemeldet.
+<br>
+
+du hast deine Kind <%= @child.forename %> für das Camp <%= @child.camp.name %> 2024 angemeldet.<br>
+Vielen Dank für die Anmeldung und das Vertrauen.<br>
+Die Anmeldung für dein Kind ist eingegangen.<br>
+Wir werden diese prüfen und uns bei dir nach Anmeldeschluss melden.<br>
 
 <br>
-<br>
-Nochmal zum nachlesen:
-<br>
-<%= link_to "Datenschutz", page_url("datenschutz", host: 'abenteuerleben-ev.de'), class: 'centered' %>
-<br>
-<%= link_to "Stornierungsregeln", page_url("stornierungsregeln", host: 'abenteuerleben-ev.de'), class: 'centered' %>
-<br>
+
+Bitte beachte folgendes:
+<ul>
+  <li><strong>Lösche diese E-Mail nicht, da sie als Nachweis für die Anmeldung des Kindes gilt!!!</strong></li>
+  <li>Überweis noch die Teilnahmegebühr i.H.v. <%= @child.camp.price %> € auf das folgende Konto:</li>
+</ul>
+<pre>
+Abenteuer Leben e.V.
+DE56 4765 0130 0000 1374 55
+Verwendungszweck:
+Teilnehmerbeitrag Camp <%= @child.camp.name %> 2024 für … (bitte Name ergänzen)
+</pre>
+(Mit der Anmeldung deines Kindes, erklärst du dich bereit, dass du dem
 <%= link_to "Haftungsausschluss", page_url("eltern_haftungsausschluss", host: 'abenteuerleben-ev.de'), class: 'centered' %>
-<br>
-<%= link_to "Wichtige Informationen", page_url("eltern_wichtige-informationen", host: 'abenteuerleben-ev.de'), class: 'centered' %>
-<br>
-<br>
-<br>
+zustimmst. Solltest du diesen nicht zustimmen, so sende bitte innerhalb von 48 Stunden eine Mail mit deinem Widerruf an die Kontaktadresse des Vereins.
+Eine Teilnahme an dem Camp für dein Kind, müssten wir in diesem Fall verwehren.)
+<br><br>
+Nach Anmeldeschluss werden weitere Informationen (Packliste, Treffpunkt, etc.) bekannt gegeben.
+<br><br>
+Für weitere Fragen zu deiner Anmeldung steht dir das Camp-Komitee gerne zur Verfügung.
+<br><br>
+<strong>
+  Bitte bete für die Vorbereitungen und die Durchführung der Camps, damit wir gemeinsam in Gnade und Erkenntnis wachsen und Gott durch uns und unseren Dienst verherrlicht wird!
+</strong>
+<br><br>
+Sei gesegnet!
+<br><br><br><br>
 
-- Dein Abenteuerleben Teencamp Team
+Hier noch einmal die Anmeldedaten deines Kindes zum nachlesen.<br>
+Sollten Daten nicht passen, so melde dich bitte über das <a href="https://abenteuerleben-ev.de#kontakt">Kontaktformular</a> auf der Webseite.
+
+<br>
+<br>
+<%= render 'parent/parent-info-table', parent: @parent %>
+<%= render 'children/child-info-table', child: @child %>
+
+<hr>
+Weitere Links:<br>
+<%= link_to "Stornierregeln", page_url("stornierungsregeln", host: 'abenteuerleben-ev.de'), class: 'centered' %><br>
+<%= link_to "Haftungsausschluss", page_url("eltern_haftungsausschluss", host: 'abenteuerleben-ev.de'), class: 'centered' %><br>
+<%= link_to "Wichtige Informationen", page_url("eltern_wichtige-informationen", host: 'abenteuerleben-ev.de'), class: 'centered' %><br>
+<%= link_to "Downloads von Dokumente", downloads_url(host: 'abenteuerleben-ev.de'), class: 'centered' %>

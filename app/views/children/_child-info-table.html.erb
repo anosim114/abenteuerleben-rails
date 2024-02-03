@@ -1,0 +1,68 @@
+<style>
+  table {
+      text-align: left;
+      border: 2px solid black;
+      width: 100%;
+  }
+
+  td {
+      word-break: break-word;
+  }
+
+  th {
+      padding-right: 1rem;
+      width: 14rem;
+  }
+
+  tr:nth-child(odd) {
+      background-color: hsl(224 40% 90% / 0.4);
+  }
+
+  .child-information-table:not(:first-child) {
+      margin-top: 2rem;
+  }
+
+  @media(max-width: 768px) {
+      table {
+          max-width: 100%;
+          overflow: hidden;
+
+      }
+
+      th {
+          width: 10rem;
+          word-break: break-word;
+      }
+  }
+</style>
+
+<table class="child-information-table">
+  <tr>
+    <th>Name</th>
+    <td><%= child.surname %>, <%= child.forename %></td>
+  </tr>
+  <tr>
+    <th>Camp</th>
+    <td>Camp <%= child.camp.name %></td>
+  </tr>
+  <tr>
+    <th>Geburtsdatum</th>
+    <td><%= l child.birthday %></td>
+  </tr>
+  <tr>
+    <th>Geschlecht</th>
+    <td><%= child.sex %></td>
+  </tr>
+  <tr>
+    <th>Medikamente / Risiko</th>
+    <td><%= child.medicals %></td>
+  </tr>
+  <tr>
+    <th>Sonstige Bemerkungen</th>
+    <td><%= child.notes %></td>
+  </tr>
+  <tr>
+    <th>Wunschpartner</th>
+    <td><%= child.wishmate %></td>
+  </tr>
+</table>

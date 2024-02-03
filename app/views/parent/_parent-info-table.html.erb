@@ -1,0 +1,76 @@
+<style>
+    table {
+        text-align: left;
+        border: 2px solid black;
+        width: 100%;
+    }
+
+    td {
+        word-break: break-word;
+    }
+
+    th {
+        padding-right: 1rem;
+        width: 14rem;
+    }
+
+    tr:nth-child(odd) {
+        background-color: hsl(224 40% 90% / 0.4);
+    }
+
+    .child-information-table:not(:first-child) {
+        margin-top: 2rem;
+    }
+
+    @media(max-width: 768px) {
+        table {
+            max-width: 100%;
+            overflow: hidden;
+
+        }
+
+        th {
+            width: 10rem;
+            word-break: break-word;
+        }
+    }
+</style>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <td><%= @parent.surname %>, <%= @parent.forename %></td>
+  </tr>
+  <tr>
+    <th>Gemeinde</th>
+    <td><%= @parent.member ? 'FECG Blomberg' : '/' %></td>
+  </tr>
+  <tr>
+    <th>Strasse</th>
+    <td><%= @parent.street %></td>
+  </tr>
+  <tr>
+    <th>HNr</th>
+    <td><%= @parent.house %></td>
+  </tr>
+  <tr>
+    <th>PLZ</th>
+    <td><%= @parent.post %></td>
+  </tr>
+  <tr>
+    <th>Stadt</th>
+    <td><%= @parent.city %></td>
+  </tr>
+  <tr>
+    <th>Telefon</th>
+    <td><%= @parent.telephone %></td>
+  </tr>
+  <tr>
+    <th>Telefon 2</th>
+    <td><%= @parent.housephone.blank? ? '/' : @parent.housephone %></td>
+  </tr>
+  <tr>
+    <th>E-Mail</th>
+    <td><%= @parent.email %></td>
+  </tr>
+</table>
