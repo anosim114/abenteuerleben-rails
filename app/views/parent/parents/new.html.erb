@@ -10,12 +10,12 @@
   <h3><%= forticon :user, height: 20 %> Elterninfos</h3>
   <%= render 'parent/parent-info-table', parent: @parent %>
 
-  <%= link_to 'Ändern', new_parent_name_path %>
+  <%= link_to 'Ändern', new_parent_name_path, style: 'text-decoration: underline; margin: .5rem 0 2rem' %>
 
   <h3><%= forticon :children, height: 20 %> Kinderinfos</h3>
   <% @parent.children.each_with_index do |child, index| %>
-    <%= render 'children/child-info-table', child: child %>
-    <%= link_to 'Ändern', new_child_path(child_num: index) %>
+    <%= render 'children/child-info-table', child: child, index: index %>
+    <%= link_to 'Ändern', new_child_path(child_num: index), style: 'text-decoration: underline; margin: .5rem 0 2rem' %>
   <% end %>
 
   <br>
