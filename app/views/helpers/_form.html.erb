@@ -40,7 +40,15 @@
 
     <%= render 'formelements/input', form: form, record: helper, field_name: :forename, label: 'Vorname' %>
 
-    <%= render 'formelements/input', form: form, record: helper, field_name: :birthday, label: 'Geburtstag', input_type: :date %>
+    <%= render 'formelements/input',
+               form: form,
+               record: helper,
+               field_name: :birthday,
+               label: 'Geburtstag',
+               input_type: :date,
+               start_year: 1970,
+               end_year: DateTime.now.year - 6
+    %>
 
     <%= render 'formelements/input', form: form, record: helper, field_name: :birthplace, label: 'Geburtsort' %>
 

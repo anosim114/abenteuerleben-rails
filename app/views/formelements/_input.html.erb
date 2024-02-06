@@ -58,7 +58,7 @@
       <%= form.number_field field_name, class: class_names('form-input__text-field') %>
     <% when :date %>
       <div class="form-input__date-wrapper">
-      <%= form.date_select field_name, start_year: 1970, end_year: DateTime.now.year - 6, default: Date.new(DateTime.now.year - 18,01,01), class: class_names('form-input__date-field') %>
+      <%= form.date_select field_name, start_year: start_year, end_year: end_year, class: class_names('form-input__date-field') %>
       </div>
     <% when :textarea %>
       <%= form.text_area field_name, rows: 7, class: 'form-input__text-area' %>
