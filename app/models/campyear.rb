@@ -23,4 +23,12 @@ class Campyear < ApplicationRecord
   def open_camps
     camps.filter(&:not_full?)
   end
+
+  def min_child_year
+    camps.map{|c| c.participants_year_start}.min
+  end
+
+  def max_child_year
+    camps.map{|c| c.participants_year_end}.max
+  end
 end

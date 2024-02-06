@@ -97,8 +97,15 @@
                 field_name: :forename, label: 'Vorname', required: true %>
 
     <%# Birthday %>
-    <%= render 'formelements/input', form: form, record: @child,
-                field_name: :birthday, input_type: :date, label: 'Geburtsdatum', required: true %>
+    <%= render 'formelements/input',
+               form: form,
+               record: @child,
+               field_name: :birthday,
+               input_type: :date,
+               label: 'Geburtsdatum',
+               start_year: @campyear.min_child_year,
+               end_year: @campyear.max_child_year,
+               required: true %>
 
     <%# Sex %>
     <div>
