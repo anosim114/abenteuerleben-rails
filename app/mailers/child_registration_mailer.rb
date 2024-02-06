@@ -3,6 +3,6 @@ class ChildRegistrationMailer < ApplicationMailer
     @parent = params[:parent]
     @child = params[:child]
 
-    mail(to: @parent.email, subject: 'Registrierung zum Teencamp')
+    mail(to: @parent.email, subject: 'Registrierung zum Sommercamp')
   end
 end
