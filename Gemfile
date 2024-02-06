@@ -20,6 +20,8 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data'
 
+gem 'logstasher'
+
 # development
 gem "redis", group: [ :development ]
 gem 'web-console', group: [ :development ]
