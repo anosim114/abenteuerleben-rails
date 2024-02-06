@@ -18,8 +18,8 @@
       background-color: hsl(224 40% 90% / 0.4);
   }
 
-  .child-information-table:not(:first-child) {
-      margin-top: 2rem;
+  .child-information-table:not(:last-child) {
+      margin: 0;
   }
 
   @media(max-width: 768px) {
@@ -37,6 +37,9 @@
 </style>
 
 <table class="child-information-table">
+  <thead>
+    <h4 style="color: var(--black);">Kind <%= index + 1 %></h4>
+  </thead>
   <tr>
     <th>Name</th>
     <td><%= child.surname %>, <%= child.forename %></td>
