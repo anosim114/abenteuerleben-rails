@@ -23,3 +23,15 @@ five:
 six:
   url: download_after
   content: ''
+
+seven:
+  url: eltern_haftungsausschluss
+  content: ''
+
+eight:
+  url: eltern_wichtige-informationen
+  content: ''
+
+nine:
+  url: stornierungsregeln
+  content: ''

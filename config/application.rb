@@ -38,6 +38,8 @@ module AbenteuerLeben
     # config.logger.formatter = proc do |severity, time, _progname, msg|
     #   "[#{time}]  (#{severity}) -- : #{msg}"
     # end
+    config.action_view.logger = nil
+    config.colorize_logging = false
 
     # Configuration for the application, engines, and railties goes here.
     #

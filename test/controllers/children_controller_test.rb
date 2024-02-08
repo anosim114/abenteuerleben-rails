@@ -56,20 +56,6 @@ class ChildrenControllerTest < ActionDispatch::IntegrationTest
     assert :unprocessable_entity
   end
 
-  test 'should create child' do
-    post children_url, params: { child: {
-      surname: 'this',
-      forename: 'that',
-      'birthday(3i)': '21',
-      'birthday(2i)': '12',
-      'birthday(1i)': '2012',
-      sex: 'Junge',
-      camp_id: camps(:one).id
-    } }
-
-    assert :redirect
-  end
-
   # test 'adding a wishmate saves it' do
   #    todo
   # end

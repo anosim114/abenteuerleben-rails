@@ -1,12 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  surname: MyString
-  forename: MyString
-  birthday: 2023-12-22
-  sex: MyString
-  medicals: MyString
-  notes: MyString
+  surname: Doe
+  forename: John
+  birthday: 2016-12-22
+  sex: Boy
+  medicals: no
+  notes: no
   parent: one
   camp: one
 
