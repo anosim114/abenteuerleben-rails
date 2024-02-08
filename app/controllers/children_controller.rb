@@ -42,8 +42,6 @@ class ChildrenController < ApplicationController
 
   # @return {boolean} if enough children are now registered
   def save_child_to_session(child)
-    return if ENV['RAILS_ENV'] == 'test'
-
     session[:children] = [] if session[:children].nil?
     session[:children][@child_num] = child
   end
@@ -73,6 +71,9 @@ class ChildrenController < ApplicationController
     return false if session[:children].nil?
 
     session_child_count = session[:children].length
+
+    return false unless session[:parent_child_stat]
+
     session_child_stat_count = session[:parent_child_stat]['count'].to_i
 
     session_child_count >= session_child_stat_count

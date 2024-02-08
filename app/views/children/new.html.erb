@@ -58,7 +58,8 @@
          style="margin-top: var(--spacing-sm);">
 
       <% @camps.each do |camp| %>
-        <label class="radio-group__button">
+        <label class="radio-group__button"
+               id="child_camp_id_<%= camp.id %>">
           <input class="radio-group__input"
                  type=radio
                  name="child[camp_id]"
@@ -112,13 +113,15 @@
       <span style="display: block;">Geschlecht *</span>
       <div class="<%= class_names('radio-group', 'radio-group--error': @child.errors['sex'].any?) %>"
            style="margin-top: var(--spacing-sm);">
-        <label class="radio-group__button">
+        <label class="radio-group__button"
+               id="child_label_boy">
           <input class="radio-group__input" type=radio name="child[sex]"
                  value="Junge" <%= 'checked' if @child.sex == 'Junge' %>>
           <span class="radio-group__label radio-group__label--blue">Junge</span>
         </label>
 
-        <label class="radio-group__button">
+        <label class="radio-group__button"
+               id="child_label_girl">
           <input class="radio-group__input" type=radio  name="child[sex]"
                  value="Mädchen" <%= 'checked' if @child.sex == 'Mädchen' %>>
           <span class="radio-group__label radio-group__label--red">Mädchen</span>

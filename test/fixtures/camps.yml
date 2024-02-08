@@ -5,9 +5,9 @@ one:
   campyear: one
   date_start: 2023-09-15
   date_end: 2023-09-15
-  participants_year_start: 1
-  participants_year_end: 1
-  max_participant_count: 1
+  participants_year_start: 2000
+  participants_year_end: 2020
+  max_participant_count: 20
   price: 38
 
 two:
@@ -15,7 +15,7 @@ two:
   campyear: one
   date_start: 2023-09-15
   date_end: 2023-09-15
-  participants_year_start: 1
-  participants_year_end: 1
-  max_participant_count: 1
+  participants_year_start: 2021
+  participants_year_end: 2040
+  max_participant_count: 10
   price: 42

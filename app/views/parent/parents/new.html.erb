@@ -33,7 +33,7 @@
   <% end %>
 
   <br>
-  <%= render "formelements/dialog-checkbox", form_name: :important_information,
+  <%= render "formelements/dialog-checkbox", form_name: :canceling_info,
       label_text: "Ich habe die geltenden Stornierungsregeln zur Kenntnis genommen",
       form: form do %>
     <%= raw Page.where(url: 'stornierungsregeln').first.content %>

@@ -37,9 +37,11 @@
 </style>
 
 <table class="child-information-table">
+  <% unless(defined? no_index) %>
   <thead>
     <h4 style="color: var(--black);">Kind <%= index + 1 %></h4>
   </thead>
+  <% end %>
   <tr>
     <th>Name</th>
     <td><%= child.surname %>, <%= child.forename %></td>
