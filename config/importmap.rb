@@ -19,3 +19,5 @@ pin "prosemirror-transform" # @1.8.0
 pin "prosemirror-view" # @1.32.7
 pin "rope-sequence" # @1.3.4
 pin "w3c-keyname" # @2.2.8
+pin "sweetalert" # @2.1.2
+pin "process" # @2.0.1

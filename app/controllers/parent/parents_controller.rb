@@ -43,7 +43,7 @@ module Parent
         end
 
         reset_session
-        redirect_to root_path, notice: 'Erfolgreich angemeldet, eine Email mit mehr Infos ist auf dem Weg zu dir'
+        redirect_to root_path, notice: "Erfolgreich angemeldet, eine Email mit mehr Infos ist auf dem Weg zu dir"
       else
         logger.error "#{@parent.to_json} was not valid because:"
         logger.error @parent.errors.messages if @parent.errors.messages
@@ -54,8 +54,23 @@ module Parent
       end
     end
 
-    private
+    def resend_registration_email
+      unless Parent.exists? params[:id]
+        logger.error "Trying to resend email for not found parent id: #{params[:id]}"
+        render plain: "Die Anmeldung konnte nicht gefunden werden", status: :bad_request
+        return
+      end
 
+      @parent = Parent.find params[:id]
+      # todo: move this into the model
+      @parent.children.each do |child|
+        ChildRegistrationMailer.with(parent: @parent, child: child).registered_mail.deliver_later
+      end
+
+      render plain: "Email erfolgreich verschickt", status: :ok
+    end
+
+    private
     def parent_params
       {}.merge(
         session[:parent_name],
