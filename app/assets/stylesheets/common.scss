@@ -1,5 +1,14 @@
-@import 'elements/**/*';
-@import 'mixins/**/*';
+@import 'elements/a';
+@import 'elements/article';
+@import 'elements/button';
+@import 'elements/fieldset';
+@import 'elements/footer';
+@import 'elements/form';
+@import 'elements/formelements';
+@import 'elements/h';
+@import 'elements/hgroup';
+@import 'elements/label';
+@import 'elements/legend';
 
 :root {
   /* colors */

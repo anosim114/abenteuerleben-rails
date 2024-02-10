@@ -7,9 +7,11 @@
     <%= csp_meta_tag %>
 
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
-    <%= javascript_importmap_tags %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= hotwire_livereload_tags if Rails.env.development? %>
+    <%#= javascript_importmap_tags %>
+<!--    <script src="application.js" type="module"></script>-->
+<!--    <link rel="stylesheet" href="application.scss">-->
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", type: "module" %>
   </head>
 
   <body>
