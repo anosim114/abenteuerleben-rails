@@ -9,13 +9,17 @@ module HtmlelementHelper
       dropdown = tag.div class: 'dropdown-action__dropdown' do
         safe_join(
           actions.map do |action|
+            classes = 'dropdown-action__action'
             inner = if action[:js_function] != nil
-                      tag.button action[:text], class: 'dropdown-action__action', onclick: action[:js_function]
-                    elsif action[:link] != nil
-                      tag.anchor action[:text], href: action[:link], class: 'dropdown-action__action'
+                      tag.button action[:text], class: classes, onclick: action[:js_function]
+                    elsif action[:href] != nil
+                      href = action[:href]
+                      method = action[:method]
+                      tag.a action[:text], href: href, class: classes, method: method
                     else
-                      tag.span action[:text], class: 'dropdown-action__action'
+                      tag.span action[:text], class: classes
                     end
+
             inner
           end
         )

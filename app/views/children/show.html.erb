@@ -50,5 +50,9 @@
 <%= tag_dropdown_action(
       [
         {text: 'Neue Bestätigungsmail versenden', js_function: "resendParentVerificationEMail(#{@parent.id})"},
+        {text: '(mehr in planung)'},
+        {text: '(z.B. ändern)'},
+        {text: '(z.B. löschen)'}
+        # {text: 'Löschen (bald)', method: 'DELETE', href: child_url(@child)},
       ]) %>
 <%= render "formelements/delete_action", url: @child %>

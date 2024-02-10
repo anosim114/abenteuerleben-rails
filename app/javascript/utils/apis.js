@@ -1,4 +1,4 @@
-import swal from 'sweetalert'
+import Swal from 'sweetalert2'
 
 export const resendParentVerificationEMail = async (id) => {
     console.debug('resending verification email')
@@ -8,13 +8,13 @@ export const resendParentVerificationEMail = async (id) => {
 
     console.debug(result.status)
     if (result.status !== 200) {
-        return swal({
+        return Swal.fire({
             icon: 'error',
             text: text
         })
     }
 
-    swal({
+    Swal.fire({
         icon: 'success',
         text: text
     })
