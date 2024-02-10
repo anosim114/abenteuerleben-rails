@@ -4,45 +4,55 @@
 
 <h1>Kinderinformationen</h1>
 <h2>
-    <%= forticon :campground, height: 22, style: 'margin-right: 2px' %>
-    Camp
+  <%= forticon :campground, height: 22, style: 'margin-right: 2px' %>
+  Camp
 </h2>
-<p><%= @child.camp.name%></p>
+<p><%= @child.camp.name %></p>
 
 <h2>
-    <%= forticon :child, height: 22, style: 'margin-right: 2px' %>
-    Kind
+  <%= forticon :child, height: 22, style: 'margin-right: 2px' %>
+  Kind
 </h2>
 <div>
-    <p><strong><%= "#{@child.surname}, #{@child.forename}" %></strong></p>
-    <p><%= l @child.birthday %></p>
-    <p><%= @child.sex %></p>
-    <p style="white-space: pre;"><%= @child.medicals %></p>
-    <p style="white-space: pre;"><%= @child.notes %></p>
-    <p><%= @child.wishmate %></p>
+  <p><strong><%= "#{@child.surname}, #{@child.forename}" %></strong></p>
+  <p><%= l @child.birthday %></p>
+  <p><%= @child.sex %></p>
+  <p style="white-space: pre;"><%= @child.medicals %></p>
+  <p style="white-space: pre;"><%= @child.notes %></p>
+  <p><%= @child.wishmate %></p>
 </div>
 
-<h2>
+<div>
+  <h2>
     <%= forticon :person, height: 22, style: 'margin-right: 2px' %>
     Elternteil
-</h2>
-<div>
+  </h2>
+  <div>
     <p><strong><%= "#{@parent.surname}, #{@parent.forename}" %></strong></p>
     <p><%= "#{@parent.street} #{@parent.house}" %></p>
     <p><%= "#{@parent.post}, #{@parent.city}" %></p>
     <p><%= @parent.telephone %></p>
     <p><%= @parent.housephone %></p>
     <p><%= @parent.email %></p>
+  </div>
 </div>
 
 <% if @parent.children.length > 1 %>
-    <h2>Geschwister</h2>
-    <ul>
+  <h2>Geschwister</h2>
+  <ul>
     <% @parent.children.each do |c| %>
-        <% next if c.id == @child.id %>
-        <li><%= link_to "#{c.surname}, #{c.forename}", child_path(c) %>
+      <% next if c.id == @child.id %>
+      <li><%= link_to "#{c.surname}, #{c.forename}", child_path(c) %>
     <% end %>
-    </ul>
+  </ul>
 <% end %>
 
+<%= tag_dropdown_action(
+      [
+        {text: 'Neue Bestätigungsmail versenden', js_function: "resendParentVerificationEMail(#{@parent.id})"},
+        {text: '(mehr in planung)'},
+        {text: '(z.B. ändern)'},
+        {text: '(z.B. löschen)'}
+        # {text: 'Löschen (bald)', method: 'DELETE', href: child_url(@child)},
+      ]) %>
 <%= render "formelements/delete_action", url: @child %>
