@@ -1,32 +1,26 @@
-<div style="display: flex; align-items: center; gap: 1rem;">
-  <div style="display: block; width: 1rem; height: 1rem; background-color: var(--primary); border-radius: var(--border-radius);"></div>
-
-  <article id="<%= dom_id event %>" style="padding: 2rem; margin: 0.4rem 0; max-width: calc(100% - 2rem);">
-    <div style="color: var(--gray-300);">
-      <%= forticon 'calendar-days', height: 16 %>
+<div class="toast show w-100" id="<%= dom_id event %>">
+  <div class="toast-header">
+    <%= forticon 'calendar-days', height: 16, class: 'me-2' %>
+    <strong class="me-auto"><%= event.title %></strong>
+    <small>
       <% unless event.end_date %>
         <span><%= l event.start_date %></span>
       <% else %>
         <span><%= l event.start_date %> - <%= l event.end_date %></span>
       <% end %>
-    </div>
-
-    <strong style="font-size: 1.2rem; margin: .7rem 0; display: block;"><%= event.title %></strong>
-
-    <% if event.description %>
-      <p>
-        <%= event.description %>
-      </p>
-    <% end %>
-
-    <% if event.link and !event.link.empty? %>
-      <p>
-        <span>Link:</span>
-        <%= link_to event.link, event.link, target: :blank %>
-      </p>
-    <% end %>
-
+    </small>
+  </div>
+  <% if event.description %>
+  <div class="toast-body">
+    <%= event.description %>
     <%= yield %>
+  </div>
 
-  </article>
+  <% end %>
+  <% if event.link and !event.link.empty? %>
+    <p>
+      <span>Link:</span>
+      <%= link_to event.link, event.link, target: :blank %>
+    </p>
+  <% end %>
 </div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Abenteuer-Leben e.V.</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
+    <%#= javascript_importmap_tags %>
+<!--    <script src="application.js" type="module"></script>-->
+<!--    <link rel="stylesheet" href="application.scss">-->
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", type: "module" %>
+    <meta name="turbo-visit-control" content="reload">
+  </head>
+
+  <body data-turbo="false">
+    <% if notice %>
+      <div class="container">
+        <div class="alert alert-success alert-dismissible mt-4" role="alert">
+          <div><%= notice %></div>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

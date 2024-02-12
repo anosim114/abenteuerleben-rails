@@ -1,0 +1,23 @@
+<footer class="bg-dark text-light py-5 border-top border-1 border-black">
+  <div class="container row">
+    <div class="col-4">
+      <%= link_to 'Startseite', root_path, class: 'row justify-content-center' %>
+      <%= link_to 'Downloads', downloads_path, class: 'row justify-content-center' %>
+    </div>
+
+    <div class="col-4">
+      <%= link_to "Datenschutz", page_path("datenschutz"), class: 'row justify-content-center' %>
+      <%= link_to "Impressum", page_path("impressum"), class: 'row justify-content-center' %>
+    </div>
+
+    <!-- login/logout -->
+    <div class="col-4">
+      <% if @current_user.has_read_rights %>
+        <%= link_to 'Admin Dashboard', admin_dashboard_path, class: 'row justify-content-center' %>
+        <%= link_to 'Logout', logout_path, class: 'text-danger row justify-content-center' %>
+      <% else %>
+        <%= link_to 'Login', login_path, class: 'row justify-content-center' %>
+      <% end %>
+    </div>
+  </div>
+</footer>

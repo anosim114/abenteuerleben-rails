@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, required: true %>
+  <div class="mb-3">
+    <label for="message_name" class="form-label fw-bold">Name</label>
+    <input id="message_name" name="message[name]" type="text" class="form-control" placeholder="Name hier eingeben" required />
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, required: true %>
+  <div class="mb-3">
+    <label for="message_email" class="form-label fw-bold">Email</label>
+    <input id="message_email" name="message[email]" type="email" class="form-control" placeholder="Email hier eingeben" required />
   </div>
 
-  <div>
-    <%= form.label "Nachricht", style: "display: block" %>
-    <%= form.text_area :message, rows: 5, required: true %>
+  <div class="mb-3">
+    <label for="message_message" class="form-label fw-bold">Nachricht</label>
+    <textarea id="message_message" name="message[message]" class="form-control" placeholder="Nachricht hier eingeben" rows="5" required></textarea>
   </div>
 
   <% if @message.id %>
@@ -33,7 +33,5 @@
   </div>
   <% end %>
 
-  <div>
-    <%= form.submit "Absenden" %>
-  </div>
+  <button class="btn btn-primary" type="submit">Absenden</button>
 <% end %>

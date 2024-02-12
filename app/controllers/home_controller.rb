@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+
+  layout 'bare', only: %i[index]
   def index
     campyear = helpers.get_active_campyear
     @helpers_open =
