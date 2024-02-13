@@ -1,4 +1,3 @@
-import * as turbo from '@hotwired/turbo'
 import * as bootstrap from 'bootstrap'
 import './controllers/index'
 import { clearFormerror } from "./utils/formutils";
