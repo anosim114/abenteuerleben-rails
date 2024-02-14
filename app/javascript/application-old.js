@@ -1,4 +1,4 @@
-import * as bootstrap from 'bootstrap'
+import * as turbo from '@hotwired/turbo'
 import './controllers/index'
 import { clearFormerror } from "./utils/formutils";
 import { squashImageFile } from "./utils/image_utils";

@@ -1,0 +1,7 @@
+.text-clip {
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+$card-cap-bg: rgba(var(--#{$prefix}body-color-rgb), .03);

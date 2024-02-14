@@ -1,112 +1,160 @@
-<%= stylesheet_link_tag "home", "data-turbo-track": "reload" %>
+<header
+  class="container-fluid position-relative"
+  style="background-image: url('/images/bg.jpg'); background-position: center; background-size: cover; padding-top: 7rem">
 
-<hgroup class="centered">
-  <h1>Abenteuer Leben e.V.</h1>
-  <h2>Sommercamps für Kinder und Teens</h2>
-</hgroup>
+  <a href="<%= root_path %>" class="d-block m-auto" style="width: 15rem;">
+    <%= image_tag '/images/logo.png',
+                  class: 'rounded-circle shadow-lg',
+                  style: 'width: 100%',
+                  srcset: {
+                    '/images/logo-sm.png': '640w',
+                    '/images/logo-md.png': '1024w'
+                  },
+                  sizes: '100vw',
+                  alt: 'logo',
+                  id: 'logo',
+                  data: { turbo_permanent: true } %>
+  </a>
 
-<div class="nav">
-  <div class="background-mask"></div>
-  <nav class="container">
-    <ul>
+  <div class="text-center py-5">
+    <div class="bg-light bg-opacity-75 rounded-3 m-0 p-0 container w-auto mx-auto">
+      <h1 class="fw-bold display-3 text-center rounded-3 p-1 text-clip" style="backdrop-filter: blur(1px); background-image: linear-gradient(95deg, #425b79, #33475e, #4a688d);" >
+        Abenteuer Leben
+      </h1>
+    </div>
+    <h2 class="text-light" style="text-shadow: 0 0 12px #000000aa">Sommercamps für Kinder und Teens</h2>
+  </div>
+
+  <div class="row bg-white" style="min-height: 4rem; padding: 2rem; border-radius: 50% 50% 0 0;"></div>
+</header>
+
+<main class="container">
+  <nav>
+    <ul class="list-group list-group-flush">
       <% if @helpers_open %>
-        <li>
-          <%= link_to new_helper_path, style: 'font-weight: bold; color: #967159; fill: #967159;' do %>
-            <%= forticon 'angle-right', height: 18 %></i>Mitarbeiteranmeldung
+        <li class="list-group-item d-flex align-items-center">
+          <%= link_to new_helper_path, style: 'font-weight: bold; color: #967159; fill: #967159;', class: "d-flex align-items-center" do %>
+            <%= forticon 'angle-right', height: 18, class: 'me-2' %>Mitarbeiteranmeldung
           <% end %>
         </li>
       <% end %>
       <% if participant_registrations_open %>
-        <li>
-          <a href="/kinderanmeldung", style="font-weight: bold; color: #967159"><%= forticon 'angle-right', height: 18 %></i>Kinderanmeldung</a>
+        <li class="list-group-item">
+          <a href="/kinderanmeldung" style="font-weight: bold; color: #967159; fill: #967159;" class="d-flex align-items-center">
+            <%= forticon 'angle-right', height: 18, class: 'me-2' %>Kinderanmeldung
+          </a>
         </li>
       <% end %>
-      <li>
-        <a href="#wer-wir-sind"><%= forticon 'angle-right', height: 18 %>Wer wir sind</a>
+      <li class="list-group-item">
+        <a href="#wer-wir-sind" class="d-flex align-items-center">
+          <%= forticon 'angle-right', height: 18, class: 'me-2' %>Wer wir sind
+        </a>
       </li>
-      <li>
-        <a href="#was-wir-machen"><%= forticon 'angle-right', height: 18 %>Was wir machen</a>
+      <li class="list-group-item">
+        <a href="#was-wir-machen" class="d-flex align-items-center">
+          <%= forticon 'angle-right', height: 18, class: 'me-2' %>Was wir machen
+        </a>
       </li>
-      <li>
-        <a href="#termine"><%= forticon 'angle-right', height: 18 %>Termine</a>
+      <li class="list-group-item">
+        <a href="#termine" class="d-flex align-items-center">
+          <%= forticon 'angle-right', height: 18, class: 'me-2' %>Termine
+        </a>
       </li>
-      <li>
-        <a href="#kontakt"><%= forticon 'angle-right', height: 18 %>Kontakt</a>
+      <li class="list-group-item">
+        <a href="#kontakt" class="d-flex align-items-center">
+          <%= forticon 'angle-right', height: 18, class: 'me-2' %>Kontakt
+        </a>
       </li>
-      <li>
-        <%= link_to downloads_path do %><%= forticon 'angle-right', height: 18 %>Downloads<% end %>
+      <li class="list-group-item">
+        <%= link_to downloads_path class: "d-flex align-items-center" do %>
+          <%= forticon 'angle-right', height: 18, class: 'me-2' %>
+          Downloads
+        <% end %>
       </li>
-      <li>
-        <a href="/pages/spenden"><%= forticon 'angle-right', height: 18 %>Spenden / Unterstützen</a>
+      <li class="list-group-item">
+        <a href="/pages/spenden" class="d-flex align-items-center">
+          <%= forticon 'angle-right', height: 18, class: 'me-2' %>Spenden / Unterstützen
+        </a>
       </li>
     </ul>
   </nav>
-</div>
 
-<div class="about">
-  <div class="background-mask"></div>
-  <div class="container">
-    <article id="wer-wir-sind">
-      <div class="ico">
+  <br>
+  <hr>
+  <br>
+
+  <div class="about d-flex flex-column gap-5">
+    <article class="card" id="wer-wir-sind">
+      <div class="card-header d-flex justify-content-center">
         <%= forticon 'people-line', height: 32, style: 'fill: var(--gray-200)' %>
       </div>
-      <h2>
-        Wer wir sind
-      </h2>
-      <p>
-        Wir sind eine Gruppe motivierter Christen, die biblische Werte und Prinzipien vertreten und diese gemeinsam mit der heranwachsenden Generation ausleben möchten.
-        <br>
-        Ein Team ehrenamtlicher Mitarbeiter macht es sich zur Aufgabe, zwei Wochen Ferienzeit zu einem interessanten und außergewöhnlichen Erlebnis zu gestalten!
-      </p>
+      <div class="card-body">
+        <h2 class="card-title text-center">
+          Wer wir sind
+        </h2>
+        <p class="card-text">
+          Wir sind eine Gruppe motivierter Christen, die biblische Werte und Prinzipien vertreten und diese gemeinsam
+          mit der heranwachsenden Generation ausleben möchten.
+          <br>
+          Ein Team ehrenamtlicher Mitarbeiter macht es sich zur Aufgabe, zwei Wochen Ferienzeit zu einem interessanten
+          und außergewöhnlichen Erlebnis zu gestalten!
+        </p>
+      </div>
     </article>
 
-    <article id="was-wir-machen">
-      <div class="ico">
+    <article class="card" id="was-wir-machen">
+      <div class="card-header d-flex justify-content-center">
         <%= forticon :briefcase, height: 32, style: 'fill: var(--gray-200)' %>
       </div>
-      <h2 class="centered">Was wir machen</h2>
-      <p>
-        Unsere Camps bieten eine gute Möglichkeit, eine Woche lang zusammen zu sein, gute Gemeinschaft zu erleben, miteinander in der Bibel zu forschen, zu beten, Jesus Christus persönlich zu begegnen, persönliche Gespräche zu führen und neue Freunde kennenzulernen.
-        <br>
-        Auf den Sommercamps sollen junge Menschen die Möglichkeit haben, christlichen Glauben zu leben, zu vertiefen, bzw. diesen ganz neu kennenzulernen.
-      </p>
+      <div class="card-body">
+        <h2 class="card-title text-center">Was wir machen</h2>
+        <p class="card-text">
+          Unsere Camps bieten eine gute Möglichkeit, eine Woche lang zusammen zu sein, gute Gemeinschaft zu erleben,
+          miteinander in der Bibel zu forschen, zu beten, Jesus Christus persönlich zu begegnen, persönliche Gespräche
+          zu führen und neue Freunde kennenzulernen.
+          <br>
+          Auf den Sommercamps sollen junge Menschen die Möglichkeit haben, christlichen Glauben zu leben, zu vertiefen,
+          bzw. diesen ganz neu kennenzulernen.
+        </p>
+      </div>
     </article>
   </div>
-</div>
 
-<div class="container">
-  <div id="termine" style="margin-top: var(--spacing-xl);">
-    <div class="ico centered">
+  <div id="termine" class="mt-5">
+    <div class="d-flex justify-content-center">
       <% if @events.length == 0 %>
         <%= forticon 'calendar', height: 32, style: 'fill: var(--gray-200)' %>
       <% else %>
         <%= forticon 'calendar-day', height: 32, style: 'fill: var(--gray-200)' %>
       <% end %>
     </div>
-    <h2 class="centered">Termine</h2>
-    <div style="display: flex; flex-direction: column; align-items: start;">
-
+    <h2 class="text-center">Termine</h2>
+    <div class="text-center">
       <% if @events.length == 0 %>
-      <div class="termine--empty">
-        <span>
-          Derzeit stehen keine Termine an
-        </span>
-      </div>
+        <div class="termine--empty">
+      <span>
+        Derzeit stehen keine Termine an
+      </span>
+        </div>
       <% end %>
 
-      <% @events.each do |event| %>
-        <%= render 'events/event', event: event %>
-      <% end %>
+      <div>
+        <% @events.each do |event| %>
+          <%= render 'events/event', event: event %>
+        <% end %>
+      </div>
     </div>
   </div>
+</main>
 
-  <hr style="margin: var(--spacing-xl) 0;">
+<div class="bg-dark">
+  <div class="bg-white" style="min-height: 4rem; padding: 3rem 2rem; border-radius: 0 0 50% 50%;"></div>
 
-  <div id="kontakt" style="margin: 0 var(--spacing-sm);">
-    <div class="ico centered">
-        <%= forticon 'envelope', height: 32, style: 'fill: var(--gray-200)' %>
+  <div id="kontakt" class="container py-5 text-light">
+    <div class="d-flex justify-content-center">
+      <%= forticon 'envelope', height: 32, style: 'fill: #fafafa' %>
     </div>
-    <h2 class="centered">Kontakt</h2>
+    <h2 class="text-center">Kontakt</h2>
     <%= render 'messages/form', message: @message %>
   </div>
 </div>

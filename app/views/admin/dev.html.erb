@@ -1,7 +1,7 @@
 <hgroup>
 <h1>Developer space</h1>
-<p>Showcase of various design elements</p1>
-<hgroup>
+<p>Showcase of various design elements</p>
+</hgroup>
 
 <br>
 
@@ -11,22 +11,20 @@
   <% 1.upto(6).each do |i| %>
   <h<%= i %>>h<%= i %> - Text</h<%= i %>>
   <% end %>
-<div>
-
+</div>
 
 <h2>Colors</h2>
-
 <div style="display: flex; gap: 1rem; flex-direction: column;">
   <% ["gray", "blue", "red"].each do |color| %>
   <div>
     <h3><%= color %></h3>
     <div style="display:flex;">
-      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-100);"></div>
-      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-200);"></div>
-      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-300);"></div>
-      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-400);"></div>
-      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-500);"></div>
-      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(--<%= color %>-600);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(<%= '--' + color %>-100);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(<%= '--' + color %>-200);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(<%= '--' + color %>-300);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(<%= '--' + color %>-400);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(<%= '--' + color %>-500);"></div>
+      <div style="display: inline-block; height: 2rem; width: 1.5rem; background-color: var(<%= '--' + color %>-600);"></div>
     </div>
   </div>
   <% end %>
@@ -66,5 +64,4 @@
       </label>
     </div>
   </form>
-</turbo-frame id='radio-groups'>
-
+</turbo-frame>

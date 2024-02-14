@@ -6,10 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"> -->
-    <%= javascript_importmap_tags %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= hotwire_livereload_tags if Rails.env.development? %>
+    <%= stylesheet_link_tag "application-old" %>
+    <%= javascript_include_tag "application-old", type: "module" %>
+    <meta name="turbo-root" content="/admin">
   </head>
 
   <body>

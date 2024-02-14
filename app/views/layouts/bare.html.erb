@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Abenteuer-Leben e.V.</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", type: "module" %>
+    <meta name="turbo-root" content="/">
+  </head>
+
+  <body data-turbo="false">
+    <% if notice %>
+      <div class="container" data-turbo-temporary >
+        <div class="alert alert-success alert-dismissible mt-4" role="alert">
+          <div><%= notice %></div>
+        </div>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+    <%= render 'layouts/footer' %>
+  </body>
+</html>
