@@ -64,7 +64,6 @@ module Parent
 
     def update
       add_breadcrumb "#{@parent.surname}, #{@parent.forename}"
-      logger.info 'info, parent was not saved'
 
       if @parent.update(parent_params_edit)
         redirect_to @parent.children.first

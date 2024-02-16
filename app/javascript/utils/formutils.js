@@ -3,7 +3,7 @@ export const clearFormerror = (me) => {
     me.closest('.formelement').querySelector('.formelement__error')?.remove()
 }
 
-export const preventSubmitIfNotOk = async (button) => {
+export const submitIfOk = async (button) => {
     const isOkResult = await Swal.fire({
         text: 'Wirklich löschen?',
         icon: 'warning',
@@ -11,6 +11,6 @@ export const preventSubmitIfNotOk = async (button) => {
     })
 
     if (isOkResult.isConfirmed) {
-        button.closest('form').submit()
+        button.closest('form').requestSubmit()
     }
 }

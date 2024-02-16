@@ -34,7 +34,7 @@ de:
         forename: "Vorname"
         telephone: "Telefonnummer"
         housephone: 'Telefonnummer 2'
-        email: 'EMail'
+        email: 'Email'
         street: 'Straße'
         house: 'Hausnummer'
         post: 'Postleitzahl'
