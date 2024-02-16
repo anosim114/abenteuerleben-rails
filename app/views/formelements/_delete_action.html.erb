@@ -1,4 +1,10 @@
 <%# arguments(url) %>
 <% if @current_user.delete_rights? %>
-  <%= button_to "Lösche Element", url, method: :delete, class: 'danger', form: { data: { 'turbo_confirm': 'Sicher, dass dieses Element gelöscht werden soll?' } } %>
+  <%= form_with url: url, method: :delete, data: {turbo: false} do |form| %>
+    <button
+      type="button"
+      class="danger"
+      onclick="preventSubmitIfNotOk(this)"
+    >Lösche Element</button>
+  <% end %>
 <% end %>

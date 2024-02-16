@@ -1,6 +1,10 @@
 module Parent
   class ParentsController < ApplicationController
     before_action :set_active_campyear, only: %i[index]
+    before_action :set_parent, only: %i[edit update]
+
+    add_breadcrumb helpers.t('admin.dashboard.title'), :admin_dashboard_path
+    add_breadcrumb 'Eltern'
 
     def index
       reset_session
@@ -54,6 +58,21 @@ module Parent
       end
     end
 
+    def edit
+      add_breadcrumb "#{@parent.surname}, #{@parent.forename}"
+    end
+
+    def update
+      add_breadcrumb "#{@parent.surname}, #{@parent.forename}"
+      logger.info 'info, parent was not saved'
+
+      if @parent.update(parent_params_edit)
+        redirect_to @parent.children.first
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
     def resend_registration_email
       unless Parent.exists? params[:id]
         logger.error "Trying to resend email for not found parent id: #{params[:id]}"
@@ -71,11 +90,21 @@ module Parent
     end
 
     private
+    def set_parent
+      @parent = Parent.find(params[:id])
+    end
+
     def parent_params
       {}.merge(
         session[:parent_name],
         session[:parent_location],
         session[:parent_contact]
+      )
+    end
+
+    def parent_params_edit
+      params.require(:parent_parent).permit(
+        :surname, :forename, :telephone, :housephone, :email, :street, :house, :post, :city, :member
       )
     end
 

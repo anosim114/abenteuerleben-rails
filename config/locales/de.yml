@@ -1,6 +1,9 @@
 ---
 de:
   activerecord:
+    models:
+      child: 'Kind'
+      parent/parent: 'Elternteil'
     attributes:
       camp:
         name: 'Name'
@@ -17,6 +20,26 @@ de:
         participants_register_end: 'Anmeldeschluss Alle'
         helper_register_start: 'Anmeldestart Mitarbeiter'
         helper_register_end: 'Anmeldeschluss Mitarbeiter'
+      child:
+        forename: 'Vorname'
+        surname: 'Nachname'
+        birthday: 'Geburtstag'
+        sex: 'Geschlecht'
+        wishmate: 'Wunschpartner'
+        notes: 'Notizen'
+        medicals: 'Medikamente / Risiko'
+        camp_id: 'Camp'
+      parent/parent:
+        surname: "Nachname"
+        forename: "Vorname"
+        telephone: "Telefonnummer"
+        housephone: 'Telefonnummer 2'
+        email: 'EMail'
+        street: 'Straße'
+        house: 'Hausnummer'
+        post: 'Postleitzahl'
+        city: 'Stadt'
+        member: 'Gemeindemitglied'
     errors:
       messages:
         record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'

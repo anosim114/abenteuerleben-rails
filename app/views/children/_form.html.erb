@@ -1,0 +1,64 @@
+<style>
+  .mt-3 {
+      margin-top: 1rem;
+  }
+
+  .text-bold {
+      font-weight: bold;
+  }
+
+  .text-danger {
+      color: var(--red-100);
+  }
+</style>
+<%= form_with model: child do |form| %>
+  <div>
+    <% child.errors.messages.each do |key, messages| %>
+      <p class="text-danger"><strong><%= Child.human_attribute_name key %></strong> <%= messages.first %></p>
+    <% end %>
+  </div>
+
+  <%= form.label :surname, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :surname %>
+  <% end %>
+
+  <%= form.label :forename, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :forename %>
+  <% end %>
+
+  <%= form.label :birthday, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.date_field :birthday %>
+  <% end %>
+
+  <%= form.label :sex, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.select :sex, ['Junge', 'Mädchen'] %>
+  <% end %>
+
+  <%= form.label :medicals, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_area :medicals %>
+  <% end %>
+
+  <%= form.label :notes, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_area :notes %>
+  <% end %>
+
+  <%= form.label :wishmate, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :wishmate %>
+  <% end %>
+
+  <!--  todo: make camps also come from outside-->
+  <%= form.label :camp_id, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.select :camp_id, @camps.map{|camp| [camp.id, camp.name]} %>
+  <% end %>
+
+  <%= form.submit style: 'width: 100%; padding: .5rem .75em; text-align: center' %>
+  <%= link_to 'Abbrechen', child_path(child), class: 'danger', style: 'width: 100%; padding: .5rem .75em; text-align: center' %>
+<% end %>

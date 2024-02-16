@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
-  before_action :set_active_campyear, only: %i[new create]
-  before_action :set_camps, only: %i[new create]
+  before_action :set_active_campyear, only: %i[new create edit update]
+  before_action :set_camps, only: %i[new create edit update]
   before_action :set_child_and_parent, only: %i[show edit update destroy]
   before_action :set_child_num, only: %i[new create]
 
@@ -13,7 +13,9 @@ class ChildrenController < ApplicationController
     @children = Child.from_year @year
   end
 
-  def show; end
+  def show
+    add_breadcrumb "#{@child.surname}, #{@child.forename}", child_path(@child)
+  end
 
   def new
     @child = if session[:children].nil?
@@ -46,9 +48,21 @@ class ChildrenController < ApplicationController
     session[:children][@child_num] = child
   end
 
-  def edit; end
+  def edit
+    add_breadcrumb "#{@child.surname}, #{@child.forename}", child_path(@child)
+    add_breadcrumb "Ändern", edit_child_path(@child)
+  end
 
-  def update; end
+  def update
+    add_breadcrumb "#{@child.surname}, #{@child.forename}", child_path(@child)
+    add_breadcrumb "Ändern", edit_child_path(@child)
+
+    if @child.update(child_params)
+      redirect_to child_path(@child)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   def destroy
     # TODO: check if parent has no more children and destroy as well in case thereof
