@@ -21,13 +21,13 @@ Rails.application.routes.draw do
   ############################
   get '/kinderanmeldung', to: 'parent/parents#index'
   get '/parents/:id/resend_verification_mail', to: 'parent/parents#resend_registration_email'
-  namespace :parent, only: %i[index new create] do
+  namespace :parent do
     resources :names, only: %i[new create]
     resources :locations, only: %i[new create]
     resources :contacts, only: %i[new create]
     resources :optionals, only: %i[new create]
     resources :child_stats, only: %i[new create]
-    resources :parents, only: %i[index new create]
+    resources :parents, only: %i[index new create edit update]
   end
 
   resources :children

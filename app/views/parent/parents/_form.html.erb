@@ -1,0 +1,77 @@
+<style>
+    .mt-1 {
+        margin-top: 0.25rem;
+    }
+
+    .mt-3 {
+        margin-top: 1rem;
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+
+    .text-danger {
+        color: var(--red-100);
+    }
+</style>
+<%= form_with model: parent do |form| %>
+  <div>
+    <% parent.errors.messages.each do |key, messages| %>
+      <p class="text-danger"><strong><%= Parent::Parent.human_attribute_name key %></strong> <%= messages.first %></p>
+    <% end %>
+  </div>
+
+  <%= form.label :surname, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :surname %>
+  <% end %>
+
+  <%= form.label :forename, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :forename %>
+  <% end %>
+
+  <%= form.label :telephone, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :telephone %>
+  <% end %>
+
+  <%= form.label :housephone, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :housephone %>
+  <% end %>
+
+  <%= form.label :email, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :email %>
+  <% end %>
+
+  <%= form.label :street, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :street %>
+  <% end %>
+
+  <%= form.label :house, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :house %>
+  <% end %>
+
+  <%= form.label :post, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :street %>
+  <% end %>
+
+  <%= form.label :city, class: 'mt-3 text-bold' do |label| %>
+    <span><%= label %></span>
+    <%= form.text_field :city %>
+  <% end %>
+
+  <%= form.label :member, class: 'mt-3 text-bold' do |label| %>
+    <span style="display: block"><%= label %></span>
+    <%= form.check_box :member, style: 'mt-1; display: inline-block; width: auto;' %>
+  <% end %>
+
+  <%= form.submit style: 'width: 100%; padding: .5rem .75em; text-align: center' %>
+  <%= link_to 'Abbrechen', child_path(parent.children.first), class: 'danger', style: 'width: 100%; padding: .5rem .75em; text-align: center' %>
+<% end %>

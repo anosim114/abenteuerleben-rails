@@ -1,5 +1,5 @@
-<div style="display: block; margin-bottom: 2rem;">
-  <%= link_to "< Zurück zu allen Kindern", children_path %>
+<div>
+  <%= render_breadcrumbs %>
 </div>
 
 <h1>Kinderinformationen</h1>
@@ -49,10 +49,11 @@
 
 <%= tag_dropdown_action(
       [
+        {text: 'Kinddaten ändern', href: edit_child_path(@child)},
+        {text: 'Elterndaten ändern', href: edit_parent_parent_path(@child.parent)},
+        {text: '#'},
         {text: 'Neue Bestätigungsmail versenden', js_function: "resendParentVerificationEMail(#{@parent.id})"},
-        {text: '(mehr in planung)'},
-        {text: '(z.B. ändern)'},
-        {text: '(z.B. löschen)'}
         # {text: 'Löschen (bald)', method: 'DELETE', href: child_url(@child)},
       ]) %>
-<%= render "formelements/delete_action", url: @child %>
+
+<%= render "formelements/delete_action", url: child_path(@child) %>

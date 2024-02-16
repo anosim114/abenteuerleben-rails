@@ -1,2 +1,6 @@
-<h1>Children#edit</h1>
-<p>Find me in app/views/children/edit.html.erb</p>
+<div>
+  <%= render_breadcrumbs %>
+</div>
+
+<h1>Kinddaten ändern</h1>
+<%= render 'children/form', child: @child %>
