@@ -7,6 +7,7 @@ class ChildrenControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get show' do
+    post '/login', params: { 'user[name]': users(:admin).name, 'user[password]': 'admin' }
     get child_url(children(:one))
     assert_response :success
   end
@@ -71,6 +72,7 @@ class ChildrenControllerTest < ActionDispatch::IntegrationTest
   # end
 
   test 'should destroy child' do
+    post '/login', params: { 'user[name]': users(:admin).name, 'user[password]': 'admin' }
     assert_difference('Child.count', -1) do
       delete child_url(children(:one))
     end
