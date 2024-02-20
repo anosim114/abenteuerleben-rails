@@ -47,13 +47,6 @@
   </ul>
 <% end %>
 
-<%= tag_dropdown_action(
-      [
-        {text: 'Kinddaten ändern', href: edit_child_path(@child)},
-        {text: 'Elterndaten ändern', href: edit_parent_parent_path(@child.parent)},
-        {text: '#'},
-        {text: 'Neue Bestätigungsmail versenden', js_function: "resendParentVerificationEMail(#{@parent.id})"},
-        # {text: 'Löschen (bald)', method: 'DELETE', href: child_url(@child)},
-      ]) %>
+<%= tag_dropdown_action(@child.actions) %>
 
 <%= render "formelements/delete_action", url: child_path(@child) %>

@@ -32,15 +32,7 @@
   </select>
 <% end %>
 <br>
-<br>
 
-<div id="helpers">
-  <% @helpers.each do |helper| %>
-    <%= render 'helpers/table-link', helper: helper %>
-  <% end %>
-</div>
-
-<br>
 <%= link_to new_helper_path, class: '--bordered' do %>
   <%= forticon 'user-plus', height: 18, style: "margin-right: var(--spacing-sm)" %>
   Manuell Mitarbeiter hinzufügen
@@ -48,6 +40,14 @@
 <br>
 <%= link_to excel_helpers_path(format: "xlsx"), class: '--bordered' do %>
   <%= forticon 'file-excel', height: 18, style: "margin-right: var(--spacing-sm); color: green" %>
-  Mitarbeiterliste als Excel herunterladen
+  Anmeldeliste als Excel herunterladen
 <% end %>
+
+<br>
+
+<div id="helpers">
+  <% @helpers.each do |helper| %>
+    <%= render 'helpers/table-link', helper: helper %>
+  <% end %>
+</div>
 

@@ -1,0 +1,26 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Kinder") do |sheet|
+  sheet.add_row %w[camp nachname vorname vorname_elternteil geburtsdatum geschlecht medikamente notizen telefon telefon2 email strasse hausnummer plz ort eltern_gemeindemitglied]
+
+  @children.each do |child|
+    sheet.add_row [
+      child.camp.name,
+      child.forename,
+      child.surname,
+      child.parent.forename,
+      child.birthday,
+      child.sex,
+      child.medicals,
+      child.notes,
+      child.parent.telephone,
+      child.parent.housephone,
+      child.parent.email,
+      child.parent.street,
+      child.parent.house,
+      child.parent.post,
+      child.parent.city,
+      child.parent.member ? 'Ja' : 'Nein'
+    ]
+  end
+end

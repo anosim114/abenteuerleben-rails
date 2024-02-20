@@ -17,6 +17,16 @@ class Child < ApplicationRecord
        .distinct
   end
 
+  def actions
+    [
+      {text: 'Kinddaten ändern', href: Rails.application.routes.url_helpers.edit_child_path(id)},
+      {text: 'Elterndaten ändern', href: Rails.application.routes.url_helpers.edit_parent_parent_path(parent.id)},
+      {text: '#'},
+      {text: 'Neue Bestätigungsmail versenden', js_function: "resendParentVerificationEMail(#{parent.id})"},
+    # {text: 'Löschen (bald)', method: 'DELETE', href: child_url(@child)},
+    ]
+  end
+
   def invalid?
     !valid?
   end

@@ -79,6 +79,15 @@ class ChildrenController < ApplicationController
     redirect_to children_path, notice: "Erfolreich gelöscht: #{name}"
   end
 
+  def excelify
+    active_campyear = helpers.get_active_campyear
+    @children = Child.select('*').joins(camp: :campyear).where('campyears.id' => active_campyear.id)
+
+    respond_to do |format|
+      format.xlsx
+    end
+  end
+
   private
 
   def enough?
