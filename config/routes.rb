@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   ############################
   get '/kinderanmeldung', to: 'parent/parents#index'
   get '/parents/:id/resend_verification_mail', to: 'parent/parents#resend_registration_email'
+  get '/excel/children', to: 'children#excelify'
   namespace :parent do
     resources :names, only: %i[new create]
     resources :locations, only: %i[new create]

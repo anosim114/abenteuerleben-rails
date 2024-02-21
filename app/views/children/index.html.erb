@@ -15,6 +15,17 @@
   </select>
 <% end %>
 <br>
+
+<%= link_to new_child_path, class: '--bordered' do %>
+  <%= forticon 'user-plus', height: 18, style: "margin-right: var(--spacing-sm)" %>
+  Kind hinzufügen
+<% end %>
+<br>
+<%= link_to excel_children_path(format: "xlsx"), class: '--bordered' do %>
+  <%= forticon 'file-excel', height: 18, style: "margin-right: var(--spacing-sm); color: green" %>
+  Anmeldeliste als Excel herunterladen
+<% end %>
+
 <br>
 
 <ul>
@@ -23,9 +34,3 @@
         <li></li>
     <% end %>
 </ul>
-
-<%= link_to new_parent_name_path, class: '--bordered' do %>
-  <%= forticon 'user-plus', height: 18, style: "margin-right: var(--spacing-sm)" %>
-  Manuell Kind hinzufügen
-<% end %>
-<br>
