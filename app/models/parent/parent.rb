@@ -15,14 +15,5 @@ module Parent
     # contact
     validates :telephone, presence: true
     validates :email, presence: true
-
-    # church
-    validate :church_needed, on: %i[church create]
-
-    def church_needed
-      return if member || church.present?
-
-      errors.add :church, 'Trage bitte deine zugehörige Kirche ein'
-    end
   end
 end
